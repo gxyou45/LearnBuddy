@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+**/dist
+apps/api/src/generated
+content
+media
+.backups
+.env
+.git
+playwright-report
+test-results
+
+# Documentation changes should not invalidate application build layers.
+*.md
+
+# Generated local curriculum package is imported explicitly.
+curriculum-release

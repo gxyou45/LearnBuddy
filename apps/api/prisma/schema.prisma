@@ -1,0 +1,411 @@
+generator client {
+  provider = "prisma-client"
+  output = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+datasource db {
+  provider = "postgresql"
+}
+model ContentRelease {
+  id String @id
+  contentVersion Int
+  checksum String
+  manifest Json
+  createdAt DateTime @default(now()) @db.Timestamptz
+  lessons LessonVersion[]
+  assets AssetVersion[]
+  themes Theme[]
+  scenes HuntSceneVersion[]
+  basedDrafts ContentDraft[] @relation("draftBase")
+  publishedDraft ContentDraft? @relation("draftPublication")
+  channels ContentChannel[]
+  learningLearners Learner[]
+}
+model Theme {
+  id String @id
+  releaseId String
+  release ContentRelease @relation(fields: [releaseId], references: [id])
+  title String
+  position Int
+  metadata Json
+  @@unique([releaseId, position])
+}
+model AssetVersion {
+  id String @id
+  releaseId String
+  release ContentRelease @relation(fields: [releaseId], references: [id])
+  sourceId String
+  objectKey String
+  sha256 String
+  bytes Int
+  mimeType String
+  metadata Json
+  reviewStatus String @default("pending")
+  words WordVersion[]
+  scenes HuntSceneVersion[]
+  @@unique([releaseId, sourceId])
+}
+model LessonVersion {
+  id String @id
+  releaseId String
+  release ContentRelease @relation(fields: [releaseId], references: [id])
+  lessonId String
+  title String
+  position Int
+  content Json
+  characters CharacterVersion[]
+  words WordVersion[]
+  story StoryVersion?
+  steps LessonStep[]
+  sessions LearningSession[]
+  @@unique([releaseId, lessonId])
+}
+model CharacterVersion {
+  id String @id
+  lessonVersionId String
+  lesson LessonVersion @relation(fields: [lessonVersionId], references: [id])
+  characterId String
+  text String
+  content Json
+  @@unique([lessonVersionId, characterId])
+}
+model WordVersion {
+  id String @id
+  lessonVersionId String
+  lesson LessonVersion @relation(fields: [lessonVersionId], references: [id])
+  text String
+  audioAssetId String
+  audio AssetVersion @relation(fields: [audioAssetId], references: [id])
+}
+model StoryVersion {
+  id String @id
+  lessonVersionId String @unique
+  lesson LessonVersion @relation(fields: [lessonVersionId], references: [id])
+  text String
+  content Json
+}
+model LessonStep {
+  id String @id
+  lessonVersionId String
+  lesson LessonVersion @relation(fields: [lessonVersionId], references: [id])
+  position Int
+  kind String
+  config Json
+  question QuestionVersion?
+  @@unique([lessonVersionId, position])
+}
+model QuestionVersion {
+  id String @id
+  stepId String @unique
+  step LessonStep @relation(fields: [stepId], references: [id])
+  answer Json
+  options Json
+  ruleVersion Int @default(1)
+  presentations QuestionPresentation[]
+  skills LearningSkill[]
+  mistakes MistakeItem[]
+}
+model HuntSceneVersion {
+  id String @id
+  releaseId String
+  release ContentRelease @relation(fields: [releaseId], references: [id])
+  imageAssetId String
+  image AssetVersion @relation(fields: [imageAssetId], references: [id])
+  config Json
+}
+model FamilyAccount {
+  @@map("Account")
+  id String @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @db.Timestamptz
+  cleanupToken String @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @default("家长")
+  email String @unique
+  emailVerified Boolean @default(false)
+  image String?
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+  role String @default("parent")
+  identities Identity[]
+  learners Learner[]
+  sessions AuthSession[]
+  contentDrafts ContentDraft[]
+  contentAudits ContentAudit[]
+  contentUploads ContentUpload[]
+}
+model Identity {
+  id String @id @default(uuid()) @db.Uuid
+  accountId String @db.Uuid
+  account FamilyAccount @relation(fields: [accountId], references: [id])
+  provider String
+  subject String
+  passwordHash String?
+  accessToken String?
+  refreshToken String?
+  idToken String?
+  accessTokenExpiresAt DateTime? @db.Timestamptz
+  refreshTokenExpiresAt DateTime? @db.Timestamptz
+  scope String?
+  createdAt DateTime @default(now()) @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+  @@unique([provider, subject])
+}
+model AuthSession {
+  id String @id @default(uuid()) @db.Uuid
+  accountId String @db.Uuid
+  account FamilyAccount @relation(fields: [accountId], references: [id])
+  token String @unique
+  createdAt DateTime @default(now()) @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+  ipAddress String?
+  userAgent String?
+  expiresAt DateTime @db.Timestamptz
+  revokedAt DateTime? @db.Timestamptz
+}
+model Learner {
+  id String @id @default(uuid()) @db.Uuid
+  accountId String @db.Uuid
+  account FamilyAccount @relation(fields: [accountId], references: [id])
+  nickname String
+  createdAt DateTime @default(now()) @db.Timestamptz
+  sessions LearningSession[]
+  progress LearningProgress[]
+  learningReleaseId String?
+  learningRelease ContentRelease? @relation(fields: [learningReleaseId], references: [id], onDelete: NoAction)
+  learningRevision Int @default(0)
+  openAllCourses Boolean @default(false)
+  learningTimeZone String @default("Asia/Shanghai")
+  lessons LearnerLesson[]
+  skills LearningSkill[]
+  mistakes MistakeItem[]
+  syncStreams SyncStream[]
+  snapshots ProgressSnapshot[]
+  imports LegacyImport[]
+  @@index([accountId])
+}
+model LearningSession {
+  id String @id @default(uuid()) @db.Uuid
+  learnerId String @db.Uuid
+  learner Learner @relation(fields: [learnerId], references: [id])
+  lessonVersionId String
+  lesson LessonVersion @relation(fields: [lessonVersionId], references: [id])
+  startedAt DateTime @default(now()) @db.Timestamptz
+  completedAt DateTime? @db.Timestamptz
+  mode String @default("lesson")
+  requestId String? @db.Uuid
+  revision Int @default(0)
+  currentStep Int @default(0)
+  reviewStepId String?
+  huntFound Json @default("[]")
+  lastActiveAt DateTime @default(now()) @db.Timestamptz
+  @@unique([learnerId, requestId])
+  presentations QuestionPresentation[]
+  syncStreams SyncStream[]
+  events LearningEvent[]
+  @@unique([id, learnerId])
+}
+model QuestionPresentation {
+  id String @id @default(uuid()) @db.Uuid
+  sessionId String @db.Uuid
+  session LearningSession @relation(fields: [sessionId], references: [id])
+  questionVersionId String
+  question QuestionVersion @relation(fields: [questionVersionId], references: [id])
+  renderedOptions Json
+  sceneSnapshot Json?
+  prompted Boolean @default(false)
+  audioHeard Boolean @default(false)
+  audioFailed Boolean @default(false)
+  @@unique([sessionId, questionVersionId])
+  attempts Attempt[]
+  @@unique([id, sessionId])
+}
+model LearningEvent {
+  id String @id @default(uuid()) @db.Uuid
+  learnerId String @db.Uuid
+  sessionId String @db.Uuid
+  session LearningSession @relation(fields: [sessionId, learnerId], references: [id, learnerId])
+  clientEventId String
+  type String
+  payload Json
+  occurredAt DateTime @db.Timestamptz
+  receivedAt DateTime @default(now()) @db.Timestamptz
+  attempt Attempt?
+  @@unique([learnerId, clientEventId])
+  @@unique([id, sessionId])
+}
+model Attempt {
+  id String @id @default(uuid()) @db.Uuid
+  eventId String @unique @db.Uuid
+  sessionId String @db.Uuid
+  event LearningEvent @relation(fields: [eventId, sessionId], references: [id, sessionId])
+  presentationId String @db.Uuid
+  presentation QuestionPresentation @relation(fields: [presentationId, sessionId], references: [id, sessionId])
+  answer Json
+  correct Boolean
+  prompted Boolean
+  ruleVersion Int
+  timeTrusted Boolean @default(true)
+  skipped Boolean @default(false)
+  audioHeard Boolean @default(false)
+  audioFailed Boolean @default(false)
+  targetId String?
+  skillType String?
+  createdAt DateTime @default(now()) @db.Timestamptz
+  latestMistakes MistakeItem[]
+  @@unique([presentationId])
+  @@index([targetId, skillType, createdAt])
+  @@unique([eventId, sessionId])
+}
+model LearningProgress {
+  learnerId String @db.Uuid
+  learner Learner @relation(fields: [learnerId], references: [id])
+  characterId String
+  mastery Float @default(0)
+  wrongCount Int @default(0)
+  reviewDueAt DateTime? @db.Timestamptz
+  updatedAt DateTime @updatedAt @db.Timestamptz
+  @@id([learnerId, characterId])
+}
+
+model Verification {
+  id String @id @default(uuid()) @db.Uuid
+  identifier String
+  value String
+  expiresAt DateTime @db.Timestamptz
+  createdAt DateTime @default(now()) @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+  @@index([identifier])
+}
+model RateLimit {
+  id String @id @default(uuid()) @db.Uuid
+  key String @unique
+  count Int
+  lastRequest BigInt
+}
+
+model ContentDraft {
+  id String @id @default(uuid()) @db.Uuid
+  baseReleaseId String
+  baseRelease ContentRelease @relation("draftBase", fields: [baseReleaseId], references: [id], onDelete: NoAction)
+  revision Int @default(1)
+  manifest Json
+  createdBy String? @db.Uuid
+  creator FamilyAccount? @relation(fields: [createdBy], references: [id], onDelete: NoAction)
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+  publishedReleaseId String? @unique
+  publishedRelease ContentRelease? @relation("draftPublication", fields: [publishedReleaseId], references: [id])
+}
+model ContentChannel {
+  id String @id
+  release ContentRelease @relation(fields: [releaseId], references: [id], onDelete: NoAction)
+  releaseId String
+  revision Int @default(1)
+}
+model ContentAudit {
+  id String @id @default(uuid()) @db.Uuid
+  actorId String? @db.Uuid
+  actor FamilyAccount? @relation(fields: [actorId], references: [id], onDelete: NoAction)
+  action String
+  targetId String
+  detail Json
+  createdAt DateTime @default(now()) @db.Timestamptz
+}
+model ContentUpload {
+  sha256 String @id
+  objectKey String @unique
+  bytes Int
+  mimeType String
+  durationMs Float?
+  createdBy String? @db.Uuid
+  creator FamilyAccount? @relation(fields: [createdBy], references: [id], onDelete: NoAction)
+  createdAt DateTime @default(now()) @db.Timestamptz
+}
+
+model LearnerLesson {
+ learnerId String @db.Uuid
+ learner Learner @relation(fields: [learnerId], references: [id], onDelete: NoAction)
+ lessonId String
+ firstCompletedAt DateTime @default(now()) @db.Timestamptz
+ lastCompletedAt DateTime @default(now()) @db.Timestamptz
+ @@id([learnerId, lessonId])
+}
+model LearningSkill {
+ learnerId String @db.Uuid
+ learner Learner @relation(fields: [learnerId], references: [id], onDelete: NoAction)
+ targetId String
+ kind String
+ status String @default("practice")
+ wrongCount Int @default(0)
+ dueDate String
+ questionVersionId String
+ question QuestionVersion @relation(fields: [questionVersionId], references: [id], onDelete: NoAction)
+ ruleVersion Int @default(1)
+ updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz
+ @@id([learnerId, targetId, kind])
+ @@index([learnerId, dueDate])
+}
+model MistakeItem {
+ id String @id @default(uuid()) @db.Uuid
+ learnerId String @db.Uuid
+ learner Learner @relation(fields: [learnerId], references: [id], onDelete: NoAction)
+ questionVersionId String
+ question QuestionVersion @relation(fields: [questionVersionId], references: [id], onDelete: NoAction)
+ targetId String
+ kind String
+ wrongCount Int @default(1)
+ status String @default("practice")
+ firstWrongAt DateTime @default(now()) @db.Timestamptz
+ lastWrongAt DateTime @default(now()) @db.Timestamptz
+ latestWrongAttemptId String @db.Uuid
+ latestWrongAttempt Attempt @relation(fields: [latestWrongAttemptId], references: [id], onDelete: NoAction)
+ @@unique([learnerId, questionVersionId])
+ @@index([learnerId, status, id])
+}
+
+model SyncStream {
+ id String @id @db.Uuid
+ learnerId String @db.Uuid
+ learner Learner @relation(fields:[learnerId], references:[id], onDelete:NoAction)
+ sessionId String @db.Uuid
+ session LearningSession @relation(fields:[sessionId], references:[id], onDelete:NoAction)
+ nextSeq Int @default(1)
+ createdAt DateTime @default(now()) @db.Timestamptz
+ entries SyncEntry[]
+ @@index([learnerId])
+}
+model SyncEntry {
+ streamId String @db.Uuid
+ stream SyncStream @relation(fields:[streamId], references:[id], onDelete:NoAction)
+ seq Int
+ payload Json
+ status String @default("buffered")
+ message String?
+ receivedAt DateTime @default(now()) @db.Timestamptz
+ @@id([streamId,seq])
+}
+model ProgressSnapshot {
+ learnerId String @db.Uuid
+ learner Learner @relation(fields:[learnerId], references:[id], onDelete:NoAction)
+ revision Int
+ state Json
+ @@id([learnerId,revision])
+}
+model LegacyImport {
+ id String @id @default(uuid()) @db.Uuid
+ learnerId String @db.Uuid
+ learner Learner @relation(fields:[learnerId], references:[id], onDelete:NoAction)
+ fingerprint String
+ source String @default("legacy_import")
+ raw Json
+ createdAt DateTime @default(now()) @db.Timestamptz
+ @@unique([learnerId,fingerprint])
+}
+
+model DataDeletion {
+ requestId String @id @db.Uuid
+ accountId String @db.Uuid
+ learnerId String? @db.Uuid
+ learnerIds Json
+ scope String
+ cleanupTokenHash String?
+ deletedAt DateTime @db.Timestamptz
+ @@index([accountId])
+}

@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnBuddy · 数据基础验收</title>
+<style>body{font:17px/1.65 system-ui;background:#f6f4ed;color:#314b41;max-width:780px;margin:auto;padding:24px}a{color:#306e59}article{background:white;padding:20px;border-radius:18px;margin:18px 0}h1{font-size:27px}dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}dd{margin:0}small{color:#666}</style>
+<h1>LearnBuddy · 课程服务验收</h1><p>这里展示 API 从数据库读取的内容清单。学习页面已接入课程 API，按需加载单课内容和素材；学习进度仍保存在当前浏览器。</p><p><a href="/">进入学习体验 →</a></p><article id="status" role="status">正在检查数据库…</article><main id="lessons"></main>
+<script>
+const status=document.getElementById('status'),main=document.getElementById('lessons');
+fetch('/api/v1/content/inventory').then(r=>{if(!r.ok)throw Error('API 暂时不可用');return r.json()}).then(data=>{
+status.textContent='数据库已连接 · '+data.releaseId; const dl=document.createElement('dl');
+const labels={themes:'主题',lessons:'课程',characters:'汉字',words:'词语',stories:'句子故事',steps:'学习步骤',assets:'素材',scenes:'原型找字场景'};
+for(const [key,n] of Object.entries(data.counts)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=labels[key]||key;dd.textContent=n;dl.append(dt,dd)}status.append(dl);
+for(const l of data.lessons){const box=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p'),s=document.createElement('p');h.textContent=l.title;p.textContent=l.characters.join(' · ');s.textContent=l.story;box.append(h,p,s);main.append(box)}
+}).catch(e=>{status.textContent='连接失败：'+e.message+'。请确认通过 Docker Compose 启动全部服务。'});
+</script></html>

@@ -1,0 +1,4 @@
+import {readFileSync} from 'node:fs';
+export const manifest=JSON.parse(readFileSync('content/manifest.json','utf8'));
+export const catalogFixture={apiVersion:1,releaseId:manifest.releaseId,contentVersion:manifest.contentVersion,themes:manifest.themes,lessons:manifest.lessons.map((l:any)=>({...l,image:{id:l.imageAssetId,url:`/media/${manifest.assets.find((a:any)=>a.id===l.imageAssetId).objectKey}`},stepIndex:l.steps}))};
+export function packageFixture(id:string){const lesson=manifest.lessons.find((l:any)=>l.id===id);return {apiVersion:1,releaseId:manifest.releaseId,contentVersion:manifest.contentVersion,lesson,scene:manifest.huntScenes[lesson.theme],characterImages:lesson.characters.some((c:any)=>c.id==='lai')?{lai:'image-character-lai'}:{},assets:manifest.assets.map((a:any)=>({...a,url:`/media/${a.objectKey}`}))};}

@@ -1,0 +1,33 @@
+{
+  "name": "@learnbuddy/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "node dist/import-content.js",
+    "build": "prisma generate && tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "test:integration": "node --test --test-concurrency=1 test/*.test.mjs"
+  },
+  "dependencies": {
+    "@better-auth/prisma-adapter": "1.7.5",
+    "@hono/node-server": "2.1.1",
+    "@learnbuddy/contracts": "0.1.0",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "better-auth": "1.7.5",
+    "hono": "4.13.8",
+    "nodemailer": "10.0.10",
+    "pg": "^8.16.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/pg": "^8.15.0",
+    "prisma": "7.10.0",
+    "typescript": "^5.9.0"
+  }
+}

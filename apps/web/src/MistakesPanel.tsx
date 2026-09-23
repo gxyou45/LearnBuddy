@@ -1,0 +1,10 @@
+import {useEffect,useState} from 'react';
+import type {MistakeList} from '@learnbuddy/contracts';
+import {getMistakes} from './cloudClient';
+import {characters} from './contentRepository';
+export function MistakesPanel({learnerId,revision}:{learnerId:string;revision:number}) {
+ const [data,setData]=useState<MistakeList>(),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+ const [retry,setRetry]=useState(0);
+ useEffect(()=>{let active=true;setData(undefined);setError('');void getMistakes(learnerId).then(x=>{if(active)setData(x);}).catch(()=>{if(active)setError('错题记录暂时没有加载出来');});return()=>{active=false;};},[learnerId,revision,retry]);
+ return <section className="mistakes-panel"><h2>再认一认 · 云端错题记录</h2><p className="muted">保留当时题目和实际选择。提示、跳过和播放异常不计为独立识字错误。</p>{error&&<p role="alert">{error}<button onClick={()=>setRetry(n=>n+1)}>重新读取错题</button></p>}{!data&&!error&&<p>正在读取…</p>}{data?.items.length===0&&<p>暂时没有独立作答的错题记录。</p>}{data?.items.map(m=>{const target=characters.find(c=>c.id===m.targetId)?.text||m.targetId,choice=m.options.find(o=>o.id===m.selectedId);return <article className="soft-card" key={m.id}><strong>「{target}」· {m.kind==='sound'?'听音辨认':'看字理解'}</strong><p>当时选择：{choice?(m.kind==='sound'?choice.text:choice.word):'未选择'}<br/>正确答案：{m.correctIds.map(id=>{const o=m.options.find(o=>o.id===id);return m.kind==='sound'?o?.text:o?.word;}).join('、')}</p><p>累计 {m.wrongCount} 次 · {m.status==='stable'?'近期较稳定':m.status==='consolidating'?'待巩固':'再练一练'}</p><small>最近一次：{new Date(m.lastWrongAt).toLocaleString()}</small><details><summary>查看当时题目选项</summary><p>{m.options.map(o=>m.kind==='sound'?o.text:o.word).join(' · ')}</p><small>课程版本：{m.releaseId}</small></details></article>;})}{data?.nextCursor&&<button disabled={busy} onClick={async()=>{setBusy(true);try{const next=await getMistakes(learnerId,data.nextCursor!);setData({items:[...data.items,...next.items],nextCursor:next.nextCursor});}catch{setError('更多记录暂时没有加载出来');}finally{setBusy(false);}}}>查看更多记录</button>}</section>;
+}

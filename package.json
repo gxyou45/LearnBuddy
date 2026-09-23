@@ -1,0 +1,38 @@
+{
+  "name": "learnbuddy",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @learnbuddy/web --",
+    "build": "npm run build -w @learnbuddy/contracts && npm run build -w @learnbuddy/web && npm run build -w @learnbuddy/api",
+    "build:web": "npm run build -w @learnbuddy/contracts && npm run build -w @learnbuddy/web",
+    "preview": "npm run preview -w @learnbuddy/web --",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "content:export": "node --import tsx scripts/import-content/export.tsx",
+    "db:generate": "npm run db:generate -w @learnbuddy/api",
+    "db:migrate": "npm run db:migrate -w @learnbuddy/api",
+    "db:seed": "npm run db:seed -w @learnbuddy/api",
+    "pretest": "npm run build -w @learnbuddy/contracts && npm run content:export",
+    "backup": "sh scripts/backup.sh",
+    "restore:verify": "sh scripts/verify-restore.sh",
+    "test:database": "sh scripts/test-database.sh",
+    "pretest:database": "npm run build -w @learnbuddy/contracts && npm run build -w @learnbuddy/api"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "vitest": "5.0.1",
+    "@playwright/test": "1.63.0",
+    "tsx": "4.23.15",
+    "@types/node": "^24.0.0"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.2",
+    "mysql2": "3.24.4"
+  }
+}

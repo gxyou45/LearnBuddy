@@ -1,0 +1,18 @@
+CREATE TABLE "ContentDraft" (
+ "id" UUID PRIMARY KEY, "baseReleaseId" TEXT NOT NULL REFERENCES "ContentRelease"("id") ON UPDATE CASCADE,
+ "revision" INTEGER NOT NULL DEFAULT 1, "manifest" JSONB NOT NULL,
+ "createdBy" UUID NOT NULL REFERENCES "Account"("id") ON UPDATE CASCADE, "updatedAt" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ "publishedReleaseId" TEXT UNIQUE REFERENCES "ContentRelease"("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+CREATE TABLE "ContentChannel" (
+ "id" TEXT PRIMARY KEY CHECK ("id" = 'default'), "releaseId" TEXT NOT NULL REFERENCES "ContentRelease"("id") ON UPDATE CASCADE, "revision" INTEGER NOT NULL DEFAULT 1
+);
+INSERT INTO "ContentChannel" ("id", "releaseId") SELECT 'default', "id" FROM "ContentRelease" ORDER BY "createdAt" DESC, "id" LIMIT 1;
+CREATE TABLE "ContentAudit" (
+ "id" UUID PRIMARY KEY, "actorId" UUID NOT NULL REFERENCES "Account"("id") ON UPDATE CASCADE, "action" TEXT NOT NULL,
+ "targetId" TEXT NOT NULL, "detail" JSONB NOT NULL, "createdAt" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE "ContentUpload" (
+ "sha256" TEXT PRIMARY KEY, "objectKey" TEXT NOT NULL UNIQUE, "bytes" INTEGER NOT NULL, "mimeType" TEXT NOT NULL,
+ "durationMs" DOUBLE PRECISION, "createdBy" UUID NOT NULL REFERENCES "Account"("id") ON UPDATE CASCADE, "createdAt" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,91 @@
+name: learnbuddy
+x-api: &api
+  build:
+    context: .
+    target: api
+    args:
+      HTTP_PROXY: ${DOCKER_BUILD_HTTP_PROXY:-}
+      HTTPS_PROXY: ${DOCKER_BUILD_HTTPS_PROXY:-}
+  image: learnbuddy-api:local
+  environment:
+    DATABASE_URL: postgresql://learnbuddy:${POSTGRES_PASSWORD:-learnbuddy-local-only}@db:5432/learnbuddy
+    CONTENT_DIR: /app/content
+    MEDIA_DIR: /app/media
+    DELETION_LOG_DIR: /app/deletions
+    AUTH_MODE: ${AUTH_MODE:-local}
+    AUTH_ORIGINS: ${AUTH_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080}
+    AUTH_SECRET: ${AUTH_SECRET:-}
+    AUTH_SECRET_FILE: /app/secrets/auth-secret
+    SMTP_HOST: ${SMTP_HOST:-mailpit}
+    SMTP_PORT: ${SMTP_PORT:-1025}
+    SMTP_SECURE: ${SMTP_SECURE:-false}
+    SMTP_USER: ${SMTP_USER:-}
+    SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+    MAIL_FROM: ${MAIL_FROM:-汉字小屋 <hello@learnbuddy.test>}
+  volumes:
+    - media_data:/app/media
+    - auth_data:/app/secrets
+    - deletion_data:/app/deletions
+services:
+  mailpit:
+    image: ghcr.io/axllent/mailpit:v1.29.7
+    ports:
+      - '127.0.0.1:8025:8025'
+    restart: unless-stopped
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: learnbuddy
+      POSTGRES_DB: learnbuddy
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-learnbuddy-local-only}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U learnbuddy -d learnbuddy']
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  init:
+    <<: *api
+    command: [sh, -c, 'npm run db:migrate && npm run db:seed']
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: 'no'
+  api:
+    <<: *api
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, node, -e, 'fetch("http://127.0.0.1:3000/api/health").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  web:
+    build:
+      context: .
+      target: web
+      args:
+        HTTP_PROXY: ${DOCKER_BUILD_HTTP_PROXY:-}
+        HTTPS_PROXY: ${DOCKER_BUILD_HTTPS_PROXY:-}
+    ports:
+      - '${WEB_PORT:-8080}:80'
+    volumes:
+      - media_data:/srv/media:ro
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, wget, -q, --spider, http://127.0.0.1/api/health]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  media_data:
+  auth_data:
+  deletion_data:
