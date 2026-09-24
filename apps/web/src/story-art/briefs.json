@@ -984,10 +984,46 @@
     "id": "c106",
     "title": "数一数分一分",
     "story": "我数一数积木，加上两块就多了，拿走一块就减少了。",
-    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 数一数分一分. Exact story (do not print text): 我数一数积木，加上两块就多了，拿走一块就减少了。",
+    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 数一数分一分. Exact story (do not print text): 我数一数积木，加上两块就多了，拿走一块就减少了。 Revision with original image reference: Correct this educational image only in the MIDDLE panel: remove BOTH blocks held in the child's hands. Keep the FIVE blocks in the row on the table, red yellow blue green purple, exactly as they are. Rest the child's empty hands flat on table behind the row. There must be exactly five blocks total in middle panel. Preserve left panel three blocks, right panel four blocks on table and fifth purple block in hand. Preserve style, characters and layout.",
     "alt": "我数一数积木，加上两块就多了，拿走一块就减少了。",
     "method": "built-in image_gen",
-    "file": "images/c106.png"
+    "file": "images/c106-v2.png"
+  },
+  {
+    "id": "c107",
+    "title": "买东西会比较",
+    "story": "每人各拿几块饼干，再数一共多少。桌边放着一双筷子。",
+    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 买东西会比较. Exact story (do not print text): 每人各拿几块饼干，再数一共多少。桌边放着一双筷子。",
+    "alt": "每人各拿几块饼干，再数一共多少。桌边放着一双筷子。",
+    "method": "built-in image_gen",
+    "file": "images/c107.png"
+  },
+  {
+    "id": "c108",
+    "title": "一份还是一堆",
+    "story": "一只鸟站在一块石头上，旁边有一条小路。我把一片叶子画在一张纸上。",
+    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 一份还是一堆. Exact story (do not print text): 一只鸟站在一块石头上，旁边有一条小路。我把一片叶子画在一张纸上。",
+    "alt": "一只鸟站在一块石头上，旁边有一条小路。我把一片叶子画在一张纸上。",
+    "method": "built-in image_gen",
+    "file": "images/c108.png"
+  },
+  {
+    "id": "c109",
+    "title": "大小和高矮",
+    "story": "图里的胖熊和瘦猴一起走过宽路。高树旁有矮树，各有各的样子。",
+    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 大小和高矮. Exact story (do not print text): 图里的胖熊和瘦猴一起走过宽路。高树旁有矮树，各有各的样子。",
+    "alt": "图里的胖熊和瘦猴一起走过宽路。高树旁有矮树，各有各的样子。",
+    "method": "built-in image_gen",
+    "file": "images/c109.png"
+  },
+  {
+    "id": "c110",
+    "title": "长短和深浅",
+    "story": "短桥下的水有深有浅。我们留在岸上，低头看大人称石头的重量。",
+    "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 长短和深浅. Exact story (do not print text): 短桥下的水有深有浅。我们留在岸上，低头看大人称石头的重量。",
+    "alt": "短桥下的水有深有浅。我们留在岸上，低头看大人称石头的重量。",
+    "method": "built-in image_gen",
+    "file": "images/c110.png"
   },
   {
     "id": "c128",
