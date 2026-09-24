@@ -3,6 +3,7 @@ import { assetURL, lessonData, lessons, lessonImage, releaseId, type Character }
 import {WordVisual} from './visuals/WordVisual';
 import {wordVisual} from './visuals/resolveWordVisual';
 import {StoryIllustration,storyIllustration} from './story-art/StoryIllustration';
+import {isStaticDemo} from './staticDemo';
 export function ContentImage({id,alt,className}:{id:string;alt:string;className?:string}) {
  const [failed,setFailed]=useState(false);
  const [retry,setRetry]=useState(0);
@@ -11,7 +12,8 @@ export function ContentImage({id,alt,className}:{id:string;alt:string;className?
 }
 export function LessonPicture({lessonId,interactive=true}:{lessonId:string;interactive?:boolean}) {
  const lesson=lessons.find(l=>l.id===lessonId)!;
- const illustration=storyIllustration(lessonId,lesson.story.text,releaseId);
+ const legacyStory= ['family','home','welcome','pets','snack','pond','basket','sky','plants','positions'].includes(lessonId);
+ const illustration=(!isStaticDemo||legacyStory)?storyIllustration(lessonId,lesson.story.text,releaseId):undefined;
  if(illustration)return <StoryIllustration key={lessonId} {...illustration} interactive={interactive}/>;
  // Replace only the known generated v1 word-card image, never an authored scene.
  if(releaseId==='curriculum-1000-v1'&&lessonImage(lessonId)===`image-lesson-${lessonId}`&&/^c\d{3}$/.test(lessonId))return <div className="sentence-picture word-picture" role="group" aria-label={`${lesson.title}词语图卡`}>

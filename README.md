@@ -59,6 +59,8 @@ npm run test:e2e
 
 静态版的学习进度只保存在当前浏览器，不包含账户、云端同步或管理端功能。正式版仍使用默认的 `npm run build:web` 构建流程。
 
+当前静态试用版内置前 50 节课（原十课加 C007–C046），约 620 个课程素材。若要继续扩展，先准备本地 `curriculum-release/` 完整课程包，再运行 `npm run prepare:static` 裁剪静态包，最后运行 `npm run build:static`。
+
 工作台托管服务命令（2026-09-21 会话为 learnbuddy-preview，服务 pane 为 %8）：
 
 ```sh

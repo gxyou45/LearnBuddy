@@ -1,7 +1,7 @@
 import {readLocal,writeLocal} from './offlineStore';
 import { catalogSchema, lessonPackageSchema, type Catalog, type LessonPackage, type Lesson, type Character, type Step } from '@learnbuddy/contracts';
 import {isStaticDemo} from './staticDemo';
-import {staticAssetURL,staticCatalog,staticLessonPackage} from './staticContent';
+import {loadStaticCatalog,staticAssetURL,staticLessonPackage} from './staticContent';
 export type { Lesson, Character, CharacterId, Step, Story } from '@learnbuddy/contracts';
 export let lessons: Lesson[] = [];
 export let characters: Character[] = [];
@@ -56,7 +56,7 @@ async function fetchJSON(path:string) {
 }
 export async function loadCatalog(pinned?:string) {
  const request=++catalogRequest;
- const data=isStaticDemo?staticCatalog:await fetchJSON(`/api/v1/catalog${pinned?`?releaseId=${encodeURIComponent(pinned)}`:''}`);
+ const data=isStaticDemo?await loadStaticCatalog():await fetchJSON(`/api/v1/catalog${pinned?`?releaseId=${encodeURIComponent(pinned)}`:''}`);
  if(request!==catalogRequest)throw new Error('Superseded catalog request');
  installCatalog(data);
  if(!isStaticDemo&&typeof indexedDB!=='undefined')await writeLocal(`content:/api/v1/catalog?releaseId=${encodeURIComponent(releaseId)}`,data).catch(()=>{});

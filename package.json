@@ -12,6 +12,7 @@
     "build": "npm run build -w @learnbuddy/contracts && npm run build -w @learnbuddy/web && npm run build -w @learnbuddy/api",
     "build:web": "npm run build -w @learnbuddy/contracts && npm run build -w @learnbuddy/web",
     "build:static": "npm run build -w @learnbuddy/contracts && VITE_STATIC_DEMO=true npm run build -w @learnbuddy/web",
+    "prepare:static": "node scripts/static-preview/prepare.mjs",
     "preview": "npm run preview -w @learnbuddy/web --",
     "test": "vitest run",
     "test:e2e": "playwright test",

@@ -12,6 +12,7 @@ self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch',event=>{const request=event.request,url=new URL(request.url);if(request.method!=='GET'||url.origin!==location.origin||url.pathname.startsWith('/api/')||url.pathname.startsWith('/media/')||url.pathname.endsWith('/admin'))return;
 if(request.mode==='navigate'){event.respondWith(fetch(request).catch(()=>caches.open(CACHE).then(cache=>cache.match(${JSON.stringify(baseURL)}))));return;}
 if(request.destination==='image'&&url.pathname.startsWith(${JSON.stringify(`${baseURL}assets/`)})){event.respondWith(caches.open(CACHE).then(async cache=>{const saved=await cache.match(request);if(saved)return saved;const response=await fetch(request);if(response.ok)await cache.put(request,response.clone());return response;}));return;}
+if(url.pathname.startsWith(${JSON.stringify(`${baseURL}static-content/`)})){event.respondWith(caches.open(CACHE).then(async cache=>{const saved=await cache.match(request);if(saved)return saved;const response=await fetch(request);if(response.ok)await cache.put(request,response.clone());return response;}));return;}
 if(FILES.includes(url.pathname))event.respondWith(caches.open(CACHE).then(async cache=>(await cache.match(request))||fetch(request)));
 });`});
 }}],server:{proxy:{'/api':{target:'http://127.0.0.1:8080',changeOrigin:false},'/media':'http://127.0.0.1:8080'}},build:{copyPublicDir:staticBuild}});
