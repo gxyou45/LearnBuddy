@@ -1,11 +1,14 @@
 import {useState} from 'react';
 import briefs from './briefs.json';
+import {isStaticDemo} from '../staticDemo';
 const images=import.meta.glob('./images/*.png',{eager:true,query:'?url',import:'default'}) as Record<string,string>;
 export function storyIllustration(lessonId:string,story:string,version:string){
  if(version!=='curriculum-1000-v1')return undefined;
  const brief=briefs.find(b=>b.id===lessonId);
  if(!brief||(story&&story!==brief.story))return undefined;
- const src=images['./'+brief.file];
+ const src=isStaticDemo
+  ? `${import.meta.env.BASE_URL}static-content/story-art/${brief.file.split('/').pop()}`
+  : images['./'+brief.file];
  return src?{src,alt:brief.alt,title:brief.title}:undefined;
 }
 export function StoryIllustration({src,alt,title,interactive=true}:{src:string;alt:string;title:string;interactive?:boolean}){

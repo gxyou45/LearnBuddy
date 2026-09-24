@@ -1,11 +1,14 @@
 import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { basename, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const sourceDir = resolve(root, 'curriculum-release');
 const outputDir = resolve(root, 'apps/web/public/static-content');
+const storyArtSourceDir = resolve(root, 'apps/web/src/story-art');
+const storyArtOutputDir = resolve(outputDir, 'story-art');
 const manifest = JSON.parse(await readFile(resolve(sourceDir, 'manifest.json'), 'utf8'));
+const storyArtBriefs = JSON.parse(await readFile(resolve(storyArtSourceDir, 'briefs.json'), 'utf8'));
 const lessons = manifest.lessons.slice(0, 50);
 if (lessons.length < 50) throw new Error(`Expected at least 50 lessons, found ${lessons.length}`);
 
@@ -37,6 +40,7 @@ const outputManifest = {
   huntScenes: scenes,
 };
 await mkdir(outputDir, { recursive: true });
+await mkdir(storyArtOutputDir, { recursive: true });
 await writeFile(resolve(outputDir, 'manifest.json'), `${JSON.stringify(outputManifest)}\n`);
 
 for (const asset of assets) {
@@ -46,4 +50,10 @@ for (const asset of assets) {
   await cp(source, target);
 }
 
-console.log(`Prepared ${lessons.length} lessons and ${assets.length} assets in ${outputDir}`);
+for (const brief of storyArtBriefs) {
+  const source = resolve(storyArtSourceDir, brief.file);
+  const target = resolve(storyArtOutputDir, basename(brief.file));
+  await cp(source, target);
+}
+
+console.log(`Prepared ${lessons.length} lessons, ${assets.length} course assets, and ${storyArtBriefs.length} story illustrations in ${outputDir}`);

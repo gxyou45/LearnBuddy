@@ -928,9 +928,9 @@
       "title": "一家人团聚",
       "story": "妹妹和叔叔打招呼，阿姨和伯伯也来了。亲人们坐在一起聊天。",
       "status": "generated",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 一家人团聚. Exact story (do not print text): 妹妹和叔叔打招呼，阿姨和伯伯也来了。亲人们坐在一起聊天。",
-      "file": "images/c082.png",
-      "sha256": "74503541cd9d5c23aa6fe37ccf2001048c7debf756d0caeb40b042aefc6e405f",
+      "prompt": "Use case: illustration-story. Landscape 3:2 warm gouache children's book illustration, cream and sage muted colors. Exact story: 妹妹和叔叔打招呼，阿姨和伯伯也来了。亲人们坐在一起聊天。 TWO clearly separated panels with white gutter. Left: little East Asian girl in pink dress greeting her uncle at front door; aunt and older uncle stand behind him. Girl waves with ONE raised hand; her OTHER arm rests straight down beside dress. EXACTLY TWO arms and TWO hands per person, no duplicated hands or ghost limbs. Right: SAME FOUR PEOPLE sit around a low table chatting, little girl pink dress, young uncle blue shirt, aunt tan jacket, older uncle green jacket with glasses. Simple cozy home, all figures clearly separate and well formed, no extra relatives, no lettering, no logos or watermarks.",
+      "file": "images/c082-v2.png",
+      "sha256": "f9df691f1bf0e19492b52ae4d59ea987d6d1c8e7841dca258cf3b9ba417e512f",
       "generatedAt": "2026-09-24T06:58:21.139418+00:00"
     },
     {
@@ -938,56 +938,77 @@
       "id": "c083",
       "title": "一起长大的家人",
       "story": "每个孩子都有自己的名字。儿童活动开始前，我找到写着我名字的字卡。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 一起长大的家人. Exact story (do not print text): 每个孩子都有自己的名字。儿童活动开始前，我找到写着我名字的字卡。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. Warm gouache landscape 3:2 illustration for 5–6-year-old Chinese literacy. Exact story: 每个孩子都有自己的名字。儿童活动开始前，我找到写着我名字的字卡。 One East Asian girl wearing lavender top, at children's activity classroom table, holds ONE name card with both hands and smiles. Card faces viewer, text EXACTLY 小雨 in large crisp correct black Simplified Chinese. TWO other cards on table, text EXACTLY 小明 and 乐乐 respectively. These six Chinese characters are the ONLY text in image; no extra letters. Girl has exactly two arms, two hands. Friendly cream/sage soft painted texture, card names prominent and readable. No captions, watermark or logos.",
+      "file": "images/c083-v2.png",
+      "sha256": "902bb8bfcd2ed48fec64318ce9739a6557d6df2c7e301413bc42fa1257642cbe",
+      "generatedAt": "2026-09-24T06:59:46.313896+00:00"
     },
     {
       "order": 88,
       "id": "c084",
       "title": "我家的房间",
       "story": "我家有客厅、厨房和卧室。房间的墙上挂着一张画。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 我家的房间. Exact story (do not print text): 我家有客厅、厨房和卧室。房间的墙上挂着一张画。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 我家的房间. Exact story (do not print text): 我家有客厅、厨房和卧室。房间的墙上挂着一张画。",
+      "file": "images/c084.png",
+      "sha256": "c95b135d0ace531b63da86f6566602779f18094d48a065cc546ef8a68b5b5a8f",
+      "generatedAt": "2026-09-24T07:07:09.155745+00:00"
     },
     {
       "order": 89,
       "id": "c085",
       "title": "家里的电器",
       "story": "电视正在播放音乐，音响传来歌声。天热了，大人打开电风扇。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 家里的电器. Exact story (do not print text): 电视正在播放音乐，音响传来歌声。天热了，大人打开电风扇。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 家里的电器. Exact story (do not print text): 电视正在播放音乐，音响传来歌声。天热了，大人打开电风扇。",
+      "file": "images/c085.png",
+      "sha256": "3619f5298e2eb00c2e0bbf57b8b16fdb1d432972309adcb4cb43443c64db7ba5",
+      "generatedAt": "2026-09-24T07:08:45.067736+00:00"
     },
     {
       "order": 90,
       "id": "c086",
       "title": "谁在厨房忙",
       "story": "厨房有锅、刀和叉，架上有瓶和罐。尖利的工具交给大人使用。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 谁在厨房忙. Exact story (do not print text): 厨房有锅、刀和叉，架上有瓶和罐。尖利的工具交给大人使用。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 谁在厨房忙. Exact story (do not print text): 厨房有锅、刀和叉，架上有瓶和罐。尖利的工具交给大人使用。",
+      "file": "images/c086.png",
+      "sha256": "aaa3838ef150babed64704360940cef4daf3b3af9bc520f7b27d732c4f0b53cc",
+      "generatedAt": "2026-09-24T07:10:26.045416+00:00"
     },
     {
       "order": 91,
       "id": "c087",
       "title": "做一顿好吃的",
       "story": "大人切菜、炒菜、煮汤，又蒸了蛋、烤了饼。我在安全的地方等开饭。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 做一顿好吃的. Exact story (do not print text): 大人切菜、炒菜、煮汤，又蒸了蛋、烤了饼。我在安全的地方等开饭。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 做一顿好吃的. Exact story (do not print text): 大人切菜、炒菜、煮汤，又蒸了蛋、烤了饼。我在安全的地方等开饭。",
+      "file": "images/c087.png",
+      "sha256": "e9ff6a7df5ba70da232deba4889f04d927082fbdd2de94dfad2edaf765038610",
+      "generatedAt": "2026-09-24T07:12:09.097646+00:00"
     },
     {
       "order": 92,
       "id": "c088",
       "title": "食物的味道",
       "story": "水果有甜味和酸味，苦瓜有点苦。辣椒辣，汤里加盐会有咸味。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 食物的味道. Exact story (do not print text): 水果有甜味和酸味，苦瓜有点苦。辣椒辣，汤里加盐会有咸味。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 食物的味道. Exact story (do not print text): 水果有甜味和酸味，苦瓜有点苦。辣椒辣，汤里加盐会有咸味。",
+      "file": "images/c088.png",
+      "sha256": "a3ada4510ce269a606dc52faa18b1a8595af090d53c76473f5363540955b1b07",
+      "generatedAt": "2026-09-24T07:13:51.748045+00:00"
     },
     {
       "order": 93,
       "id": "c089",
       "title": "水果篮子",
       "story": "篮子里有苹果、梨和瓜，旁边放着红枣和草莓。我们洗好再吃。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 水果篮子. Exact story (do not print text): 篮子里有苹果、梨和瓜，旁边放着红枣和草莓。我们洗好再吃。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 水果篮子. Exact story (do not print text): 篮子里有苹果、梨和瓜，旁边放着红枣和草莓。我们洗好再吃。",
+      "file": "images/c089.png",
+      "sha256": "ed1daf80adb27c7b8354f3bf0e7351bf76a31dd89641dc6d3ee9a9922224d6b5",
+      "generatedAt": "2026-09-24T07:15:20.026207+00:00"
     },
     {
       "order": 94,
@@ -1002,48 +1023,66 @@
       "id": "c091",
       "title": "果园和菜园",
       "story": "菜园里有萝卜和豆子，果园里有橘子。我把蔬菜和水果分开放好。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 果园和菜园. Exact story (do not print text): 菜园里有萝卜和豆子，果园里有橘子。我把蔬菜和水果分开放好。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 果园和菜园. Exact story (do not print text): 菜园里有萝卜和豆子，果园里有橘子。我把蔬菜和水果分开放好。",
+      "file": "images/c091.png",
+      "sha256": "4196cda4c9536b951a25a6edbe85433e78b385f29b2aec5d41994a3029ef71e4",
+      "generatedAt": "2026-09-24T07:17:01.727377+00:00"
     },
     {
       "order": 96,
       "id": "c092",
       "title": "厨房里的蔬菜",
       "story": "篮子里有茄子、辣椒和红薯。大人切好葱和蒜，准备做菜。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 厨房里的蔬菜. Exact story (do not print text): 篮子里有茄子、辣椒和红薯。大人切好葱和蒜，准备做菜。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 厨房里的蔬菜. Exact story (do not print text): 篮子里有茄子、辣椒和红薯。大人切好葱和蒜，准备做菜。",
+      "file": "images/c092.png",
+      "sha256": "749065227a7fc1adc132129c203e4f2bcd4461e469a3febc9e7b5c59429b7e15",
+      "generatedAt": "2026-09-24T07:18:44.410836+00:00"
     },
     {
       "order": 97,
       "id": "c093",
       "title": "早餐真丰富",
       "story": "早餐有鸡蛋、肉包和牛乳。桌上还有大人的茶和一碗温汤。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 早餐真丰富. Exact story (do not print text): 早餐有鸡蛋、肉包和牛乳。桌上还有大人的茶和一碗温汤。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 早餐真丰富. Exact story (do not print text): 早餐有鸡蛋、肉包和牛乳。桌上还有大人的茶和一碗温汤。",
+      "file": "images/c093.png",
+      "sha256": "aa3204c2da93e81987864206b90e0eb9c3b3c03717be1ca9fb380b0112258f34",
+      "generatedAt": "2026-09-24T07:20:18.488756+00:00"
     },
     {
       "order": 98,
       "id": "c094",
       "title": "面点和零食",
       "story": "面店有饼、糕、饺子和米粉。我们挑好正餐，糖果留着偶尔少量吃。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 面点和零食. Exact story (do not print text): 面店有饼、糕、饺子和米粉。我们挑好正餐，糖果留着偶尔少量吃。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 面点和零食. Exact story (do not print text): 面店有饼、糕、饺子和米粉。我们挑好正餐，糖果留着偶尔少量吃。",
+      "file": "images/c094.png",
+      "sha256": "f09a74c5a2da9fccb70a0dda0e713b5bead27b8a266d4c1ce6aa4171f4edd16d",
+      "generatedAt": "2026-09-24T07:22:00.370575+00:00"
     },
     {
       "order": 99,
       "id": "c095",
       "title": "食物从哪里来",
       "story": "农民在田里种谷子和小麦。粮食经过许多人的劳动，来到饭桌上。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 食物从哪里来. Exact story (do not print text): 农民在田里种谷子和小麦。粮食经过许多人的劳动，来到饭桌上。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 食物从哪里来. Exact story (do not print text): 农民在田里种谷子和小麦。粮食经过许多人的劳动，来到饭桌上。",
+      "file": "images/c095.png",
+      "sha256": "fdbd33e13f09f6f230711eadd55e18073b086d0235d25ae5742d1a7057a0c048",
+      "generatedAt": "2026-09-24T07:23:47.049564+00:00"
     },
     {
       "order": 100,
       "id": "c096",
       "title": "珍惜每一口",
       "story": "饿了吃饭，渴了喝水。吃饱了就停，盛饭先少量，减少剩饭和浪费。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 珍惜每一口. Exact story (do not print text): 饿了吃饭，渴了喝水。吃饱了就停，盛饭先少量，减少剩饭和浪费。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 珍惜每一口. Exact story (do not print text): 饿了吃饭，渴了喝水。吃饱了就停，盛饭先少量，减少剩饭和浪费。",
+      "file": "images/c096.png",
+      "sha256": "46c186ad81f0effaf917844862b7e7a60849e8679a0f073782266f801af8772f",
+      "generatedAt": "2026-09-24T07:25:21.117260+00:00"
     },
     {
       "order": 101,
@@ -1058,72 +1097,99 @@
       "id": "c098",
       "title": "衣服放哪里",
       "story": "书放书架，衣服放柜子。晒干的衣服，有的挂起来，有的叠好。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 衣服放哪里. Exact story (do not print text): 书放书架，衣服放柜子。晒干的衣服，有的挂起来，有的叠好。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 衣服放哪里. Exact story (do not print text): 书放书架，衣服放柜子。晒干的衣服，有的挂起来，有的叠好。",
+      "file": "images/c098.png",
+      "sha256": "fe334675408c565593c28da0692621d289e020c8bf642aed0a9946c47ef98aae",
+      "generatedAt": "2026-09-24T07:27:20.000294+00:00"
     },
     {
       "order": 103,
       "id": "c099",
       "title": "让屋子更舒服",
       "story": "厚被子和薄被子摸起来都软。硬盒子放在旁边，我轻轻关上盖子。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 让屋子更舒服. Exact story (do not print text): 厚被子和薄被子摸起来都软。硬盒子放在旁边，我轻轻关上盖子。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 让屋子更舒服. Exact story (do not print text): 厚被子和薄被子摸起来都软。硬盒子放在旁边，我轻轻关上盖子。",
+      "file": "images/c099.png",
+      "sha256": "b52e59ebf3d20bfefe94945e272c0fb40eda344cf0cc3b407638308d7726973f",
+      "generatedAt": "2026-09-24T07:28:59.436590+00:00"
     },
     {
       "order": 104,
       "id": "c100",
       "title": "小小修理员",
       "story": "旧书破了一页，我请大人一起修补。坏玩具也先看看能不能修好。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 小小修理员. Exact story (do not print text): 旧书破了一页，我请大人一起修补。坏玩具也先看看能不能修好。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 小小修理员. Exact story (do not print text): 旧书破了一页，我请大人一起修补。坏玩具也先看看能不能修好。",
+      "file": "images/c100.png",
+      "sha256": "40a8b2c98a11ce3e74aafd96d0e36c1e3ba318fc40b5f7730bbe3e50ebcec41c",
+      "generatedAt": "2026-09-24T07:31:24.029940+00:00"
     },
     {
       "order": 105,
       "id": "c101",
       "title": "时间的名字",
       "story": "昨天我和家人看日历，今天圈出今年的生日，明天再一起准备。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 时间的名字. Exact story (do not print text): 昨天我和家人看日历，今天圈出今年的生日，明天再一起准备。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 时间的名字. Exact story (do not print text): 昨天我和家人看日历，今天圈出今年的生日，明天再一起准备。 Specific composition (allow exact text when requested, overriding no-text rule): Three wordless panels, same parent and child: yesterday look together at wall calendar; today circle birthday square with a small cake icon; tomorrow prepare colorful birthday decorations. Only a few simple calendar squares in focus, do not invent dense illegible text.",
+      "file": "images/c101.png",
+      "sha256": "1300561e217b29a85c491f6fdc91e9b3a1b44e991d6315407abf9196e1611363",
+      "generatedAt": "2026-09-24T07:33:55.942750+00:00"
     },
     {
       "order": 106,
       "id": "c102",
       "title": "看看日历",
       "story": "日历上有日期和星期。周末到了，我们给五岁的妹妹过生日，圈好那一天的号码。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 看看日历. Exact story (do not print text): 日历上有日期和星期。周末到了，我们给五岁的妹妹过生日，圈好那一天的号码。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 看看日历. Exact story (do not print text): 日历上有日期和星期。周末到了，我们给五岁的妹妹过生日，圈好那一天的号码。 Specific composition (allow exact text when requested, overriding no-text rule): Use a close-up single tear-off calendar page displaying exactly 星期六 on top and a large 26 in center, with red circle around 26. Family points to this date next to birthday cake with EXACTLY FIVE candles for little sister. These are the only words/numerals allowed.",
+      "file": "images/c102.png",
+      "sha256": "8822c3bb5c7674c96836f264dd549cff031a102ea10e002a8366cee37c9cea82",
+      "generatedAt": "2026-09-24T07:35:50.304235+00:00"
     },
     {
       "order": 107,
       "id": "c103",
       "title": "钟表滴答响",
       "story": "钟表上，秒针走得忙。长短不同的针帮助我们看几点、几分。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 钟表滴答响. Exact story (do not print text): 钟表上，秒针走得忙。长短不同的针帮助我们看几点、几分。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 钟表滴答响. Exact story (do not print text): 钟表上，秒针走得忙。长短不同的针帮助我们看几点、几分。 Specific composition (allow exact text when requested, overriding no-text rule): A clear round analog wall clock dominates scene: all numerals 1 through 12 appear ONCE at correct positions. Short hour hand points to 3, long minute hand points to 12, thin red second hand points to 6. Exactly three hands attached to same center. Child and adult observe. No additional text. Revision: all twelve numerals equally spaced, especially include 8 between 7 and 9. Verified corrected image.",
+      "file": "images/c103-v2.png",
+      "sha256": "aeddabfa34f645541c4a807e5c2cba658d19357e5cbfe249ebfbf318648d8bb8",
+      "generatedAt": "2026-09-24T07:45:14.589980+00:00"
     },
     {
       "order": 108,
       "id": "c104",
       "title": "一天的安排",
       "story": "早晨我玩了一会儿，过了半天就到中午。夜晚来临，一天结束了。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 一天的安排. Exact story (do not print text): 早晨我玩了一会儿，过了半天就到中午。夜晚来临，一天结束了。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 一天的安排. Exact story (do not print text): 早晨我玩了一会儿，过了半天就到中午。夜晚来临，一天结束了。",
+      "file": "images/c104.png",
+      "sha256": "45b30d807c76ca771644c4a16af137b712053271c1d981e8914e9929f7e434ea",
+      "generatedAt": "2026-09-24T07:54:11.849585+00:00"
     },
     {
       "order": 109,
       "id": "c105",
       "title": "数更多的东西",
       "story": "书里写着百、千、万，表示不同的数量。盒里原有两个球，拿走后是零个。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 数更多的东西. Exact story (do not print text): 书里写着百、千、万，表示不同的数量。盒里原有两个球，拿走后是零个。"
+      "status": "generated",
+      "prompt": "Landscape 3:2 warm gouache children's illustration with exactly TWO sequential panels. Left: open book shows ONLY large Chinese characters 百 千 万, no quantity diagrams, dots or blocks. Beside book shallow green box contains exactly TWO balls, red and blue. East Asian girl observes hands resting empty on table. Right: same girl holds one red ball in left hand, one blue ball in right hand, shallow green box now COMPLETELY EMPTY, fully visible empty inside. No extra balls anywhere. Two arms two hands per girl. Story: 书里写着百、千、万，表示不同的数量。盒里原有两个球，拿走后是零个。 No other text, arrows or numerals. Cream sage palette, clear object count and contact.",
+      "file": "images/c105-v2.png",
+      "sha256": "f563ec712dcfa85e66544bdf81fcc402477e43d7e1add4211a2191859d06a9ed",
+      "generatedAt": "2026-09-24T08:02:29.075395+00:00"
     },
     {
       "order": 110,
       "id": "c106",
       "title": "数一数分一分",
       "story": "我数一数积木，加上两块就多了，拿走一块就减少了。",
-      "status": "pending",
-      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 数一数分一分. Exact story (do not print text): 我数一数积木，加上两块就多了，拿走一块就减少了。"
+      "status": "generated",
+      "prompt": "Use case: illustration-story. One finished landscape 3:2 picture-book illustration for a Chinese literacy app, ages 5–6. Warm cream, sage green and natural muted colors; soft hand-painted gouache texture, friendly expressive East Asian people where the story needs people, clear subjects readable on a phone, uncluttered background. Illustrate the exact Chinese story below, interpreting actions and relationships literally and accurately. Use one coherent scene unless the story explicitly needs successive moments; for a sequence use two or three clearly separated wordless narrative panels, consistent characters and setting. No titles, captions, lettering, numbers, speech bubbles, logos or watermarks. No flashcard grids. No additional narrative characters or unrelated props. Natural anatomy, clear hands and object contact, all important subjects fully in frame. Chapter: 数一数分一分. Exact story (do not print text): 我数一数积木，加上两块就多了，拿走一块就减少了。",
+      "file": "images/c106.png",
+      "sha256": "f55f8fe072f0d9aead2e08b8297d673df6312daa495dce99d9c9ab9ff7606fd8",
+      "generatedAt": "2026-09-24T08:19:05.565054+00:00"
     },
     {
       "order": 111,
@@ -1879,5 +1945,5 @@
     }
   ],
   "productionStatus": "generating",
-  "nextLessonId": "c083"
+  "nextLessonId": "c107"
 }

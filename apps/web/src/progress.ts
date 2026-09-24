@@ -70,8 +70,8 @@ export function isUnlocked(p: Progress, id: string) {
   const index = lessons.findIndex(l => l.id === id);
   return index >= 0 && (index === 0 || p.unlocked.includes(id) || lessonState(p,id).completed || lessonState(p,lessons[index-1].id).completed);
 }
-export function startLesson(p: Progress, id: string, session: string): Progress {
-  if (!isUnlocked(p,id)) return p;
+export function startLesson(p: Progress, id: string, session: string, allowAll = false): Progress {
+  if (!allowAll && !isUnlocked(p,id)) return p;
   const saved = lessonState(p,id);
   return { ...p, lessonProgress: { ...p.lessonProgress, [p.activeLesson]: lessonState(p,p.activeLesson) }, activeLesson: id,
     ...saved, started: true, step: saved.started ? saved.step : 0, session: saved.started ? saved.session : session, huntFound: saved.started ? saved.huntFound : [] };
