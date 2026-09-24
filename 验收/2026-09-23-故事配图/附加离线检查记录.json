@@ -1,0 +1,17 @@
+{
+  "stats": {
+    "startTime": "2026-09-23T05:45:20.118Z",
+    "duration": 121749.70000000001,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "findings": [
+    {
+      "name": "故事配图 c090 再尝一种水果",
+      "message": "Error: Timeout 12000ms exceeded while waiting on the predicate",
+      "finding": "游客整页离线刷新进入账户暂时无法确认页面；未修改账户离线逻辑，改为独立验证已看插图缓存及断网读取。"
+    }
+  ]
+}

@@ -1,0 +1,10420 @@
+{
+  "createdAt": "2026-09-23T03:40:13.572Z",
+  "scope": "200 个设计单元的词语去重；原十课另保留已有专用图片",
+  "counts": {
+    "context": 423,
+    "emoji": 266,
+    "sketch": 222,
+    "count": 10,
+    "symbol": 7,
+    "color": 6
+  },
+  "words": [
+    {
+      "word": "我爱你",
+      "lessons": [
+        "C001"
+      ],
+      "characters": [
+        "我"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "爸爸",
+      "lessons": [
+        "C001"
+      ],
+      "characters": [
+        "爸"
+      ],
+      "kind": "emoji",
+      "value": "👨"
+    },
+    {
+      "word": "妈妈",
+      "lessons": [
+        "C001"
+      ],
+      "characters": [
+        "妈"
+      ],
+      "kind": "emoji",
+      "value": "👩"
+    },
+    {
+      "word": "回家",
+      "lessons": [
+        "C001"
+      ],
+      "characters": [
+        "家"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "开门",
+      "lessons": [
+        "C001"
+      ],
+      "characters": [
+        "门"
+      ],
+      "kind": "sketch",
+      "value": "door"
+    },
+    {
+      "word": "家人",
+      "lessons": [
+        "C002"
+      ],
+      "characters": [
+        "人"
+      ],
+      "kind": "sketch",
+      "value": "family"
+    },
+    {
+      "word": "你好",
+      "lessons": [
+        "C002"
+      ],
+      "characters": [
+        "你"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "好朋友",
+      "lessons": [
+        "C002"
+      ],
+      "characters": [
+        "好"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "来玩",
+      "lessons": [
+        "C002"
+      ],
+      "characters": [
+        "来"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "小手",
+      "lessons": [
+        "C002",
+        "C009"
+      ],
+      "characters": [
+        "小",
+        "手"
+      ],
+      "kind": "emoji",
+      "value": "🖐️"
+    },
+    {
+      "word": "小猫",
+      "lessons": [
+        "C003"
+      ],
+      "characters": [
+        "猫"
+      ],
+      "kind": "emoji",
+      "value": "🐈"
+    },
+    {
+      "word": "小狗",
+      "lessons": [
+        "C003"
+      ],
+      "characters": [
+        "狗"
+      ],
+      "kind": "emoji",
+      "value": "🐕"
+    },
+    {
+      "word": "喝水",
+      "lessons": [
+        "C003"
+      ],
+      "characters": [
+        "水"
+      ],
+      "kind": "emoji",
+      "value": "💧"
+    },
+    {
+      "word": "喝一口",
+      "lessons": [
+        "C003"
+      ],
+      "characters": [
+        "喝"
+      ],
+      "kind": "sketch",
+      "value": "sip"
+    },
+    {
+      "word": "吃饭",
+      "lessons": [
+        "C003"
+      ],
+      "characters": [
+        "吃"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "小鱼",
+      "lessons": [
+        "C004"
+      ],
+      "characters": [
+        "鱼"
+      ],
+      "kind": "emoji",
+      "value": "🐟"
+    },
+    {
+      "word": "小鸟",
+      "lessons": [
+        "C004"
+      ],
+      "characters": [
+        "鸟"
+      ],
+      "kind": "emoji",
+      "value": "🐦"
+    },
+    {
+      "word": "看一看",
+      "lessons": [
+        "C004"
+      ],
+      "characters": [
+        "看"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "有鱼",
+      "lessons": [
+        "C004"
+      ],
+      "characters": [
+        "有"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "在家",
+      "lessons": [
+        "C004"
+      ],
+      "characters": [
+        "在"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "我的",
+      "lessons": [
+        "C005"
+      ],
+      "characters": [
+        "的"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "日光",
+      "lessons": [
+        "C005"
+      ],
+      "characters": [
+        "日"
+      ],
+      "kind": "sketch",
+      "value": "sunlight"
+    },
+    {
+      "word": "月亮",
+      "lessons": [
+        "C005"
+      ],
+      "characters": [
+        "月"
+      ],
+      "kind": "emoji",
+      "value": "🌙"
+    },
+    {
+      "word": "小山",
+      "lessons": [
+        "C005"
+      ],
+      "characters": [
+        "山"
+      ],
+      "kind": "emoji",
+      "value": "⛰️"
+    },
+    {
+      "word": "木头",
+      "lessons": [
+        "C005"
+      ],
+      "characters": [
+        "木"
+      ],
+      "kind": "emoji",
+      "value": "🪵"
+    },
+    {
+      "word": "小花",
+      "lessons": [
+        "C006"
+      ],
+      "characters": [
+        "花"
+      ],
+      "kind": "emoji",
+      "value": "🌷"
+    },
+    {
+      "word": "小草",
+      "lessons": [
+        "C006"
+      ],
+      "characters": [
+        "草"
+      ],
+      "kind": "emoji",
+      "value": "🌿"
+    },
+    {
+      "word": "上面",
+      "lessons": [
+        "C006"
+      ],
+      "characters": [
+        "上"
+      ],
+      "kind": "sketch",
+      "value": "up"
+    },
+    {
+      "word": "下面",
+      "lessons": [
+        "C006"
+      ],
+      "characters": [
+        "下"
+      ],
+      "kind": "sketch",
+      "value": "down"
+    },
+    {
+      "word": "大树",
+      "lessons": [
+        "C006",
+        "C013"
+      ],
+      "characters": [
+        "大",
+        "树"
+      ],
+      "kind": "emoji",
+      "value": "🌳"
+    },
+    {
+      "word": "一个",
+      "lessons": [
+        "C007",
+        "C019"
+      ],
+      "characters": [
+        "一",
+        "个"
+      ],
+      "kind": "count",
+      "value": "1"
+    },
+    {
+      "word": "二月",
+      "lessons": [
+        "C007"
+      ],
+      "characters": [
+        "二"
+      ],
+      "kind": "symbol",
+      "value": "2月"
+    },
+    {
+      "word": "三个",
+      "lessons": [
+        "C007"
+      ],
+      "characters": [
+        "三"
+      ],
+      "kind": "count",
+      "value": "3"
+    },
+    {
+      "word": "四个",
+      "lessons": [
+        "C007"
+      ],
+      "characters": [
+        "四"
+      ],
+      "kind": "count",
+      "value": "4"
+    },
+    {
+      "word": "五个",
+      "lessons": [
+        "C007"
+      ],
+      "characters": [
+        "五"
+      ],
+      "kind": "count",
+      "value": "5"
+    },
+    {
+      "word": "六个",
+      "lessons": [
+        "C008"
+      ],
+      "characters": [
+        "六"
+      ],
+      "kind": "count",
+      "value": "6"
+    },
+    {
+      "word": "七个",
+      "lessons": [
+        "C008"
+      ],
+      "characters": [
+        "七"
+      ],
+      "kind": "count",
+      "value": "7"
+    },
+    {
+      "word": "八个",
+      "lessons": [
+        "C008"
+      ],
+      "characters": [
+        "八"
+      ],
+      "kind": "count",
+      "value": "8"
+    },
+    {
+      "word": "九个",
+      "lessons": [
+        "C008"
+      ],
+      "characters": [
+        "九"
+      ],
+      "kind": "count",
+      "value": "9"
+    },
+    {
+      "word": "十个",
+      "lessons": [
+        "C008"
+      ],
+      "characters": [
+        "十"
+      ],
+      "kind": "count",
+      "value": "10"
+    },
+    {
+      "word": "点头",
+      "lessons": [
+        "C009"
+      ],
+      "characters": [
+        "头"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一口",
+      "lessons": [
+        "C009"
+      ],
+      "characters": [
+        "口"
+      ],
+      "kind": "sketch",
+      "value": "tongue"
+    },
+    {
+      "word": "耳朵",
+      "lessons": [
+        "C009"
+      ],
+      "characters": [
+        "耳"
+      ],
+      "kind": "emoji",
+      "value": "👂"
+    },
+    {
+      "word": "目光",
+      "lessons": [
+        "C009"
+      ],
+      "characters": [
+        "目"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "眼睛",
+      "lessons": [
+        "C010"
+      ],
+      "characters": [
+        "眼"
+      ],
+      "kind": "emoji",
+      "value": "👁️"
+    },
+    {
+      "word": "鼻子",
+      "lessons": [
+        "C010"
+      ],
+      "characters": [
+        "鼻"
+      ],
+      "kind": "emoji",
+      "value": "👃"
+    },
+    {
+      "word": "刷牙",
+      "lessons": [
+        "C010",
+        "C030"
+      ],
+      "characters": [
+        "牙",
+        "刷"
+      ],
+      "kind": "emoji",
+      "value": "🪥"
+    },
+    {
+      "word": "舌头",
+      "lessons": [
+        "C010"
+      ],
+      "characters": [
+        "舌"
+      ],
+      "kind": "emoji",
+      "value": "👅"
+    },
+    {
+      "word": "洗脸",
+      "lessons": [
+        "C010"
+      ],
+      "characters": [
+        "脸"
+      ],
+      "kind": "sketch",
+      "value": "face"
+    },
+    {
+      "word": "小脚",
+      "lessons": [
+        "C011"
+      ],
+      "characters": [
+        "脚"
+      ],
+      "kind": "emoji",
+      "value": "🦶"
+    },
+    {
+      "word": "足球",
+      "lessons": [
+        "C011"
+      ],
+      "characters": [
+        "足"
+      ],
+      "kind": "emoji",
+      "value": "⚽"
+    },
+    {
+      "word": "身体",
+      "lessons": [
+        "C011",
+        "C154"
+      ],
+      "characters": [
+        "身",
+        "体"
+      ],
+      "kind": "sketch",
+      "value": "person"
+    },
+    {
+      "word": "爱心",
+      "lessons": [
+        "C011",
+        "C040"
+      ],
+      "characters": [
+        "心",
+        "爱"
+      ],
+      "kind": "emoji",
+      "value": "❤️"
+    },
+    {
+      "word": "力气",
+      "lessons": [
+        "C011"
+      ],
+      "characters": [
+        "力"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "天空",
+      "lessons": [
+        "C012",
+        "C054"
+      ],
+      "characters": [
+        "天",
+        "空"
+      ],
+      "kind": "sketch",
+      "value": "sky"
+    },
+    {
+      "word": "太阳",
+      "lessons": [
+        "C012"
+      ],
+      "characters": [
+        "太"
+      ],
+      "kind": "emoji",
+      "value": "☀️"
+    },
+    {
+      "word": "阳光",
+      "lessons": [
+        "C012",
+        "C054"
+      ],
+      "characters": [
+        "阳",
+        "光"
+      ],
+      "kind": "sketch",
+      "value": "sunlight"
+    },
+    {
+      "word": "白云",
+      "lessons": [
+        "C012"
+      ],
+      "characters": [
+        "云"
+      ],
+      "kind": "emoji",
+      "value": "☁️"
+    },
+    {
+      "word": "下雨",
+      "lessons": [
+        "C012"
+      ],
+      "characters": [
+        "雨"
+      ],
+      "kind": "emoji",
+      "value": "🌧️"
+    },
+    {
+      "word": "大风",
+      "lessons": [
+        "C013"
+      ],
+      "characters": [
+        "风"
+      ],
+      "kind": "sketch",
+      "value": "wind"
+    },
+    {
+      "word": "树叶",
+      "lessons": [
+        "C013"
+      ],
+      "characters": [
+        "叶"
+      ],
+      "kind": "emoji",
+      "value": "🍃"
+    },
+    {
+      "word": "泥土",
+      "lessons": [
+        "C013"
+      ],
+      "characters": [
+        "土"
+      ],
+      "kind": "sketch",
+      "value": "soil"
+    },
+    {
+      "word": "石头",
+      "lessons": [
+        "C013"
+      ],
+      "characters": [
+        "石"
+      ],
+      "kind": "emoji",
+      "value": "🪨"
+    },
+    {
+      "word": "红色",
+      "lessons": [
+        "C014"
+      ],
+      "characters": [
+        "红"
+      ],
+      "kind": "color",
+      "value": "#d65345"
+    },
+    {
+      "word": "黄色",
+      "lessons": [
+        "C014"
+      ],
+      "characters": [
+        "黄"
+      ],
+      "kind": "color",
+      "value": "#edc34d"
+    },
+    {
+      "word": "蓝色",
+      "lessons": [
+        "C014"
+      ],
+      "characters": [
+        "蓝"
+      ],
+      "kind": "color",
+      "value": "#659fcb"
+    },
+    {
+      "word": "绿色",
+      "lessons": [
+        "C014"
+      ],
+      "characters": [
+        "绿"
+      ],
+      "kind": "color",
+      "value": "#75a270"
+    },
+    {
+      "word": "白色",
+      "lessons": [
+        "C014"
+      ],
+      "characters": [
+        "白"
+      ],
+      "kind": "color",
+      "value": "#ffffff"
+    },
+    {
+      "word": "衣服",
+      "lessons": [
+        "C015"
+      ],
+      "characters": [
+        "衣"
+      ],
+      "kind": "emoji",
+      "value": "👕"
+    },
+    {
+      "word": "裤子",
+      "lessons": [
+        "C015"
+      ],
+      "characters": [
+        "裤"
+      ],
+      "kind": "emoji",
+      "value": "👖"
+    },
+    {
+      "word": "鞋子",
+      "lessons": [
+        "C015"
+      ],
+      "characters": [
+        "鞋"
+      ],
+      "kind": "emoji",
+      "value": "👟"
+    },
+    {
+      "word": "袜子",
+      "lessons": [
+        "C015"
+      ],
+      "characters": [
+        "袜"
+      ],
+      "kind": "emoji",
+      "value": "🧦"
+    },
+    {
+      "word": "帽子",
+      "lessons": [
+        "C015"
+      ],
+      "characters": [
+        "帽"
+      ],
+      "kind": "emoji",
+      "value": "🧢"
+    },
+    {
+      "word": "大米",
+      "lessons": [
+        "C016"
+      ],
+      "characters": [
+        "米"
+      ],
+      "kind": "sketch",
+      "value": "rice"
+    },
+    {
+      "word": "米饭",
+      "lessons": [
+        "C016"
+      ],
+      "characters": [
+        "饭"
+      ],
+      "kind": "emoji",
+      "value": "🍚"
+    },
+    {
+      "word": "面条",
+      "lessons": [
+        "C016"
+      ],
+      "characters": [
+        "面"
+      ],
+      "kind": "emoji",
+      "value": "🍜"
+    },
+    {
+      "word": "青菜",
+      "lessons": [
+        "C016"
+      ],
+      "characters": [
+        "菜"
+      ],
+      "kind": "emoji",
+      "value": "🥬"
+    },
+    {
+      "word": "水果",
+      "lessons": [
+        "C016"
+      ],
+      "characters": [
+        "果"
+      ],
+      "kind": "sketch",
+      "value": "fruit-basket"
+    },
+    {
+      "word": "走路",
+      "lessons": [
+        "C017"
+      ],
+      "characters": [
+        "走"
+      ],
+      "kind": "emoji",
+      "value": "🚶"
+    },
+    {
+      "word": "跑步",
+      "lessons": [
+        "C017"
+      ],
+      "characters": [
+        "跑"
+      ],
+      "kind": "emoji",
+      "value": "🏃"
+    },
+    {
+      "word": "坐下",
+      "lessons": [
+        "C017"
+      ],
+      "characters": [
+        "坐"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "去公园",
+      "lessons": [
+        "C017"
+      ],
+      "characters": [
+        "去"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "起来",
+      "lessons": [
+        "C017"
+      ],
+      "characters": [
+        "起"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "我是",
+      "lessons": [
+        "C018"
+      ],
+      "characters": [
+        "是"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "好了",
+      "lessons": [
+        "C018"
+      ],
+      "characters": [
+        "了"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "不要",
+      "lessons": [
+        "C018"
+      ],
+      "characters": [
+        "不"
+      ],
+      "kind": "emoji",
+      "value": "🙅"
+    },
+    {
+      "word": "也是",
+      "lessons": [
+        "C018"
+      ],
+      "characters": [
+        "也"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "我和你",
+      "lessons": [
+        "C018"
+      ],
+      "characters": [
+        "和"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "他来",
+      "lessons": [
+        "C019"
+      ],
+      "characters": [
+        "他"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "她来",
+      "lessons": [
+        "C019"
+      ],
+      "characters": [
+        "她"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "它来",
+      "lessons": [
+        "C019"
+      ],
+      "characters": [
+        "它"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "我们",
+      "lessons": [
+        "C019"
+      ],
+      "characters": [
+        "们"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "这里",
+      "lessons": [
+        "C020"
+      ],
+      "characters": [
+        "这"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "那里",
+      "lessons": [
+        "C020"
+      ],
+      "characters": [
+        "那"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "哪里",
+      "lessons": [
+        "C020"
+      ],
+      "characters": [
+        "哪"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "谁来",
+      "lessons": [
+        "C020"
+      ],
+      "characters": [
+        "谁"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "什么",
+      "lessons": [
+        "C020",
+        "C028"
+      ],
+      "characters": [
+        "什",
+        "么"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "公园",
+      "lessons": [
+        "C021"
+      ],
+      "characters": [
+        "园"
+      ],
+      "kind": "emoji",
+      "value": "🏞️"
+    },
+    {
+      "word": "老师",
+      "lessons": [
+        "C021"
+      ],
+      "characters": [
+        "老"
+      ],
+      "kind": "emoji",
+      "value": "👩‍🏫"
+    },
+    {
+      "word": "教师",
+      "lessons": [
+        "C021"
+      ],
+      "characters": [
+        "师"
+      ],
+      "kind": "emoji",
+      "value": "👩‍🏫"
+    },
+    {
+      "word": "同学",
+      "lessons": [
+        "C021"
+      ],
+      "characters": [
+        "同"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🤝‍🧑"
+    },
+    {
+      "word": "学习",
+      "lessons": [
+        "C021",
+        "C160"
+      ],
+      "characters": [
+        "学",
+        "习"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "学校",
+      "lessons": [
+        "C022"
+      ],
+      "characters": [
+        "校"
+      ],
+      "kind": "emoji",
+      "value": "🏫"
+    },
+    {
+      "word": "班级",
+      "lessons": [
+        "C022"
+      ],
+      "characters": [
+        "班"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "上课",
+      "lessons": [
+        "C022"
+      ],
+      "characters": [
+        "课"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "教室",
+      "lessons": [
+        "C022"
+      ],
+      "characters": [
+        "室"
+      ],
+      "kind": "sketch",
+      "value": "room"
+    },
+    {
+      "word": "桌子",
+      "lessons": [
+        "C022"
+      ],
+      "characters": [
+        "桌"
+      ],
+      "kind": "sketch",
+      "value": "desk"
+    },
+    {
+      "word": "椅子",
+      "lessons": [
+        "C023"
+      ],
+      "characters": [
+        "椅"
+      ],
+      "kind": "emoji",
+      "value": "🪑"
+    },
+    {
+      "word": "书本",
+      "lessons": [
+        "C023"
+      ],
+      "characters": [
+        "书"
+      ],
+      "kind": "emoji",
+      "value": "📖"
+    },
+    {
+      "word": "书包",
+      "lessons": [
+        "C023"
+      ],
+      "characters": [
+        "包"
+      ],
+      "kind": "emoji",
+      "value": "🎒"
+    },
+    {
+      "word": "铅笔",
+      "lessons": [
+        "C023",
+        "C182"
+      ],
+      "characters": [
+        "笔",
+        "铅"
+      ],
+      "kind": "emoji",
+      "value": "✏️"
+    },
+    {
+      "word": "本子",
+      "lessons": [
+        "C023"
+      ],
+      "characters": [
+        "本"
+      ],
+      "kind": "emoji",
+      "value": "📓"
+    },
+    {
+      "word": "读书",
+      "lessons": [
+        "C024"
+      ],
+      "characters": [
+        "读"
+      ],
+      "kind": "emoji",
+      "value": "📖"
+    },
+    {
+      "word": "写字",
+      "lessons": [
+        "C024"
+      ],
+      "characters": [
+        "写"
+      ],
+      "kind": "emoji",
+      "value": "✍️"
+    },
+    {
+      "word": "画画",
+      "lessons": [
+        "C024"
+      ],
+      "characters": [
+        "画"
+      ],
+      "kind": "emoji",
+      "value": "🖌️"
+    },
+    {
+      "word": "听话",
+      "lessons": [
+        "C024"
+      ],
+      "characters": [
+        "听"
+      ],
+      "kind": "emoji",
+      "value": "👂"
+    },
+    {
+      "word": "说话",
+      "lessons": [
+        "C024",
+        "C025"
+      ],
+      "characters": [
+        "说",
+        "话"
+      ],
+      "kind": "emoji",
+      "value": "🗣️"
+    },
+    {
+      "word": "叫我",
+      "lessons": [
+        "C025"
+      ],
+      "characters": [
+        "叫"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "问好",
+      "lessons": [
+        "C025"
+      ],
+      "characters": [
+        "问"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "回答",
+      "lessons": [
+        "C025"
+      ],
+      "characters": [
+        "答"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "讲故事",
+      "lessons": [
+        "C025"
+      ],
+      "characters": [
+        "讲"
+      ],
+      "kind": "emoji",
+      "value": "🗨️"
+    },
+    {
+      "word": "玩耍",
+      "lessons": [
+        "C026"
+      ],
+      "characters": [
+        "玩"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "皮球",
+      "lessons": [
+        "C026"
+      ],
+      "characters": [
+        "球"
+      ],
+      "kind": "emoji",
+      "value": "🏀"
+    },
+    {
+      "word": "拍手",
+      "lessons": [
+        "C026"
+      ],
+      "characters": [
+        "拍"
+      ],
+      "kind": "emoji",
+      "value": "👏"
+    },
+    {
+      "word": "跳一跳",
+      "lessons": [
+        "C026"
+      ],
+      "characters": [
+        "跳"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "踢球",
+      "lessons": [
+        "C026"
+      ],
+      "characters": [
+        "踢"
+      ],
+      "kind": "emoji",
+      "value": "⚽"
+    },
+    {
+      "word": "朋友",
+      "lessons": [
+        "C027"
+      ],
+      "characters": [
+        "友"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🤝‍🧑"
+    },
+    {
+      "word": "亲朋",
+      "lessons": [
+        "C027"
+      ],
+      "characters": [
+        "朋"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "给你",
+      "lessons": [
+        "C027"
+      ],
+      "characters": [
+        "给"
+      ],
+      "kind": "emoji",
+      "value": "🤲"
+    },
+    {
+      "word": "让一让",
+      "lessons": [
+        "C027"
+      ],
+      "characters": [
+        "让"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "等等",
+      "lessons": [
+        "C027"
+      ],
+      "characters": [
+        "等"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "请坐",
+      "lessons": [
+        "C028"
+      ],
+      "characters": [
+        "请"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "谢谢",
+      "lessons": [
+        "C028"
+      ],
+      "characters": [
+        "谢"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "对不起",
+      "lessons": [
+        "C028"
+      ],
+      "characters": [
+        "对"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "您好",
+      "lessons": [
+        "C028"
+      ],
+      "characters": [
+        "您"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "早上",
+      "lessons": [
+        "C029"
+      ],
+      "characters": [
+        "早"
+      ],
+      "kind": "sketch",
+      "value": "morning"
+    },
+    {
+      "word": "晚上",
+      "lessons": [
+        "C029"
+      ],
+      "characters": [
+        "晚"
+      ],
+      "kind": "sketch",
+      "value": "night"
+    },
+    {
+      "word": "中午",
+      "lessons": [
+        "C029"
+      ],
+      "characters": [
+        "午"
+      ],
+      "kind": "sketch",
+      "value": "noon"
+    },
+    {
+      "word": "睡觉",
+      "lessons": [
+        "C029"
+      ],
+      "characters": [
+        "睡"
+      ],
+      "kind": "emoji",
+      "value": "😴"
+    },
+    {
+      "word": "醒来",
+      "lessons": [
+        "C029"
+      ],
+      "characters": [
+        "醒"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "洗手",
+      "lessons": [
+        "C030"
+      ],
+      "characters": [
+        "洗"
+      ],
+      "kind": "emoji",
+      "value": "🧼"
+    },
+    {
+      "word": "毛巾",
+      "lessons": [
+        "C030"
+      ],
+      "characters": [
+        "毛"
+      ],
+      "kind": "sketch",
+      "value": "towel"
+    },
+    {
+      "word": "纸巾",
+      "lessons": [
+        "C030",
+        "C033"
+      ],
+      "characters": [
+        "巾",
+        "纸"
+      ],
+      "kind": "sketch",
+      "value": "tissue"
+    },
+    {
+      "word": "没有",
+      "lessons": [
+        "C030"
+      ],
+      "characters": [
+        "没"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "干衣服",
+      "lessons": [
+        "C031"
+      ],
+      "characters": [
+        "干"
+      ],
+      "kind": "sketch",
+      "value": "dry"
+    },
+    {
+      "word": "干净",
+      "lessons": [
+        "C031"
+      ],
+      "characters": [
+        "净"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "脏了",
+      "lessons": [
+        "C031"
+      ],
+      "characters": [
+        "脏"
+      ],
+      "kind": "sketch",
+      "value": "dirty"
+    },
+    {
+      "word": "湿了",
+      "lessons": [
+        "C031"
+      ],
+      "characters": [
+        "湿"
+      ],
+      "kind": "sketch",
+      "value": "wet"
+    },
+    {
+      "word": "换衣服",
+      "lessons": [
+        "C031"
+      ],
+      "characters": [
+        "换"
+      ],
+      "kind": "sketch",
+      "value": "wash-clothes"
+    },
+    {
+      "word": "洗澡",
+      "lessons": [
+        "C032"
+      ],
+      "characters": [
+        "澡"
+      ],
+      "kind": "emoji",
+      "value": "🚿"
+    },
+    {
+      "word": "浴室",
+      "lessons": [
+        "C032"
+      ],
+      "characters": [
+        "浴"
+      ],
+      "kind": "sketch",
+      "value": "bathroom"
+    },
+    {
+      "word": "梳头",
+      "lessons": [
+        "C032"
+      ],
+      "characters": [
+        "梳"
+      ],
+      "kind": "sketch",
+      "value": "comb"
+    },
+    {
+      "word": "镜子",
+      "lessons": [
+        "C032"
+      ],
+      "characters": [
+        "镜"
+      ],
+      "kind": "emoji",
+      "value": "🪞"
+    },
+    {
+      "word": "脸盆",
+      "lessons": [
+        "C032"
+      ],
+      "characters": [
+        "盆"
+      ],
+      "kind": "sketch",
+      "value": "basin"
+    },
+    {
+      "word": "男孩",
+      "lessons": [
+        "C033"
+      ],
+      "characters": [
+        "男"
+      ],
+      "kind": "emoji",
+      "value": "🧒"
+    },
+    {
+      "word": "女孩",
+      "lessons": [
+        "C033"
+      ],
+      "characters": [
+        "女"
+      ],
+      "kind": "emoji",
+      "value": "👧"
+    },
+    {
+      "word": "方便",
+      "lessons": [
+        "C033"
+      ],
+      "characters": [
+        "便"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "厕所",
+      "lessons": [
+        "C033"
+      ],
+      "characters": [
+        "厕"
+      ],
+      "kind": "emoji",
+      "value": "🚽"
+    },
+    {
+      "word": "饭碗",
+      "lessons": [
+        "C034"
+      ],
+      "characters": [
+        "碗"
+      ],
+      "kind": "emoji",
+      "value": "🥣"
+    },
+    {
+      "word": "筷子",
+      "lessons": [
+        "C034"
+      ],
+      "characters": [
+        "筷"
+      ],
+      "kind": "emoji",
+      "value": "🥢"
+    },
+    {
+      "word": "勺子",
+      "lessons": [
+        "C034"
+      ],
+      "characters": [
+        "勺"
+      ],
+      "kind": "emoji",
+      "value": "🥄"
+    },
+    {
+      "word": "盘子",
+      "lessons": [
+        "C034"
+      ],
+      "characters": [
+        "盘"
+      ],
+      "kind": "emoji",
+      "value": "🍽️"
+    },
+    {
+      "word": "水杯",
+      "lessons": [
+        "C034"
+      ],
+      "characters": [
+        "杯"
+      ],
+      "kind": "sketch",
+      "value": "cup"
+    },
+    {
+      "word": "小床",
+      "lessons": [
+        "C035"
+      ],
+      "characters": [
+        "床"
+      ],
+      "kind": "emoji",
+      "value": "🛏️"
+    },
+    {
+      "word": "被子",
+      "lessons": [
+        "C035"
+      ],
+      "characters": [
+        "被"
+      ],
+      "kind": "sketch",
+      "value": "quilt"
+    },
+    {
+      "word": "枕头",
+      "lessons": [
+        "C035"
+      ],
+      "characters": [
+        "枕"
+      ],
+      "kind": "sketch",
+      "value": "pillow"
+    },
+    {
+      "word": "台灯",
+      "lessons": [
+        "C035"
+      ],
+      "characters": [
+        "灯"
+      ],
+      "kind": "sketch",
+      "value": "lamp"
+    },
+    {
+      "word": "窗户",
+      "lessons": [
+        "C035"
+      ],
+      "characters": [
+        "窗"
+      ],
+      "kind": "emoji",
+      "value": "🪟"
+    },
+    {
+      "word": "放好",
+      "lessons": [
+        "C036"
+      ],
+      "characters": [
+        "放"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "收好",
+      "lessons": [
+        "C036"
+      ],
+      "characters": [
+        "收"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "拿来",
+      "lessons": [
+        "C036"
+      ],
+      "characters": [
+        "拿"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "带上",
+      "lessons": [
+        "C036"
+      ],
+      "characters": [
+        "带"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "找到",
+      "lessons": [
+        "C036"
+      ],
+      "characters": [
+        "找"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "前面",
+      "lessons": [
+        "C037"
+      ],
+      "characters": [
+        "前"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "后面",
+      "lessons": [
+        "C037"
+      ],
+      "characters": [
+        "后"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "左边",
+      "lessons": [
+        "C037"
+      ],
+      "characters": [
+        "左"
+      ],
+      "kind": "sketch",
+      "value": "left"
+    },
+    {
+      "word": "右边",
+      "lessons": [
+        "C037"
+      ],
+      "characters": [
+        "右"
+      ],
+      "kind": "sketch",
+      "value": "right"
+    },
+    {
+      "word": "中间",
+      "lessons": [
+        "C037"
+      ],
+      "characters": [
+        "中"
+      ],
+      "kind": "sketch",
+      "value": "middle"
+    },
+    {
+      "word": "先来",
+      "lessons": [
+        "C038"
+      ],
+      "characters": [
+        "先"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "再见",
+      "lessons": [
+        "C038"
+      ],
+      "characters": [
+        "再"
+      ],
+      "kind": "emoji",
+      "value": "👋"
+    },
+    {
+      "word": "一次",
+      "lessons": [
+        "C038"
+      ],
+      "characters": [
+        "次"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "队伍",
+      "lessons": [
+        "C038"
+      ],
+      "characters": [
+        "队"
+      ],
+      "kind": "sketch",
+      "value": "queue"
+    },
+    {
+      "word": "排队",
+      "lessons": [
+        "C038"
+      ],
+      "characters": [
+        "排"
+      ],
+      "kind": "sketch",
+      "value": "queue"
+    },
+    {
+      "word": "安全",
+      "lessons": [
+        "C039",
+        "C080"
+      ],
+      "characters": [
+        "安",
+        "全"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "危险",
+      "lessons": [
+        "C039"
+      ],
+      "characters": [
+        "危"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "冒险",
+      "lessons": [
+        "C039"
+      ],
+      "characters": [
+        "险"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "疼痛",
+      "lessons": [
+        "C039"
+      ],
+      "characters": [
+        "痛"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "生病",
+      "lessons": [
+        "C039"
+      ],
+      "characters": [
+        "病"
+      ],
+      "kind": "emoji",
+      "value": "🤒"
+    },
+    {
+      "word": "帮忙",
+      "lessons": [
+        "C040"
+      ],
+      "characters": [
+        "帮"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "连忙",
+      "lessons": [
+        "C040"
+      ],
+      "characters": [
+        "忙"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "告诉",
+      "lessons": [
+        "C040"
+      ],
+      "characters": [
+        "告"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "着急",
+      "lessons": [
+        "C040",
+        "C126"
+      ],
+      "characters": [
+        "急",
+        "着"
+      ],
+      "kind": "emoji",
+      "value": "😟"
+    },
+    {
+      "word": "小牛",
+      "lessons": [
+        "C041"
+      ],
+      "characters": [
+        "牛"
+      ],
+      "kind": "emoji",
+      "value": "🐄"
+    },
+    {
+      "word": "小羊",
+      "lessons": [
+        "C041"
+      ],
+      "characters": [
+        "羊"
+      ],
+      "kind": "emoji",
+      "value": "🐑"
+    },
+    {
+      "word": "小马",
+      "lessons": [
+        "C041"
+      ],
+      "characters": [
+        "马"
+      ],
+      "kind": "emoji",
+      "value": "🐎"
+    },
+    {
+      "word": "小猪",
+      "lessons": [
+        "C041"
+      ],
+      "characters": [
+        "猪"
+      ],
+      "kind": "emoji",
+      "value": "🐖"
+    },
+    {
+      "word": "小鸡",
+      "lessons": [
+        "C041"
+      ],
+      "characters": [
+        "鸡"
+      ],
+      "kind": "emoji",
+      "value": "🐤"
+    },
+    {
+      "word": "鸭子",
+      "lessons": [
+        "C042"
+      ],
+      "characters": [
+        "鸭"
+      ],
+      "kind": "emoji",
+      "value": "🦆"
+    },
+    {
+      "word": "白鹅",
+      "lessons": [
+        "C042"
+      ],
+      "characters": [
+        "鹅"
+      ],
+      "kind": "emoji",
+      "value": "🪿"
+    },
+    {
+      "word": "兔子",
+      "lessons": [
+        "C042"
+      ],
+      "characters": [
+        "兔"
+      ],
+      "kind": "emoji",
+      "value": "🐇"
+    },
+    {
+      "word": "青蛙",
+      "lessons": [
+        "C042"
+      ],
+      "characters": [
+        "蛙"
+      ],
+      "kind": "emoji",
+      "value": "🐸"
+    },
+    {
+      "word": "小虫",
+      "lessons": [
+        "C042"
+      ],
+      "characters": [
+        "虫"
+      ],
+      "kind": "emoji",
+      "value": "🐛"
+    },
+    {
+      "word": "蚂蚁",
+      "lessons": [
+        "C043",
+        "C043"
+      ],
+      "characters": [
+        "蚂",
+        "蚁"
+      ],
+      "kind": "emoji",
+      "value": "🐜"
+    },
+    {
+      "word": "蜜蜂",
+      "lessons": [
+        "C043"
+      ],
+      "characters": [
+        "蜂"
+      ],
+      "kind": "emoji",
+      "value": "🐝"
+    },
+    {
+      "word": "蝴蝶",
+      "lessons": [
+        "C043",
+        "C043"
+      ],
+      "characters": [
+        "蝴",
+        "蝶"
+      ],
+      "kind": "emoji",
+      "value": "🦋"
+    },
+    {
+      "word": "蜻蜓",
+      "lessons": [
+        "C044",
+        "C044"
+      ],
+      "characters": [
+        "蜻",
+        "蜓"
+      ],
+      "kind": "sketch",
+      "value": "dragonfly"
+    },
+    {
+      "word": "蝉鸣",
+      "lessons": [
+        "C044"
+      ],
+      "characters": [
+        "蝉"
+      ],
+      "kind": "sketch",
+      "value": "cicada"
+    },
+    {
+      "word": "蚊子",
+      "lessons": [
+        "C044"
+      ],
+      "characters": [
+        "蚊"
+      ],
+      "kind": "emoji",
+      "value": "🦟"
+    },
+    {
+      "word": "苍蝇",
+      "lessons": [
+        "C044"
+      ],
+      "characters": [
+        "蝇"
+      ],
+      "kind": "emoji",
+      "value": "🪰"
+    },
+    {
+      "word": "老虎",
+      "lessons": [
+        "C045"
+      ],
+      "characters": [
+        "虎"
+      ],
+      "kind": "emoji",
+      "value": "🐅"
+    },
+    {
+      "word": "狮子",
+      "lessons": [
+        "C045"
+      ],
+      "characters": [
+        "狮"
+      ],
+      "kind": "emoji",
+      "value": "🦁"
+    },
+    {
+      "word": "大象",
+      "lessons": [
+        "C045"
+      ],
+      "characters": [
+        "象"
+      ],
+      "kind": "emoji",
+      "value": "🐘"
+    },
+    {
+      "word": "小熊",
+      "lessons": [
+        "C045"
+      ],
+      "characters": [
+        "熊"
+      ],
+      "kind": "emoji",
+      "value": "🐻"
+    },
+    {
+      "word": "小鹿",
+      "lessons": [
+        "C045"
+      ],
+      "characters": [
+        "鹿"
+      ],
+      "kind": "emoji",
+      "value": "🦌"
+    },
+    {
+      "word": "猴子",
+      "lessons": [
+        "C046"
+      ],
+      "characters": [
+        "猴"
+      ],
+      "kind": "emoji",
+      "value": "🐒"
+    },
+    {
+      "word": "狐狸",
+      "lessons": [
+        "C046"
+      ],
+      "characters": [
+        "狐"
+      ],
+      "kind": "emoji",
+      "value": "🦊"
+    },
+    {
+      "word": "灰狼",
+      "lessons": [
+        "C046"
+      ],
+      "characters": [
+        "狼"
+      ],
+      "kind": "emoji",
+      "value": "🐺"
+    },
+    {
+      "word": "老鼠",
+      "lessons": [
+        "C046"
+      ],
+      "characters": [
+        "鼠"
+      ],
+      "kind": "emoji",
+      "value": "🐁"
+    },
+    {
+      "word": "松鼠",
+      "lessons": [
+        "C046"
+      ],
+      "characters": [
+        "松"
+      ],
+      "kind": "emoji",
+      "value": "🐿️"
+    },
+    {
+      "word": "小虾",
+      "lessons": [
+        "C047"
+      ],
+      "characters": [
+        "虾"
+      ],
+      "kind": "emoji",
+      "value": "🦐"
+    },
+    {
+      "word": "螃蟹",
+      "lessons": [
+        "C047"
+      ],
+      "characters": [
+        "蟹"
+      ],
+      "kind": "emoji",
+      "value": "🦀"
+    },
+    {
+      "word": "乌龟",
+      "lessons": [
+        "C047"
+      ],
+      "characters": [
+        "龟"
+      ],
+      "kind": "emoji",
+      "value": "🐢"
+    },
+    {
+      "word": "水蛇",
+      "lessons": [
+        "C047"
+      ],
+      "characters": [
+        "蛇"
+      ],
+      "kind": "emoji",
+      "value": "🐍"
+    },
+    {
+      "word": "鳄鱼",
+      "lessons": [
+        "C047"
+      ],
+      "characters": [
+        "鳄"
+      ],
+      "kind": "emoji",
+      "value": "🐊"
+    },
+    {
+      "word": "鲸鱼",
+      "lessons": [
+        "C048"
+      ],
+      "characters": [
+        "鲸"
+      ],
+      "kind": "emoji",
+      "value": "🐋"
+    },
+    {
+      "word": "大海",
+      "lessons": [
+        "C048"
+      ],
+      "characters": [
+        "海"
+      ],
+      "kind": "emoji",
+      "value": "🌊"
+    },
+    {
+      "word": "海豚",
+      "lessons": [
+        "C048"
+      ],
+      "characters": [
+        "豚"
+      ],
+      "kind": "emoji",
+      "value": "🐬"
+    },
+    {
+      "word": "鲨鱼",
+      "lessons": [
+        "C048"
+      ],
+      "characters": [
+        "鲨"
+      ],
+      "kind": "emoji",
+      "value": "🦈"
+    },
+    {
+      "word": "贝壳",
+      "lessons": [
+        "C048"
+      ],
+      "characters": [
+        "贝"
+      ],
+      "kind": "emoji",
+      "value": "🐚"
+    },
+    {
+      "word": "尾巴",
+      "lessons": [
+        "C049"
+      ],
+      "characters": [
+        "尾"
+      ],
+      "kind": "sketch",
+      "value": "tail"
+    },
+    {
+      "word": "翅膀",
+      "lessons": [
+        "C049"
+      ],
+      "characters": [
+        "翅"
+      ],
+      "kind": "sketch",
+      "value": "wing"
+    },
+    {
+      "word": "羽毛",
+      "lessons": [
+        "C049"
+      ],
+      "characters": [
+        "羽"
+      ],
+      "kind": "emoji",
+      "value": "🪶"
+    },
+    {
+      "word": "爪子",
+      "lessons": [
+        "C049"
+      ],
+      "characters": [
+        "爪"
+      ],
+      "kind": "sketch",
+      "value": "paw"
+    },
+    {
+      "word": "牛角",
+      "lessons": [
+        "C049"
+      ],
+      "characters": [
+        "角"
+      ],
+      "kind": "sketch",
+      "value": "horn"
+    },
+    {
+      "word": "种子",
+      "lessons": [
+        "C050"
+      ],
+      "characters": [
+        "种"
+      ],
+      "kind": "sketch",
+      "value": "seed"
+    },
+    {
+      "word": "发芽",
+      "lessons": [
+        "C050"
+      ],
+      "characters": [
+        "芽"
+      ],
+      "kind": "emoji",
+      "value": "🌱"
+    },
+    {
+      "word": "树根",
+      "lessons": [
+        "C050"
+      ],
+      "characters": [
+        "根"
+      ],
+      "kind": "sketch",
+      "value": "root"
+    },
+    {
+      "word": "树枝",
+      "lessons": [
+        "C050"
+      ],
+      "characters": [
+        "枝"
+      ],
+      "kind": "sketch",
+      "value": "branch"
+    },
+    {
+      "word": "小苗",
+      "lessons": [
+        "C050"
+      ],
+      "characters": [
+        "苗"
+      ],
+      "kind": "emoji",
+      "value": "🌱"
+    },
+    {
+      "word": "桃花",
+      "lessons": [
+        "C051"
+      ],
+      "characters": [
+        "桃"
+      ],
+      "kind": "emoji",
+      "value": "🌸"
+    },
+    {
+      "word": "梅花",
+      "lessons": [
+        "C051"
+      ],
+      "characters": [
+        "梅"
+      ],
+      "kind": "sketch",
+      "value": "plum"
+    },
+    {
+      "word": "杏花",
+      "lessons": [
+        "C051"
+      ],
+      "characters": [
+        "杏"
+      ],
+      "kind": "sketch",
+      "value": "apricot"
+    },
+    {
+      "word": "兰花",
+      "lessons": [
+        "C051"
+      ],
+      "characters": [
+        "兰"
+      ],
+      "kind": "sketch",
+      "value": "orchid"
+    },
+    {
+      "word": "荷花",
+      "lessons": [
+        "C051"
+      ],
+      "characters": [
+        "荷"
+      ],
+      "kind": "emoji",
+      "value": "🪷"
+    },
+    {
+      "word": "竹子",
+      "lessons": [
+        "C052"
+      ],
+      "characters": [
+        "竹"
+      ],
+      "kind": "sketch",
+      "value": "bamboo"
+    },
+    {
+      "word": "树林",
+      "lessons": [
+        "C052"
+      ],
+      "characters": [
+        "林"
+      ],
+      "kind": "sketch",
+      "value": "forest"
+    },
+    {
+      "word": "森林",
+      "lessons": [
+        "C052"
+      ],
+      "characters": [
+        "森"
+      ],
+      "kind": "sketch",
+      "value": "dense-forest"
+    },
+    {
+      "word": "枫叶",
+      "lessons": [
+        "C052"
+      ],
+      "characters": [
+        "枫"
+      ],
+      "kind": "emoji",
+      "value": "🍁"
+    },
+    {
+      "word": "杨树",
+      "lessons": [
+        "C052"
+      ],
+      "characters": [
+        "杨"
+      ],
+      "kind": "emoji",
+      "value": "🌳"
+    },
+    {
+      "word": "江水",
+      "lessons": [
+        "C053"
+      ],
+      "characters": [
+        "江"
+      ],
+      "kind": "sketch",
+      "value": "river"
+    },
+    {
+      "word": "小河",
+      "lessons": [
+        "C053"
+      ],
+      "characters": [
+        "河"
+      ],
+      "kind": "sketch",
+      "value": "river"
+    },
+    {
+      "word": "湖水",
+      "lessons": [
+        "C053"
+      ],
+      "characters": [
+        "湖"
+      ],
+      "kind": "sketch",
+      "value": "lake"
+    },
+    {
+      "word": "池塘",
+      "lessons": [
+        "C053"
+      ],
+      "characters": [
+        "池"
+      ],
+      "kind": "sketch",
+      "value": "lake"
+    },
+    {
+      "word": "泉水",
+      "lessons": [
+        "C053"
+      ],
+      "characters": [
+        "泉"
+      ],
+      "kind": "sketch",
+      "value": "spring"
+    },
+    {
+      "word": "星星",
+      "lessons": [
+        "C054"
+      ],
+      "characters": [
+        "星"
+      ],
+      "kind": "emoji",
+      "value": "⭐"
+    },
+    {
+      "word": "明亮",
+      "lessons": [
+        "C054"
+      ],
+      "characters": [
+        "亮"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "黑夜",
+      "lessons": [
+        "C054"
+      ],
+      "characters": [
+        "黑"
+      ],
+      "kind": "sketch",
+      "value": "night"
+    },
+    {
+      "word": "下雪",
+      "lessons": [
+        "C055"
+      ],
+      "characters": [
+        "雪"
+      ],
+      "kind": "emoji",
+      "value": "❄️"
+    },
+    {
+      "word": "冰块",
+      "lessons": [
+        "C055"
+      ],
+      "characters": [
+        "冰"
+      ],
+      "kind": "emoji",
+      "value": "🧊"
+    },
+    {
+      "word": "冷风",
+      "lessons": [
+        "C055"
+      ],
+      "characters": [
+        "冷"
+      ],
+      "kind": "sketch",
+      "value": "wind"
+    },
+    {
+      "word": "冻冰",
+      "lessons": [
+        "C055"
+      ],
+      "characters": [
+        "冻"
+      ],
+      "kind": "emoji",
+      "value": "🧊"
+    },
+    {
+      "word": "滑冰",
+      "lessons": [
+        "C055"
+      ],
+      "characters": [
+        "滑"
+      ],
+      "kind": "sketch",
+      "value": "skates"
+    },
+    {
+      "word": "热天",
+      "lessons": [
+        "C056"
+      ],
+      "characters": [
+        "热"
+      ],
+      "kind": "sketch",
+      "value": "hot"
+    },
+    {
+      "word": "暖和",
+      "lessons": [
+        "C056"
+      ],
+      "characters": [
+        "暖"
+      ],
+      "kind": "sketch",
+      "value": "warm"
+    },
+    {
+      "word": "晴天",
+      "lessons": [
+        "C056"
+      ],
+      "characters": [
+        "晴"
+      ],
+      "kind": "emoji",
+      "value": "🌤️"
+    },
+    {
+      "word": "阴天",
+      "lessons": [
+        "C056"
+      ],
+      "characters": [
+        "阴"
+      ],
+      "kind": "emoji",
+      "value": "☁️"
+    },
+    {
+      "word": "打雷",
+      "lessons": [
+        "C056"
+      ],
+      "characters": [
+        "雷"
+      ],
+      "kind": "emoji",
+      "value": "⛈️"
+    },
+    {
+      "word": "春天",
+      "lessons": [
+        "C057"
+      ],
+      "characters": [
+        "春"
+      ],
+      "kind": "sketch",
+      "value": "spring-season"
+    },
+    {
+      "word": "夏天",
+      "lessons": [
+        "C057"
+      ],
+      "characters": [
+        "夏"
+      ],
+      "kind": "sketch",
+      "value": "summer-season"
+    },
+    {
+      "word": "秋天",
+      "lessons": [
+        "C057"
+      ],
+      "characters": [
+        "秋"
+      ],
+      "kind": "sketch",
+      "value": "autumn-season"
+    },
+    {
+      "word": "冬天",
+      "lessons": [
+        "C057"
+      ],
+      "characters": [
+        "冬"
+      ],
+      "kind": "sketch",
+      "value": "winter-season"
+    },
+    {
+      "word": "四季",
+      "lessons": [
+        "C057"
+      ],
+      "characters": [
+        "季"
+      ],
+      "kind": "sketch",
+      "value": "four-seasons"
+    },
+    {
+      "word": "大雾",
+      "lessons": [
+        "C058"
+      ],
+      "characters": [
+        "雾"
+      ],
+      "kind": "emoji",
+      "value": "🌫️"
+    },
+    {
+      "word": "露水",
+      "lessons": [
+        "C058"
+      ],
+      "characters": [
+        "露"
+      ],
+      "kind": "sketch",
+      "value": "dew"
+    },
+    {
+      "word": "白霜",
+      "lessons": [
+        "C058"
+      ],
+      "characters": [
+        "霜"
+      ],
+      "kind": "sketch",
+      "value": "frost"
+    },
+    {
+      "word": "彩虹",
+      "lessons": [
+        "C058"
+      ],
+      "characters": [
+        "虹"
+      ],
+      "kind": "emoji",
+      "value": "🌈"
+    },
+    {
+      "word": "晚霞",
+      "lessons": [
+        "C058"
+      ],
+      "characters": [
+        "霞"
+      ],
+      "kind": "emoji",
+      "value": "🌇"
+    },
+    {
+      "word": "沙子",
+      "lessons": [
+        "C059"
+      ],
+      "characters": [
+        "沙"
+      ],
+      "kind": "sketch",
+      "value": "sand"
+    },
+    {
+      "word": "泥巴",
+      "lessons": [
+        "C059"
+      ],
+      "characters": [
+        "泥"
+      ],
+      "kind": "sketch",
+      "value": "soil"
+    },
+    {
+      "word": "岩石",
+      "lessons": [
+        "C059"
+      ],
+      "characters": [
+        "岩"
+      ],
+      "kind": "emoji",
+      "value": "🪨"
+    },
+    {
+      "word": "山洞",
+      "lessons": [
+        "C059"
+      ],
+      "characters": [
+        "洞"
+      ],
+      "kind": "sketch",
+      "value": "cave"
+    },
+    {
+      "word": "山坡",
+      "lessons": [
+        "C059"
+      ],
+      "characters": [
+        "坡"
+      ],
+      "kind": "sketch",
+      "value": "slope"
+    },
+    {
+      "word": "生命",
+      "lessons": [
+        "C060"
+      ],
+      "characters": [
+        "生"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "长大",
+      "lessons": [
+        "C060"
+      ],
+      "characters": [
+        "长"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "开花",
+      "lessons": [
+        "C060"
+      ],
+      "characters": [
+        "开"
+      ],
+      "kind": "sketch",
+      "value": "flower-open"
+    },
+    {
+      "word": "落叶",
+      "lessons": [
+        "C060"
+      ],
+      "characters": [
+        "落"
+      ],
+      "kind": "sketch",
+      "value": "leaf-fall"
+    },
+    {
+      "word": "保护",
+      "lessons": [
+        "C060",
+        "C080"
+      ],
+      "characters": [
+        "护",
+        "保"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "马路",
+      "lessons": [
+        "C061"
+      ],
+      "characters": [
+        "路"
+      ],
+      "kind": "sketch",
+      "value": "road"
+    },
+    {
+      "word": "大街",
+      "lessons": [
+        "C061"
+      ],
+      "characters": [
+        "街"
+      ],
+      "kind": "sketch",
+      "value": "road"
+    },
+    {
+      "word": "道路",
+      "lessons": [
+        "C061"
+      ],
+      "characters": [
+        "道"
+      ],
+      "kind": "sketch",
+      "value": "road"
+    },
+    {
+      "word": "小桥",
+      "lessons": [
+        "C061"
+      ],
+      "characters": [
+        "桥"
+      ],
+      "kind": "sketch",
+      "value": "bridge"
+    },
+    {
+      "word": "路边",
+      "lessons": [
+        "C061"
+      ],
+      "characters": [
+        "边"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "汽车",
+      "lessons": [
+        "C062",
+        "C064"
+      ],
+      "characters": [
+        "车",
+        "汽"
+      ],
+      "kind": "emoji",
+      "value": "🚗"
+    },
+    {
+      "word": "交通",
+      "lessons": [
+        "C062"
+      ],
+      "characters": [
+        "交"
+      ],
+      "kind": "sketch",
+      "value": "traffic"
+    },
+    {
+      "word": "通行",
+      "lessons": [
+        "C062"
+      ],
+      "characters": [
+        "通"
+      ],
+      "kind": "sketch",
+      "value": "go-signal"
+    },
+    {
+      "word": "行走",
+      "lessons": [
+        "C062"
+      ],
+      "characters": [
+        "行"
+      ],
+      "kind": "emoji",
+      "value": "🚶"
+    },
+    {
+      "word": "停车",
+      "lessons": [
+        "C062"
+      ],
+      "characters": [
+        "停"
+      ],
+      "kind": "sketch",
+      "value": "parking"
+    },
+    {
+      "word": "斑马线",
+      "lessons": [
+        "C063"
+      ],
+      "characters": [
+        "斑"
+      ],
+      "kind": "sketch",
+      "value": "crosswalk"
+    },
+    {
+      "word": "直线",
+      "lessons": [
+        "C063"
+      ],
+      "characters": [
+        "线"
+      ],
+      "kind": "sketch",
+      "value": "line"
+    },
+    {
+      "word": "过马路",
+      "lessons": [
+        "C063"
+      ],
+      "characters": [
+        "过"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "脚步",
+      "lessons": [
+        "C063"
+      ],
+      "characters": [
+        "步"
+      ],
+      "kind": "emoji",
+      "value": "👣"
+    },
+    {
+      "word": "横道",
+      "lessons": [
+        "C063"
+      ],
+      "characters": [
+        "横"
+      ],
+      "kind": "sketch",
+      "value": "crosswalk"
+    },
+    {
+      "word": "小船",
+      "lessons": [
+        "C064"
+      ],
+      "characters": [
+        "船"
+      ],
+      "kind": "emoji",
+      "value": "🛶"
+    },
+    {
+      "word": "飞机",
+      "lessons": [
+        "C064"
+      ],
+      "characters": [
+        "飞"
+      ],
+      "kind": "emoji",
+      "value": "✈️"
+    },
+    {
+      "word": "机器",
+      "lessons": [
+        "C064"
+      ],
+      "characters": [
+        "机"
+      ],
+      "kind": "sketch",
+      "value": "machine"
+    },
+    {
+      "word": "车轮",
+      "lessons": [
+        "C064"
+      ],
+      "characters": [
+        "轮"
+      ],
+      "kind": "sketch",
+      "value": "wheel"
+    },
+    {
+      "word": "火车",
+      "lessons": [
+        "C065"
+      ],
+      "characters": [
+        "火"
+      ],
+      "kind": "emoji",
+      "value": "🚂"
+    },
+    {
+      "word": "铁路",
+      "lessons": [
+        "C065"
+      ],
+      "characters": [
+        "铁"
+      ],
+      "kind": "sketch",
+      "value": "rail"
+    },
+    {
+      "word": "车票",
+      "lessons": [
+        "C065"
+      ],
+      "characters": [
+        "票"
+      ],
+      "kind": "emoji",
+      "value": "🎫"
+    },
+    {
+      "word": "乘车",
+      "lessons": [
+        "C065"
+      ],
+      "characters": [
+        "乘"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "车站",
+      "lessons": [
+        "C065"
+      ],
+      "characters": [
+        "站"
+      ],
+      "kind": "sketch",
+      "value": "station"
+    },
+    {
+      "word": "骑车",
+      "lessons": [
+        "C066"
+      ],
+      "characters": [
+        "骑"
+      ],
+      "kind": "emoji",
+      "value": "🚲"
+    },
+    {
+      "word": "自己",
+      "lessons": [
+        "C066"
+      ],
+      "characters": [
+        "自"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "头盔",
+      "lessons": [
+        "C066"
+      ],
+      "characters": [
+        "盔"
+      ],
+      "kind": "sketch",
+      "value": "helmet"
+    },
+    {
+      "word": "车铃",
+      "lessons": [
+        "C066"
+      ],
+      "characters": [
+        "铃"
+      ],
+      "kind": "sketch",
+      "value": "bell"
+    },
+    {
+      "word": "刹车",
+      "lessons": [
+        "C066"
+      ],
+      "characters": [
+        "刹"
+      ],
+      "kind": "sketch",
+      "value": "brake"
+    },
+    {
+      "word": "出去",
+      "lessons": [
+        "C067"
+      ],
+      "characters": [
+        "出"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "入口",
+      "lessons": [
+        "C067"
+      ],
+      "characters": [
+        "入"
+      ],
+      "kind": "sketch",
+      "value": "door"
+    },
+    {
+      "word": "进来",
+      "lessons": [
+        "C067"
+      ],
+      "characters": [
+        "进"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "到家",
+      "lessons": [
+        "C067"
+      ],
+      "characters": [
+        "到"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "回来",
+      "lessons": [
+        "C067"
+      ],
+      "characters": [
+        "回"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "东边",
+      "lessons": [
+        "C068"
+      ],
+      "characters": [
+        "东"
+      ],
+      "kind": "sketch",
+      "value": "east"
+    },
+    {
+      "word": "西边",
+      "lessons": [
+        "C068"
+      ],
+      "characters": [
+        "西"
+      ],
+      "kind": "sketch",
+      "value": "west"
+    },
+    {
+      "word": "南方",
+      "lessons": [
+        "C068"
+      ],
+      "characters": [
+        "南"
+      ],
+      "kind": "sketch",
+      "value": "south"
+    },
+    {
+      "word": "北方",
+      "lessons": [
+        "C068"
+      ],
+      "characters": [
+        "北"
+      ],
+      "kind": "sketch",
+      "value": "north"
+    },
+    {
+      "word": "远方",
+      "lessons": [
+        "C068"
+      ],
+      "characters": [
+        "远"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "近处",
+      "lessons": [
+        "C069"
+      ],
+      "characters": [
+        "近"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "旁边",
+      "lessons": [
+        "C069"
+      ],
+      "characters": [
+        "旁"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "直走",
+      "lessons": [
+        "C069"
+      ],
+      "characters": [
+        "直"
+      ],
+      "kind": "sketch",
+      "value": "straight"
+    },
+    {
+      "word": "转身",
+      "lessons": [
+        "C069"
+      ],
+      "characters": [
+        "转"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "弯路",
+      "lessons": [
+        "C069"
+      ],
+      "characters": [
+        "弯"
+      ],
+      "kind": "sketch",
+      "value": "bend"
+    },
+    {
+      "word": "商店",
+      "lessons": [
+        "C070",
+        "C072"
+      ],
+      "characters": [
+        "店",
+        "商"
+      ],
+      "kind": "sketch",
+      "value": "shop"
+    },
+    {
+      "word": "城市",
+      "lessons": [
+        "C070",
+        "C078"
+      ],
+      "characters": [
+        "市",
+        "城"
+      ],
+      "kind": "emoji",
+      "value": "🏙️"
+    },
+    {
+      "word": "市场",
+      "lessons": [
+        "C070"
+      ],
+      "characters": [
+        "场"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "买菜",
+      "lessons": [
+        "C070"
+      ],
+      "characters": [
+        "买"
+      ],
+      "kind": "emoji",
+      "value": "🛍️"
+    },
+    {
+      "word": "卖菜",
+      "lessons": [
+        "C070"
+      ],
+      "characters": [
+        "卖"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "超市",
+      "lessons": [
+        "C071"
+      ],
+      "characters": [
+        "超"
+      ],
+      "kind": "sketch",
+      "value": "shop"
+    },
+    {
+      "word": "货物",
+      "lessons": [
+        "C071"
+      ],
+      "characters": [
+        "货"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "零钱",
+      "lessons": [
+        "C071"
+      ],
+      "characters": [
+        "钱"
+      ],
+      "kind": "emoji",
+      "value": "💰"
+    },
+    {
+      "word": "一元",
+      "lessons": [
+        "C071"
+      ],
+      "characters": [
+        "元"
+      ],
+      "kind": "sketch",
+      "value": "ticket"
+    },
+    {
+      "word": "付款",
+      "lessons": [
+        "C071"
+      ],
+      "characters": [
+        "付"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "店铺",
+      "lessons": [
+        "C072"
+      ],
+      "characters": [
+        "铺"
+      ],
+      "kind": "sketch",
+      "value": "shop"
+    },
+    {
+      "word": "餐厅",
+      "lessons": [
+        "C072"
+      ],
+      "characters": [
+        "餐"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "饭馆",
+      "lessons": [
+        "C072"
+      ],
+      "characters": [
+        "馆"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "客人",
+      "lessons": [
+        "C072"
+      ],
+      "characters": [
+        "客"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "小区",
+      "lessons": [
+        "C073"
+      ],
+      "characters": [
+        "区"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "楼房",
+      "lessons": [
+        "C073"
+      ],
+      "characters": [
+        "楼"
+      ],
+      "kind": "emoji",
+      "value": "🏢"
+    },
+    {
+      "word": "楼层",
+      "lessons": [
+        "C073"
+      ],
+      "characters": [
+        "层"
+      ],
+      "kind": "sketch",
+      "value": "tall-building"
+    },
+    {
+      "word": "邻居",
+      "lessons": [
+        "C073"
+      ],
+      "characters": [
+        "邻"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "居住",
+      "lessons": [
+        "C073"
+      ],
+      "characters": [
+        "居"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "医生",
+      "lessons": [
+        "C074"
+      ],
+      "characters": [
+        "医"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍⚕️"
+    },
+    {
+      "word": "医院",
+      "lessons": [
+        "C074"
+      ],
+      "characters": [
+        "院"
+      ],
+      "kind": "emoji",
+      "value": "🏥"
+    },
+    {
+      "word": "吃药",
+      "lessons": [
+        "C074"
+      ],
+      "characters": [
+        "药"
+      ],
+      "kind": "emoji",
+      "value": "💊"
+    },
+    {
+      "word": "打针",
+      "lessons": [
+        "C074"
+      ],
+      "characters": [
+        "针"
+      ],
+      "kind": "emoji",
+      "value": "💉"
+    },
+    {
+      "word": "救助",
+      "lessons": [
+        "C074"
+      ],
+      "characters": [
+        "救"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "警察",
+      "lessons": [
+        "C075"
+      ],
+      "characters": [
+        "警"
+      ],
+      "kind": "emoji",
+      "value": "👮"
+    },
+    {
+      "word": "观察",
+      "lessons": [
+        "C075",
+        "C117"
+      ],
+      "characters": [
+        "察",
+        "观"
+      ],
+      "kind": "emoji",
+      "value": "🔍"
+    },
+    {
+      "word": "消防",
+      "lessons": [
+        "C075"
+      ],
+      "characters": [
+        "消"
+      ],
+      "kind": "emoji",
+      "value": "🚒"
+    },
+    {
+      "word": "防火",
+      "lessons": [
+        "C075"
+      ],
+      "characters": [
+        "防"
+      ],
+      "kind": "emoji",
+      "value": "🧯"
+    },
+    {
+      "word": "队员",
+      "lessons": [
+        "C075"
+      ],
+      "characters": [
+        "员"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "邮局",
+      "lessons": [
+        "C076",
+        "C076"
+      ],
+      "characters": [
+        "邮",
+        "局"
+      ],
+      "kind": "emoji",
+      "value": "🏣"
+    },
+    {
+      "word": "银行",
+      "lessons": [
+        "C076"
+      ],
+      "characters": [
+        "银"
+      ],
+      "kind": "emoji",
+      "value": "🏦"
+    },
+    {
+      "word": "信件",
+      "lessons": [
+        "C076"
+      ],
+      "characters": [
+        "信"
+      ],
+      "kind": "emoji",
+      "value": "✉️"
+    },
+    {
+      "word": "寄信",
+      "lessons": [
+        "C076"
+      ],
+      "characters": [
+        "寄"
+      ],
+      "kind": "emoji",
+      "value": "📮"
+    },
+    {
+      "word": "旅行",
+      "lessons": [
+        "C077"
+      ],
+      "characters": [
+        "旅"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "游玩",
+      "lessons": [
+        "C077"
+      ],
+      "characters": [
+        "游"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "箱子",
+      "lessons": [
+        "C077"
+      ],
+      "characters": [
+        "箱"
+      ],
+      "kind": "emoji",
+      "value": "🧳"
+    },
+    {
+      "word": "口袋",
+      "lessons": [
+        "C077"
+      ],
+      "characters": [
+        "袋"
+      ],
+      "kind": "sketch",
+      "value": "pocket"
+    },
+    {
+      "word": "雨伞",
+      "lessons": [
+        "C077"
+      ],
+      "characters": [
+        "伞"
+      ],
+      "kind": "emoji",
+      "value": "☂️"
+    },
+    {
+      "word": "小镇",
+      "lessons": [
+        "C078"
+      ],
+      "characters": [
+        "镇"
+      ],
+      "kind": "sketch",
+      "value": "town"
+    },
+    {
+      "word": "家乡",
+      "lessons": [
+        "C078"
+      ],
+      "characters": [
+        "乡"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "村子",
+      "lessons": [
+        "C078"
+      ],
+      "characters": [
+        "村"
+      ],
+      "kind": "sketch",
+      "value": "town"
+    },
+    {
+      "word": "中国",
+      "lessons": [
+        "C078"
+      ],
+      "characters": [
+        "国"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "标志",
+      "lessons": [
+        "C079"
+      ],
+      "characters": [
+        "标"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "志愿者",
+      "lessons": [
+        "C079"
+      ],
+      "characters": [
+        "志"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "禁止",
+      "lessons": [
+        "C079"
+      ],
+      "characters": [
+        "禁"
+      ],
+      "kind": "emoji",
+      "value": "🚫"
+    },
+    {
+      "word": "停止",
+      "lessons": [
+        "C079"
+      ],
+      "characters": [
+        "止"
+      ],
+      "kind": "emoji",
+      "value": "🛑"
+    },
+    {
+      "word": "提示",
+      "lessons": [
+        "C079"
+      ],
+      "characters": [
+        "示"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "遵守",
+      "lessons": [
+        "C080",
+        "C157"
+      ],
+      "characters": [
+        "守",
+        "遵"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "规则",
+      "lessons": [
+        "C080"
+      ],
+      "characters": [
+        "规"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "法则",
+      "lessons": [
+        "C080"
+      ],
+      "characters": [
+        "则"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "爷爷",
+      "lessons": [
+        "C081"
+      ],
+      "characters": [
+        "爷"
+      ],
+      "kind": "emoji",
+      "value": "👴"
+    },
+    {
+      "word": "奶奶",
+      "lessons": [
+        "C081"
+      ],
+      "characters": [
+        "奶"
+      ],
+      "kind": "emoji",
+      "value": "👵"
+    },
+    {
+      "word": "哥哥",
+      "lessons": [
+        "C081"
+      ],
+      "characters": [
+        "哥"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "姐姐",
+      "lessons": [
+        "C081"
+      ],
+      "characters": [
+        "姐"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "弟弟",
+      "lessons": [
+        "C081"
+      ],
+      "characters": [
+        "弟"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "妹妹",
+      "lessons": [
+        "C082"
+      ],
+      "characters": [
+        "妹"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "叔叔",
+      "lessons": [
+        "C082"
+      ],
+      "characters": [
+        "叔"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "阿姨",
+      "lessons": [
+        "C082"
+      ],
+      "characters": [
+        "姨"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "伯伯",
+      "lessons": [
+        "C082"
+      ],
+      "characters": [
+        "伯"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "亲人",
+      "lessons": [
+        "C082"
+      ],
+      "characters": [
+        "亲"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "孩子",
+      "lessons": [
+        "C083",
+        "C083"
+      ],
+      "characters": [
+        "子",
+        "孩"
+      ],
+      "kind": "emoji",
+      "value": "🧒"
+    },
+    {
+      "word": "儿童",
+      "lessons": [
+        "C083"
+      ],
+      "characters": [
+        "儿"
+      ],
+      "kind": "emoji",
+      "value": "🧒"
+    },
+    {
+      "word": "名字",
+      "lessons": [
+        "C083"
+      ],
+      "characters": [
+        "名"
+      ],
+      "kind": "sketch",
+      "value": "name"
+    },
+    {
+      "word": "汉字",
+      "lessons": [
+        "C083",
+        "C199"
+      ],
+      "characters": [
+        "字",
+        "汉"
+      ],
+      "kind": "sketch",
+      "value": "book-dictionary"
+    },
+    {
+      "word": "房间",
+      "lessons": [
+        "C084"
+      ],
+      "characters": [
+        "房"
+      ],
+      "kind": "sketch",
+      "value": "room"
+    },
+    {
+      "word": "客厅",
+      "lessons": [
+        "C084"
+      ],
+      "characters": [
+        "厅"
+      ],
+      "kind": "emoji",
+      "value": "🛋️"
+    },
+    {
+      "word": "厨房",
+      "lessons": [
+        "C084"
+      ],
+      "characters": [
+        "厨"
+      ],
+      "kind": "sketch",
+      "value": "kitchen"
+    },
+    {
+      "word": "卧室",
+      "lessons": [
+        "C084"
+      ],
+      "characters": [
+        "卧"
+      ],
+      "kind": "emoji",
+      "value": "🛌"
+    },
+    {
+      "word": "墙壁",
+      "lessons": [
+        "C084",
+        "C183"
+      ],
+      "characters": [
+        "墙",
+        "壁"
+      ],
+      "kind": "sketch",
+      "value": "wall"
+    },
+    {
+      "word": "电灯",
+      "lessons": [
+        "C085"
+      ],
+      "characters": [
+        "电"
+      ],
+      "kind": "emoji",
+      "value": "💡"
+    },
+    {
+      "word": "电视",
+      "lessons": [
+        "C085"
+      ],
+      "characters": [
+        "视"
+      ],
+      "kind": "emoji",
+      "value": "📺"
+    },
+    {
+      "word": "声音",
+      "lessons": [
+        "C085",
+        "C137"
+      ],
+      "characters": [
+        "音",
+        "声"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "风扇",
+      "lessons": [
+        "C085"
+      ],
+      "characters": [
+        "扇"
+      ],
+      "kind": "sketch",
+      "value": "fan"
+    },
+    {
+      "word": "音响",
+      "lessons": [
+        "C085"
+      ],
+      "characters": [
+        "响"
+      ],
+      "kind": "emoji",
+      "value": "📻"
+    },
+    {
+      "word": "锅子",
+      "lessons": [
+        "C086"
+      ],
+      "characters": [
+        "锅"
+      ],
+      "kind": "sketch",
+      "value": "pot"
+    },
+    {
+      "word": "小刀",
+      "lessons": [
+        "C086"
+      ],
+      "characters": [
+        "刀"
+      ],
+      "kind": "emoji",
+      "value": "🔪"
+    },
+    {
+      "word": "叉子",
+      "lessons": [
+        "C086"
+      ],
+      "characters": [
+        "叉"
+      ],
+      "kind": "sketch",
+      "value": "fork"
+    },
+    {
+      "word": "瓶子",
+      "lessons": [
+        "C086"
+      ],
+      "characters": [
+        "瓶"
+      ],
+      "kind": "sketch",
+      "value": "bottle"
+    },
+    {
+      "word": "罐子",
+      "lessons": [
+        "C086"
+      ],
+      "characters": [
+        "罐"
+      ],
+      "kind": "sketch",
+      "value": "jar"
+    },
+    {
+      "word": "煮饭",
+      "lessons": [
+        "C087"
+      ],
+      "characters": [
+        "煮"
+      ],
+      "kind": "sketch",
+      "value": "cook"
+    },
+    {
+      "word": "炒菜",
+      "lessons": [
+        "C087"
+      ],
+      "characters": [
+        "炒"
+      ],
+      "kind": "sketch",
+      "value": "fry"
+    },
+    {
+      "word": "蒸蛋",
+      "lessons": [
+        "C087"
+      ],
+      "characters": [
+        "蒸"
+      ],
+      "kind": "sketch",
+      "value": "steam"
+    },
+    {
+      "word": "烤饼",
+      "lessons": [
+        "C087"
+      ],
+      "characters": [
+        "烤"
+      ],
+      "kind": "sketch",
+      "value": "bake"
+    },
+    {
+      "word": "切菜",
+      "lessons": [
+        "C087"
+      ],
+      "characters": [
+        "切"
+      ],
+      "kind": "sketch",
+      "value": "cut"
+    },
+    {
+      "word": "香甜",
+      "lessons": [
+        "C088"
+      ],
+      "characters": [
+        "甜"
+      ],
+      "kind": "emoji",
+      "value": "😋"
+    },
+    {
+      "word": "酸味",
+      "lessons": [
+        "C088"
+      ],
+      "characters": [
+        "酸"
+      ],
+      "kind": "emoji",
+      "value": "🍋"
+    },
+    {
+      "word": "苦瓜",
+      "lessons": [
+        "C088"
+      ],
+      "characters": [
+        "苦"
+      ],
+      "kind": "sketch",
+      "value": "bittermelon"
+    },
+    {
+      "word": "辣椒",
+      "lessons": [
+        "C088",
+        "C092"
+      ],
+      "characters": [
+        "辣",
+        "椒"
+      ],
+      "kind": "emoji",
+      "value": "🌶️"
+    },
+    {
+      "word": "咸味",
+      "lessons": [
+        "C088"
+      ],
+      "characters": [
+        "咸"
+      ],
+      "kind": "sketch",
+      "value": "salt"
+    },
+    {
+      "word": "苹果",
+      "lessons": [
+        "C089"
+      ],
+      "characters": [
+        "苹"
+      ],
+      "kind": "emoji",
+      "value": "🍎"
+    },
+    {
+      "word": "梨子",
+      "lessons": [
+        "C089"
+      ],
+      "characters": [
+        "梨"
+      ],
+      "kind": "emoji",
+      "value": "🍐"
+    },
+    {
+      "word": "西瓜",
+      "lessons": [
+        "C089"
+      ],
+      "characters": [
+        "瓜"
+      ],
+      "kind": "emoji",
+      "value": "🍉"
+    },
+    {
+      "word": "红枣",
+      "lessons": [
+        "C089"
+      ],
+      "characters": [
+        "枣"
+      ],
+      "kind": "sketch",
+      "value": "jujube"
+    },
+    {
+      "word": "草莓",
+      "lessons": [
+        "C089"
+      ],
+      "characters": [
+        "莓"
+      ],
+      "kind": "emoji",
+      "value": "🍓"
+    },
+    {
+      "word": "香蕉",
+      "lessons": [
+        "C090",
+        "C090"
+      ],
+      "characters": [
+        "香",
+        "蕉"
+      ],
+      "kind": "emoji",
+      "value": "🍌"
+    },
+    {
+      "word": "葡萄",
+      "lessons": [
+        "C090",
+        "C090"
+      ],
+      "characters": [
+        "葡",
+        "萄"
+      ],
+      "kind": "emoji",
+      "value": "🍇"
+    },
+    {
+      "word": "橙子",
+      "lessons": [
+        "C090"
+      ],
+      "characters": [
+        "橙"
+      ],
+      "kind": "emoji",
+      "value": "🍊"
+    },
+    {
+      "word": "萝卜",
+      "lessons": [
+        "C091",
+        "C091"
+      ],
+      "characters": [
+        "萝",
+        "卜"
+      ],
+      "kind": "sketch",
+      "value": "radish"
+    },
+    {
+      "word": "豆子",
+      "lessons": [
+        "C091"
+      ],
+      "characters": [
+        "豆"
+      ],
+      "kind": "emoji",
+      "value": "🫘"
+    },
+    {
+      "word": "蔬菜",
+      "lessons": [
+        "C091"
+      ],
+      "characters": [
+        "蔬"
+      ],
+      "kind": "emoji",
+      "value": "🥬"
+    },
+    {
+      "word": "橘子",
+      "lessons": [
+        "C091"
+      ],
+      "characters": [
+        "橘"
+      ],
+      "kind": "emoji",
+      "value": "🍊"
+    },
+    {
+      "word": "茄子",
+      "lessons": [
+        "C092"
+      ],
+      "characters": [
+        "茄"
+      ],
+      "kind": "emoji",
+      "value": "🍆"
+    },
+    {
+      "word": "葱花",
+      "lessons": [
+        "C092"
+      ],
+      "characters": [
+        "葱"
+      ],
+      "kind": "sketch",
+      "value": "chopped-scallion"
+    },
+    {
+      "word": "大蒜",
+      "lessons": [
+        "C092"
+      ],
+      "characters": [
+        "蒜"
+      ],
+      "kind": "emoji",
+      "value": "🧄"
+    },
+    {
+      "word": "红薯",
+      "lessons": [
+        "C092"
+      ],
+      "characters": [
+        "薯"
+      ],
+      "kind": "emoji",
+      "value": "🍠"
+    },
+    {
+      "word": "鸡蛋",
+      "lessons": [
+        "C093"
+      ],
+      "characters": [
+        "蛋"
+      ],
+      "kind": "emoji",
+      "value": "🥚"
+    },
+    {
+      "word": "肉包",
+      "lessons": [
+        "C093"
+      ],
+      "characters": [
+        "肉"
+      ],
+      "kind": "sketch",
+      "value": "bun"
+    },
+    {
+      "word": "牛乳",
+      "lessons": [
+        "C093"
+      ],
+      "characters": [
+        "乳"
+      ],
+      "kind": "emoji",
+      "value": "🥛"
+    },
+    {
+      "word": "茶水",
+      "lessons": [
+        "C093"
+      ],
+      "characters": [
+        "茶"
+      ],
+      "kind": "emoji",
+      "value": "🍵"
+    },
+    {
+      "word": "菜汤",
+      "lessons": [
+        "C093"
+      ],
+      "characters": [
+        "汤"
+      ],
+      "kind": "emoji",
+      "value": "🍲"
+    },
+    {
+      "word": "饼干",
+      "lessons": [
+        "C094"
+      ],
+      "characters": [
+        "饼"
+      ],
+      "kind": "emoji",
+      "value": "🍪"
+    },
+    {
+      "word": "蛋糕",
+      "lessons": [
+        "C094"
+      ],
+      "characters": [
+        "糕"
+      ],
+      "kind": "emoji",
+      "value": "🍰"
+    },
+    {
+      "word": "糖果",
+      "lessons": [
+        "C094"
+      ],
+      "characters": [
+        "糖"
+      ],
+      "kind": "emoji",
+      "value": "🍬"
+    },
+    {
+      "word": "饺子",
+      "lessons": [
+        "C094"
+      ],
+      "characters": [
+        "饺"
+      ],
+      "kind": "emoji",
+      "value": "🥟"
+    },
+    {
+      "word": "米粉",
+      "lessons": [
+        "C094"
+      ],
+      "characters": [
+        "粉"
+      ],
+      "kind": "emoji",
+      "value": "🍜"
+    },
+    {
+      "word": "农民",
+      "lessons": [
+        "C095"
+      ],
+      "characters": [
+        "农"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🌾"
+    },
+    {
+      "word": "田地",
+      "lessons": [
+        "C095"
+      ],
+      "characters": [
+        "田"
+      ],
+      "kind": "sketch",
+      "value": "field"
+    },
+    {
+      "word": "谷子",
+      "lessons": [
+        "C095"
+      ],
+      "characters": [
+        "谷"
+      ],
+      "kind": "sketch",
+      "value": "millet"
+    },
+    {
+      "word": "小麦",
+      "lessons": [
+        "C095"
+      ],
+      "characters": [
+        "麦"
+      ],
+      "kind": "emoji",
+      "value": "🌾"
+    },
+    {
+      "word": "粮食",
+      "lessons": [
+        "C095"
+      ],
+      "characters": [
+        "粮"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "吃饱",
+      "lessons": [
+        "C096"
+      ],
+      "characters": [
+        "饱"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "饥饿",
+      "lessons": [
+        "C096"
+      ],
+      "characters": [
+        "饿"
+      ],
+      "kind": "sketch",
+      "value": "hungry"
+    },
+    {
+      "word": "口渴",
+      "lessons": [
+        "C096"
+      ],
+      "characters": [
+        "渴"
+      ],
+      "kind": "sketch",
+      "value": "thirsty"
+    },
+    {
+      "word": "剩饭",
+      "lessons": [
+        "C096"
+      ],
+      "characters": [
+        "剩"
+      ],
+      "kind": "sketch",
+      "value": "leftovers"
+    },
+    {
+      "word": "浪费",
+      "lessons": [
+        "C096",
+        "C120"
+      ],
+      "characters": [
+        "浪",
+        "费"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "扫地",
+      "lessons": [
+        "C097"
+      ],
+      "characters": [
+        "扫"
+      ],
+      "kind": "emoji",
+      "value": "🧹"
+    },
+    {
+      "word": "擦桌",
+      "lessons": [
+        "C097"
+      ],
+      "characters": [
+        "擦"
+      ],
+      "kind": "sketch",
+      "value": "wipe"
+    },
+    {
+      "word": "拖地",
+      "lessons": [
+        "C097"
+      ],
+      "characters": [
+        "拖"
+      ],
+      "kind": "sketch",
+      "value": "mop"
+    },
+    {
+      "word": "整齐",
+      "lessons": [
+        "C097"
+      ],
+      "characters": [
+        "整"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "整理",
+      "lessons": [
+        "C097"
+      ],
+      "characters": [
+        "理"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "柜子",
+      "lessons": [
+        "C098"
+      ],
+      "characters": [
+        "柜"
+      ],
+      "kind": "sketch",
+      "value": "cabinet"
+    },
+    {
+      "word": "书架",
+      "lessons": [
+        "C098"
+      ],
+      "characters": [
+        "架"
+      ],
+      "kind": "sketch",
+      "value": "shelf"
+    },
+    {
+      "word": "挂衣",
+      "lessons": [
+        "C098"
+      ],
+      "characters": [
+        "挂"
+      ],
+      "kind": "sketch",
+      "value": "hang"
+    },
+    {
+      "word": "叠衣",
+      "lessons": [
+        "C098"
+      ],
+      "characters": [
+        "叠"
+      ],
+      "kind": "sketch",
+      "value": "fold"
+    },
+    {
+      "word": "晒衣",
+      "lessons": [
+        "C098"
+      ],
+      "characters": [
+        "晒"
+      ],
+      "kind": "sketch",
+      "value": "hang"
+    },
+    {
+      "word": "柔软",
+      "lessons": [
+        "C099"
+      ],
+      "characters": [
+        "软"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "坚硬",
+      "lessons": [
+        "C099"
+      ],
+      "characters": [
+        "硬"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "厚衣",
+      "lessons": [
+        "C099"
+      ],
+      "characters": [
+        "厚"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "薄被",
+      "lessons": [
+        "C099"
+      ],
+      "characters": [
+        "薄"
+      ],
+      "kind": "sketch",
+      "value": "quilt"
+    },
+    {
+      "word": "轻轻",
+      "lessons": [
+        "C099"
+      ],
+      "characters": [
+        "轻"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "修理",
+      "lessons": [
+        "C100"
+      ],
+      "characters": [
+        "修"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🔧"
+    },
+    {
+      "word": "补好",
+      "lessons": [
+        "C100"
+      ],
+      "characters": [
+        "补"
+      ],
+      "kind": "sketch",
+      "value": "sew"
+    },
+    {
+      "word": "破了",
+      "lessons": [
+        "C100"
+      ],
+      "characters": [
+        "破"
+      ],
+      "kind": "sketch",
+      "value": "torn"
+    },
+    {
+      "word": "坏了",
+      "lessons": [
+        "C100"
+      ],
+      "characters": [
+        "坏"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "旧物",
+      "lessons": [
+        "C100"
+      ],
+      "characters": [
+        "旧"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "今年",
+      "lessons": [
+        "C101"
+      ],
+      "characters": [
+        "年"
+      ],
+      "kind": "sketch",
+      "value": "calendar-year"
+    },
+    {
+      "word": "今天",
+      "lessons": [
+        "C101"
+      ],
+      "characters": [
+        "今"
+      ],
+      "kind": "sketch",
+      "value": "calendar-today"
+    },
+    {
+      "word": "明天",
+      "lessons": [
+        "C101"
+      ],
+      "characters": [
+        "明"
+      ],
+      "kind": "sketch",
+      "value": "calendar-after"
+    },
+    {
+      "word": "昨天",
+      "lessons": [
+        "C101"
+      ],
+      "characters": [
+        "昨"
+      ],
+      "kind": "sketch",
+      "value": "calendar-before"
+    },
+    {
+      "word": "时间",
+      "lessons": [
+        "C101"
+      ],
+      "characters": [
+        "时"
+      ],
+      "kind": "sketch",
+      "value": "clock"
+    },
+    {
+      "word": "星期",
+      "lessons": [
+        "C102"
+      ],
+      "characters": [
+        "期"
+      ],
+      "kind": "sketch",
+      "value": "calendar-week"
+    },
+    {
+      "word": "周末",
+      "lessons": [
+        "C102"
+      ],
+      "characters": [
+        "周"
+      ],
+      "kind": "sketch",
+      "value": "calendar-week"
+    },
+    {
+      "word": "五岁",
+      "lessons": [
+        "C102"
+      ],
+      "characters": [
+        "岁"
+      ],
+      "kind": "symbol",
+      "value": "5岁"
+    },
+    {
+      "word": "号码",
+      "lessons": [
+        "C102"
+      ],
+      "characters": [
+        "号"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "日历",
+      "lessons": [
+        "C102"
+      ],
+      "characters": [
+        "历"
+      ],
+      "kind": "emoji",
+      "value": "📅"
+    },
+    {
+      "word": "时钟",
+      "lessons": [
+        "C103"
+      ],
+      "characters": [
+        "钟"
+      ],
+      "kind": "emoji",
+      "value": "🕰️"
+    },
+    {
+      "word": "手表",
+      "lessons": [
+        "C103"
+      ],
+      "characters": [
+        "表"
+      ],
+      "kind": "emoji",
+      "value": "⌚"
+    },
+    {
+      "word": "几点",
+      "lessons": [
+        "C103"
+      ],
+      "characters": [
+        "点"
+      ],
+      "kind": "sketch",
+      "value": "clock"
+    },
+    {
+      "word": "分钟",
+      "lessons": [
+        "C103"
+      ],
+      "characters": [
+        "分"
+      ],
+      "kind": "sketch",
+      "value": "clock-minute"
+    },
+    {
+      "word": "秒针",
+      "lessons": [
+        "C103"
+      ],
+      "characters": [
+        "秒"
+      ],
+      "kind": "sketch",
+      "value": "stopwatch"
+    },
+    {
+      "word": "早晨",
+      "lessons": [
+        "C104"
+      ],
+      "characters": [
+        "晨"
+      ],
+      "kind": "sketch",
+      "value": "morning"
+    },
+    {
+      "word": "夜晚",
+      "lessons": [
+        "C104"
+      ],
+      "characters": [
+        "夜"
+      ],
+      "kind": "sketch",
+      "value": "night"
+    },
+    {
+      "word": "一半",
+      "lessons": [
+        "C104"
+      ],
+      "characters": [
+        "半"
+      ],
+      "kind": "sketch",
+      "value": "half"
+    },
+    {
+      "word": "一刻",
+      "lessons": [
+        "C104"
+      ],
+      "characters": [
+        "刻"
+      ],
+      "kind": "sketch",
+      "value": "clock-quarter"
+    },
+    {
+      "word": "很久",
+      "lessons": [
+        "C104"
+      ],
+      "characters": [
+        "久"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一百",
+      "lessons": [
+        "C105"
+      ],
+      "characters": [
+        "百"
+      ],
+      "kind": "symbol",
+      "value": "100"
+    },
+    {
+      "word": "一千",
+      "lessons": [
+        "C105"
+      ],
+      "characters": [
+        "千"
+      ],
+      "kind": "symbol",
+      "value": "1000"
+    },
+    {
+      "word": "一万",
+      "lessons": [
+        "C105"
+      ],
+      "characters": [
+        "万"
+      ],
+      "kind": "symbol",
+      "value": "10000"
+    },
+    {
+      "word": "零个",
+      "lessons": [
+        "C105"
+      ],
+      "characters": [
+        "零"
+      ],
+      "kind": "sketch",
+      "value": "empty"
+    },
+    {
+      "word": "两个",
+      "lessons": [
+        "C105"
+      ],
+      "characters": [
+        "两"
+      ],
+      "kind": "count",
+      "value": "2"
+    },
+    {
+      "word": "数数",
+      "lessons": [
+        "C106"
+      ],
+      "characters": [
+        "数"
+      ],
+      "kind": "emoji",
+      "value": "🧮"
+    },
+    {
+      "word": "加上",
+      "lessons": [
+        "C106"
+      ],
+      "characters": [
+        "加"
+      ],
+      "kind": "symbol",
+      "value": "+"
+    },
+    {
+      "word": "减少",
+      "lessons": [
+        "C106"
+      ],
+      "characters": [
+        "减"
+      ],
+      "kind": "symbol",
+      "value": "−"
+    },
+    {
+      "word": "多少",
+      "lessons": [
+        "C106"
+      ],
+      "characters": [
+        "多"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "少了",
+      "lessons": [
+        "C106"
+      ],
+      "characters": [
+        "少"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "几个",
+      "lessons": [
+        "C107"
+      ],
+      "characters": [
+        "几"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "每天",
+      "lessons": [
+        "C107"
+      ],
+      "characters": [
+        "每"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "各自",
+      "lessons": [
+        "C107"
+      ],
+      "characters": [
+        "各"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一共",
+      "lessons": [
+        "C107"
+      ],
+      "characters": [
+        "共"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一双",
+      "lessons": [
+        "C107"
+      ],
+      "characters": [
+        "双"
+      ],
+      "kind": "sketch",
+      "value": "pair"
+    },
+    {
+      "word": "一只",
+      "lessons": [
+        "C108"
+      ],
+      "characters": [
+        "只"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一张",
+      "lessons": [
+        "C108"
+      ],
+      "characters": [
+        "张"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一条",
+      "lessons": [
+        "C108"
+      ],
+      "characters": [
+        "条"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一片",
+      "lessons": [
+        "C108"
+      ],
+      "characters": [
+        "片"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一块",
+      "lessons": [
+        "C108"
+      ],
+      "characters": [
+        "块"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "高树",
+      "lessons": [
+        "C109"
+      ],
+      "characters": [
+        "高"
+      ],
+      "kind": "sketch",
+      "value": "tall"
+    },
+    {
+      "word": "矮树",
+      "lessons": [
+        "C109"
+      ],
+      "characters": [
+        "矮"
+      ],
+      "kind": "sketch",
+      "value": "short"
+    },
+    {
+      "word": "胖熊",
+      "lessons": [
+        "C109"
+      ],
+      "characters": [
+        "胖"
+      ],
+      "kind": "sketch",
+      "value": "fat"
+    },
+    {
+      "word": "瘦猴",
+      "lessons": [
+        "C109"
+      ],
+      "characters": [
+        "瘦"
+      ],
+      "kind": "sketch",
+      "value": "thin"
+    },
+    {
+      "word": "宽路",
+      "lessons": [
+        "C109"
+      ],
+      "characters": [
+        "宽"
+      ],
+      "kind": "sketch",
+      "value": "wide"
+    },
+    {
+      "word": "短绳",
+      "lessons": [
+        "C110"
+      ],
+      "characters": [
+        "短"
+      ],
+      "kind": "sketch",
+      "value": "rope"
+    },
+    {
+      "word": "深水",
+      "lessons": [
+        "C110"
+      ],
+      "characters": [
+        "深"
+      ],
+      "kind": "sketch",
+      "value": "deep"
+    },
+    {
+      "word": "浅水",
+      "lessons": [
+        "C110"
+      ],
+      "characters": [
+        "浅"
+      ],
+      "kind": "sketch",
+      "value": "shallow"
+    },
+    {
+      "word": "重量",
+      "lessons": [
+        "C110"
+      ],
+      "characters": [
+        "重"
+      ],
+      "kind": "sketch",
+      "value": "scale"
+    },
+    {
+      "word": "低头",
+      "lessons": [
+        "C110"
+      ],
+      "characters": [
+        "低"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "圆形",
+      "lessons": [
+        "C111"
+      ],
+      "characters": [
+        "圆"
+      ],
+      "kind": "sketch",
+      "value": "circle"
+    },
+    {
+      "word": "方形",
+      "lessons": [
+        "C111"
+      ],
+      "characters": [
+        "方"
+      ],
+      "kind": "sketch",
+      "value": "square"
+    },
+    {
+      "word": "正方形",
+      "lessons": [
+        "C111"
+      ],
+      "characters": [
+        "正"
+      ],
+      "kind": "sketch",
+      "value": "square"
+    },
+    {
+      "word": "尖角",
+      "lessons": [
+        "C111"
+      ],
+      "characters": [
+        "尖"
+      ],
+      "kind": "emoji",
+      "value": "📐"
+    },
+    {
+      "word": "平面",
+      "lessons": [
+        "C111"
+      ],
+      "characters": [
+        "平"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "形状",
+      "lessons": [
+        "C112",
+        "C112"
+      ],
+      "characters": [
+        "形",
+        "状"
+      ],
+      "kind": "sketch",
+      "value": "shapes"
+    },
+    {
+      "word": "拼图",
+      "lessons": [
+        "C112"
+      ],
+      "characters": [
+        "拼"
+      ],
+      "kind": "emoji",
+      "value": "🧩"
+    },
+    {
+      "word": "图画",
+      "lessons": [
+        "C112"
+      ],
+      "characters": [
+        "图"
+      ],
+      "kind": "sketch",
+      "value": "art"
+    },
+    {
+      "word": "积木",
+      "lessons": [
+        "C112"
+      ],
+      "characters": [
+        "积"
+      ],
+      "kind": "sketch",
+      "value": "blocks"
+    },
+    {
+      "word": "相同",
+      "lessons": [
+        "C113"
+      ],
+      "characters": [
+        "相"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "差异",
+      "lessons": [
+        "C113"
+      ],
+      "characters": [
+        "异"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "别的",
+      "lessons": [
+        "C113"
+      ],
+      "characters": [
+        "别"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一样",
+      "lessons": [
+        "C113"
+      ],
+      "characters": [
+        "样"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "好像",
+      "lessons": [
+        "C113"
+      ],
+      "characters": [
+        "像"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "第一",
+      "lessons": [
+        "C114"
+      ],
+      "characters": [
+        "第"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "次序",
+      "lessons": [
+        "C114"
+      ],
+      "characters": [
+        "序"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "首先",
+      "lessons": [
+        "C114"
+      ],
+      "characters": [
+        "首"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "末尾",
+      "lessons": [
+        "C114"
+      ],
+      "characters": [
+        "末"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "顺序",
+      "lessons": [
+        "C114"
+      ],
+      "characters": [
+        "顺"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "比较",
+      "lessons": [
+        "C115",
+        "C178"
+      ],
+      "characters": [
+        "比",
+        "较"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "测量",
+      "lessons": [
+        "C115",
+        "C117"
+      ],
+      "characters": [
+        "量",
+        "测"
+      ],
+      "kind": "sketch",
+      "value": "ruler"
+    },
+    {
+      "word": "尺子",
+      "lessons": [
+        "C115"
+      ],
+      "characters": [
+        "尺"
+      ],
+      "kind": "emoji",
+      "value": "📏"
+    },
+    {
+      "word": "尺寸",
+      "lessons": [
+        "C115"
+      ],
+      "characters": [
+        "寸"
+      ],
+      "kind": "sketch",
+      "value": "ruler"
+    },
+    {
+      "word": "称重",
+      "lessons": [
+        "C115"
+      ],
+      "characters": [
+        "称"
+      ],
+      "kind": "sketch",
+      "value": "scale"
+    },
+    {
+      "word": "装满",
+      "lessons": [
+        "C116"
+      ],
+      "characters": [
+        "满"
+      ],
+      "kind": "sketch",
+      "value": "full"
+    },
+    {
+      "word": "盒内",
+      "lessons": [
+        "C116"
+      ],
+      "characters": [
+        "内"
+      ],
+      "kind": "emoji",
+      "value": "📦"
+    },
+    {
+      "word": "外面",
+      "lessons": [
+        "C116"
+      ],
+      "characters": [
+        "外"
+      ],
+      "kind": "sketch",
+      "value": "outside"
+    },
+    {
+      "word": "里面",
+      "lessons": [
+        "C116"
+      ],
+      "characters": [
+        "里"
+      ],
+      "kind": "sketch",
+      "value": "inside"
+    },
+    {
+      "word": "足够",
+      "lessons": [
+        "C116"
+      ],
+      "characters": [
+        "够"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "试一试",
+      "lessons": [
+        "C117"
+      ],
+      "characters": [
+        "试"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "实验",
+      "lessons": [
+        "C117"
+      ],
+      "characters": [
+        "验"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "变化",
+      "lessons": [
+        "C117",
+        "C119"
+      ],
+      "characters": [
+        "变",
+        "化"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "磁铁",
+      "lessons": [
+        "C118"
+      ],
+      "characters": [
+        "磁"
+      ],
+      "kind": "emoji",
+      "value": "🧲"
+    },
+    {
+      "word": "吸住",
+      "lessons": [
+        "C118"
+      ],
+      "characters": [
+        "吸"
+      ],
+      "kind": "sketch",
+      "value": "magnet-pull"
+    },
+    {
+      "word": "吸引",
+      "lessons": [
+        "C118"
+      ],
+      "characters": [
+        "引"
+      ],
+      "kind": "sketch",
+      "value": "magnet-pull"
+    },
+    {
+      "word": "推开",
+      "lessons": [
+        "C118"
+      ],
+      "characters": [
+        "推"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "拉手",
+      "lessons": [
+        "C118"
+      ],
+      "characters": [
+        "拉"
+      ],
+      "kind": "sketch",
+      "value": "handshake"
+    },
+    {
+      "word": "温度",
+      "lessons": [
+        "C119"
+      ],
+      "characters": [
+        "温"
+      ],
+      "kind": "emoji",
+      "value": "🌡️"
+    },
+    {
+      "word": "刻度",
+      "lessons": [
+        "C119"
+      ],
+      "characters": [
+        "度"
+      ],
+      "kind": "sketch",
+      "value": "scale-marks"
+    },
+    {
+      "word": "上升",
+      "lessons": [
+        "C119"
+      ],
+      "characters": [
+        "升"
+      ],
+      "kind": "sketch",
+      "value": "up"
+    },
+    {
+      "word": "下降",
+      "lessons": [
+        "C119"
+      ],
+      "characters": [
+        "降"
+      ],
+      "kind": "sketch",
+      "value": "down"
+    },
+    {
+      "word": "节约",
+      "lessons": [
+        "C120"
+      ],
+      "characters": [
+        "节"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "节省",
+      "lessons": [
+        "C120"
+      ],
+      "characters": [
+        "省"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "水源",
+      "lessons": [
+        "C120"
+      ],
+      "characters": [
+        "源"
+      ],
+      "kind": "emoji",
+      "value": "💧"
+    },
+    {
+      "word": "使用",
+      "lessons": [
+        "C120"
+      ],
+      "characters": [
+        "用"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "故事",
+      "lessons": [
+        "C121",
+        "C121"
+      ],
+      "characters": [
+        "故",
+        "事"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "古时候",
+      "lessons": [
+        "C121"
+      ],
+      "characters": [
+        "古"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "从前",
+      "lessons": [
+        "C121"
+      ],
+      "characters": [
+        "从"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "仙女",
+      "lessons": [
+        "C121"
+      ],
+      "characters": [
+        "仙"
+      ],
+      "kind": "emoji",
+      "value": "🧚"
+    },
+    {
+      "word": "小屋",
+      "lessons": [
+        "C122"
+      ],
+      "characters": [
+        "屋"
+      ],
+      "kind": "emoji",
+      "value": "🏠"
+    },
+    {
+      "word": "一座",
+      "lessons": [
+        "C122"
+      ],
+      "characters": [
+        "座"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "住下",
+      "lessons": [
+        "C122"
+      ],
+      "characters": [
+        "住"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "围墙",
+      "lessons": [
+        "C122"
+      ],
+      "characters": [
+        "围"
+      ],
+      "kind": "sketch",
+      "value": "wall"
+    },
+    {
+      "word": "屋顶",
+      "lessons": [
+        "C122"
+      ],
+      "characters": [
+        "顶"
+      ],
+      "kind": "sketch",
+      "value": "roof"
+    },
+    {
+      "word": "快乐",
+      "lessons": [
+        "C123",
+        "C123"
+      ],
+      "characters": [
+        "快",
+        "乐"
+      ],
+      "kind": "emoji",
+      "value": "😊"
+    },
+    {
+      "word": "微笑",
+      "lessons": [
+        "C123"
+      ],
+      "characters": [
+        "笑"
+      ],
+      "kind": "emoji",
+      "value": "😊"
+    },
+    {
+      "word": "喜欢",
+      "lessons": [
+        "C123"
+      ],
+      "characters": [
+        "喜"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "欢迎",
+      "lessons": [
+        "C123",
+        "C140"
+      ],
+      "characters": [
+        "欢",
+        "迎"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "哭泣",
+      "lessons": [
+        "C124"
+      ],
+      "characters": [
+        "哭"
+      ],
+      "kind": "emoji",
+      "value": "😢"
+    },
+    {
+      "word": "眼泪",
+      "lessons": [
+        "C124"
+      ],
+      "characters": [
+        "泪"
+      ],
+      "kind": "emoji",
+      "value": "😢"
+    },
+    {
+      "word": "伤心",
+      "lessons": [
+        "C124"
+      ],
+      "characters": [
+        "伤"
+      ],
+      "kind": "emoji",
+      "value": "😞"
+    },
+    {
+      "word": "难过",
+      "lessons": [
+        "C124"
+      ],
+      "characters": [
+        "难"
+      ],
+      "kind": "emoji",
+      "value": "😞"
+    },
+    {
+      "word": "心疼",
+      "lessons": [
+        "C124"
+      ],
+      "characters": [
+        "疼"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "害怕",
+      "lessons": [
+        "C125"
+      ],
+      "characters": [
+        "怕"
+      ],
+      "kind": "emoji",
+      "value": "😨"
+    },
+    {
+      "word": "勇敢",
+      "lessons": [
+        "C125"
+      ],
+      "characters": [
+        "勇"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "敢做",
+      "lessons": [
+        "C125"
+      ],
+      "characters": [
+        "敢"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "大胆",
+      "lessons": [
+        "C125"
+      ],
+      "characters": [
+        "胆"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "尝试",
+      "lessons": [
+        "C125"
+      ],
+      "characters": [
+        "尝"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "慌张",
+      "lessons": [
+        "C126"
+      ],
+      "characters": [
+        "慌"
+      ],
+      "kind": "emoji",
+      "value": "😟"
+    },
+    {
+      "word": "吃惊",
+      "lessons": [
+        "C126"
+      ],
+      "characters": [
+        "惊"
+      ],
+      "kind": "emoji",
+      "value": "😲"
+    },
+    {
+      "word": "紧张",
+      "lessons": [
+        "C126"
+      ],
+      "characters": [
+        "紧"
+      ],
+      "kind": "emoji",
+      "value": "😟"
+    },
+    {
+      "word": "焦急",
+      "lessons": [
+        "C126"
+      ],
+      "characters": [
+        "焦"
+      ],
+      "kind": "emoji",
+      "value": "😟"
+    },
+    {
+      "word": "迷路",
+      "lessons": [
+        "C127"
+      ],
+      "characters": [
+        "迷"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "丢失",
+      "lessons": [
+        "C127"
+      ],
+      "characters": [
+        "失"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "寻找",
+      "lessons": [
+        "C127"
+      ],
+      "characters": [
+        "寻"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "追赶",
+      "lessons": [
+        "C127"
+      ],
+      "characters": [
+        "追"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "逃走",
+      "lessons": [
+        "C127"
+      ],
+      "characters": [
+        "逃"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "因为",
+      "lessons": [
+        "C128",
+        "C128"
+      ],
+      "characters": [
+        "因",
+        "为"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "所以",
+      "lessons": [
+        "C128",
+        "C128"
+      ],
+      "characters": [
+        "所",
+        "以"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "而且",
+      "lessons": [
+        "C128",
+        "C145"
+      ],
+      "characters": [
+        "且",
+        "而"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "想法",
+      "lessons": [
+        "C129"
+      ],
+      "characters": [
+        "想"
+      ],
+      "kind": "emoji",
+      "value": "💭"
+    },
+    {
+      "word": "思考",
+      "lessons": [
+        "C129"
+      ],
+      "characters": [
+        "思"
+      ],
+      "kind": "emoji",
+      "value": "🤔"
+    },
+    {
+      "word": "办法",
+      "lessons": [
+        "C129"
+      ],
+      "characters": [
+        "办"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "方法",
+      "lessons": [
+        "C129"
+      ],
+      "characters": [
+        "法"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "主意",
+      "lessons": [
+        "C129"
+      ],
+      "characters": [
+        "主"
+      ],
+      "kind": "emoji",
+      "value": "💭"
+    },
+    {
+      "word": "合作",
+      "lessons": [
+        "C130"
+      ],
+      "characters": [
+        "合"
+      ],
+      "kind": "emoji",
+      "value": "🤝"
+    },
+    {
+      "word": "工作",
+      "lessons": [
+        "C130"
+      ],
+      "characters": [
+        "作"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "团结",
+      "lessons": [
+        "C130"
+      ],
+      "characters": [
+        "团"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "结果",
+      "lessons": [
+        "C130"
+      ],
+      "characters": [
+        "结"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "协作",
+      "lessons": [
+        "C130"
+      ],
+      "characters": [
+        "协"
+      ],
+      "kind": "emoji",
+      "value": "🤝"
+    },
+    {
+      "word": "礼物",
+      "lessons": [
+        "C131"
+      ],
+      "characters": [
+        "礼"
+      ],
+      "kind": "emoji",
+      "value": "🎁"
+    },
+    {
+      "word": "物品",
+      "lessons": [
+        "C131"
+      ],
+      "characters": [
+        "物"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "送给",
+      "lessons": [
+        "C131"
+      ],
+      "characters": [
+        "送"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "接住",
+      "lessons": [
+        "C131"
+      ],
+      "characters": [
+        "接"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "接受",
+      "lessons": [
+        "C131"
+      ],
+      "characters": [
+        "受"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "诚实",
+      "lessons": [
+        "C132"
+      ],
+      "characters": [
+        "诚"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "实话",
+      "lessons": [
+        "C132"
+      ],
+      "characters": [
+        "实"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "真的",
+      "lessons": [
+        "C132"
+      ],
+      "characters": [
+        "真"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "真假",
+      "lessons": [
+        "C132"
+      ],
+      "characters": [
+        "假"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "善意",
+      "lessons": [
+        "C132"
+      ],
+      "characters": [
+        "善"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "做错",
+      "lessons": [
+        "C133"
+      ],
+      "characters": [
+        "错"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "改正",
+      "lessons": [
+        "C133"
+      ],
+      "characters": [
+        "改"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "承认",
+      "lessons": [
+        "C133"
+      ],
+      "characters": [
+        "认"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "道歉",
+      "lessons": [
+        "C133"
+      ],
+      "characters": [
+        "歉"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "原谅",
+      "lessons": [
+        "C133",
+        "C152"
+      ],
+      "characters": [
+        "原",
+        "谅"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "困难",
+      "lessons": [
+        "C134"
+      ],
+      "characters": [
+        "困"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "坚持",
+      "lessons": [
+        "C134"
+      ],
+      "characters": [
+        "坚"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "保持",
+      "lessons": [
+        "C134"
+      ],
+      "characters": [
+        "持"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "努力",
+      "lessons": [
+        "C134"
+      ],
+      "characters": [
+        "努"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "强壮",
+      "lessons": [
+        "C134"
+      ],
+      "characters": [
+        "强"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "能够",
+      "lessons": [
+        "C135"
+      ],
+      "characters": [
+        "能"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "学会",
+      "lessons": [
+        "C135"
+      ],
+      "characters": [
+        "会"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "才能",
+      "lessons": [
+        "C135"
+      ],
+      "characters": [
+        "才"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "聪明",
+      "lessons": [
+        "C135"
+      ],
+      "characters": [
+        "聪"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "本领",
+      "lessons": [
+        "C135"
+      ],
+      "characters": [
+        "领"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "然后",
+      "lessons": [
+        "C136"
+      ],
+      "characters": [
+        "然"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "忽然",
+      "lessons": [
+        "C136"
+      ],
+      "characters": [
+        "忽"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "突然",
+      "lessons": [
+        "C136"
+      ],
+      "characters": [
+        "突"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "发生",
+      "lessons": [
+        "C136"
+      ],
+      "characters": [
+        "发"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "曾经",
+      "lessons": [
+        "C136"
+      ],
+      "characters": [
+        "曾"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "喊话",
+      "lessons": [
+        "C137"
+      ],
+      "characters": [
+        "喊"
+      ],
+      "kind": "emoji",
+      "value": "🗣️"
+    },
+    {
+      "word": "鸟鸣",
+      "lessons": [
+        "C137"
+      ],
+      "characters": [
+        "鸣"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "唱歌",
+      "lessons": [
+        "C137"
+      ],
+      "characters": [
+        "唱"
+      ],
+      "kind": "emoji",
+      "value": "🎤"
+    },
+    {
+      "word": "演奏",
+      "lessons": [
+        "C137"
+      ],
+      "characters": [
+        "奏"
+      ],
+      "kind": "emoji",
+      "value": "🎻"
+    },
+    {
+      "word": "爬树",
+      "lessons": [
+        "C138"
+      ],
+      "characters": [
+        "爬"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "钻洞",
+      "lessons": [
+        "C138"
+      ],
+      "characters": [
+        "钻"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "躲雨",
+      "lessons": [
+        "C138"
+      ],
+      "characters": [
+        "躲"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "藏好",
+      "lessons": [
+        "C138"
+      ],
+      "characters": [
+        "藏"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "滚动",
+      "lessons": [
+        "C138"
+      ],
+      "characters": [
+        "滚"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "美丽",
+      "lessons": [
+        "C139",
+        "C179"
+      ],
+      "characters": [
+        "美",
+        "丽"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "丑小鸭",
+      "lessons": [
+        "C139"
+      ],
+      "characters": [
+        "丑"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "新衣",
+      "lessons": [
+        "C139"
+      ],
+      "characters": [
+        "新"
+      ],
+      "kind": "emoji",
+      "value": "👕"
+    },
+    {
+      "word": "好奇",
+      "lessons": [
+        "C139"
+      ],
+      "characters": [
+        "奇"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "奇怪",
+      "lessons": [
+        "C139"
+      ],
+      "characters": [
+        "怪"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "见面",
+      "lessons": [
+        "C140"
+      ],
+      "characters": [
+        "见"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "离开",
+      "lessons": [
+        "C140"
+      ],
+      "characters": [
+        "离"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "拥抱",
+      "lessons": [
+        "C140",
+        "C154"
+      ],
+      "characters": [
+        "拥",
+        "抱"
+      ],
+      "kind": "emoji",
+      "value": "🤗"
+    },
+    {
+      "word": "舍不得",
+      "lessons": [
+        "C140"
+      ],
+      "characters": [
+        "舍"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "想要",
+      "lessons": [
+        "C141"
+      ],
+      "characters": [
+        "要"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "愿意",
+      "lessons": [
+        "C141"
+      ],
+      "characters": [
+        "愿"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "愿望",
+      "lessons": [
+        "C141"
+      ],
+      "characters": [
+        "望"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "梦想",
+      "lessons": [
+        "C141"
+      ],
+      "characters": [
+        "梦"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "盼望",
+      "lessons": [
+        "C141"
+      ],
+      "characters": [
+        "盼"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "还有",
+      "lessons": [
+        "C142"
+      ],
+      "characters": [
+        "还"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "就是",
+      "lessons": [
+        "C142"
+      ],
+      "characters": [
+        "就"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "都是",
+      "lessons": [
+        "C142"
+      ],
+      "characters": [
+        "都"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "很好",
+      "lessons": [
+        "C142"
+      ],
+      "characters": [
+        "很"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "最好",
+      "lessons": [
+        "C142"
+      ],
+      "characters": [
+        "最"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "把水倒好",
+      "lessons": [
+        "C143"
+      ],
+      "characters": [
+        "把"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "做得好",
+      "lessons": [
+        "C143"
+      ],
+      "characters": [
+        "得"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "轻轻地",
+      "lessons": [
+        "C143"
+      ],
+      "characters": [
+        "地"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "已经",
+      "lessons": [
+        "C143"
+      ],
+      "characters": [
+        "已"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "并且",
+      "lessons": [
+        "C143"
+      ],
+      "characters": [
+        "并"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "好吗",
+      "lessons": [
+        "C144"
+      ],
+      "characters": [
+        "吗"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "谁呢",
+      "lessons": [
+        "C144"
+      ],
+      "characters": [
+        "呢"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "来吧",
+      "lessons": [
+        "C144"
+      ],
+      "characters": [
+        "吧"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "好呀",
+      "lessons": [
+        "C144"
+      ],
+      "characters": [
+        "呀"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "啊哈",
+      "lessons": [
+        "C144"
+      ],
+      "characters": [
+        "啊"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "但是",
+      "lessons": [
+        "C145"
+      ],
+      "characters": [
+        "但"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "却没有",
+      "lessons": [
+        "C145"
+      ],
+      "characters": [
+        "却"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "虽然",
+      "lessons": [
+        "C145"
+      ],
+      "characters": [
+        "虽"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "又来",
+      "lessons": [
+        "C145"
+      ],
+      "characters": [
+        "又"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "或者",
+      "lessons": [
+        "C146"
+      ],
+      "characters": [
+        "或"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "如果",
+      "lessons": [
+        "C146"
+      ],
+      "characters": [
+        "如"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "假若",
+      "lessons": [
+        "C146"
+      ],
+      "characters": [
+        "若"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "立即",
+      "lessons": [
+        "C146"
+      ],
+      "characters": [
+        "即"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "即使",
+      "lessons": [
+        "C146"
+      ],
+      "characters": [
+        "使"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "选择",
+      "lessons": [
+        "C147",
+        "C147"
+      ],
+      "characters": [
+        "选",
+        "择"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "决定",
+      "lessons": [
+        "C147"
+      ],
+      "characters": [
+        "决"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "一定",
+      "lessons": [
+        "C147"
+      ],
+      "characters": [
+        "定"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "同意",
+      "lessons": [
+        "C147"
+      ],
+      "characters": [
+        "意"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "觉得",
+      "lessons": [
+        "C148"
+      ],
+      "characters": [
+        "觉"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "感觉",
+      "lessons": [
+        "C148"
+      ],
+      "characters": [
+        "感"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "判断",
+      "lessons": [
+        "C148",
+        "C148"
+      ],
+      "characters": [
+        "判",
+        "断"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "应该",
+      "lessons": [
+        "C148"
+      ],
+      "characters": [
+        "应"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "耐心",
+      "lessons": [
+        "C149"
+      ],
+      "characters": [
+        "耐"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "专心",
+      "lessons": [
+        "C149"
+      ],
+      "characters": [
+        "专"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "注意",
+      "lessons": [
+        "C149"
+      ],
+      "characters": [
+        "注"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "仔细",
+      "lessons": [
+        "C149"
+      ],
+      "characters": [
+        "仔"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "细心",
+      "lessons": [
+        "C149"
+      ],
+      "characters": [
+        "细"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "特点",
+      "lessons": [
+        "C150"
+      ],
+      "characters": [
+        "特"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "特征",
+      "lessons": [
+        "C150"
+      ],
+      "characters": [
+        "征"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "性格",
+      "lessons": [
+        "C150",
+        "C150"
+      ],
+      "characters": [
+        "性",
+        "格"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "兴趣",
+      "lessons": [
+        "C150"
+      ],
+      "characters": [
+        "趣"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "心情",
+      "lessons": [
+        "C151"
+      ],
+      "characters": [
+        "情"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "情绪",
+      "lessons": [
+        "C151"
+      ],
+      "characters": [
+        "绪"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "高兴",
+      "lessons": [
+        "C151"
+      ],
+      "characters": [
+        "兴"
+      ],
+      "kind": "emoji",
+      "value": "😊"
+    },
+    {
+      "word": "兴奋",
+      "lessons": [
+        "C151"
+      ],
+      "characters": [
+        "奋"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "安静",
+      "lessons": [
+        "C151"
+      ],
+      "characters": [
+        "静"
+      ],
+      "kind": "emoji",
+      "value": "🤫"
+    },
+    {
+      "word": "争论",
+      "lessons": [
+        "C152"
+      ],
+      "characters": [
+        "争"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "争吵",
+      "lessons": [
+        "C152"
+      ],
+      "characters": [
+        "吵"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "解决",
+      "lessons": [
+        "C152"
+      ],
+      "characters": [
+        "解"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "劝说",
+      "lessons": [
+        "C152"
+      ],
+      "characters": [
+        "劝"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "需要",
+      "lessons": [
+        "C153"
+      ],
+      "characters": [
+        "需"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "帮助",
+      "lessons": [
+        "C153"
+      ],
+      "characters": [
+        "助"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "请求",
+      "lessons": [
+        "C153"
+      ],
+      "characters": [
+        "求"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "联系",
+      "lessons": [
+        "C153"
+      ],
+      "characters": [
+        "联"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "联络",
+      "lessons": [
+        "C153"
+      ],
+      "characters": [
+        "络"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "肩膀",
+      "lessons": [
+        "C154"
+      ],
+      "characters": [
+        "肩"
+      ],
+      "kind": "sketch",
+      "value": "shoulder"
+    },
+    {
+      "word": "碰到",
+      "lessons": [
+        "C154"
+      ],
+      "characters": [
+        "碰"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "摸摸",
+      "lessons": [
+        "C154"
+      ],
+      "characters": [
+        "摸"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "秘密",
+      "lessons": [
+        "C155"
+      ],
+      "characters": [
+        "秘"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "密码",
+      "lessons": [
+        "C155"
+      ],
+      "characters": [
+        "密"
+      ],
+      "kind": "sketch",
+      "value": "lock-dots"
+    },
+    {
+      "word": "私人",
+      "lessons": [
+        "C155"
+      ],
+      "characters": [
+        "私"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "隐私",
+      "lessons": [
+        "C155"
+      ],
+      "characters": [
+        "隐"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "门锁",
+      "lessons": [
+        "C155"
+      ],
+      "characters": [
+        "锁"
+      ],
+      "kind": "emoji",
+      "value": "🔒"
+    },
+    {
+      "word": "拒绝",
+      "lessons": [
+        "C156"
+      ],
+      "characters": [
+        "拒"
+      ],
+      "kind": "emoji",
+      "value": "🙅"
+    },
+    {
+      "word": "绝不",
+      "lessons": [
+        "C156"
+      ],
+      "characters": [
+        "绝"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "尊重",
+      "lessons": [
+        "C156"
+      ],
+      "characters": [
+        "尊"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "包容",
+      "lessons": [
+        "C156"
+      ],
+      "characters": [
+        "容"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "允许",
+      "lessons": [
+        "C156"
+      ],
+      "characters": [
+        "允"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "约定",
+      "lessons": [
+        "C157"
+      ],
+      "characters": [
+        "约"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "纪律",
+      "lessons": [
+        "C157"
+      ],
+      "characters": [
+        "律"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "承诺",
+      "lessons": [
+        "C157"
+      ],
+      "characters": [
+        "诺"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "责任",
+      "lessons": [
+        "C157"
+      ],
+      "characters": [
+        "责"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "公共",
+      "lessons": [
+        "C158"
+      ],
+      "characters": [
+        "公"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "众人",
+      "lessons": [
+        "C158"
+      ],
+      "characters": [
+        "众"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "请勿",
+      "lessons": [
+        "C158"
+      ],
+      "characters": [
+        "勿"
+      ],
+      "kind": "emoji",
+      "value": "🚫"
+    },
+    {
+      "word": "喧哗",
+      "lessons": [
+        "C158",
+        "C158"
+      ],
+      "characters": [
+        "喧",
+        "哗"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "开始",
+      "lessons": [
+        "C159"
+      ],
+      "characters": [
+        "始"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "始终",
+      "lessons": [
+        "C159"
+      ],
+      "characters": [
+        "终"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "完成",
+      "lessons": [
+        "C159"
+      ],
+      "characters": [
+        "完"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "成功",
+      "lessons": [
+        "C159",
+        "C159"
+      ],
+      "characters": [
+        "成",
+        "功"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "慢慢",
+      "lessons": [
+        "C160"
+      ],
+      "characters": [
+        "慢"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "反复",
+      "lessons": [
+        "C160"
+      ],
+      "characters": [
+        "反"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "重复",
+      "lessons": [
+        "C160"
+      ],
+      "characters": [
+        "复"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "练习",
+      "lessons": [
+        "C160"
+      ],
+      "characters": [
+        "练"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "书页",
+      "lessons": [
+        "C161"
+      ],
+      "characters": [
+        "页"
+      ],
+      "kind": "sketch",
+      "value": "page"
+    },
+    {
+      "word": "封面",
+      "lessons": [
+        "C161"
+      ],
+      "characters": [
+        "封"
+      ],
+      "kind": "sketch",
+      "value": "cover"
+    },
+    {
+      "word": "装订",
+      "lessons": [
+        "C161"
+      ],
+      "characters": [
+        "订"
+      ],
+      "kind": "sketch",
+      "value": "binding"
+    },
+    {
+      "word": "目录",
+      "lessons": [
+        "C161"
+      ],
+      "characters": [
+        "录"
+      ],
+      "kind": "sketch",
+      "value": "contents"
+    },
+    {
+      "word": "画册",
+      "lessons": [
+        "C161"
+      ],
+      "characters": [
+        "册"
+      ],
+      "kind": "sketch",
+      "value": "album"
+    },
+    {
+      "word": "题目",
+      "lessons": [
+        "C162"
+      ],
+      "characters": [
+        "题"
+      ],
+      "kind": "sketch",
+      "value": "title"
+    },
+    {
+      "word": "书签",
+      "lessons": [
+        "C162"
+      ],
+      "characters": [
+        "签"
+      ],
+      "kind": "emoji",
+      "value": "🔖"
+    },
+    {
+      "word": "版本",
+      "lessons": [
+        "C162"
+      ],
+      "characters": [
+        "版"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "印刷",
+      "lessons": [
+        "C162"
+      ],
+      "characters": [
+        "印"
+      ],
+      "kind": "emoji",
+      "value": "🖨️"
+    },
+    {
+      "word": "作者",
+      "lessons": [
+        "C162"
+      ],
+      "characters": [
+        "者"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "文字",
+      "lessons": [
+        "C163"
+      ],
+      "characters": [
+        "文"
+      ],
+      "kind": "sketch",
+      "value": "book-dictionary"
+    },
+    {
+      "word": "句子",
+      "lessons": [
+        "C163"
+      ],
+      "characters": [
+        "句"
+      ],
+      "kind": "sketch",
+      "value": "sentence"
+    },
+    {
+      "word": "段落",
+      "lessons": [
+        "C163"
+      ],
+      "characters": [
+        "段"
+      ],
+      "kind": "sketch",
+      "value": "paragraph"
+    },
+    {
+      "word": "章节",
+      "lessons": [
+        "C163"
+      ],
+      "characters": [
+        "章"
+      ],
+      "kind": "sketch",
+      "value": "chapter"
+    },
+    {
+      "word": "一篇",
+      "lessons": [
+        "C163"
+      ],
+      "characters": [
+        "篇"
+      ],
+      "kind": "sketch",
+      "value": "chapter"
+    },
+    {
+      "word": "逗号",
+      "lessons": [
+        "C164"
+      ],
+      "characters": [
+        "逗"
+      ],
+      "kind": "sketch",
+      "value": "comma"
+    },
+    {
+      "word": "停顿",
+      "lessons": [
+        "C164"
+      ],
+      "characters": [
+        "顿"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "冒号",
+      "lessons": [
+        "C164"
+      ],
+      "characters": [
+        "冒"
+      ],
+      "kind": "sketch",
+      "value": "colon"
+    },
+    {
+      "word": "感叹",
+      "lessons": [
+        "C164"
+      ],
+      "characters": [
+        "叹"
+      ],
+      "kind": "sketch",
+      "value": "exclamation"
+    },
+    {
+      "word": "括号",
+      "lessons": [
+        "C164"
+      ],
+      "characters": [
+        "括"
+      ],
+      "kind": "sketch",
+      "value": "brackets"
+    },
+    {
+      "word": "续写",
+      "lessons": [
+        "C165"
+      ],
+      "characters": [
+        "续"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "继续",
+      "lessons": [
+        "C165"
+      ],
+      "characters": [
+        "继"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "经过",
+      "lessons": [
+        "C165"
+      ],
+      "characters": [
+        "经"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "跟随",
+      "lessons": [
+        "C165"
+      ],
+      "characters": [
+        "随"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "往前",
+      "lessons": [
+        "C165"
+      ],
+      "characters": [
+        "往"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "角色",
+      "lessons": [
+        "C166"
+      ],
+      "characters": [
+        "色"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "场景",
+      "lessons": [
+        "C166"
+      ],
+      "characters": [
+        "景"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "到处",
+      "lessons": [
+        "C166"
+      ],
+      "characters": [
+        "处"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "背后",
+      "lessons": [
+        "C166"
+      ],
+      "characters": [
+        "背"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "环境",
+      "lessons": [
+        "C166",
+        "C197"
+      ],
+      "characters": [
+        "境",
+        "环"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "做事",
+      "lessons": [
+        "C167"
+      ],
+      "characters": [
+        "做"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "遇见",
+      "lessons": [
+        "C167"
+      ],
+      "characters": [
+        "遇"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "赶来",
+      "lessons": [
+        "C167"
+      ],
+      "characters": [
+        "赶"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "奔跑",
+      "lessons": [
+        "C167"
+      ],
+      "characters": [
+        "奔"
+      ],
+      "kind": "emoji",
+      "value": "🏃"
+    },
+    {
+      "word": "沿着",
+      "lessons": [
+        "C167"
+      ],
+      "characters": [
+        "沿"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "线索",
+      "lessons": [
+        "C168"
+      ],
+      "characters": [
+        "索"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "踪迹",
+      "lessons": [
+        "C168"
+      ],
+      "characters": [
+        "踪"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "足迹",
+      "lessons": [
+        "C168"
+      ],
+      "characters": [
+        "迹"
+      ],
+      "kind": "emoji",
+      "value": "👣"
+    },
+    {
+      "word": "探索",
+      "lessons": [
+        "C168"
+      ],
+      "characters": [
+        "探"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "查看",
+      "lessons": [
+        "C168"
+      ],
+      "characters": [
+        "查"
+      ],
+      "kind": "emoji",
+      "value": "🔍"
+    },
+    {
+      "word": "误会",
+      "lessons": [
+        "C169"
+      ],
+      "characters": [
+        "误"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "骗人",
+      "lessons": [
+        "C169"
+      ],
+      "characters": [
+        "骗"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "弄明白",
+      "lessons": [
+        "C169"
+      ],
+      "characters": [
+        "弄"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "清楚",
+      "lessons": [
+        "C169",
+        "C169"
+      ],
+      "characters": [
+        "清",
+        "楚"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "猜想",
+      "lessons": [
+        "C170"
+      ],
+      "characters": [
+        "猜"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "可以",
+      "lessons": [
+        "C170"
+      ],
+      "characters": [
+        "可"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "将来",
+      "lessons": [
+        "C170"
+      ],
+      "characters": [
+        "将"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "未来",
+      "lessons": [
+        "C170"
+      ],
+      "characters": [
+        "未"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "预想",
+      "lessons": [
+        "C170"
+      ],
+      "characters": [
+        "预"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "怎么",
+      "lessons": [
+        "C171"
+      ],
+      "characters": [
+        "怎"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "知道",
+      "lessons": [
+        "C171"
+      ],
+      "characters": [
+        "知"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "知晓",
+      "lessons": [
+        "C171"
+      ],
+      "characters": [
+        "晓"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "认识",
+      "lessons": [
+        "C171"
+      ],
+      "characters": [
+        "识"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "依据",
+      "lessons": [
+        "C171"
+      ],
+      "characters": [
+        "据"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "新闻",
+      "lessons": [
+        "C172"
+      ],
+      "characters": [
+        "闻"
+      ],
+      "kind": "emoji",
+      "value": "📰"
+    },
+    {
+      "word": "通讯",
+      "lessons": [
+        "C172"
+      ],
+      "characters": [
+        "讯"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "消息",
+      "lessons": [
+        "C172"
+      ],
+      "characters": [
+        "息"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "报告",
+      "lessons": [
+        "C172"
+      ],
+      "characters": [
+        "报"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "传话",
+      "lessons": [
+        "C172"
+      ],
+      "characters": [
+        "传"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "活动",
+      "lessons": [
+        "C173"
+      ],
+      "characters": [
+        "活"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "动作",
+      "lessons": [
+        "C173"
+      ],
+      "characters": [
+        "动"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "计划",
+      "lessons": [
+        "C173",
+        "C173"
+      ],
+      "characters": [
+        "计",
+        "划"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "过程",
+      "lessons": [
+        "C173"
+      ],
+      "characters": [
+        "程"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "示范",
+      "lessons": [
+        "C174"
+      ],
+      "characters": [
+        "范"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "操作",
+      "lessons": [
+        "C174"
+      ],
+      "characters": [
+        "操"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "步骤",
+      "lessons": [
+        "C174"
+      ],
+      "characters": [
+        "骤"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "按照",
+      "lessons": [
+        "C174"
+      ],
+      "characters": [
+        "按"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "照着做",
+      "lessons": [
+        "C174"
+      ],
+      "characters": [
+        "照"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "清单",
+      "lessons": [
+        "C175"
+      ],
+      "characters": [
+        "单"
+      ],
+      "kind": "sketch",
+      "value": "list"
+    },
+    {
+      "word": "项目",
+      "lessons": [
+        "C175"
+      ],
+      "characters": [
+        "项"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "分类",
+      "lessons": [
+        "C175"
+      ],
+      "characters": [
+        "类"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "列表",
+      "lessons": [
+        "C175"
+      ],
+      "characters": [
+        "列"
+      ],
+      "kind": "sketch",
+      "value": "list"
+    },
+    {
+      "word": "一份",
+      "lessons": [
+        "C175"
+      ],
+      "characters": [
+        "份"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "偏旁",
+      "lessons": [
+        "C176"
+      ],
+      "characters": [
+        "偏"
+      ],
+      "kind": "sketch",
+      "value": "radical"
+    },
+    {
+      "word": "部首",
+      "lessons": [
+        "C176"
+      ],
+      "characters": [
+        "部"
+      ],
+      "kind": "sketch",
+      "value": "radical"
+    },
+    {
+      "word": "结构",
+      "lessons": [
+        "C176"
+      ],
+      "characters": [
+        "构"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "组合",
+      "lessons": [
+        "C176"
+      ],
+      "characters": [
+        "组"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "符号",
+      "lessons": [
+        "C176"
+      ],
+      "characters": [
+        "符"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "词语",
+      "lessons": [
+        "C177"
+      ],
+      "characters": [
+        "词"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "语言",
+      "lessons": [
+        "C177"
+      ],
+      "characters": [
+        "语"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "搭配",
+      "lessons": [
+        "C177",
+        "C177"
+      ],
+      "characters": [
+        "配",
+        "搭"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "连接",
+      "lessons": [
+        "C177"
+      ],
+      "characters": [
+        "连"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "代替",
+      "lessons": [
+        "C178",
+        "C178"
+      ],
+      "characters": [
+        "替",
+        "代"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "另外",
+      "lessons": [
+        "C178"
+      ],
+      "characters": [
+        "另"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "更好",
+      "lessons": [
+        "C178"
+      ],
+      "characters": [
+        "更"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "秀美",
+      "lessons": [
+        "C179"
+      ],
+      "characters": [
+        "秀"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "翠绿",
+      "lessons": [
+        "C179"
+      ],
+      "characters": [
+        "翠"
+      ],
+      "kind": "color",
+      "value": "#75a270"
+    },
+    {
+      "word": "鲜花",
+      "lessons": [
+        "C179"
+      ],
+      "characters": [
+        "鲜"
+      ],
+      "kind": "emoji",
+      "value": "🌷"
+    },
+    {
+      "word": "鲜艳",
+      "lessons": [
+        "C179"
+      ],
+      "characters": [
+        "艳"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "讲述",
+      "lessons": [
+        "C180"
+      ],
+      "characters": [
+        "述"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "评价",
+      "lessons": [
+        "C180"
+      ],
+      "characters": [
+        "评"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "分享",
+      "lessons": [
+        "C180"
+      ],
+      "characters": [
+        "享"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "夸奖",
+      "lessons": [
+        "C180"
+      ],
+      "characters": [
+        "夸"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "赞美",
+      "lessons": [
+        "C180"
+      ],
+      "characters": [
+        "赞"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "年级",
+      "lessons": [
+        "C181"
+      ],
+      "characters": [
+        "级"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "准备",
+      "lessons": [
+        "C181"
+      ],
+      "characters": [
+        "准"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "备好",
+      "lessons": [
+        "C181"
+      ],
+      "characters": [
+        "备"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "必须",
+      "lessons": [
+        "C181"
+      ],
+      "characters": [
+        "须"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "检查",
+      "lessons": [
+        "C181"
+      ],
+      "characters": [
+        "检"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "文具",
+      "lessons": [
+        "C182"
+      ],
+      "characters": [
+        "具"
+      ],
+      "kind": "sketch",
+      "value": "utensils"
+    },
+    {
+      "word": "橡皮",
+      "lessons": [
+        "C182",
+        "C182"
+      ],
+      "characters": [
+        "橡",
+        "皮"
+      ],
+      "kind": "sketch",
+      "value": "eraser"
+    },
+    {
+      "word": "胶水",
+      "lessons": [
+        "C182"
+      ],
+      "characters": [
+        "胶"
+      ],
+      "kind": "sketch",
+      "value": "glue"
+    },
+    {
+      "word": "黑板",
+      "lessons": [
+        "C183"
+      ],
+      "characters": [
+        "板"
+      ],
+      "kind": "sketch",
+      "value": "blackboard"
+    },
+    {
+      "word": "墨水",
+      "lessons": [
+        "C183"
+      ],
+      "characters": [
+        "墨"
+      ],
+      "kind": "emoji",
+      "value": "🖋️"
+    },
+    {
+      "word": "讲台",
+      "lessons": [
+        "C183"
+      ],
+      "characters": [
+        "台"
+      ],
+      "kind": "sketch",
+      "value": "desk"
+    },
+    {
+      "word": "屏幕",
+      "lessons": [
+        "C183"
+      ],
+      "characters": [
+        "屏"
+      ],
+      "kind": "emoji",
+      "value": "🖥️"
+    },
+    {
+      "word": "珍惜",
+      "lessons": [
+        "C184",
+        "C184"
+      ],
+      "characters": [
+        "惜",
+        "珍"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "损坏",
+      "lessons": [
+        "C184"
+      ],
+      "characters": [
+        "损"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "毁坏",
+      "lessons": [
+        "C184"
+      ],
+      "characters": [
+        "毁"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "借书",
+      "lessons": [
+        "C184"
+      ],
+      "characters": [
+        "借"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "举手",
+      "lessons": [
+        "C185"
+      ],
+      "characters": [
+        "举"
+      ],
+      "kind": "emoji",
+      "value": "🖐️"
+    },
+    {
+      "word": "提问",
+      "lessons": [
+        "C185"
+      ],
+      "characters": [
+        "提"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "发言",
+      "lessons": [
+        "C185"
+      ],
+      "characters": [
+        "言"
+      ],
+      "kind": "emoji",
+      "value": "🗣️"
+    },
+    {
+      "word": "回顾",
+      "lessons": [
+        "C185"
+      ],
+      "characters": [
+        "顾"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "考虑",
+      "lessons": [
+        "C185"
+      ],
+      "characters": [
+        "虑"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "值日",
+      "lessons": [
+        "C186"
+      ],
+      "characters": [
+        "值"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "劳动",
+      "lessons": [
+        "C186"
+      ],
+      "characters": [
+        "劳"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "汗水",
+      "lessons": [
+        "C186"
+      ],
+      "characters": [
+        "汗"
+      ],
+      "kind": "sketch",
+      "value": "sweat"
+    },
+    {
+      "word": "勤劳",
+      "lessons": [
+        "C186"
+      ],
+      "characters": [
+        "勤"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "任务",
+      "lessons": [
+        "C186",
+        "C187"
+      ],
+      "characters": [
+        "务",
+        "任"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "负责",
+      "lessons": [
+        "C187"
+      ],
+      "characters": [
+        "负"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "承担",
+      "lessons": [
+        "C187"
+      ],
+      "characters": [
+        "担"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "管理",
+      "lessons": [
+        "C187"
+      ],
+      "characters": [
+        "管"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "独立",
+      "lessons": [
+        "C187"
+      ],
+      "characters": [
+        "独"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "健康",
+      "lessons": [
+        "C188"
+      ],
+      "characters": [
+        "健"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "安康",
+      "lessons": [
+        "C188"
+      ],
+      "characters": [
+        "康"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "锻炼",
+      "lessons": [
+        "C188",
+        "C188"
+      ],
+      "characters": [
+        "锻",
+        "炼"
+      ],
+      "kind": "emoji",
+      "value": "🏋️"
+    },
+    {
+      "word": "呼吸",
+      "lessons": [
+        "C188"
+      ],
+      "characters": [
+        "呼"
+      ],
+      "kind": "sketch",
+      "value": "breath"
+    },
+    {
+      "word": "运动",
+      "lessons": [
+        "C189"
+      ],
+      "characters": [
+        "运"
+      ],
+      "kind": "emoji",
+      "value": "🏃"
+    },
+    {
+      "word": "休息",
+      "lessons": [
+        "C189"
+      ],
+      "characters": [
+        "休"
+      ],
+      "kind": "emoji",
+      "value": "🛌"
+    },
+    {
+      "word": "伸展",
+      "lessons": [
+        "C189"
+      ],
+      "characters": [
+        "伸"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "小腿",
+      "lessons": [
+        "C189"
+      ],
+      "characters": [
+        "腿"
+      ],
+      "kind": "emoji",
+      "value": "🦵"
+    },
+    {
+      "word": "手臂",
+      "lessons": [
+        "C189"
+      ],
+      "characters": [
+        "臂"
+      ],
+      "kind": "emoji",
+      "value": "💪"
+    },
+    {
+      "word": "记录",
+      "lessons": [
+        "C190"
+      ],
+      "characters": [
+        "记"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "发现",
+      "lessons": [
+        "C190"
+      ],
+      "characters": [
+        "现"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "回忆",
+      "lessons": [
+        "C190"
+      ],
+      "characters": [
+        "忆"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "证据",
+      "lessons": [
+        "C190"
+      ],
+      "characters": [
+        "证"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "确认",
+      "lessons": [
+        "C190"
+      ],
+      "characters": [
+        "确"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "介绍",
+      "lessons": [
+        "C191",
+        "C191"
+      ],
+      "characters": [
+        "介",
+        "绍"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "姓名",
+      "lessons": [
+        "C191"
+      ],
+      "characters": [
+        "姓"
+      ],
+      "kind": "sketch",
+      "value": "name"
+    },
+    {
+      "word": "年龄",
+      "lessons": [
+        "C191"
+      ],
+      "characters": [
+        "龄"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "姓李",
+      "lessons": [
+        "C191"
+      ],
+      "characters": [
+        "李"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "庆祝",
+      "lessons": [
+        "C192"
+      ],
+      "characters": [
+        "庆"
+      ],
+      "kind": "emoji",
+      "value": "🎉"
+    },
+    {
+      "word": "祝福",
+      "lessons": [
+        "C192"
+      ],
+      "characters": [
+        "祝"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "幸福",
+      "lessons": [
+        "C192",
+        "C192"
+      ],
+      "characters": [
+        "福",
+        "幸"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "祝贺",
+      "lessons": [
+        "C192"
+      ],
+      "characters": [
+        "贺"
+      ],
+      "kind": "emoji",
+      "value": "🎉"
+    },
+    {
+      "word": "国旗",
+      "lessons": [
+        "C193"
+      ],
+      "characters": [
+        "旗"
+      ],
+      "kind": "emoji",
+      "value": "🇨🇳"
+    },
+    {
+      "word": "北京",
+      "lessons": [
+        "C193"
+      ],
+      "characters": [
+        "京"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "中华",
+      "lessons": [
+        "C193"
+      ],
+      "characters": [
+        "华"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "祖国",
+      "lessons": [
+        "C193"
+      ],
+      "characters": [
+        "祖"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "人民",
+      "lessons": [
+        "C193"
+      ],
+      "characters": [
+        "民"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "传统",
+      "lessons": [
+        "C194"
+      ],
+      "characters": [
+        "统"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "小龙",
+      "lessons": [
+        "C194"
+      ],
+      "characters": [
+        "龙"
+      ],
+      "kind": "emoji",
+      "value": "🐉"
+    },
+    {
+      "word": "龙舟",
+      "lessons": [
+        "C194"
+      ],
+      "characters": [
+        "舟"
+      ],
+      "kind": "sketch",
+      "value": "dragonboat"
+    },
+    {
+      "word": "端午",
+      "lessons": [
+        "C194"
+      ],
+      "characters": [
+        "端"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "粽子",
+      "lessons": [
+        "C194"
+      ],
+      "characters": [
+        "粽"
+      ],
+      "kind": "sketch",
+      "value": "dumpling-leaf"
+    },
+    {
+      "word": "工人",
+      "lessons": [
+        "C195"
+      ],
+      "characters": [
+        "工"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🔧"
+    },
+    {
+      "word": "工匠",
+      "lessons": [
+        "C195"
+      ],
+      "characters": [
+        "匠"
+      ],
+      "kind": "emoji",
+      "value": "🧑‍🔧"
+    },
+    {
+      "word": "产品",
+      "lessons": [
+        "C195"
+      ],
+      "characters": [
+        "产"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "建设",
+      "lessons": [
+        "C195"
+      ],
+      "characters": [
+        "建"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "制造",
+      "lessons": [
+        "C195"
+      ],
+      "characters": [
+        "造"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "科学",
+      "lessons": [
+        "C196"
+      ],
+      "characters": [
+        "科"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "技术",
+      "lessons": [
+        "C196"
+      ],
+      "characters": [
+        "技"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "美术",
+      "lessons": [
+        "C196"
+      ],
+      "characters": [
+        "术"
+      ],
+      "kind": "emoji",
+      "value": "🖌️"
+    },
+    {
+      "word": "网络",
+      "lessons": [
+        "C196"
+      ],
+      "characters": [
+        "网"
+      ],
+      "kind": "sketch",
+      "value": "network"
+    },
+    {
+      "word": "键盘",
+      "lessons": [
+        "C196"
+      ],
+      "characters": [
+        "键"
+      ],
+      "kind": "emoji",
+      "value": "⌨️"
+    },
+    {
+      "word": "垃圾",
+      "lessons": [
+        "C197",
+        "C197"
+      ],
+      "characters": [
+        "垃",
+        "圾"
+      ],
+      "kind": "emoji",
+      "value": "🗑️"
+    },
+    {
+      "word": "污染",
+      "lessons": [
+        "C197",
+        "C197"
+      ],
+      "characters": [
+        "污",
+        "染"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "民族",
+      "lessons": [
+        "C198"
+      ],
+      "characters": [
+        "族"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "世界",
+      "lessons": [
+        "C198",
+        "C198"
+      ],
+      "characters": [
+        "世",
+        "界"
+      ],
+      "kind": "emoji",
+      "value": "🌐"
+    },
+    {
+      "word": "海洋",
+      "lessons": [
+        "C198"
+      ],
+      "characters": [
+        "洋"
+      ],
+      "kind": "emoji",
+      "value": "🌊"
+    },
+    {
+      "word": "亚洲",
+      "lessons": [
+        "C198"
+      ],
+      "characters": [
+        "洲"
+      ],
+      "kind": "emoji",
+      "value": "🌏"
+    },
+    {
+      "word": "站立",
+      "lessons": [
+        "C199"
+      ],
+      "characters": [
+        "立"
+      ],
+      "kind": "emoji",
+      "value": "🧍"
+    },
+    {
+      "word": "阅读",
+      "lessons": [
+        "C199"
+      ],
+      "characters": [
+        "阅"
+      ],
+      "kind": "emoji",
+      "value": "📖"
+    },
+    {
+      "word": "读懂",
+      "lessons": [
+        "C199"
+      ],
+      "characters": [
+        "懂"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "字典",
+      "lessons": [
+        "C199"
+      ],
+      "characters": [
+        "典"
+      ],
+      "kind": "sketch",
+      "value": "dictionary"
+    },
+    {
+      "word": "展示",
+      "lessons": [
+        "C200"
+      ],
+      "characters": [
+        "展"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "收获",
+      "lessons": [
+        "C200"
+      ],
+      "characters": [
+        "获"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "奖章",
+      "lessons": [
+        "C200"
+      ],
+      "characters": [
+        "奖"
+      ],
+      "kind": "emoji",
+      "value": "🏅"
+    },
+    {
+      "word": "保留",
+      "lessons": [
+        "C200"
+      ],
+      "characters": [
+        "留"
+      ],
+      "kind": "context",
+      "value": null
+    },
+    {
+      "word": "纪念",
+      "lessons": [
+        "C200"
+      ],
+      "characters": [
+        "念"
+      ],
+      "kind": "context",
+      "value": null
+    }
+  ]
+}

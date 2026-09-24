@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-23T03:05:50.323Z",
+  "releaseId": "curriculum-1000-v1",
+  "lessons": 204,
+  "characters": 1000,
+  "baseURL": "http://localhost:8080",
+  "browser": "Chromium / system Chrome"
+}

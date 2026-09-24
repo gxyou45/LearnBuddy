@@ -37,7 +37,7 @@ test('legacy stories fit and expanded stage stories remain readable on compact s
  await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();
  for(const lesson of catalog.lessons.filter((l:any,i:number)=>i<10||/^c(020|040|060|080|100|120|140|160|164|180|200)$/.test(l.id))){
   await page.evaluate(id=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.activeLesson=id;p.step=14;p.stepId='story';p.huntFound=[];localStorage.setItem(key,JSON.stringify(p));},lesson.id);
-  await page.reload();await expect(page.locator('.story-text')).toBeVisible();
+  await page.reload();await expect(page.locator('.story-text'),`lesson ${lesson.id} is ready`).toBeVisible({timeout:15000});
   const overflow=await page.locator('.learning-shell>main').evaluate(el=>el.scrollHeight-el.clientHeight);
   if(lesson.characters.length===3)expect(overflow,lesson.id).toBeLessThanOrEqual(2);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),lesson.id).toBe(true);

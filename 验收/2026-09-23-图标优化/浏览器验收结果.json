@@ -1,0 +1,89 @@
+{
+  "summary": "12 个不同浏览器场景通过；最终部署后另复测 4 个配图流程通过；保存 16 张应用截图。",
+  "runs": [
+    {
+      "file": "learnbuddy-icons-e2e.json",
+      "stats": {
+        "startTime": "2026-09-23T03:37:55.350Z",
+        "duration": 151980.201,
+        "expected": 12,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "file": "learnbuddy-icons-final.json",
+      "stats": {
+        "startTime": "2026-09-23T03:41:56.891Z",
+        "duration": 23065.856,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "all ten chapters unlock, teach the right characters, finish their hunts and open matching stories",
+      "file": "chapters.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "parent access and switching keep independent lesson progress",
+      "file": "chapters.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "complete published catalog and every lesson package resolve their media",
+      "file": "curriculum.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "five-character compound-word lesson completes without ambiguous options or overlapping hunt targets",
+      "file": "curriculum.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "last curriculum unit, stage review and the full mobile directory render",
+      "file": "curriculum.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "lesson actions stay onscreen with browser toolbars (393x650)",
+      "file": "viewport.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "lesson actions stay onscreen with browser toolbars (320x568)",
+      "file": "viewport.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "legacy stories fit and expanded stage stories remain readable on compact screens",
+      "file": "viewport.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "whole-word illustrations: 水果精确图标",
+      "file": "word-visuals.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "whole-word illustrations: 萝卜简笔画",
+      "file": "word-visuals.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "whole-word illustrations: 蜻蜓简笔画",
+      "file": "word-visuals.spec.ts",
+      "status": "passed"
+    },
+    {
+      "name": "whole-word illustrations: 抽象词陪读",
+      "file": "word-visuals.spec.ts",
+      "status": "passed"
+    }
+  ]
+}

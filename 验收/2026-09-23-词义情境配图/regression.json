@@ -1,0 +1,469 @@
+{
+  "config": {
+    "argv": [
+      "/Users/sophia.gao/.config/nvm/versions/node/v24.13.1/bin/node",
+      "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/word-visuals.spec.ts",
+      "tests/e2e/reading.spec.ts",
+      "tests/e2e/viewport.spec.ts",
+      "--workers=1",
+      "--reporter=json"
+    ],
+    "configFile": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/playwright.config.ts",
+    "rootDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "reading.spec.ts",
+      "file": "reading.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "words and stories highlight progressively, finish and restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16271,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:13:15.975Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd28b817daae9d948764-39c70ed6f81545e57181",
+          "file": "reading.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "legacy story progress can reopen words and return without modifying learning evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5820,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:13:33.786Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd28b817daae9d948764-dd853368e61110505a70",
+          "file": "reading.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "unreached reading stages cannot be opened by guessing a URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2406,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:13:39.633Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd28b817daae9d948764-f7dc89f2efedf7e5ebe9",
+          "file": "reading.spec.ts",
+          "line": 69,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "viewport.spec.ts",
+      "file": "viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "lesson actions stay onscreen with browser toolbars (393x650)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 46705,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:13:42.304Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-c2727a545a1ca1a56fe3",
+          "file": "viewport.spec.ts",
+          "line": 4,
+          "column": 2
+        },
+        {
+          "title": "lesson actions stay onscreen with browser toolbars (320x568)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 37604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:14:29.101Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-63e954bf47ffb8816bbb",
+          "file": "viewport.spec.ts",
+          "line": 4,
+          "column": 2
+        },
+        {
+          "title": "legacy stories fit and expanded stage stories remain readable on compact screens",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 42196,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.story-text')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.story-text') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.story-text')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.story-text')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.story-text') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.story-text')\u001b[22m\n\n    at /Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e/viewport.spec.ts:40:65",
+                    "location": {
+                      "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e/viewport.spec.ts",
+                      "column": 65,
+                      "line": 40
+                    },
+                    "snippet": "  38 |  for(const lesson of catalog.lessons.filter((l:any,i:number)=>i<10||/^c(020|040|060|080|100|120|140|160|164|180|200)$/.test(l.id))){\n  39 |   await page.evaluate(id=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.activeLesson=id;p.step=14;p.stepId='story';p.huntFound=[];localStorage.setItem(key,JSON.stringify(p));},lesson.id);\n> 40 |   await page.reload();await expect(page.locator('.story-text')).toBeVisible();\n     |                                                                 ^\n  41 |   const overflow=await page.locator('.learning-shell>main').evaluate(el=>el.scrollHeight-el.clientHeight);\n  42 |   if(lesson.characters.length===3)expect(overflow,lesson.id).toBeLessThanOrEqual(2);\n  43 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),lesson.id).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e/viewport.spec.ts",
+                        "column": 65,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.story-text')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.story-text') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.story-text')\u001b[22m\n\n\n  38 |  for(const lesson of catalog.lessons.filter((l:any,i:number)=>i<10||/^c(020|040|060|080|100|120|140|160|164|180|200)$/.test(l.id))){\n  39 |   await page.evaluate(id=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.activeLesson=id;p.step=14;p.stepId='story';p.huntFound=[];localStorage.setItem(key,JSON.stringify(p));},lesson.id);\n> 40 |   await page.reload();await expect(page.locator('.story-text')).toBeVisible();\n     |                                                                 ^\n  41 |   const overflow=await page.locator('.learning-shell>main').evaluate(el=>el.scrollHeight-el.clientHeight);\n  42 |   if(lesson.characters.length===3)expect(overflow,lesson.id).toBeLessThanOrEqual(2);\n  43 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),lesson.id).toBe(true);\n    at /Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e/viewport.spec.ts:40:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:15:06.879Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/test-results/viewport-legacy-stories-fi-f0058-readable-on-compact-screens/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e/viewport.spec.ts",
+                    "column": 65,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "24876809b35b098bf297-0dc63cc229cf28e0ac8e",
+          "file": "viewport.spec.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "word-visuals.spec.ts",
+      "file": "word-visuals.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "whole-word illustrations: 水果精确图标",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:15:59.816Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "101a7f17dc8b2164f48e-b6018f0a5232fc6fa7fc",
+          "file": "word-visuals.spec.ts",
+          "line": 6,
+          "column": 2
+        },
+        {
+          "title": "whole-word illustrations: 萝卜简笔画",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:16:22.310Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "101a7f17dc8b2164f48e-098e5a0ec84e31d99b5b",
+          "file": "word-visuals.spec.ts",
+          "line": 6,
+          "column": 2
+        },
+        {
+          "title": "whole-word illustrations: 蜻蜓简笔画",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13331,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:16:32.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "101a7f17dc8b2164f48e-8a962ca1057882e0a795",
+          "file": "word-visuals.spec.ts",
+          "line": 6,
+          "column": 2
+        },
+        {
+          "title": "whole-word illustrations: 因果情境配图",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:16:46.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "101a7f17dc8b2164f48e-f22322a5e585c3bcf039",
+          "file": "word-visuals.spec.ts",
+          "line": 6,
+          "column": 2
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-23T07:13:14.123Z",
+    "duration": 222096.016,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

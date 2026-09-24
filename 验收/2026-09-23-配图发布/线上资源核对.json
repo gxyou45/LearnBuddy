@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-09-23T07:35:58.970Z",
+  "base": "http://localhost:8080",
+  "releaseId": "curriculum-1000-v1",
+  "bundle": {
+    "url": "/assets/index-DrHZoh55.js",
+    "sha256": "5ea3f0e96f130e1aacb0e8c898e03cbca36f513078d41a0c559ddde2a0e0aa6c",
+    "matchesLocalBuild": true
+  },
+  "stories": [
+    {
+      "id": "c012",
+      "title": "太阳出来了",
+      "url": "/assets/c012-B4s-2VwU.png",
+      "bytes": 2892120,
+      "sha256": "7ed5a6ee032170bc18ba7e94a454fd9f46c0e23f7b9127f20db167d5a3a5c746",
+      "storyMatched": true
+    },
+    {
+      "id": "c041",
+      "title": "认识农场动物",
+      "url": "/assets/c041-CbRquZ8W.png",
+      "bytes": 2889367,
+      "sha256": "a7be30265249fad97d57fa1b817adb97fd24a3a63346d1e915bf2db7ab364a84",
+      "storyMatched": true
+    },
+    {
+      "id": "c050",
+      "title": "种下一粒种子",
+      "url": "/assets/c050-DiG7_6Sz.png",
+      "bytes": 2944848,
+      "sha256": "391b47fc20d693c0c2f4742174053134fc1dbe590aaddbab5e66ab212ad55830",
+      "storyMatched": true
+    },
+    {
+      "id": "c062",
+      "title": "过马路",
+      "url": "/assets/c062-Derlu_sm.png",
+      "bytes": 2559189,
+      "sha256": "f766929dd270b71c15ddfbb1bda9f6cabf455c4ee0699173a4ec3acf2db2670b",
+      "storyMatched": true
+    },
+    {
+      "id": "c066",
+      "title": "骑车戴头盔",
+      "url": "/assets/c066-Dq_VKCJ2.png",
+      "bytes": 2640557,
+      "sha256": "6ae6ac9344f00bc1d8755b9a4308d7e47755d982dd1e4af94c2855886c027499",
+      "storyMatched": true
+    },
+    {
+      "id": "c090",
+      "title": "再尝一种水果",
+      "url": "/assets/c090-Bg1wKnxc.png",
+      "bytes": 2490360,
+      "sha256": "0f27028db169ea8249fd3c9d9bc3f75b2189e4b6e546b274a08f06a256b852d4",
+      "storyMatched": true
+    },
+    {
+      "id": "c097",
+      "title": "周末做家务",
+      "url": "/assets/c097-DPnQ8AHB.png",
+      "bytes": 2306955,
+      "sha256": "4df2599cbdd27c3d43885d4e012a99b7b2417b67910b0d14fb10364dcdb2d6a0",
+      "storyMatched": true
+    },
+    {
+      "id": "c128",
+      "title": "把理由讲清楚",
+      "url": "/assets/c128-oPD4T7Hs.png",
+      "bytes": 2719677,
+      "sha256": "9957ad428100c2c144e60e019efed0a153b315a780a6b2c23bd1b301aefee013",
+      "storyMatched": true
+    },
+    {
+      "id": "c154",
+      "title": "我的身体有边界",
+      "url": "/assets/c154-neyFKStQ.png",
+      "bytes": 2343846,
+      "sha256": "331b5d439b1f920cbc190366d29ecf09c44f7b30fd98c08d17e4b9528ee1f87b",
+      "storyMatched": true
+    },
+    {
+      "id": "c194",
+      "title": "端午看龙舟",
+      "url": "/assets/c194-2hNZjMaS.png",
+      "bytes": 2729845,
+      "sha256": "f0845de9e4189f30397e7ee5ef9b006f863b764dc786cfb029a4973966e6d39d",
+      "storyMatched": true
+    }
+  ]
+}

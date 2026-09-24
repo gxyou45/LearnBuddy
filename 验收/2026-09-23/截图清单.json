@@ -1,0 +1,211 @@
+[
+  {
+    "id": "01-home",
+    "title": "首页：完整课程入口",
+    "check": "首页可加载；测试环境为手机宽度，课程数量另由 API 全量校验。",
+    "method": "真实浏览器操作",
+    "file": "截图/01-home.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "02-directory",
+    "title": "课程目录：20 个单元自动换行",
+    "check": "通过家长入口开放目录后，整组课程可选；开放不会记为已学。",
+    "method": "真实家长入口操作",
+    "file": "截图/02-directory.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "03-intro",
+    "title": "五字课开场：香蕉、葡萄、橙",
+    "check": "课程含 5 字，明确提示可以分两次学习。",
+    "method": "真实浏览器操作",
+    "file": "截图/03-intro.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "04-character",
+    "title": "认字：在“香蕉”里认识“香”",
+    "check": "目标汉字、例词与继续按钮可见。",
+    "method": "真实浏览器操作",
+    "file": "截图/04-character.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "05-word",
+    "title": "读词语：完整词语与目标字对应",
+    "check": "显示“香蕉”和目标字“香”，不把词语拆成无意义释义。",
+    "method": "真实浏览器操作",
+    "file": "截图/05-word.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "06-sound",
+    "title": "听词找字：同词字不互作干扰",
+    "check": "“香”和“蕉”不会同时作为“香蕉”录音的两个候选答案。",
+    "method": "真实浏览器操作",
+    "file": "截图/06-sound.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "07-wrong",
+    "title": "答错反馈：支持继续尝试",
+    "check": "故意选择错误答案，出现提示并允许继续，没有卡住流程。",
+    "method": "真实浏览器操作",
+    "file": "截图/07-wrong.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "08-meaning",
+    "title": "词义联系：候选词不重复",
+    "check": "同一题没有两个“香蕉”选项；词语与图标一同呈现，需要家长陪读选项。",
+    "method": "真实浏览器操作",
+    "file": "截图/08-meaning.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "09-hunt",
+    "title": "找字：五个独立位置",
+    "check": "五个目标字都有独立点击位置，计数从 0/5 开始。",
+    "method": "真实浏览器操作",
+    "file": "截图/09-hunt.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "10-hunt-done",
+    "title": "找字完成：五字全部找到",
+    "check": "计数为 5/5，并出现进入故事的按钮。",
+    "method": "真实浏览器操作",
+    "file": "截图/10-hunt-done.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "11-story",
+    "title": "共读与理解问答",
+    "check": "正文、理解问题、家长参考和底部完成按钮可用；长内容在正文区域滚动。",
+    "method": "真实浏览器操作",
+    "file": "截图/11-story.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "12-done",
+    "title": "完成页：综合练习入口",
+    "check": "完成共读后可以进入新字与老朋友的综合练习。",
+    "method": "真实浏览器操作",
+    "file": "截图/12-done.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "13-comprehensive",
+    "title": "综合练习：本课两字＋历史错题一字",
+    "check": "先在旧“认识家人”课故意答错“我”，再完成本课；得到 3 题队列，未通过篡改进度制造错题。",
+    "method": "真实浏览器操作",
+    "file": "截图/13-comprehensive.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "14-final-stage",
+    "title": "最后一课：主题复习和阶段共读",
+    "check": "实际走到 C200 的共读环节，阶段材料可滚动阅读，课程没有中途缺页。",
+    "method": "真实浏览器操作",
+    "file": "截图/14-final-stage.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "15-narrow",
+    "title": "320 像素小屏：长内容与操作区",
+    "check": "没有横向溢出；长材料可滚动，完成按钮保持在屏幕内。",
+    "method": "真实浏览器操作",
+    "file": "截图/15-narrow.png",
+    "viewport": {
+      "width": 320,
+      "height": 568
+    }
+  },
+  {
+    "id": "16-cloud",
+    "title": "云端学习：进度已确认",
+    "check": "使用专用验收账号和新建测试孩子，未进入用户真实孩子档案。",
+    "method": "真实浏览器操作",
+    "file": "截图/16-cloud.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "17-pending",
+    "title": "网络异常：明确提示本机待同步",
+    "check": "主动阻断测试页的同步请求，操作保存在本机，页面没有显示成云端成功。",
+    "method": "Playwright 阻断同步接口，模拟网络失败",
+    "file": "截图/17-pending.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "18-synced",
+    "title": "恢复网络：继续原位置",
+    "check": "解除请求阻断并重试，待同步提示消失，继续同一课次。",
+    "method": "真实浏览器操作",
+    "file": "截图/18-synced.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  },
+  {
+    "id": "19-error",
+    "title": "课程加载失败：提供重试入口",
+    "check": "阻断目录请求，错误页保留重试入口，不假装加载成功。",
+    "method": "Playwright 阻断目录接口，模拟服务失败",
+    "file": "截图/19-error.png",
+    "viewport": {
+      "width": 393,
+      "height": 851
+    }
+  }
+]

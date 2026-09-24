@@ -1,0 +1,318 @@
+{
+  "environment": {
+    "date": "2026-09-23T03:05:50.323Z",
+    "releaseId": "curriculum-1000-v1",
+    "lessons": 204,
+    "characters": 1000,
+    "baseURL": "http://localhost:8080",
+    "browser": "Chromium / system Chrome"
+  },
+  "summary": {
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "screenshots": 19
+  },
+  "findings": [
+    "素材待优化：截图 08 中香蕉、葡萄、橙子的选项均使用餐盘图标，无法通过图像区分含义，仍依赖读词和家长陪读。建议优先替换为与词义对应、彼此可辨的图片。",
+    "共读素材待优化：截图 11 的配图是图文词卡，尚不是表现故事情节的场景插画。建议为代表性课文补充情境图，再进行儿童理解效果试读。",
+    "截图是当前视口的画面；共读和阶段复习长内容需要向下滚动，截图不代表全部正文。",
+    "稳定性待跟踪：首轮存在失败场景，单独重测结果见明细。重测通过不等于已定位或修复原因；本轮未修改应用代码。"
+  ],
+  "runs": [
+    {
+      "file": "learnbuddy-acceptance-20260923.json",
+      "stats": {
+        "startTime": "2026-09-23T03:03:14.538Z",
+        "duration": 476128.546,
+        "expected": 33,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "file": "learnbuddy-visual-20260923.json",
+      "stats": {
+        "startTime": "2026-09-23T03:05:47.120Z",
+        "duration": 90740.027,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "file": "learnbuddy-recheck-20260923.json",
+      "stats": {
+        "startTime": "2026-09-23T03:12:05.175Z",
+        "duration": 16064.451000000001,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "phone family flow: verify, isolate children and guest, persist login, reset password",
+      "file": "accounts.spec.ts",
+      "status": "passed",
+      "durationMs": 16441,
+      "previousFailure": false
+    },
+    {
+      "name": "account outage on reload preserves storage and offers a retry",
+      "file": "accounts.spec.ts",
+      "status": "passed",
+      "durationMs": 2514,
+      "previousFailure": false
+    },
+    {
+      "name": "admin editing, preview, publishing and rollback at phone width",
+      "file": "admin.spec.ts",
+      "status": "passed",
+      "durationMs": 2445,
+      "previousFailure": false
+    },
+    {
+      "name": "admin access failure and save conflict preserve unsaved text",
+      "file": "admin.spec.ts",
+      "status": "passed",
+      "durationMs": 1715,
+      "previousFailure": false
+    },
+    {
+      "name": "a family completes the lesson, resumes progress, reads and resets",
+      "file": "app.spec.ts",
+      "status": "passed",
+      "durationMs": 6392,
+      "previousFailure": false
+    },
+    {
+      "name": "audio failure and incorrect answers allow assisted completion",
+      "file": "app.spec.ts",
+      "status": "passed",
+      "durationMs": 2145,
+      "previousFailure": false
+    },
+    {
+      "name": "320px layout fits and corrupted storage is preserved",
+      "file": "app.spec.ts",
+      "status": "passed",
+      "durationMs": 1933,
+      "previousFailure": false
+    },
+    {
+      "name": "hidden-character game fits a narrow screen and supports leaving early",
+      "file": "app.spec.ts",
+      "status": "passed",
+      "durationMs": 2371,
+      "previousFailure": false
+    },
+    {
+      "name": "all ten chapters unlock, teach the right characters, finish their hunts and open matching stories",
+      "file": "chapters.spec.ts",
+      "status": "passed",
+      "durationMs": 31738,
+      "previousFailure": false
+    },
+    {
+      "name": "parent access and switching keep independent lesson progress",
+      "file": "chapters.spec.ts",
+      "status": "passed",
+      "durationMs": 4057,
+      "previousFailure": false
+    },
+    {
+      "name": "cloud saves real answers, resumes on another device and preserves formal position during reading",
+      "file": "cloud-learning.spec.ts",
+      "status": "passed",
+      "durationMs": 18393,
+      "previousFailure": false
+    },
+    {
+      "name": "lost advance response retries the same event without advancing twice; offline queues writes",
+      "file": "cloud-learning.spec.ts",
+      "status": "passed",
+      "durationMs": 4157,
+      "previousFailure": false
+    },
+    {
+      "name": "home loads a catalog, lessons load on demand, media comes from API URLs",
+      "file": "content-api.spec.ts",
+      "status": "passed",
+      "durationMs": 2104,
+      "previousFailure": false
+    },
+    {
+      "name": "catalog outage preserves raw progress and retry restores the same word step",
+      "file": "content-api.spec.ts",
+      "status": "passed",
+      "durationMs": 2540,
+      "previousFailure": false
+    },
+    {
+      "name": "lesson failure offers retry and does not fall back to bundled content",
+      "file": "content-api.spec.ts",
+      "status": "passed",
+      "durationMs": 2095,
+      "previousFailure": false
+    },
+    {
+      "name": "legacy storage is backed up and API text is rendered without a frontend rebuild",
+      "file": "content-api.spec.ts",
+      "status": "passed",
+      "durationMs": 3383,
+      "previousFailure": false
+    },
+    {
+      "name": "loaded lesson survives API loss and missing illustration permits assisted reading",
+      "file": "content-api.spec.ts",
+      "status": "passed",
+      "durationMs": 1764,
+      "previousFailure": false
+    },
+    {
+      "name": "complete published catalog and every lesson package resolve their media",
+      "file": "curriculum.spec.ts",
+      "status": "passed",
+      "durationMs": 19777,
+      "previousFailure": false
+    },
+    {
+      "name": "five-character compound-word lesson completes without ambiguous options or overlapping hunt targets",
+      "file": "curriculum.spec.ts",
+      "status": "passed",
+      "durationMs": 6315,
+      "previousFailure": false
+    },
+    {
+      "name": "last curriculum unit, stage review and the full mobile directory render",
+      "file": "curriculum.spec.ts",
+      "status": "passed",
+      "durationMs": 1664,
+      "previousFailure": false
+    },
+    {
+      "name": "export includes factual answers and unsent device records; child deletion preserves sibling and guest",
+      "file": "data-management.spec.ts",
+      "status": "passed",
+      "durationMs": 4186,
+      "previousFailure": false
+    },
+    {
+      "name": "offline device purges deleted child and unsent queue on reconnect without deleting sibling",
+      "file": "data-management.spec.ts",
+      "status": "passed",
+      "durationMs": 12533,
+      "previousFailure": true
+    },
+    {
+      "name": "account deletion revokes other devices and cleanup proof clears unsent local data after reconnect",
+      "file": "data-management.spec.ts",
+      "status": "passed",
+      "durationMs": 8807,
+      "previousFailure": false
+    },
+    {
+      "name": "offline answer survives reload, synchronizes actual choices once and leaves no phantom cloud save",
+      "file": "offline-sync.spec.ts",
+      "status": "passed",
+      "durationMs": 10077,
+      "previousFailure": false
+    },
+    {
+      "name": "other-device conflict preserves local facts and requires explicit server-position choice",
+      "file": "offline-sync.spec.ts",
+      "status": "passed",
+      "durationMs": 11394,
+      "previousFailure": false
+    },
+    {
+      "name": "parent previews and imports guest history without deleting it or counting new answers",
+      "file": "offline-sync.spec.ts",
+      "status": "passed",
+      "durationMs": 8825,
+      "previousFailure": false
+    },
+    {
+      "name": "failed IndexedDB write does not advance or falsely report a queued save",
+      "file": "offline-sync.spec.ts",
+      "status": "passed",
+      "durationMs": 4758,
+      "previousFailure": false
+    },
+    {
+      "name": "unsent records stay with the original account across sign-out and another family login",
+      "file": "offline-sync.spec.ts",
+      "status": "passed",
+      "durationMs": 66876,
+      "previousFailure": false
+    },
+    {
+      "name": "words and stories highlight progressively, finish and restart",
+      "file": "reading.spec.ts",
+      "status": "passed",
+      "durationMs": 12382,
+      "previousFailure": false
+    },
+    {
+      "name": "legacy story progress can reopen words and return without modifying learning evidence",
+      "file": "reading.spec.ts",
+      "status": "passed",
+      "durationMs": 5554,
+      "previousFailure": false
+    },
+    {
+      "name": "unreached reading stages cannot be opened by guessing a URL",
+      "file": "reading.spec.ts",
+      "status": "passed",
+      "durationMs": 2732,
+      "previousFailure": false
+    },
+    {
+      "name": "lesson actions stay onscreen with browser toolbars (393x650)",
+      "file": "viewport.spec.ts",
+      "status": "passed",
+      "durationMs": 24492,
+      "previousFailure": false
+    },
+    {
+      "name": "lesson actions stay onscreen with browser toolbars (320x568)",
+      "file": "viewport.spec.ts",
+      "status": "passed",
+      "durationMs": 23488,
+      "previousFailure": false
+    },
+    {
+      "name": "legacy stories fit and expanded stage stories remain readable on compact screens",
+      "file": "viewport.spec.ts",
+      "status": "passed",
+      "durationMs": 47292,
+      "previousFailure": false
+    },
+    {
+      "name": "截图验收：目录、旧课与五字课、历史错题综合练习、最后一课",
+      "file": "screens.spec.ts",
+      "status": "passed",
+      "durationMs": 26283,
+      "previousFailure": false
+    },
+    {
+      "name": "截图验收：云端档案、断网记录和恢复同步",
+      "file": "screens.spec.ts",
+      "status": "passed",
+      "durationMs": 51364,
+      "previousFailure": false
+    },
+    {
+      "name": "截图验收：课程服务失败与重试恢复",
+      "file": "screens.spec.ts",
+      "status": "passed",
+      "durationMs": 7062,
+      "previousFailure": false
+    }
+  ]
+}

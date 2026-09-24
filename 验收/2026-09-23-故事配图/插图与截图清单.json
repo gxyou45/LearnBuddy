@@ -1,0 +1,102 @@
+[
+  {
+    "id": "c012",
+    "title": "太阳出来了",
+    "story": "太阳出来了，天上有白云。一会儿云变多，下起了雨。",
+    "image": "../../apps/web/src/story-art/images/c012.png",
+    "sha256": "7ed5a6ee032170bc18ba7e94a454fd9f46c0e23f7b9127f20db167d5a3a5c746",
+    "check": "三格按晴天、云变多、下雨排列，表现天气变化。",
+    "phone": "截图/c012-phone.png",
+    "large": "截图/c012-large.png"
+  },
+  {
+    "id": "c041",
+    "title": "认识农场动物",
+    "story": "农场里，小牛吃草，小羊走来，小马跑过，小猪旁边有小鸡。",
+    "image": "../../apps/web/src/story-art/images/c041.png",
+    "sha256": "a7be30265249fad97d57fa1b817adb97fd24a3a63346d1e915bf2db7ab364a84",
+    "check": "牛吃草、羊走来、马跑过，猪旁有小鸡；五种动物分别可辨。",
+    "phone": "截图/c041-phone.png",
+    "large": "截图/c041-large.png"
+  },
+  {
+    "id": "c050",
+    "title": "种下一粒种子",
+    "story": "我种下一粒种子。后来长出小芽和根，再长成有枝叶的小苗。",
+    "image": "../../apps/web/src/story-art/images/c050.png",
+    "sha256": "391b47fc20d693c0c2f4742174053134fc1dbe590aaddbab5e66ab212ad55830",
+    "check": "播种、发芽、长成小苗三个阶段；根位于土层以下。",
+    "phone": "截图/c050-phone.png",
+    "large": "截图/c050-large.png"
+  },
+  {
+    "id": "c062",
+    "title": "过马路",
+    "story": "交通灯前，汽车停下来。我拉着大人的手，等可以通行再走。",
+    "image": "../../apps/web/src/story-art/images/c062.png",
+    "sha256": "f766929dd270b71c15ddfbb1bda9f6cabf455c4ee0699173a4ec3acf2db2670b",
+    "check": "孩子牵着大人的手站在人行道等候，汽车停下，尚未开始过街。",
+    "phone": "截图/c062-phone.png",
+    "large": "截图/c062-large.png"
+  },
+  {
+    "id": "c066",
+    "title": "骑车戴头盔",
+    "story": "在安全的场地骑车，我先戴好头盔。大人帮我检查车铃和刹车。",
+    "image": "../../apps/web/src/story-art/images/c066.png",
+    "sha256": "6ae6ac9344f00bc1d8755b9a4308d7e47755d982dd1e4af94c2855886c027499",
+    "check": "孩子戴好头盔，大人检查自行车铃与刹车。",
+    "phone": "截图/c066-phone.png",
+    "large": "截图/c066-large.png"
+  },
+  {
+    "id": "c090",
+    "title": "再尝一种水果",
+    "story": "香蕉弯弯的，葡萄一串串，橙子圆圆的。我们把水果分给家人。",
+    "image": "../../apps/web/src/story-art/images/c090.png",
+    "sha256": "0f27028db169ea8249fd3c9d9bc3f75b2189e4b6e546b274a08f06a256b852d4",
+    "check": "孩子把橙子递给家人，桌上是香蕉、成串葡萄和橙子。",
+    "phone": "截图/c090-phone.png",
+    "large": "截图/c090-large.png"
+  },
+  {
+    "id": "c097",
+    "title": "周末做家务",
+    "story": "我扫地，爸爸拖地，妈妈擦桌子。大家一起整理，屋里整齐了。",
+    "image": "../../apps/web/src/story-art/images/c097.png",
+    "sha256": "4df2599cbdd27c3d43885d4e012a99b7b2417b67910b0d14fb10364dcdb2d6a0",
+    "check": "孩子扫地、爸爸拖地、妈妈擦桌，三种动作不同。",
+    "phone": "截图/c097-phone.png",
+    "large": "截图/c097-large.png"
+  },
+  {
+    "id": "c128",
+    "title": "把理由讲清楚",
+    "story": "因为下雨，所以我们在屋里看书，而且一起画了一张雨天的图。",
+    "image": "../../apps/web/src/story-art/images/c128.png",
+    "sha256": "9957ad428100c2c144e60e019efed0a153b315a780a6b2c23bd1b301aefee013",
+    "check": "两格都能看到窗外下雨；室内先共读，再一起画雨天。",
+    "phone": "截图/c128-phone.png",
+    "large": "截图/c128-large.png"
+  },
+  {
+    "id": "c154",
+    "title": "我的身体有边界",
+    "story": "别人想摸我的肩、碰我的身体或抱我，要先问。我不愿意，就可以说“不”。",
+    "image": "../../apps/web/src/story-art/images/c154.png",
+    "sha256": "331b5d439b1f920cbc190366d29ecf09c44f7b30fd98c08d17e4b9528ee1f87b",
+    "check": "孩子举手表示拒绝，大人保持距离，没有擅自触碰。",
+    "phone": "截图/c154-phone.png",
+    "large": "截图/c154-large.png"
+  },
+  {
+    "id": "c194",
+    "title": "端午看龙舟",
+    "story": "端午节，我们听传统故事，看龙舟，和家人吃粽子。不同地方也有不同的过节方式。",
+    "image": "../../apps/web/src/story-art/images/c194.png",
+    "sha256": "f0845de9e4189f30397e7ee5ef9b006f863b764dc786cfb029a4973966e6d39d",
+    "check": "一家人在护栏内看龙舟，近处有用叶子包裹的粽子。",
+    "phone": "截图/c194-phone.png",
+    "large": "截图/c194-large.png"
+  }
+]

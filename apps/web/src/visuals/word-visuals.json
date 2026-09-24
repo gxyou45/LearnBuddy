@@ -1,0 +1,3789 @@
+{
+  "香蕉": {
+    "kind": "emoji",
+    "value": "🍌"
+  },
+  "葡萄": {
+    "kind": "emoji",
+    "value": "🍇"
+  },
+  "橙子": {
+    "kind": "emoji",
+    "value": "🍊"
+  },
+  "橘子": {
+    "kind": "emoji",
+    "value": "🍊"
+  },
+  "苹果": {
+    "kind": "emoji",
+    "value": "🍎"
+  },
+  "梨子": {
+    "kind": "emoji",
+    "value": "🍐"
+  },
+  "西瓜": {
+    "kind": "emoji",
+    "value": "🍉"
+  },
+  "草莓": {
+    "kind": "emoji",
+    "value": "🍓"
+  },
+  "茄子": {
+    "kind": "emoji",
+    "value": "🍆"
+  },
+  "辣椒": {
+    "kind": "emoji",
+    "value": "🌶️"
+  },
+  "大蒜": {
+    "kind": "emoji",
+    "value": "🧄"
+  },
+  "红薯": {
+    "kind": "emoji",
+    "value": "🍠"
+  },
+  "鸡蛋": {
+    "kind": "emoji",
+    "value": "🥚"
+  },
+  "牛乳": {
+    "kind": "emoji",
+    "value": "🥛"
+  },
+  "茶水": {
+    "kind": "emoji",
+    "value": "🍵"
+  },
+  "菜汤": {
+    "kind": "emoji",
+    "value": "🍲"
+  },
+  "饼干": {
+    "kind": "emoji",
+    "value": "🍪"
+  },
+  "蛋糕": {
+    "kind": "emoji",
+    "value": "🍰"
+  },
+  "糖果": {
+    "kind": "emoji",
+    "value": "🍬"
+  },
+  "饺子": {
+    "kind": "emoji",
+    "value": "🥟"
+  },
+  "面条": {
+    "kind": "emoji",
+    "value": "🍜"
+  },
+  "米粉": {
+    "kind": "emoji",
+    "value": "🍜"
+  },
+  "米饭": {
+    "kind": "emoji",
+    "value": "🍚"
+  },
+  "小麦": {
+    "kind": "emoji",
+    "value": "🌾"
+  },
+  "青菜": {
+    "kind": "emoji",
+    "value": "🥬"
+  },
+  "蔬菜": {
+    "kind": "emoji",
+    "value": "🥬"
+  },
+  "饭碗": {
+    "kind": "emoji",
+    "value": "🥣"
+  },
+  "筷子": {
+    "kind": "emoji",
+    "value": "🥢"
+  },
+  "勺子": {
+    "kind": "emoji",
+    "value": "🥄"
+  },
+  "盘子": {
+    "kind": "emoji",
+    "value": "🍽️"
+  },
+  "叉子": {
+    "kind": "sketch",
+    "value": "fork"
+  },
+  "小刀": {
+    "kind": "emoji",
+    "value": "🔪"
+  },
+  "小牛": {
+    "kind": "emoji",
+    "value": "🐄"
+  },
+  "小羊": {
+    "kind": "emoji",
+    "value": "🐑"
+  },
+  "小马": {
+    "kind": "emoji",
+    "value": "🐎"
+  },
+  "小猪": {
+    "kind": "emoji",
+    "value": "🐖"
+  },
+  "小鸡": {
+    "kind": "emoji",
+    "value": "🐤"
+  },
+  "鸭子": {
+    "kind": "emoji",
+    "value": "🦆"
+  },
+  "白鹅": {
+    "kind": "emoji",
+    "value": "🪿"
+  },
+  "兔子": {
+    "kind": "emoji",
+    "value": "🐇"
+  },
+  "青蛙": {
+    "kind": "emoji",
+    "value": "🐸"
+  },
+  "小虫": {
+    "kind": "emoji",
+    "value": "🐛"
+  },
+  "蚂蚁": {
+    "kind": "emoji",
+    "value": "🐜"
+  },
+  "蜜蜂": {
+    "kind": "emoji",
+    "value": "🐝"
+  },
+  "蝴蝶": {
+    "kind": "emoji",
+    "value": "🦋"
+  },
+  "蚊子": {
+    "kind": "emoji",
+    "value": "🦟"
+  },
+  "苍蝇": {
+    "kind": "emoji",
+    "value": "🪰"
+  },
+  "老虎": {
+    "kind": "emoji",
+    "value": "🐅"
+  },
+  "狮子": {
+    "kind": "emoji",
+    "value": "🦁"
+  },
+  "大象": {
+    "kind": "emoji",
+    "value": "🐘"
+  },
+  "小熊": {
+    "kind": "emoji",
+    "value": "🐻"
+  },
+  "小鹿": {
+    "kind": "emoji",
+    "value": "🦌"
+  },
+  "猴子": {
+    "kind": "emoji",
+    "value": "🐒"
+  },
+  "狐狸": {
+    "kind": "emoji",
+    "value": "🦊"
+  },
+  "灰狼": {
+    "kind": "emoji",
+    "value": "🐺"
+  },
+  "老鼠": {
+    "kind": "emoji",
+    "value": "🐁"
+  },
+  "松鼠": {
+    "kind": "emoji",
+    "value": "🐿️"
+  },
+  "小虾": {
+    "kind": "emoji",
+    "value": "🦐"
+  },
+  "螃蟹": {
+    "kind": "emoji",
+    "value": "🦀"
+  },
+  "乌龟": {
+    "kind": "emoji",
+    "value": "🐢"
+  },
+  "水蛇": {
+    "kind": "emoji",
+    "value": "🐍"
+  },
+  "鳄鱼": {
+    "kind": "emoji",
+    "value": "🐊"
+  },
+  "鲸鱼": {
+    "kind": "emoji",
+    "value": "🐋"
+  },
+  "海豚": {
+    "kind": "emoji",
+    "value": "🐬"
+  },
+  "鲨鱼": {
+    "kind": "emoji",
+    "value": "🦈"
+  },
+  "贝壳": {
+    "kind": "emoji",
+    "value": "🐚"
+  },
+  "小猫": {
+    "kind": "emoji",
+    "value": "🐈"
+  },
+  "小狗": {
+    "kind": "emoji",
+    "value": "🐕"
+  },
+  "小鱼": {
+    "kind": "emoji",
+    "value": "🐟"
+  },
+  "小鸟": {
+    "kind": "emoji",
+    "value": "🐦"
+  },
+  "羽毛": {
+    "kind": "emoji",
+    "value": "🪶"
+  },
+  "发芽": {
+    "kind": "emoji",
+    "value": "🌱"
+  },
+  "小苗": {
+    "kind": "emoji",
+    "value": "🌱"
+  },
+  "大树": {
+    "kind": "emoji",
+    "value": "🌳"
+  },
+  "杨树": {
+    "kind": "emoji",
+    "value": "🌳"
+  },
+  "竹子": {
+    "kind": "sketch",
+    "value": "bamboo"
+  },
+  "枫叶": {
+    "kind": "emoji",
+    "value": "🍁"
+  },
+  "桃花": {
+    "kind": "emoji",
+    "value": "🌸"
+  },
+  "荷花": {
+    "kind": "emoji",
+    "value": "🪷"
+  },
+  "小花": {
+    "kind": "emoji",
+    "value": "🌷"
+  },
+  "鲜花": {
+    "kind": "emoji",
+    "value": "🌷"
+  },
+  "小草": {
+    "kind": "emoji",
+    "value": "🌿"
+  },
+  "树叶": {
+    "kind": "emoji",
+    "value": "🍃"
+  },
+  "石头": {
+    "kind": "emoji",
+    "value": "🪨"
+  },
+  "岩石": {
+    "kind": "emoji",
+    "value": "🪨"
+  },
+  "星星": {
+    "kind": "emoji",
+    "value": "⭐"
+  },
+  "太阳": {
+    "kind": "emoji",
+    "value": "☀️"
+  },
+  "白云": {
+    "kind": "emoji",
+    "value": "☁️"
+  },
+  "下雨": {
+    "kind": "emoji",
+    "value": "🌧️"
+  },
+  "下雪": {
+    "kind": "emoji",
+    "value": "❄️"
+  },
+  "冰块": {
+    "kind": "emoji",
+    "value": "🧊"
+  },
+  "冻冰": {
+    "kind": "emoji",
+    "value": "🧊"
+  },
+  "彩虹": {
+    "kind": "emoji",
+    "value": "🌈"
+  },
+  "大雾": {
+    "kind": "emoji",
+    "value": "🌫️"
+  },
+  "月亮": {
+    "kind": "emoji",
+    "value": "🌙"
+  },
+  "小山": {
+    "kind": "emoji",
+    "value": "⛰️"
+  },
+  "大海": {
+    "kind": "emoji",
+    "value": "🌊"
+  },
+  "海洋": {
+    "kind": "emoji",
+    "value": "🌊"
+  },
+  "耳朵": {
+    "kind": "emoji",
+    "value": "👂"
+  },
+  "眼睛": {
+    "kind": "emoji",
+    "value": "👁️"
+  },
+  "鼻子": {
+    "kind": "emoji",
+    "value": "👃"
+  },
+  "舌头": {
+    "kind": "emoji",
+    "value": "👅"
+  },
+  "小手": {
+    "kind": "emoji",
+    "value": "🖐️"
+  },
+  "小脚": {
+    "kind": "emoji",
+    "value": "🦶"
+  },
+  "爱心": {
+    "kind": "emoji",
+    "value": "❤️"
+  },
+  "衣服": {
+    "kind": "emoji",
+    "value": "👕"
+  },
+  "新衣": {
+    "kind": "emoji",
+    "value": "👕"
+  },
+  "裤子": {
+    "kind": "emoji",
+    "value": "👖"
+  },
+  "鞋子": {
+    "kind": "emoji",
+    "value": "👟"
+  },
+  "袜子": {
+    "kind": "emoji",
+    "value": "🧦"
+  },
+  "帽子": {
+    "kind": "emoji",
+    "value": "🧢"
+  },
+  "椅子": {
+    "kind": "emoji",
+    "value": "🪑"
+  },
+  "书包": {
+    "kind": "emoji",
+    "value": "🎒"
+  },
+  "铅笔": {
+    "kind": "emoji",
+    "value": "✏️"
+  },
+  "本子": {
+    "kind": "emoji",
+    "value": "📓"
+  },
+  "纸巾": {
+    "kind": "sketch",
+    "value": "tissue"
+  },
+  "镜子": {
+    "kind": "emoji",
+    "value": "🪞"
+  },
+  "小床": {
+    "kind": "emoji",
+    "value": "🛏️"
+  },
+  "窗户": {
+    "kind": "emoji",
+    "value": "🪟"
+  },
+  "足球": {
+    "kind": "emoji",
+    "value": "⚽"
+  },
+  "踢球": {
+    "kind": "emoji",
+    "value": "⚽"
+  },
+  "皮球": {
+    "kind": "emoji",
+    "value": "🏀"
+  },
+  "汽车": {
+    "kind": "emoji",
+    "value": "🚗"
+  },
+  "小船": {
+    "kind": "emoji",
+    "value": "🛶"
+  },
+  "飞机": {
+    "kind": "emoji",
+    "value": "✈️"
+  },
+  "火车": {
+    "kind": "emoji",
+    "value": "🚂"
+  },
+  "车票": {
+    "kind": "emoji",
+    "value": "🎫"
+  },
+  "头盔": {
+    "kind": "sketch",
+    "value": "helmet"
+  },
+  "骑车": {
+    "kind": "emoji",
+    "value": "🚲"
+  },
+  "雨伞": {
+    "kind": "emoji",
+    "value": "☂️"
+  },
+  "箱子": {
+    "kind": "emoji",
+    "value": "🧳"
+  },
+  "医院": {
+    "kind": "emoji",
+    "value": "🏥"
+  },
+  "医生": {
+    "kind": "emoji",
+    "value": "🧑‍⚕️"
+  },
+  "吃药": {
+    "kind": "emoji",
+    "value": "💊"
+  },
+  "打针": {
+    "kind": "emoji",
+    "value": "💉"
+  },
+  "警察": {
+    "kind": "emoji",
+    "value": "👮"
+  },
+  "银行": {
+    "kind": "emoji",
+    "value": "🏦"
+  },
+  "信件": {
+    "kind": "emoji",
+    "value": "✉️"
+  },
+  "邮局": {
+    "kind": "emoji",
+    "value": "🏣"
+  },
+  "学校": {
+    "kind": "emoji",
+    "value": "🏫"
+  },
+  "小屋": {
+    "kind": "emoji",
+    "value": "🏠"
+  },
+  "楼房": {
+    "kind": "emoji",
+    "value": "🏢"
+  },
+  "电灯": {
+    "kind": "emoji",
+    "value": "💡"
+  },
+  "电视": {
+    "kind": "emoji",
+    "value": "📺"
+  },
+  "音响": {
+    "kind": "emoji",
+    "value": "📻"
+  },
+  "盒内": {
+    "kind": "emoji",
+    "value": "📦"
+  },
+  "扫地": {
+    "kind": "emoji",
+    "value": "🧹"
+  },
+  "数数": {
+    "kind": "emoji",
+    "value": "🧮"
+  },
+  "时钟": {
+    "kind": "emoji",
+    "value": "🕰️"
+  },
+  "手表": {
+    "kind": "emoji",
+    "value": "⌚"
+  },
+  "日历": {
+    "kind": "emoji",
+    "value": "📅"
+  },
+  "尺子": {
+    "kind": "emoji",
+    "value": "📏"
+  },
+  "拼图": {
+    "kind": "emoji",
+    "value": "🧩"
+  },
+  "磁铁": {
+    "kind": "emoji",
+    "value": "🧲"
+  },
+  "温度": {
+    "kind": "emoji",
+    "value": "🌡️"
+  },
+  "尖角": {
+    "kind": "emoji",
+    "value": "📐"
+  },
+  "礼物": {
+    "kind": "emoji",
+    "value": "🎁"
+  },
+  "仙女": {
+    "kind": "emoji",
+    "value": "🧚"
+  },
+  "合作": {
+    "kind": "emoji",
+    "value": "🤝"
+  },
+  "协作": {
+    "kind": "emoji",
+    "value": "🤝"
+  },
+  "拥抱": {
+    "kind": "emoji",
+    "value": "🤗"
+  },
+  "微笑": {
+    "kind": "emoji",
+    "value": "😊"
+  },
+  "高兴": {
+    "kind": "emoji",
+    "value": "😊"
+  },
+  "哭泣": {
+    "kind": "emoji",
+    "value": "😢"
+  },
+  "眼泪": {
+    "kind": "emoji",
+    "value": "😢"
+  },
+  "害怕": {
+    "kind": "emoji",
+    "value": "😨"
+  },
+  "吃惊": {
+    "kind": "emoji",
+    "value": "😲"
+  },
+  "睡觉": {
+    "kind": "emoji",
+    "value": "😴"
+  },
+  "思考": {
+    "kind": "emoji",
+    "value": "🤔"
+  },
+  "唱歌": {
+    "kind": "emoji",
+    "value": "🎤"
+  },
+  "书本": {
+    "kind": "emoji",
+    "value": "📖"
+  },
+  "读书": {
+    "kind": "emoji",
+    "value": "📖"
+  },
+  "阅读": {
+    "kind": "emoji",
+    "value": "📖"
+  },
+  "书签": {
+    "kind": "emoji",
+    "value": "🔖"
+  },
+  "查看": {
+    "kind": "emoji",
+    "value": "🔍"
+  },
+  "观察": {
+    "kind": "emoji",
+    "value": "🔍"
+  },
+  "新闻": {
+    "kind": "emoji",
+    "value": "📰"
+  },
+  "门锁": {
+    "kind": "emoji",
+    "value": "🔒"
+  },
+  "屏幕": {
+    "kind": "emoji",
+    "value": "🖥️"
+  },
+  "键盘": {
+    "kind": "emoji",
+    "value": "⌨️"
+  },
+  "印刷": {
+    "kind": "emoji",
+    "value": "🖨️"
+  },
+  "奖章": {
+    "kind": "emoji",
+    "value": "🏅"
+  },
+  "国旗": {
+    "kind": "emoji",
+    "value": "🇨🇳"
+  },
+  "小龙": {
+    "kind": "emoji",
+    "value": "🐉"
+  },
+  "垃圾": {
+    "kind": "emoji",
+    "value": "🗑️"
+  },
+  "亚洲": {
+    "kind": "emoji",
+    "value": "🌏"
+  },
+  "世界": {
+    "kind": "emoji",
+    "value": "🌐"
+  },
+  "喝水": {
+    "kind": "emoji",
+    "value": "💧"
+  },
+  "水源": {
+    "kind": "emoji",
+    "value": "💧"
+  },
+  "站立": {
+    "kind": "emoji",
+    "value": "🧍"
+  },
+  "跑步": {
+    "kind": "emoji",
+    "value": "🏃"
+  },
+  "奔跑": {
+    "kind": "emoji",
+    "value": "🏃"
+  },
+  "小腿": {
+    "kind": "emoji",
+    "value": "🦵"
+  },
+  "手臂": {
+    "kind": "emoji",
+    "value": "💪"
+  },
+  "爷爷": {
+    "kind": "emoji",
+    "value": "👴"
+  },
+  "奶奶": {
+    "kind": "emoji",
+    "value": "👵"
+  },
+  "爸爸": {
+    "kind": "emoji",
+    "value": "👨"
+  },
+  "妈妈": {
+    "kind": "emoji",
+    "value": "👩"
+  },
+  "孩子": {
+    "kind": "emoji",
+    "value": "🧒"
+  },
+  "儿童": {
+    "kind": "emoji",
+    "value": "🧒"
+  },
+  "男孩": {
+    "kind": "emoji",
+    "value": "🧒"
+  },
+  "女孩": {
+    "kind": "emoji",
+    "value": "👧"
+  },
+  "足迹": {
+    "kind": "emoji",
+    "value": "👣"
+  },
+  "脚步": {
+    "kind": "emoji",
+    "value": "👣"
+  },
+  "停止": {
+    "kind": "emoji",
+    "value": "🛑"
+  },
+  "禁止": {
+    "kind": "emoji",
+    "value": "🚫"
+  },
+  "请勿": {
+    "kind": "emoji",
+    "value": "🚫"
+  },
+  "画画": {
+    "kind": "emoji",
+    "value": "🖌️"
+  },
+  "美术": {
+    "kind": "emoji",
+    "value": "🖌️"
+  },
+  "墨水": {
+    "kind": "emoji",
+    "value": "🖋️"
+  },
+  "拍手": {
+    "kind": "emoji",
+    "value": "👏"
+  },
+  "举手": {
+    "kind": "emoji",
+    "value": "🖐️"
+  },
+  "说话": {
+    "kind": "emoji",
+    "value": "🗣️"
+  },
+  "发言": {
+    "kind": "emoji",
+    "value": "🗣️"
+  },
+  "喊话": {
+    "kind": "emoji",
+    "value": "🗣️"
+  },
+  "庆祝": {
+    "kind": "emoji",
+    "value": "🎉"
+  },
+  "祝贺": {
+    "kind": "emoji",
+    "value": "🎉"
+  },
+  "洗澡": {
+    "kind": "emoji",
+    "value": "🚿"
+  },
+  "厕所": {
+    "kind": "emoji",
+    "value": "🚽"
+  },
+  "刷牙": {
+    "kind": "emoji",
+    "value": "🪥"
+  },
+  "洗手": {
+    "kind": "emoji",
+    "value": "🧼"
+  },
+  "颜色": {
+    "kind": "emoji",
+    "value": "🎨"
+  },
+  "公园": {
+    "kind": "emoji",
+    "value": "🏞️"
+  },
+  "老师": {
+    "kind": "emoji",
+    "value": "👩‍🏫"
+  },
+  "教师": {
+    "kind": "emoji",
+    "value": "👩‍🏫"
+  },
+  "买菜": {
+    "kind": "emoji",
+    "value": "🛍️"
+  },
+  "零钱": {
+    "kind": "emoji",
+    "value": "💰"
+  },
+  "晚霞": {
+    "kind": "emoji",
+    "value": "🌇"
+  },
+  "晴天": {
+    "kind": "emoji",
+    "value": "🌤️"
+  },
+  "打雷": {
+    "kind": "emoji",
+    "value": "⛈️"
+  },
+  "阴天": {
+    "kind": "emoji",
+    "value": "☁️"
+  },
+  "豆子": {
+    "kind": "emoji",
+    "value": "🫘"
+  },
+  "生姜": {
+    "kind": "emoji",
+    "value": "🫚"
+  },
+  "萝卜": {
+    "kind": "sketch",
+    "value": "radish"
+  },
+  "红枣": {
+    "kind": "sketch",
+    "value": "jujube"
+  },
+  "葱花": {
+    "kind": "sketch",
+    "value": "chopped-scallion"
+  },
+  "苦瓜": {
+    "kind": "sketch",
+    "value": "bittermelon"
+  },
+  "大米": {
+    "kind": "sketch",
+    "value": "rice"
+  },
+  "谷子": {
+    "kind": "sketch",
+    "value": "millet"
+  },
+  "肉包": {
+    "kind": "sketch",
+    "value": "bun"
+  },
+  "粽子": {
+    "kind": "sketch",
+    "value": "dumpling-leaf"
+  },
+  "蜻蜓": {
+    "kind": "sketch",
+    "value": "dragonfly"
+  },
+  "蝉鸣": {
+    "kind": "sketch",
+    "value": "cicada"
+  },
+  "翅膀": {
+    "kind": "sketch",
+    "value": "wing"
+  },
+  "牛角": {
+    "kind": "sketch",
+    "value": "horn"
+  },
+  "尾巴": {
+    "kind": "sketch",
+    "value": "tail"
+  },
+  "爪子": {
+    "kind": "sketch",
+    "value": "paw"
+  },
+  "种子": {
+    "kind": "sketch",
+    "value": "seed"
+  },
+  "树根": {
+    "kind": "sketch",
+    "value": "root"
+  },
+  "树枝": {
+    "kind": "sketch",
+    "value": "branch"
+  },
+  "树林": {
+    "kind": "sketch",
+    "value": "forest"
+  },
+  "森林": {
+    "kind": "sketch",
+    "value": "dense-forest"
+  },
+  "梅花": {
+    "kind": "sketch",
+    "value": "plum"
+  },
+  "杏花": {
+    "kind": "sketch",
+    "value": "apricot"
+  },
+  "兰花": {
+    "kind": "sketch",
+    "value": "orchid"
+  },
+  "水杯": {
+    "kind": "sketch",
+    "value": "cup"
+  },
+  "锅子": {
+    "kind": "sketch",
+    "value": "pot"
+  },
+  "瓶子": {
+    "kind": "sketch",
+    "value": "bottle"
+  },
+  "罐子": {
+    "kind": "sketch",
+    "value": "jar"
+  },
+  "桌子": {
+    "kind": "sketch",
+    "value": "desk"
+  },
+  "讲台": {
+    "kind": "sketch",
+    "value": "desk"
+  },
+  "台灯": {
+    "kind": "sketch",
+    "value": "lamp"
+  },
+  "毛巾": {
+    "kind": "sketch",
+    "value": "towel"
+  },
+  "脸盆": {
+    "kind": "sketch",
+    "value": "basin"
+  },
+  "梳头": {
+    "kind": "sketch",
+    "value": "comb"
+  },
+  "风扇": {
+    "kind": "sketch",
+    "value": "fan"
+  },
+  "枕头": {
+    "kind": "sketch",
+    "value": "pillow"
+  },
+  "被子": {
+    "kind": "sketch",
+    "value": "quilt"
+  },
+  "薄被": {
+    "kind": "sketch",
+    "value": "quilt"
+  },
+  "柜子": {
+    "kind": "sketch",
+    "value": "cabinet"
+  },
+  "书架": {
+    "kind": "sketch",
+    "value": "shelf"
+  },
+  "橡皮": {
+    "kind": "sketch",
+    "value": "eraser"
+  },
+  "胶水": {
+    "kind": "sketch",
+    "value": "glue"
+  },
+  "黑板": {
+    "kind": "sketch",
+    "value": "blackboard"
+  },
+  "墙壁": {
+    "kind": "sketch",
+    "value": "wall"
+  },
+  "围墙": {
+    "kind": "sketch",
+    "value": "wall"
+  },
+  "屋顶": {
+    "kind": "sketch",
+    "value": "roof"
+  },
+  "小桥": {
+    "kind": "sketch",
+    "value": "bridge"
+  },
+  "马路": {
+    "kind": "sketch",
+    "value": "road"
+  },
+  "大街": {
+    "kind": "sketch",
+    "value": "road"
+  },
+  "道路": {
+    "kind": "sketch",
+    "value": "road"
+  },
+  "斑马线": {
+    "kind": "sketch",
+    "value": "crosswalk"
+  },
+  "横道": {
+    "kind": "sketch",
+    "value": "crosswalk"
+  },
+  "车轮": {
+    "kind": "sketch",
+    "value": "wheel"
+  },
+  "铁路": {
+    "kind": "sketch",
+    "value": "rail"
+  },
+  "车铃": {
+    "kind": "sketch",
+    "value": "bell"
+  },
+  "交通": {
+    "kind": "sketch",
+    "value": "traffic"
+  },
+  "通行": {
+    "kind": "sketch",
+    "value": "go-signal"
+  },
+  "刹车": {
+    "kind": "sketch",
+    "value": "brake"
+  },
+  "入口": {
+    "kind": "sketch",
+    "value": "door"
+  },
+  "开门": {
+    "kind": "sketch",
+    "value": "door"
+  },
+  "江水": {
+    "kind": "sketch",
+    "value": "river"
+  },
+  "小河": {
+    "kind": "sketch",
+    "value": "river"
+  },
+  "湖水": {
+    "kind": "sketch",
+    "value": "lake"
+  },
+  "池塘": {
+    "kind": "sketch",
+    "value": "lake"
+  },
+  "泉水": {
+    "kind": "sketch",
+    "value": "spring"
+  },
+  "山洞": {
+    "kind": "sketch",
+    "value": "cave"
+  },
+  "山坡": {
+    "kind": "sketch",
+    "value": "slope"
+  },
+  "沙子": {
+    "kind": "sketch",
+    "value": "sand"
+  },
+  "泥土": {
+    "kind": "sketch",
+    "value": "soil"
+  },
+  "泥巴": {
+    "kind": "sketch",
+    "value": "soil"
+  },
+  "圆形": {
+    "kind": "sketch",
+    "value": "circle"
+  },
+  "方形": {
+    "kind": "sketch",
+    "value": "square"
+  },
+  "正方形": {
+    "kind": "sketch",
+    "value": "square"
+  },
+  "直线": {
+    "kind": "sketch",
+    "value": "line"
+  },
+  "积木": {
+    "kind": "sketch",
+    "value": "blocks"
+  },
+  "尺寸": {
+    "kind": "sketch",
+    "value": "ruler"
+  },
+  "测量": {
+    "kind": "sketch",
+    "value": "ruler"
+  },
+  "称重": {
+    "kind": "sketch",
+    "value": "scale"
+  },
+  "重量": {
+    "kind": "sketch",
+    "value": "scale"
+  },
+  "一半": {
+    "kind": "sketch",
+    "value": "half"
+  },
+  "装满": {
+    "kind": "sketch",
+    "value": "full"
+  },
+  "零个": {
+    "kind": "sketch",
+    "value": "empty"
+  },
+  "一双": {
+    "kind": "sketch",
+    "value": "pair"
+  },
+  "北方": {
+    "kind": "sketch",
+    "value": "north"
+  },
+  "南方": {
+    "kind": "sketch",
+    "value": "south"
+  },
+  "东边": {
+    "kind": "sketch",
+    "value": "east"
+  },
+  "西边": {
+    "kind": "sketch",
+    "value": "west"
+  },
+  "上面": {
+    "kind": "sketch",
+    "value": "up"
+  },
+  "上升": {
+    "kind": "sketch",
+    "value": "up"
+  },
+  "下面": {
+    "kind": "sketch",
+    "value": "down"
+  },
+  "下降": {
+    "kind": "sketch",
+    "value": "down"
+  },
+  "左边": {
+    "kind": "sketch",
+    "value": "left"
+  },
+  "右边": {
+    "kind": "sketch",
+    "value": "right"
+  },
+  "中间": {
+    "kind": "sketch",
+    "value": "middle"
+  },
+  "里面": {
+    "kind": "sketch",
+    "value": "inside"
+  },
+  "外面": {
+    "kind": "sketch",
+    "value": "outside"
+  },
+  "咸味": {
+    "kind": "sketch",
+    "value": "salt"
+  },
+  "蒸蛋": {
+    "kind": "sketch",
+    "value": "steam"
+  },
+  "煮饭": {
+    "kind": "sketch",
+    "value": "cook"
+  },
+  "炒菜": {
+    "kind": "sketch",
+    "value": "fry"
+  },
+  "烤饼": {
+    "kind": "sketch",
+    "value": "bake"
+  },
+  "切菜": {
+    "kind": "sketch",
+    "value": "cut"
+  },
+  "挂衣": {
+    "kind": "sketch",
+    "value": "hang"
+  },
+  "晒衣": {
+    "kind": "sketch",
+    "value": "hang"
+  },
+  "叠衣": {
+    "kind": "sketch",
+    "value": "fold"
+  },
+  "拖地": {
+    "kind": "sketch",
+    "value": "mop"
+  },
+  "擦桌": {
+    "kind": "sketch",
+    "value": "wipe"
+  },
+  "汗水": {
+    "kind": "sketch",
+    "value": "sweat"
+  },
+  "呼吸": {
+    "kind": "sketch",
+    "value": "breath"
+  },
+  "牙齿": {
+    "kind": "sketch",
+    "value": "teeth"
+  },
+  "一口": {
+    "kind": "sketch",
+    "value": "tongue"
+  },
+  "喝一口": {
+    "kind": "sketch",
+    "value": "sip"
+  },
+  "身体": {
+    "kind": "sketch",
+    "value": "person"
+  },
+  "家人": {
+    "kind": "sketch",
+    "value": "family"
+  },
+  "肩膀": {
+    "kind": "sketch",
+    "value": "shoulder"
+  },
+  "洗脸": {
+    "kind": "sketch",
+    "value": "face"
+  },
+  "大风": {
+    "kind": "sketch",
+    "value": "wind"
+  },
+  "冷风": {
+    "kind": "sketch",
+    "value": "wind"
+  },
+  "露水": {
+    "kind": "sketch",
+    "value": "dew"
+  },
+  "白霜": {
+    "kind": "sketch",
+    "value": "frost"
+  },
+  "阳光": {
+    "kind": "sketch",
+    "value": "sunlight"
+  },
+  "日光": {
+    "kind": "sketch",
+    "value": "sunlight"
+  },
+  "天空": {
+    "kind": "sketch",
+    "value": "sky"
+  },
+  "黑夜": {
+    "kind": "sketch",
+    "value": "night"
+  },
+  "夜晚": {
+    "kind": "sketch",
+    "value": "night"
+  },
+  "晚上": {
+    "kind": "sketch",
+    "value": "night"
+  },
+  "早上": {
+    "kind": "sketch",
+    "value": "morning"
+  },
+  "早晨": {
+    "kind": "sketch",
+    "value": "morning"
+  },
+  "中午": {
+    "kind": "sketch",
+    "value": "noon"
+  },
+  "热天": {
+    "kind": "sketch",
+    "value": "hot"
+  },
+  "暖和": {
+    "kind": "sketch",
+    "value": "warm"
+  },
+  "落叶": {
+    "kind": "sketch",
+    "value": "leaf-fall"
+  },
+  "开花": {
+    "kind": "sketch",
+    "value": "flower-open"
+  },
+  "高树": {
+    "kind": "sketch",
+    "value": "tall"
+  },
+  "矮树": {
+    "kind": "sketch",
+    "value": "short"
+  },
+  "胖熊": {
+    "kind": "sketch",
+    "value": "fat"
+  },
+  "瘦猴": {
+    "kind": "sketch",
+    "value": "thin"
+  },
+  "宽路": {
+    "kind": "sketch",
+    "value": "wide"
+  },
+  "短绳": {
+    "kind": "sketch",
+    "value": "rope"
+  },
+  "深水": {
+    "kind": "sketch",
+    "value": "deep"
+  },
+  "浅水": {
+    "kind": "sketch",
+    "value": "shallow"
+  },
+  "密码": {
+    "kind": "sketch",
+    "value": "lock-dots"
+  },
+  "滑冰": {
+    "kind": "sketch",
+    "value": "skates"
+  },
+  "书页": {
+    "kind": "sketch",
+    "value": "page"
+  },
+  "一页": {
+    "kind": "sketch",
+    "value": "page"
+  },
+  "封面": {
+    "kind": "sketch",
+    "value": "cover"
+  },
+  "装订": {
+    "kind": "sketch",
+    "value": "binding"
+  },
+  "目录": {
+    "kind": "sketch",
+    "value": "contents"
+  },
+  "画册": {
+    "kind": "sketch",
+    "value": "album"
+  },
+  "题目": {
+    "kind": "sketch",
+    "value": "title"
+  },
+  "句子": {
+    "kind": "sketch",
+    "value": "sentence"
+  },
+  "段落": {
+    "kind": "sketch",
+    "value": "paragraph"
+  },
+  "章节": {
+    "kind": "sketch",
+    "value": "chapter"
+  },
+  "一篇": {
+    "kind": "sketch",
+    "value": "chapter"
+  },
+  "逗号": {
+    "kind": "sketch",
+    "value": "comma"
+  },
+  "冒号": {
+    "kind": "sketch",
+    "value": "colon"
+  },
+  "括号": {
+    "kind": "sketch",
+    "value": "brackets"
+  },
+  "感叹": {
+    "kind": "sketch",
+    "value": "exclamation"
+  },
+  "清单": {
+    "kind": "sketch",
+    "value": "list"
+  },
+  "列表": {
+    "kind": "sketch",
+    "value": "list"
+  },
+  "网络": {
+    "kind": "sketch",
+    "value": "network"
+  },
+  "龙舟": {
+    "kind": "sketch",
+    "value": "dragonboat"
+  },
+  "田地": {
+    "kind": "sketch",
+    "value": "field"
+  },
+  "口袋": {
+    "kind": "sketch",
+    "value": "pocket"
+  },
+  "一元": {
+    "kind": "sketch",
+    "value": "ticket"
+  },
+  "商店": {
+    "kind": "sketch",
+    "value": "shop"
+  },
+  "店铺": {
+    "kind": "sketch",
+    "value": "shop"
+  },
+  "超市": {
+    "kind": "sketch",
+    "value": "shop"
+  },
+  "车站": {
+    "kind": "sketch",
+    "value": "station"
+  },
+  "小镇": {
+    "kind": "sketch",
+    "value": "town"
+  },
+  "村子": {
+    "kind": "sketch",
+    "value": "town"
+  },
+  "秒针": {
+    "kind": "sketch",
+    "value": "stopwatch"
+  },
+  "一刻": {
+    "kind": "sketch",
+    "value": "clock-quarter"
+  },
+  "分钟": {
+    "kind": "sketch",
+    "value": "clock-minute"
+  },
+  "星期": {
+    "kind": "sketch",
+    "value": "calendar-week"
+  },
+  "周末": {
+    "kind": "sketch",
+    "value": "calendar-week"
+  },
+  "今天": {
+    "kind": "sketch",
+    "value": "calendar-today"
+  },
+  "昨天": {
+    "kind": "sketch",
+    "value": "calendar-before"
+  },
+  "明天": {
+    "kind": "sketch",
+    "value": "calendar-after"
+  },
+  "红色": {
+    "kind": "color",
+    "value": "#d65345"
+  },
+  "黄色": {
+    "kind": "color",
+    "value": "#edc34d"
+  },
+  "蓝色": {
+    "kind": "color",
+    "value": "#659fcb"
+  },
+  "绿色": {
+    "kind": "color",
+    "value": "#75a270"
+  },
+  "翠绿": {
+    "kind": "color",
+    "value": "#75a270"
+  },
+  "白色": {
+    "kind": "color",
+    "value": "#ffffff"
+  },
+  "一个": {
+    "kind": "count",
+    "value": "1"
+  },
+  "两个": {
+    "kind": "count",
+    "value": "2"
+  },
+  "三个": {
+    "kind": "count",
+    "value": "3"
+  },
+  "四个": {
+    "kind": "count",
+    "value": "4"
+  },
+  "五个": {
+    "kind": "count",
+    "value": "5"
+  },
+  "六个": {
+    "kind": "count",
+    "value": "6"
+  },
+  "七个": {
+    "kind": "count",
+    "value": "7"
+  },
+  "八个": {
+    "kind": "count",
+    "value": "8"
+  },
+  "九个": {
+    "kind": "count",
+    "value": "9"
+  },
+  "十个": {
+    "kind": "count",
+    "value": "10"
+  },
+  "一百": {
+    "kind": "symbol",
+    "value": "100"
+  },
+  "一千": {
+    "kind": "symbol",
+    "value": "1000"
+  },
+  "一万": {
+    "kind": "symbol",
+    "value": "10000"
+  },
+  "二月": {
+    "kind": "symbol",
+    "value": "2月"
+  },
+  "五岁": {
+    "kind": "symbol",
+    "value": "5岁"
+  },
+  "加上": {
+    "kind": "symbol",
+    "value": "+"
+  },
+  "减少": {
+    "kind": "symbol",
+    "value": "−"
+  },
+  "走路": {
+    "kind": "emoji",
+    "value": "🚶"
+  },
+  "行走": {
+    "kind": "emoji",
+    "value": "🚶"
+  },
+  "写字": {
+    "kind": "emoji",
+    "value": "✍️"
+  },
+  "听话": {
+    "kind": "emoji",
+    "value": "👂"
+  },
+  "安静": {
+    "kind": "emoji",
+    "value": "🤫"
+  },
+  "再见": {
+    "kind": "emoji",
+    "value": "👋"
+  },
+  "生病": {
+    "kind": "emoji",
+    "value": "🤒"
+  },
+  "着急": {
+    "kind": "emoji",
+    "value": "😟"
+  },
+  "慌张": {
+    "kind": "emoji",
+    "value": "😟"
+  },
+  "紧张": {
+    "kind": "emoji",
+    "value": "😟"
+  },
+  "焦急": {
+    "kind": "emoji",
+    "value": "😟"
+  },
+  "伤心": {
+    "kind": "emoji",
+    "value": "😞"
+  },
+  "难过": {
+    "kind": "emoji",
+    "value": "😞"
+  },
+  "快乐": {
+    "kind": "emoji",
+    "value": "😊"
+  },
+  "锻炼": {
+    "kind": "emoji",
+    "value": "🏋️"
+  },
+  "运动": {
+    "kind": "emoji",
+    "value": "🏃"
+  },
+  "木头": {
+    "kind": "emoji",
+    "value": "🪵"
+  },
+  "农民": {
+    "kind": "emoji",
+    "value": "🧑‍🌾"
+  },
+  "工人": {
+    "kind": "emoji",
+    "value": "🧑‍🔧"
+  },
+  "工匠": {
+    "kind": "emoji",
+    "value": "🧑‍🔧"
+  },
+  "修理": {
+    "kind": "emoji",
+    "value": "🧑‍🔧"
+  },
+  "消防": {
+    "kind": "emoji",
+    "value": "🚒"
+  },
+  "演奏": {
+    "kind": "emoji",
+    "value": "🎻"
+  },
+  "防火": {
+    "kind": "emoji",
+    "value": "🧯"
+  },
+  "寄信": {
+    "kind": "emoji",
+    "value": "📮"
+  },
+  "客厅": {
+    "kind": "emoji",
+    "value": "🛋️"
+  },
+  "卧室": {
+    "kind": "emoji",
+    "value": "🛌"
+  },
+  "休息": {
+    "kind": "emoji",
+    "value": "🛌"
+  },
+  "字典": {
+    "kind": "sketch",
+    "value": "dictionary"
+  },
+  "朋友": {
+    "kind": "emoji",
+    "value": "🧑‍🤝‍🧑"
+  },
+  "同学": {
+    "kind": "emoji",
+    "value": "🧑‍🤝‍🧑"
+  },
+  "不要": {
+    "kind": "emoji",
+    "value": "🙅"
+  },
+  "拒绝": {
+    "kind": "emoji",
+    "value": "🙅"
+  },
+  "给你": {
+    "kind": "emoji",
+    "value": "🤲"
+  },
+  "讲故事": {
+    "kind": "emoji",
+    "value": "🗨️"
+  },
+  "想法": {
+    "kind": "emoji",
+    "value": "💭"
+  },
+  "主意": {
+    "kind": "emoji",
+    "value": "💭"
+  },
+  "城市": {
+    "kind": "emoji",
+    "value": "🏙️"
+  },
+  "酸味": {
+    "kind": "emoji",
+    "value": "🍋"
+  },
+  "香甜": {
+    "kind": "emoji",
+    "value": "😋"
+  },
+  "呼气": {
+    "kind": "emoji",
+    "value": "😮‍💨"
+  },
+  "水果": {
+    "kind": "sketch",
+    "value": "fruit-basket"
+  },
+  "厨房": {
+    "kind": "sketch",
+    "value": "kitchen"
+  },
+  "房间": {
+    "kind": "sketch",
+    "value": "room"
+  },
+  "教室": {
+    "kind": "sketch",
+    "value": "room"
+  },
+  "浴室": {
+    "kind": "sketch",
+    "value": "bathroom"
+  },
+  "文具": {
+    "kind": "sketch",
+    "value": "utensils"
+  },
+  "汉字": {
+    "kind": "sketch",
+    "value": "book-dictionary"
+  },
+  "文字": {
+    "kind": "sketch",
+    "value": "book-dictionary"
+  },
+  "形状": {
+    "kind": "sketch",
+    "value": "shapes"
+  },
+  "图画": {
+    "kind": "sketch",
+    "value": "art"
+  },
+  "春天": {
+    "kind": "sketch",
+    "value": "spring-season"
+  },
+  "夏天": {
+    "kind": "sketch",
+    "value": "summer-season"
+  },
+  "秋天": {
+    "kind": "sketch",
+    "value": "autumn-season"
+  },
+  "冬天": {
+    "kind": "sketch",
+    "value": "winter-season"
+  },
+  "四季": {
+    "kind": "sketch",
+    "value": "four-seasons"
+  },
+  "刻度": {
+    "kind": "sketch",
+    "value": "scale-marks"
+  },
+  "吸住": {
+    "kind": "sketch",
+    "value": "magnet-pull"
+  },
+  "吸引": {
+    "kind": "sketch",
+    "value": "magnet-pull"
+  },
+  "楼层": {
+    "kind": "sketch",
+    "value": "tall-building"
+  },
+  "机器": {
+    "kind": "sketch",
+    "value": "machine"
+  },
+  "饥饿": {
+    "kind": "sketch",
+    "value": "hungry"
+  },
+  "口渴": {
+    "kind": "sketch",
+    "value": "thirsty"
+  },
+  "剩饭": {
+    "kind": "sketch",
+    "value": "leftovers"
+  },
+  "停车": {
+    "kind": "sketch",
+    "value": "parking"
+  },
+  "弯路": {
+    "kind": "sketch",
+    "value": "bend"
+  },
+  "直走": {
+    "kind": "sketch",
+    "value": "straight"
+  },
+  "队伍": {
+    "kind": "sketch",
+    "value": "queue"
+  },
+  "排队": {
+    "kind": "sketch",
+    "value": "queue"
+  },
+  "脏了": {
+    "kind": "sketch",
+    "value": "dirty"
+  },
+  "湿了": {
+    "kind": "sketch",
+    "value": "wet"
+  },
+  "干衣服": {
+    "kind": "sketch",
+    "value": "dry"
+  },
+  "换衣服": {
+    "kind": "sketch",
+    "value": "wash-clothes"
+  },
+  "补好": {
+    "kind": "sketch",
+    "value": "sew"
+  },
+  "破了": {
+    "kind": "sketch",
+    "value": "torn"
+  },
+  "今年": {
+    "kind": "sketch",
+    "value": "calendar-year"
+  },
+  "时间": {
+    "kind": "sketch",
+    "value": "clock"
+  },
+  "几点": {
+    "kind": "sketch",
+    "value": "clock"
+  },
+  "名字": {
+    "kind": "sketch",
+    "value": "name"
+  },
+  "姓名": {
+    "kind": "sketch",
+    "value": "name"
+  },
+  "偏旁": {
+    "kind": "sketch",
+    "value": "radical"
+  },
+  "部首": {
+    "kind": "sketch",
+    "value": "radical"
+  },
+  "拉手": {
+    "kind": "sketch",
+    "value": "handshake"
+  },
+  "我和你": {
+    "kind": "scene",
+    "value": "together",
+    "description": "两个人牵着手站在一起"
+  },
+  "好朋友": {
+    "kind": "scene",
+    "value": "together",
+    "description": "两个人牵着手站在一起"
+  },
+  "我爱你": {
+    "kind": "scene",
+    "value": "love-you",
+    "description": "牵手的两个人中间画着爱心"
+  },
+  "你好": {
+    "kind": "scene",
+    "value": "greet",
+    "description": "两个人挥手打招呼"
+  },
+  "问好": {
+    "kind": "scene",
+    "value": "greet",
+    "description": "两个人挥手打招呼"
+  },
+  "您好": {
+    "kind": "scene",
+    "value": "greet",
+    "description": "两个人挥手打招呼"
+  },
+  "他来": {
+    "kind": "scene",
+    "value": "man-approach",
+    "description": "一个男士沿路朝我们走来"
+  },
+  "她来": {
+    "kind": "scene",
+    "value": "woman-approach",
+    "description": "一个女士沿路朝我们走来"
+  },
+  "它来": {
+    "kind": "scene",
+    "value": "cat-approach",
+    "description": "小猫朝前走来，箭头表示方向"
+  },
+  "吃饭": {
+    "kind": "scene",
+    "value": "eat",
+    "description": "坐在餐桌前用筷子吃碗里的饭"
+  },
+  "跳一跳": {
+    "kind": "scene",
+    "value": "jump-rope",
+    "description": "小朋友双脚离地跳绳"
+  },
+  "我的": {
+    "kind": "scene",
+    "value": "myself",
+    "description": "指向自己，表示说话的人"
+  },
+  "自己": {
+    "kind": "scene",
+    "value": "myself",
+    "description": "指向自己，表示说话的人"
+  },
+  "回家": {
+    "kind": "scene",
+    "value": "come-home",
+    "description": "人走向家门，箭头指向房子"
+  },
+  "到家": {
+    "kind": "scene",
+    "value": "come-home",
+    "description": "人走向家门，箭头指向房子"
+  },
+  "回来": {
+    "kind": "scene",
+    "value": "come-home",
+    "description": "人走向家门，箭头指向房子"
+  },
+  "在家": {
+    "kind": "scene",
+    "value": "at-home",
+    "description": "人在房子里面"
+  },
+  "居住": {
+    "kind": "scene",
+    "value": "at-home",
+    "description": "人在房子里面"
+  },
+  "住下": {
+    "kind": "scene",
+    "value": "at-home",
+    "description": "人在房子里面"
+  },
+  "点头": {
+    "kind": "scene",
+    "value": "nod",
+    "description": "头旁的向下弯箭头表示点头动作"
+  },
+  "看一看": {
+    "kind": "scene",
+    "value": "look",
+    "description": "目光朝向面前的花"
+  },
+  "目光": {
+    "kind": "scene",
+    "value": "look",
+    "description": "目光朝向面前的花"
+  },
+  "有鱼": {
+    "kind": "scene",
+    "value": "fish-present",
+    "description": "水里有一条鱼"
+  },
+  "坐下": {
+    "kind": "scene",
+    "value": "sit",
+    "description": "人坐在凳子上"
+  },
+  "起来": {
+    "kind": "scene",
+    "value": "stand-up",
+    "description": "人站直，向上的箭头表示起身"
+  },
+  "去公园": {
+    "kind": "scene",
+    "value": "park",
+    "description": "人朝有树木的公园走去"
+  },
+  "我们": {
+    "kind": "scene",
+    "value": "we",
+    "description": "三个人站在一起"
+  },
+  "众人": {
+    "kind": "scene",
+    "value": "we",
+    "description": "三个人站在一起"
+  },
+  "人民": {
+    "kind": "scene",
+    "value": "we",
+    "description": "三个人站在一起"
+  },
+  "这里": {
+    "kind": "scene",
+    "value": "here",
+    "description": "指着身边的地面位置"
+  },
+  "那里": {
+    "kind": "scene",
+    "value": "there",
+    "description": "指着远处的房子"
+  },
+  "哪里": {
+    "kind": "scene",
+    "value": "where",
+    "description": "看着房子思考它在哪里"
+  },
+  "什么": {
+    "kind": "scene",
+    "value": "what",
+    "description": "箱子旁的问号表示询问里面是什么"
+  },
+  "学习": {
+    "kind": "scene",
+    "value": "learn",
+    "description": "打开书本阅读学习"
+  },
+  "班级": {
+    "kind": "scene",
+    "value": "class",
+    "description": "老师在黑板前教两个坐着的小朋友"
+  },
+  "上课": {
+    "kind": "scene",
+    "value": "class",
+    "description": "老师在黑板前教两个坐着的小朋友"
+  },
+  "叫我": {
+    "kind": "scene",
+    "value": "call-me",
+    "description": "向说话的人招手，箭头指向自己"
+  },
+  "回答": {
+    "kind": "scene",
+    "value": "answer",
+    "description": "两人交流，箭头表示回答对方"
+  },
+  "来玩": {
+    "kind": "scene",
+    "value": "play",
+    "description": "两个人一起玩球"
+  },
+  "玩耍": {
+    "kind": "scene",
+    "value": "play",
+    "description": "两个人一起玩球"
+  },
+  "来吧": {
+    "kind": "scene",
+    "value": "play",
+    "description": "两个人一起玩球"
+  },
+  "让一让": {
+    "kind": "scene",
+    "value": "make-way",
+    "description": "人往旁边让出道路，让后面的人通过"
+  },
+  "等等": {
+    "kind": "scene",
+    "value": "wait",
+    "description": "人在时钟旁耐心等待"
+  },
+  "耐心": {
+    "kind": "scene",
+    "value": "wait",
+    "description": "人在时钟旁耐心等待"
+  },
+  "请坐": {
+    "kind": "scene",
+    "value": "please-sit",
+    "description": "人伸手指着空凳子，请对方坐下"
+  },
+  "谢谢": {
+    "kind": "scene",
+    "value": "thanks",
+    "description": "面对帮助自己的人表达感谢，爱心表示谢意"
+  },
+  "醒来": {
+    "kind": "scene",
+    "value": "awake",
+    "description": "从被窝里起身伸展，窗外已出太阳"
+  },
+  "没有": {
+    "kind": "scene",
+    "value": "none",
+    "description": "空盒子里没有东西"
+  },
+  "干净": {
+    "kind": "scene",
+    "value": "clean",
+    "description": "洁净的衣服旁有闪亮的光点"
+  },
+  "放好": {
+    "kind": "scene",
+    "value": "arrange",
+    "description": "把书放进书架"
+  },
+  "收好": {
+    "kind": "scene",
+    "value": "arrange",
+    "description": "把书放进书架"
+  },
+  "整理": {
+    "kind": "scene",
+    "value": "arrange",
+    "description": "把书放进书架"
+  },
+  "工作": {
+    "kind": "scene",
+    "value": "arrange",
+    "description": "把书放进书架"
+  },
+  "拿来": {
+    "kind": "scene",
+    "value": "take",
+    "description": "伸手拿书，箭头朝向自己"
+  },
+  "带上": {
+    "kind": "scene",
+    "value": "bring",
+    "description": "出发时随身带着包"
+  },
+  "找到": {
+    "kind": "scene",
+    "value": "found",
+    "description": "指着已经找到的小球"
+  },
+  "发现": {
+    "kind": "scene",
+    "value": "found",
+    "description": "指着已经找到的小球"
+  },
+  "前面": {
+    "kind": "scene",
+    "value": "front",
+    "description": "箭头指向队伍前面的人"
+  },
+  "后面": {
+    "kind": "scene",
+    "value": "behind",
+    "description": "箭头指向队伍后面的人"
+  },
+  "背后": {
+    "kind": "scene",
+    "value": "behind",
+    "description": "箭头指向队伍后面的人"
+  },
+  "先来": {
+    "kind": "scene",
+    "value": "first",
+    "description": "一二三的次序中突出第一个"
+  },
+  "第一": {
+    "kind": "scene",
+    "value": "first",
+    "description": "一二三的次序中突出第一个"
+  },
+  "首先": {
+    "kind": "scene",
+    "value": "first",
+    "description": "一二三的次序中突出第一个"
+  },
+  "一次": {
+    "kind": "scene",
+    "value": "once",
+    "description": "一个球旁标出数字一，表示一次玩球"
+  },
+  "安全": {
+    "kind": "scene",
+    "value": "safe",
+    "description": "盾牌护着人，表示受到保护"
+  },
+  "危险": {
+    "kind": "scene",
+    "value": "danger",
+    "description": "三角警示牌里的感叹号提示危险"
+  },
+  "疼痛": {
+    "kind": "scene",
+    "value": "hurt",
+    "description": "腿旁的放射线表示受伤处疼痛"
+  },
+  "帮忙": {
+    "kind": "scene",
+    "value": "help",
+    "description": "伸手扶起坐在地上的伙伴"
+  },
+  "帮助": {
+    "kind": "scene",
+    "value": "help",
+    "description": "伸手扶起坐在地上的伙伴"
+  },
+  "告诉": {
+    "kind": "scene",
+    "value": "tell",
+    "description": "两个人面对面说话"
+  },
+  "讲述": {
+    "kind": "scene",
+    "value": "tell",
+    "description": "两个人面对面说话"
+  },
+  "传话": {
+    "kind": "scene",
+    "value": "tell",
+    "description": "两个人面对面说话"
+  },
+  "语言": {
+    "kind": "scene",
+    "value": "tell",
+    "description": "两个人面对面说话"
+  },
+  "明亮": {
+    "kind": "scene",
+    "value": "bright",
+    "description": "阳光照进房间"
+  },
+  "长大": {
+    "kind": "scene",
+    "value": "grow",
+    "description": "小孩经过成长变高"
+  },
+  "生命": {
+    "kind": "scene",
+    "value": "life",
+    "description": "种子发芽，长成一株植物"
+  },
+  "变化": {
+    "kind": "scene",
+    "value": "life",
+    "description": "种子发芽，长成一株植物"
+  },
+  "保护": {
+    "kind": "scene",
+    "value": "protect",
+    "description": "盾牌保护里面的人"
+  },
+  "路边": {
+    "kind": "scene",
+    "value": "roadside",
+    "description": "人站在道路旁边"
+  },
+  "过马路": {
+    "kind": "scene",
+    "value": "cross-road",
+    "description": "两个人牵手走斑马线"
+  },
+  "乘车": {
+    "kind": "scene",
+    "value": "ride",
+    "description": "人坐在车窗里面"
+  },
+  "出去": {
+    "kind": "scene",
+    "value": "out",
+    "description": "人从门里走到外面"
+  },
+  "离开": {
+    "kind": "scene",
+    "value": "out",
+    "description": "人从门里走到外面"
+  },
+  "进来": {
+    "kind": "scene",
+    "value": "in",
+    "description": "人从外面走进门"
+  },
+  "远方": {
+    "kind": "scene",
+    "value": "far",
+    "description": "人和远处的房子之间隔着长路"
+  },
+  "近处": {
+    "kind": "scene",
+    "value": "near",
+    "description": "人就站在房子附近"
+  },
+  "旁边": {
+    "kind": "scene",
+    "value": "beside",
+    "description": "人站在树的旁边"
+  },
+  "转身": {
+    "kind": "scene",
+    "value": "turn",
+    "description": "人身旁的弯箭头表示转向"
+  },
+  "市场": {
+    "kind": "scene",
+    "value": "market",
+    "description": "多个摊位排列在一起"
+  },
+  "卖菜": {
+    "kind": "scene",
+    "value": "sell",
+    "description": "摊主在菜摊后卖菜"
+  },
+  "付款": {
+    "kind": "scene",
+    "value": "pay",
+    "description": "把带有钱币符号的钱交给对方"
+  },
+  "货物": {
+    "kind": "scene",
+    "value": "goods",
+    "description": "架子上放着瓶子、罐子和书"
+  },
+  "物品": {
+    "kind": "scene",
+    "value": "goods",
+    "description": "架子上放着瓶子、罐子和书"
+  },
+  "餐厅": {
+    "kind": "scene",
+    "value": "restaurant",
+    "description": "两个人坐在餐桌前用餐"
+  },
+  "饭馆": {
+    "kind": "scene",
+    "value": "restaurant",
+    "description": "两个人坐在餐桌前用餐"
+  },
+  "客人": {
+    "kind": "scene",
+    "value": "guest",
+    "description": "主人在门口向来访的人挥手"
+  },
+  "欢迎": {
+    "kind": "scene",
+    "value": "guest",
+    "description": "主人在门口向来访的人挥手"
+  },
+  "邻居": {
+    "kind": "scene",
+    "value": "neighbours",
+    "description": "相邻两座房子的人互相招手"
+  },
+  "小区": {
+    "kind": "scene",
+    "value": "home-area",
+    "description": "几栋房子之间有公共绿地"
+  },
+  "救助": {
+    "kind": "scene",
+    "value": "rescue",
+    "description": "伸手扶起需要帮助的人，上方有救助标记"
+  },
+  "队员": {
+    "kind": "scene",
+    "value": "team",
+    "description": "三个人穿着有同样标记的衣服站在一起"
+  },
+  "旅行": {
+    "kind": "scene",
+    "value": "travel",
+    "description": "带着包朝远处的地方出发"
+  },
+  "游玩": {
+    "kind": "scene",
+    "value": "travel",
+    "description": "带着包朝远处的地方出发"
+  },
+  "家乡": {
+    "kind": "scene",
+    "value": "hometown",
+    "description": "房子旁的爱心表示对家的感情"
+  },
+  "标志": {
+    "kind": "scene",
+    "value": "sign",
+    "description": "带有感叹号的提示牌"
+  },
+  "提示": {
+    "kind": "scene",
+    "value": "sign",
+    "description": "带有感叹号的提示牌"
+  },
+  "遵守": {
+    "kind": "scene",
+    "value": "rules",
+    "description": "逐条核对规则清单"
+  },
+  "规则": {
+    "kind": "scene",
+    "value": "rules",
+    "description": "逐条核对规则清单"
+  },
+  "法则": {
+    "kind": "scene",
+    "value": "rules",
+    "description": "逐条核对规则清单"
+  },
+  "纪律": {
+    "kind": "scene",
+    "value": "rules",
+    "description": "逐条核对规则清单"
+  },
+  "亲朋": {
+    "kind": "scene",
+    "value": "relatives",
+    "description": "大人和孩子站在一起"
+  },
+  "亲人": {
+    "kind": "scene",
+    "value": "relatives",
+    "description": "大人和孩子站在一起"
+  },
+  "哥哥": {
+    "kind": "scene",
+    "value": "older-brother",
+    "description": "箭头指向两个孩子中年长的男孩"
+  },
+  "姐姐": {
+    "kind": "scene",
+    "value": "older-sister",
+    "description": "箭头指向两个孩子中年长的女孩"
+  },
+  "弟弟": {
+    "kind": "scene",
+    "value": "younger-brother",
+    "description": "箭头指向两个孩子中年幼的男孩"
+  },
+  "妹妹": {
+    "kind": "scene",
+    "value": "younger-sister",
+    "description": "箭头指向两个孩子中年幼的女孩"
+  },
+  "叔叔": {
+    "kind": "scene",
+    "value": "uncle",
+    "description": "男长辈和孩子站在一起，是亲属关系的示例"
+  },
+  "伯伯": {
+    "kind": "scene",
+    "value": "uncle",
+    "description": "男长辈和孩子站在一起，是亲属关系的示例"
+  },
+  "阿姨": {
+    "kind": "scene",
+    "value": "aunt",
+    "description": "女长辈和孩子站在一起，是称呼长辈的示例"
+  },
+  "声音": {
+    "kind": "scene",
+    "value": "sound",
+    "description": "从嘴边传出的弧线表示声音"
+  },
+  "粮食": {
+    "kind": "scene",
+    "value": "grain",
+    "description": "谷穗和米粒放在一起"
+  },
+  "吃饱": {
+    "kind": "scene",
+    "value": "full-tummy",
+    "description": "吃饱后双手放在肚子前"
+  },
+  "浪费": {
+    "kind": "scene",
+    "value": "waste",
+    "description": "把饭倒进垃圾桶，叉号提示不要浪费"
+  },
+  "整齐": {
+    "kind": "scene",
+    "value": "tidy",
+    "description": "书和物品整齐摆进柜子"
+  },
+  "柔软": {
+    "kind": "scene",
+    "value": "soft",
+    "description": "手压方向的箭头指着软枕头"
+  },
+  "坚硬": {
+    "kind": "scene",
+    "value": "hard",
+    "description": "向下按压坚硬的石块"
+  },
+  "坏了": {
+    "kind": "scene",
+    "value": "broken",
+    "description": "纸张出现撕裂的口子"
+  },
+  "损坏": {
+    "kind": "scene",
+    "value": "broken",
+    "description": "纸张出现撕裂的口子"
+  },
+  "毁坏": {
+    "kind": "scene",
+    "value": "broken",
+    "description": "纸张出现撕裂的口子"
+  },
+  "旧物": {
+    "kind": "scene",
+    "value": "old",
+    "description": "使用过的书留下磨损痕迹"
+  },
+  "号码": {
+    "kind": "scene",
+    "value": "number",
+    "description": "号码牌上写着123"
+  },
+  "很久": {
+    "kind": "scene",
+    "value": "long-time",
+    "description": "时钟和长箭头表示时间过去很久"
+  },
+  "多少": {
+    "kind": "scene",
+    "value": "how-many",
+    "description": "数小圆点，问号表示询问数量"
+  },
+  "几个": {
+    "kind": "scene",
+    "value": "how-many",
+    "description": "数小圆点，问号表示询问数量"
+  },
+  "少了": {
+    "kind": "scene",
+    "value": "less",
+    "description": "四个圆点变成两个圆点"
+  },
+  "每天": {
+    "kind": "scene",
+    "value": "every-day",
+    "description": "日历上连续几天都有完成标记"
+  },
+  "各自": {
+    "kind": "scene",
+    "value": "each",
+    "description": "两个人各有一个球"
+  },
+  "一共": {
+    "kind": "scene",
+    "value": "total",
+    "description": "两个加一个，合起来是三个"
+  },
+  "一只": {
+    "kind": "scene",
+    "value": "one-bird",
+    "description": "一只小鸟旁标出数字一"
+  },
+  "一张": {
+    "kind": "scene",
+    "value": "one-sheet",
+    "description": "一张纸旁标出数字一"
+  },
+  "一条": {
+    "kind": "scene",
+    "value": "one-strip",
+    "description": "一条绳子旁标出数字一"
+  },
+  "一片": {
+    "kind": "scene",
+    "value": "one-leaf",
+    "description": "一片叶子旁标出数字一"
+  },
+  "一块": {
+    "kind": "scene",
+    "value": "one-block",
+    "description": "一块积木旁标出数字一"
+  },
+  "平面": {
+    "kind": "scene",
+    "value": "flat",
+    "description": "一块平整的板面"
+  },
+  "相同": {
+    "kind": "scene",
+    "value": "same",
+    "description": "两个大小颜色相同的圆形"
+  },
+  "一样": {
+    "kind": "scene",
+    "value": "same",
+    "description": "两个大小颜色相同的圆形"
+  },
+  "差异": {
+    "kind": "scene",
+    "value": "different",
+    "description": "比较圆形和方形的不同"
+  },
+  "别的": {
+    "kind": "scene",
+    "value": "different",
+    "description": "比较圆形和方形的不同"
+  },
+  "好像": {
+    "kind": "scene",
+    "value": "similar",
+    "description": "两个外形相似的圆形"
+  },
+  "次序": {
+    "kind": "scene",
+    "value": "order",
+    "description": "一二三按先后次序排列"
+  },
+  "顺序": {
+    "kind": "scene",
+    "value": "order",
+    "description": "一二三按先后次序排列"
+  },
+  "末尾": {
+    "kind": "scene",
+    "value": "last",
+    "description": "一二三的次序中突出最后一个"
+  },
+  "比较": {
+    "kind": "scene",
+    "value": "compare",
+    "description": "用天平比较两边的重量"
+  },
+  "足够": {
+    "kind": "scene",
+    "value": "enough",
+    "description": "两个小朋友有两个球，每人都有一个"
+  },
+  "实验": {
+    "kind": "scene",
+    "value": "experiment",
+    "description": "观察往杯中加入材料的实验"
+  },
+  "试一试": {
+    "kind": "scene",
+    "value": "experiment",
+    "description": "观察往杯中加入材料的实验"
+  },
+  "推开": {
+    "kind": "scene",
+    "value": "push",
+    "description": "人用手推箱子，箭头表示移动方向"
+  },
+  "使用": {
+    "kind": "scene",
+    "value": "use",
+    "description": "拿着书阅读，是使用书的例子"
+  },
+  "故事": {
+    "kind": "scene",
+    "value": "story",
+    "description": "打开书给别人讲故事"
+  },
+  "古时候": {
+    "kind": "scene",
+    "value": "long-ago",
+    "description": "向过去的箭头配着时钟和旧房子"
+  },
+  "从前": {
+    "kind": "scene",
+    "value": "long-ago",
+    "description": "向过去的箭头配着时钟和旧房子"
+  },
+  "一座": {
+    "kind": "scene",
+    "value": "one-house",
+    "description": "一座房子旁标出数字一"
+  },
+  "喜欢": {
+    "kind": "scene",
+    "value": "like",
+    "description": "人身前的爱心表示喜欢的心情"
+  },
+  "心疼": {
+    "kind": "scene",
+    "value": "comfort",
+    "description": "靠近坐着的人给予关心"
+  },
+  "勇敢": {
+    "kind": "scene",
+    "value": "brave",
+    "description": "小朋友迈向台阶，尝试向上走"
+  },
+  "敢做": {
+    "kind": "scene",
+    "value": "brave",
+    "description": "小朋友迈向台阶，尝试向上走"
+  },
+  "大胆": {
+    "kind": "scene",
+    "value": "brave",
+    "description": "小朋友迈向台阶，尝试向上走"
+  },
+  "尝试": {
+    "kind": "scene",
+    "value": "try",
+    "description": "小朋友伸手试着搭积木"
+  },
+  "迷路": {
+    "kind": "scene",
+    "value": "lost",
+    "description": "站在岔路口，不知道该走哪条路"
+  },
+  "丢失": {
+    "kind": "scene",
+    "value": "missing",
+    "description": "盒子中物品的位置空了"
+  },
+  "追赶": {
+    "kind": "scene",
+    "value": "chase",
+    "description": "一个人跟在另一个人后面追赶"
+  },
+  "逃走": {
+    "kind": "scene",
+    "value": "escape",
+    "description": "人快速朝前离去，后面画着运动线"
+  },
+  "因为": {
+    "kind": "scene",
+    "value": "because",
+    "description": "因为下雨，所以撑伞；雨和伞用箭头连接"
+  },
+  "所以": {
+    "kind": "scene",
+    "value": "therefore",
+    "description": "下雨后撑起伞，用箭头表示结果"
+  },
+  "办法": {
+    "kind": "scene",
+    "value": "idea",
+    "description": "头旁亮起灯泡，表示想到办法"
+  },
+  "聪明": {
+    "kind": "scene",
+    "value": "idea",
+    "description": "头旁亮起灯泡，表示想到办法"
+  },
+  "方法": {
+    "kind": "scene",
+    "value": "method",
+    "description": "对着步骤清单思考怎么做"
+  },
+  "计划": {
+    "kind": "scene",
+    "value": "method",
+    "description": "对着步骤清单思考怎么做"
+  },
+  "团结": {
+    "kind": "scene",
+    "value": "work-together",
+    "description": "两个人一起搬一块木板"
+  },
+  "送给": {
+    "kind": "scene",
+    "value": "give",
+    "description": "两个人递送和接收礼物"
+  },
+  "接受": {
+    "kind": "scene",
+    "value": "give",
+    "description": "两个人递送和接收礼物"
+  },
+  "接住": {
+    "kind": "scene",
+    "value": "catch",
+    "description": "人伸出双手接朝自己飞来的球"
+  },
+  "善意": {
+    "kind": "scene",
+    "value": "kind",
+    "description": "带着关心的心情把礼物送给别人"
+  },
+  "改正": {
+    "kind": "scene",
+    "value": "correct",
+    "description": "从错误的叉号改成正确的勾号"
+  },
+  "困难": {
+    "kind": "scene",
+    "value": "difficult",
+    "description": "面对很高的障碍思考怎么通过"
+  },
+  "坚持": {
+    "kind": "scene",
+    "value": "persist",
+    "description": "沿着一二三的过程一直走到目标"
+  },
+  "努力": {
+    "kind": "scene",
+    "value": "effort",
+    "description": "用力推动箱子，额头有汗滴"
+  },
+  "学会": {
+    "kind": "scene",
+    "value": "can",
+    "description": "会打开书阅读，旁边画完成标记"
+  },
+  "能够": {
+    "kind": "scene",
+    "value": "can",
+    "description": "会打开书阅读，旁边画完成标记"
+  },
+  "才能": {
+    "kind": "scene",
+    "value": "talents",
+    "description": "有人会唱歌，有人会阅读"
+  },
+  "本领": {
+    "kind": "scene",
+    "value": "talents",
+    "description": "有人会唱歌，有人会阅读"
+  },
+  "鸟鸣": {
+    "kind": "scene",
+    "value": "bird-song",
+    "description": "小鸟嘴边的音符表示鸣叫"
+  },
+  "爬树": {
+    "kind": "scene",
+    "value": "climb",
+    "description": "人举手攀住树，箭头表示向上爬"
+  },
+  "钻洞": {
+    "kind": "scene",
+    "value": "crawl-in",
+    "description": "朝洞口弯身往里钻"
+  },
+  "躲雨": {
+    "kind": "scene",
+    "value": "shelter",
+    "description": "下雨时躲在伞下面"
+  },
+  "藏好": {
+    "kind": "scene",
+    "value": "hide",
+    "description": "人藏在树后，只露出一点脸"
+  },
+  "滚动": {
+    "kind": "scene",
+    "value": "roll",
+    "description": "小球沿地面滚动"
+  },
+  "美丽": {
+    "kind": "scene",
+    "value": "beautiful",
+    "description": "树木、河流和鲜花组成的美景"
+  },
+  "秀美": {
+    "kind": "scene",
+    "value": "beautiful",
+    "description": "树木、河流和鲜花组成的美景"
+  },
+  "丑小鸭": {
+    "kind": "scene",
+    "value": "duckling",
+    "description": "灰色的小鸭子，是童话角色的示例"
+  },
+  "好奇": {
+    "kind": "scene",
+    "value": "curious",
+    "description": "拿放大镜观察，问号表示想知道更多"
+  },
+  "探索": {
+    "kind": "scene",
+    "value": "curious",
+    "description": "拿放大镜观察，问号表示想知道更多"
+  },
+  "见面": {
+    "kind": "scene",
+    "value": "meet",
+    "description": "两个人靠近后挥手见面"
+  },
+  "遇见": {
+    "kind": "scene",
+    "value": "meet",
+    "description": "两个人靠近后挥手见面"
+  },
+  "舍不得": {
+    "kind": "scene",
+    "value": "miss",
+    "description": "看着离去的人挥手，爱心表达不舍"
+  },
+  "想要": {
+    "kind": "scene",
+    "value": "want",
+    "description": "指着心里想要的花"
+  },
+  "梦想": {
+    "kind": "scene",
+    "value": "dream",
+    "description": "想象中的星星和花，是愿望的示例"
+  },
+  "愿望": {
+    "kind": "scene",
+    "value": "dream",
+    "description": "想象中的星星和花，是愿望的示例"
+  },
+  "盼望": {
+    "kind": "scene",
+    "value": "expect",
+    "description": "看着日历期待某一天到来"
+  },
+  "还有": {
+    "kind": "scene",
+    "value": "more",
+    "description": "已有的两个之外，还有一个"
+  },
+  "都是": {
+    "kind": "scene",
+    "value": "all",
+    "description": "括线把所有圆点一起圈入范围"
+  },
+  "很好": {
+    "kind": "scene",
+    "value": "good",
+    "description": "奖杯表示完成得好、获得肯定"
+  },
+  "最好": {
+    "kind": "scene",
+    "value": "good",
+    "description": "奖杯表示完成得好、获得肯定"
+  },
+  "做得好": {
+    "kind": "scene",
+    "value": "good",
+    "description": "奖杯表示完成得好、获得肯定"
+  },
+  "成功": {
+    "kind": "scene",
+    "value": "good",
+    "description": "奖杯表示完成得好、获得肯定"
+  },
+  "把水倒好": {
+    "kind": "scene",
+    "value": "pour",
+    "description": "从一个杯子向另一个杯子倒水"
+  },
+  "已经": {
+    "kind": "scene",
+    "value": "already",
+    "description": "书架已经整理好，旁边有完成标记"
+  },
+  "完成": {
+    "kind": "scene",
+    "value": "already",
+    "description": "书架已经整理好，旁边有完成标记"
+  },
+  "提问": {
+    "kind": "scene",
+    "value": "ask",
+    "description": "面对别人提出问题"
+  },
+  "请求": {
+    "kind": "scene",
+    "value": "ask",
+    "description": "面对别人提出问题"
+  },
+  "好吗": {
+    "kind": "scene",
+    "value": "ask",
+    "description": "面对别人提出问题"
+  },
+  "同意": {
+    "kind": "scene",
+    "value": "agree",
+    "description": "两人交流后出现同意的勾号"
+  },
+  "愿意": {
+    "kind": "scene",
+    "value": "agree",
+    "description": "两人交流后出现同意的勾号"
+  },
+  "好呀": {
+    "kind": "scene",
+    "value": "agree",
+    "description": "两人交流后出现同意的勾号"
+  },
+  "又来": {
+    "kind": "scene",
+    "value": "again",
+    "description": "绕一圈回来的箭头表示再次来"
+  },
+  "选择": {
+    "kind": "scene",
+    "value": "choose",
+    "description": "从两个不同的球中选中一个"
+  },
+  "决定": {
+    "kind": "scene",
+    "value": "choose",
+    "description": "从两个不同的球中选中一个"
+  },
+  "感觉": {
+    "kind": "scene",
+    "value": "feel-cold",
+    "description": "冷天抱住双臂，表示感觉冷"
+  },
+  "专心": {
+    "kind": "scene",
+    "value": "focus",
+    "description": "注意力集中在打开的书上"
+  },
+  "仔细": {
+    "kind": "scene",
+    "value": "careful",
+    "description": "用放大镜认真检查纸上的内容"
+  },
+  "细心": {
+    "kind": "scene",
+    "value": "careful",
+    "description": "用放大镜认真检查纸上的内容"
+  },
+  "注意": {
+    "kind": "scene",
+    "value": "careful",
+    "description": "用放大镜认真检查纸上的内容"
+  },
+  "检查": {
+    "kind": "scene",
+    "value": "careful",
+    "description": "用放大镜认真检查纸上的内容"
+  },
+  "特点": {
+    "kind": "scene",
+    "value": "features",
+    "description": "放大观察叶子的脉络特点"
+  },
+  "特征": {
+    "kind": "scene",
+    "value": "features",
+    "description": "放大观察叶子的脉络特点"
+  },
+  "兴趣": {
+    "kind": "scene",
+    "value": "interest",
+    "description": "一个人爱看书，另一个人爱画画"
+  },
+  "心情": {
+    "kind": "scene",
+    "value": "mood",
+    "description": "开心和难过的两种表情"
+  },
+  "情绪": {
+    "kind": "scene",
+    "value": "mood",
+    "description": "开心和难过的两种表情"
+  },
+  "兴奋": {
+    "kind": "scene",
+    "value": "excited",
+    "description": "高高举起双手表达兴奋"
+  },
+  "争论": {
+    "kind": "scene",
+    "value": "argue",
+    "description": "两个人面对面争执，头旁有感叹号"
+  },
+  "争吵": {
+    "kind": "scene",
+    "value": "argue",
+    "description": "两个人面对面争执，头旁有感叹号"
+  },
+  "联系": {
+    "kind": "scene",
+    "value": "contact",
+    "description": "两个人用电话联系"
+  },
+  "联络": {
+    "kind": "scene",
+    "value": "contact",
+    "description": "两个人用电话联系"
+  },
+  "通讯": {
+    "kind": "scene",
+    "value": "contact",
+    "description": "两个人用电话联系"
+  },
+  "碰到": {
+    "kind": "scene",
+    "value": "touch",
+    "description": "手轻轻触碰另一个人的肩膀"
+  },
+  "摸摸": {
+    "kind": "scene",
+    "value": "touch",
+    "description": "手轻轻触碰另一个人的肩膀"
+  },
+  "秘密": {
+    "kind": "scene",
+    "value": "privacy",
+    "description": "锁住的内容和制止手势表示不能随意查看"
+  },
+  "私人": {
+    "kind": "scene",
+    "value": "privacy",
+    "description": "锁住的内容和制止手势表示不能随意查看"
+  },
+  "隐私": {
+    "kind": "scene",
+    "value": "privacy",
+    "description": "锁住的内容和制止手势表示不能随意查看"
+  },
+  "包容": {
+    "kind": "scene",
+    "value": "include",
+    "description": "把不同的伙伴接纳到一起"
+  },
+  "约定": {
+    "kind": "scene",
+    "value": "promise",
+    "description": "两个人握手作出约定"
+  },
+  "承诺": {
+    "kind": "scene",
+    "value": "promise",
+    "description": "两个人握手作出约定"
+  },
+  "公共": {
+    "kind": "scene",
+    "value": "public",
+    "description": "多人一起使用的书架"
+  },
+  "喧哗": {
+    "kind": "scene",
+    "value": "noise",
+    "description": "多个人大声说话，感叹号表示嘈杂"
+  },
+  "开始": {
+    "kind": "scene",
+    "value": "start",
+    "description": "箭头指向一二三步骤的起点"
+  },
+  "反复": {
+    "kind": "scene",
+    "value": "repeat",
+    "description": "环形箭头围绕书本，表示反复练习"
+  },
+  "重复": {
+    "kind": "scene",
+    "value": "repeat",
+    "description": "环形箭头围绕书本，表示反复练习"
+  },
+  "练习": {
+    "kind": "scene",
+    "value": "repeat",
+    "description": "环形箭头围绕书本，表示反复练习"
+  },
+  "版本": {
+    "kind": "scene",
+    "value": "edition",
+    "description": "同一本书的第一版和第二版"
+  },
+  "停顿": {
+    "kind": "scene",
+    "value": "pause",
+    "description": "阅读时按暂停符号停一下"
+  },
+  "继续": {
+    "kind": "scene",
+    "value": "continue",
+    "description": "沿着道路继续向前走"
+  },
+  "往前": {
+    "kind": "scene",
+    "value": "continue",
+    "description": "沿着道路继续向前走"
+  },
+  "跟随": {
+    "kind": "scene",
+    "value": "follow",
+    "description": "小朋友跟着前面的大人走"
+  },
+  "场景": {
+    "kind": "scene",
+    "value": "setting",
+    "description": "人在有树、河流和鲜花的环境中"
+  },
+  "环境": {
+    "kind": "scene",
+    "value": "setting",
+    "description": "人在有树、河流和鲜花的环境中"
+  },
+  "线索": {
+    "kind": "scene",
+    "value": "footprints",
+    "description": "地上留下的一串足迹"
+  },
+  "踪迹": {
+    "kind": "scene",
+    "value": "footprints",
+    "description": "地上留下的一串足迹"
+  },
+  "将来": {
+    "kind": "scene",
+    "value": "future",
+    "description": "日历旁向前的箭头表示未来的日子"
+  },
+  "未来": {
+    "kind": "scene",
+    "value": "future",
+    "description": "日历旁向前的箭头表示未来的日子"
+  },
+  "消息": {
+    "kind": "scene",
+    "value": "news",
+    "description": "拿着写有内容的纸告诉别人"
+  },
+  "报告": {
+    "kind": "scene",
+    "value": "news",
+    "description": "拿着写有内容的纸告诉别人"
+  },
+  "步骤": {
+    "kind": "scene",
+    "value": "steps",
+    "description": "依次完成一二三步骤"
+  },
+  "过程": {
+    "kind": "scene",
+    "value": "steps",
+    "description": "依次完成一二三步骤"
+  },
+  "示范": {
+    "kind": "scene",
+    "value": "show-how",
+    "description": "一个人做阅读示范，另一个人照着做"
+  },
+  "操作": {
+    "kind": "scene",
+    "value": "show-how",
+    "description": "一个人做阅读示范，另一个人照着做"
+  },
+  "按照": {
+    "kind": "scene",
+    "value": "show-how",
+    "description": "一个人做阅读示范，另一个人照着做"
+  },
+  "照着做": {
+    "kind": "scene",
+    "value": "show-how",
+    "description": "一个人做阅读示范，另一个人照着做"
+  },
+  "分类": {
+    "kind": "scene",
+    "value": "classify",
+    "description": "把不同颜色的小球放进对应的盒子"
+  },
+  "组合": {
+    "kind": "scene",
+    "value": "combine",
+    "description": "两块积木合在一起"
+  },
+  "符号": {
+    "kind": "scene",
+    "value": "symbols",
+    "description": "星号、音符和问号都是符号"
+  },
+  "词语": {
+    "kind": "scene",
+    "value": "words",
+    "description": "书上写着完整词语“喝水”"
+  },
+  "搭配": {
+    "kind": "scene",
+    "value": "match",
+    "description": "把“喝”和“水”搭配成词语"
+  },
+  "连接": {
+    "kind": "scene",
+    "value": "connect",
+    "description": "一条线把两个圆形连接起来"
+  },
+  "分享": {
+    "kind": "scene",
+    "value": "share",
+    "description": "两个人一起分享一个球"
+  },
+  "夸奖": {
+    "kind": "scene",
+    "value": "praise",
+    "description": "向对方挥手并送出星星表示表扬"
+  },
+  "赞美": {
+    "kind": "scene",
+    "value": "praise",
+    "description": "向对方挥手并送出星星表示表扬"
+  },
+  "年级": {
+    "kind": "scene",
+    "value": "grade",
+    "description": "学校旁的数字一表示一年级"
+  },
+  "准备": {
+    "kind": "scene",
+    "value": "ready",
+    "description": "书已经放进书包，准备好了"
+  },
+  "备好": {
+    "kind": "scene",
+    "value": "ready",
+    "description": "书已经放进书包，准备好了"
+  },
+  "必须": {
+    "kind": "scene",
+    "value": "must",
+    "description": "出行前检查头盔，表示必须先戴好头盔"
+  },
+  "珍惜": {
+    "kind": "scene",
+    "value": "cherish",
+    "description": "用双手爱护地捧着书"
+  },
+  "借书": {
+    "kind": "scene",
+    "value": "borrow",
+    "description": "把书交给对方，下方回转线表示之后归还"
+  },
+  "独立": {
+    "kind": "scene",
+    "value": "independent",
+    "description": "一个人自己拿杯子完成事情"
+  },
+  "健康": {
+    "kind": "scene",
+    "value": "healthy",
+    "description": "人的心脏旁有健康的勾号"
+  },
+  "安康": {
+    "kind": "scene",
+    "value": "healthy",
+    "description": "人的心脏旁有健康的勾号"
+  },
+  "伸展": {
+    "kind": "scene",
+    "value": "stretch",
+    "description": "伸开双臂向上舒展"
+  },
+  "记录": {
+    "kind": "scene",
+    "value": "record",
+    "description": "用笔在本子上写下内容"
+  },
+  "回忆": {
+    "kind": "scene",
+    "value": "recall",
+    "description": "看着过去的照片想起往事"
+  },
+  "回顾": {
+    "kind": "scene",
+    "value": "recall",
+    "description": "看着过去的照片想起往事"
+  },
+  "介绍": {
+    "kind": "scene",
+    "value": "introduce",
+    "description": "面对别人挥手并介绍自己"
+  },
+  "年龄": {
+    "kind": "scene",
+    "value": "age",
+    "description": "小孩逐渐长高，数字五表示五岁"
+  },
+  "姓李": {
+    "kind": "scene",
+    "value": "surname",
+    "description": "人旁的姓名牌上写着“李”"
+  },
+  "祝福": {
+    "kind": "scene",
+    "value": "bless",
+    "description": "送出带着爱心的礼物"
+  },
+  "幸福": {
+    "kind": "scene",
+    "value": "happy-family",
+    "description": "大人和孩子在一起，爱心表示幸福"
+  },
+  "中国": {
+    "kind": "scene",
+    "value": "country",
+    "description": "五星红旗和家园表示中国"
+  },
+  "中华": {
+    "kind": "scene",
+    "value": "country",
+    "description": "五星红旗和家园表示中国"
+  },
+  "祖国": {
+    "kind": "scene",
+    "value": "country",
+    "description": "五星红旗和家园表示中国"
+  },
+  "北京": {
+    "kind": "scene",
+    "value": "capital",
+    "description": "中式城楼旁写着北京"
+  },
+  "传统": {
+    "kind": "scene",
+    "value": "tradition",
+    "description": "长辈把粽子递给孩子，是传承节俗的例子"
+  },
+  "端午": {
+    "kind": "scene",
+    "value": "festival",
+    "description": "龙舟和粽子是端午节的代表事物"
+  },
+  "建设": {
+    "kind": "scene",
+    "value": "build",
+    "description": "搬砖垒起墙壁"
+  },
+  "制造": {
+    "kind": "scene",
+    "value": "make",
+    "description": "在桌前动手制作积木作品"
+  },
+  "技术": {
+    "kind": "scene",
+    "value": "technology",
+    "description": "机器旁的勾号表示运用技术完成工作"
+  },
+  "科学": {
+    "kind": "scene",
+    "value": "science",
+    "description": "用磁铁和材料做观察实验"
+  },
+  "污染": {
+    "kind": "scene",
+    "value": "pollution",
+    "description": "河水里出现废弃物，叉号表示不应污染"
+  },
+  "读懂": {
+    "kind": "scene",
+    "value": "understand",
+    "description": "阅读时亮起灯泡，表示理解了内容"
+  },
+  "展示": {
+    "kind": "scene",
+    "value": "display",
+    "description": "向别人指着展示的画作"
+  },
+  "收获": {
+    "kind": "scene",
+    "value": "harvest",
+    "description": "收下成熟的谷穗放进筐里"
+  },
+  "保留": {
+    "kind": "scene",
+    "value": "keep",
+    "description": "把喜欢的书放进盒子里保存"
+  },
+  "纪念": {
+    "kind": "scene",
+    "value": "memory",
+    "description": "用相册和爱心表示保存值得纪念的回忆"
+  },
+  "力气": {
+    "kind": "emoji",
+    "value": "💪"
+  },
+  "强壮": {
+    "kind": "emoji",
+    "value": "💪"
+  },
+  "作者": {
+    "kind": "scene",
+    "value": "author",
+    "description": "握笔在书上写作的人"
+  },
+  "志愿者": {
+    "kind": "scene",
+    "value": "volunteer",
+    "description": "带着爱心主动扶起需要帮助的人"
+  },
+  "厚衣": {
+    "kind": "scene",
+    "value": "thick",
+    "description": "衣服的棉领和一层层绗缝表示厚棉衣"
+  },
+  "低头": {
+    "kind": "scene",
+    "value": "lower-head",
+    "description": "头朝下倾斜，箭头提示低头动作"
+  },
+  "节约": {
+    "kind": "scene",
+    "value": "save",
+    "description": "洗完手关紧水龙头，节约用水"
+  },
+  "节省": {
+    "kind": "scene",
+    "value": "save",
+    "description": "洗完手关紧水龙头，节约用水"
+  },
+  "轻轻": {
+    "kind": "scene",
+    "value": "gentle",
+    "description": "轻轻地把手放到书上"
+  },
+  "轻轻地": {
+    "kind": "scene",
+    "value": "gentle",
+    "description": "轻轻地把手放到书上"
+  },
+  "负责": {
+    "kind": "scene",
+    "value": "responsible",
+    "description": "主动完成自己的整理工作，是承担责任的例子"
+  },
+  "责任": {
+    "kind": "scene",
+    "value": "responsible",
+    "description": "主动完成自己的整理工作，是承担责任的例子"
+  },
+  "承担": {
+    "kind": "scene",
+    "value": "responsible",
+    "description": "主动完成自己的整理工作，是承担责任的例子"
+  },
+  "任务": {
+    "kind": "scene",
+    "value": "task",
+    "description": "照着清单完成分配的任务"
+  },
+  "项目": {
+    "kind": "scene",
+    "value": "task",
+    "description": "照着清单完成分配的任务"
+  },
+  "考虑": {
+    "kind": "scene",
+    "value": "plan",
+    "description": "看着清单思考接下来怎么做"
+  },
+  "沿着": {
+    "kind": "scene",
+    "value": "continue",
+    "description": "沿着弯曲的路线走"
+  },
+  "经过": {
+    "kind": "scene",
+    "value": "continue",
+    "description": "沿着弯曲的路线走"
+  },
+  "做事": {
+    "kind": "scene",
+    "value": "make",
+    "description": "在桌前动手制作东西"
+  },
+  "活动": {
+    "kind": "scene",
+    "value": "make",
+    "description": "在桌前动手制作东西"
+  },
+  "动作": {
+    "kind": "scene",
+    "value": "make",
+    "description": "在桌前动手制作东西"
+  },
+  "劳动": {
+    "kind": "scene",
+    "value": "build",
+    "description": "动手搬砖垒墙，表现劳动的场景"
+  },
+  "勤劳": {
+    "kind": "scene",
+    "value": "build",
+    "description": "动手搬砖垒墙，表现劳动的场景"
+  },
+  "需要": {
+    "kind": "scene",
+    "value": "need",
+    "description": "伸手要一杯水，表达需要喝水"
+  },
+  "吃东西": {
+    "kind": "scene",
+    "value": "eat",
+    "description": "坐在餐桌前用筷子吃碗里的饭"
+  }
+}

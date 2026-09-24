@@ -1,5 +1,7 @@
 import {readLocal,writeLocal} from './offlineStore';
 import { catalogSchema, lessonPackageSchema, type Catalog, type LessonPackage, type Lesson, type Character, type Step } from '@learnbuddy/contracts';
+import {isStaticDemo} from './staticDemo';
+import {staticAssetURL,staticCatalog,staticLessonPackage} from './staticContent';
 export type { Lesson, Character, CharacterId, Step, Story } from '@learnbuddy/contracts';
 export let lessons: Lesson[] = [];
 export let characters: Character[] = [];
@@ -52,15 +54,25 @@ async function fetchJSON(path:string) {
  try {if(typeof navigator!=='undefined'&&navigator.onLine===false){const cached=await readLocal<unknown>(`content:${path}`);if(cached)return cached;throw new Error('此课程尚未缓存，请联网加载');}const response=await fetch(path,{signal:controller.signal});if(!response.ok) throw new Error(`课程服务暂时不可用（${response.status}）`);const data=await response.json();if(typeof indexedDB!=='undefined')void writeLocal(`content:${path}`,data).catch(()=>{});return data;}
  finally {clearTimeout(timeout);}
 }
-export async function loadCatalog(pinned?:string) {const request=++catalogRequest;const data=await fetchJSON(`/api/v1/catalog${pinned?`?releaseId=${encodeURIComponent(pinned)}`:''}`);if(request!==catalogRequest)throw new Error('Superseded catalog request');installCatalog(data);if(typeof indexedDB!=='undefined')await writeLocal(`content:/api/v1/catalog?releaseId=${encodeURIComponent(releaseId)}`,data).catch(()=>{});}
+export async function loadCatalog(pinned?:string) {
+ const request=++catalogRequest;
+ const data=isStaticDemo?staticCatalog:await fetchJSON(`/api/v1/catalog${pinned?`?releaseId=${encodeURIComponent(pinned)}`:''}`);
+ if(request!==catalogRequest)throw new Error('Superseded catalog request');
+ installCatalog(data);
+ if(!isStaticDemo&&typeof indexedDB!=='undefined')await writeLocal(`content:/api/v1/catalog?releaseId=${encodeURIComponent(releaseId)}`,data).catch(()=>{});
+}
 export function isLessonLoaded(id:string) {return packages.has(id);}
 export async function loadLesson(id:string) {
  if(packages.has(id)) return;
+ if(isStaticDemo){installLesson(staticLessonPackage(id));return;}
  if(!pending.has(id)){const generation=contentGeneration;const request=fetchJSON(`/api/v1/releases/${encodeURIComponent(releaseId)}/lessons/${encodeURIComponent(id)}`).then(async data=>{if(generation!==contentGeneration)throw new Error('Superseded lesson request');installLesson(data);if(typeof indexedDB!=='undefined'){if(!navigator.onLine)await cacheLessonMedia(data,generation);else void cacheLessonMedia(data,generation);}}).finally(()=>{if(pending.get(id)===request)pending.delete(id);});pending.set(id,request);}
  return pending.get(id);
 }
 export function lessonData(id:string) {const data=packages.get(id);if(!data)throw new Error('Lesson has not loaded');return data;}
-export function assetURL(id:string) {const url=assets.get(id);if(!url)throw new Error(`Missing asset: ${id}`);return typeof navigator!=='undefined'&&navigator.onLine===false?(localMedia.get(url)||url):url;}
+export function assetURL(id:string) {
+ if(isStaticDemo)return staticAssetURL(id);
+ const url=assets.get(id);if(!url)throw new Error(`Missing asset: ${id}`);return typeof navigator!=='undefined'&&navigator.onLine===false?(localMedia.get(url)||url):url;
+}
 export function getSteps(lesson:Lesson) {return indexes.get(lesson.id)??[];}
 export function lessonForCharacter(id:string) {return lessons.find(l=>l.characters.some(c=>c.id===id))||lessons[0];}
 export function shuffled<T>(items:readonly T[]):T[] {const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}

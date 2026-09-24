@@ -1,0 +1,117 @@
+{
+  "config": {
+    "argv": [
+      "/Users/sophia.gao/.config/nvm/versions/node/v24.13.1/bin/node",
+      "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/viewport.spec.ts",
+      "--grep",
+      "legacy stories fit",
+      "--workers=1",
+      "--reporter=json"
+    ],
+    "configFile": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/playwright.config.ts",
+    "rootDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "viewport.spec.ts",
+      "file": "viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "legacy stories fit and expanded stage stories remain readable on compact screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 45147,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:18:10.839Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24876809b35b098bf297-0dc63cc229cf28e0ac8e",
+          "file": "viewport.spec.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-23T07:18:08.804Z",
+    "duration": 49512.809,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

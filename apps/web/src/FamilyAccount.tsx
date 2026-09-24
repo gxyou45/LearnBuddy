@@ -4,6 +4,7 @@ import {createContext,useContext,useEffect,useRef,useState,type ReactNode,type F
 import {STORAGE_KEY} from './progress';
 import {readLocal,writeLocal,removeLocal,localRecords,purgeLocal} from './offlineStore';
 import {stopAudio} from './audio';
+import {isStaticDemo} from './staticDemo';
 
 type Family=FamilyAccount;
 const ProgressStorage=createContext(STORAGE_KEY);
@@ -30,7 +31,7 @@ function selected(family:Family):string {
  return family.learners[0]?.id||'';
 }
 export function FamilyShell({children}:{children:ReactNode}) {
- const [family,setFamily]=useState<Family|null>();
+ const [family,setFamily]=useState<Family|null|undefined>(isStaticDemo?null:undefined);
  const [child,setChild]=useState('');
  const [error,setError]=useState(false);
  const [connectionNotice,setConnectionNotice]=useState('');
@@ -59,6 +60,7 @@ export function FamilyShell({children}:{children:ReactNode}) {
   }catch{if(turn===epoch.current){if(!resolved.current&&!navigator.onLine){const cached=await readLocal<Family>('last-family').catch(()=>undefined);if(cached&&turn===epoch.current){resolved.current=true;accountId.current=cached.account.accountId;setFamily(cached);setChild(selected(cached));setError(false);setConnectionNotice('离线使用本机档案；联网后会重新验证登录。');return;}}if(!resolved.current)setError(true);else setConnectionNotice('账户服务暂时未连接，请重试；已有记录会保留。');}}
  };
  useEffect(()=>{
+  if(isStaticDemo)return;
   void reload();
   const hash=()=>{stopAudio();setAccountPage(location.hash==='#account');};
   const changed=(e:StorageEvent)=>{if(e.key===signalKey){stopAudio();resolved.current=false;setFamily(undefined);void reload();}};

@@ -1,0 +1,65 @@
+{
+  "source": "/Users/sophia.gao/.codex/sessions/2026/09/22/rollout-2026-09-22T10-59-47-01a0c70e-22d0-7c73-bce1-16ff6ebcb8dc.jsonl",
+  "method": "任务开始前与完成时 total_token_usage 的差值；非计费账单",
+  "scope": "词语任务不含之后发布了吗问答；故事任务含首次出图、中断和继续，不含当前统计查询；图片生成模型独立用量不可得",
+  "tasks": {
+    "词语配图": {
+      "start_utc": "2026-09-23T03:21:29.505Z",
+      "end_utc": "2026-09-23T03:44:26.319Z",
+      "start_total": {
+        "input_tokens": 46922077,
+        "cached_input_tokens": 45445248,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 289653,
+        "reasoning_output_tokens": 85697,
+        "total_tokens": 47211730
+      },
+      "end_total": {
+        "input_tokens": 50324596,
+        "cached_input_tokens": 48766976,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 324452,
+        "reasoning_output_tokens": 90449,
+        "total_tokens": 50649048
+      },
+      "difference": {
+        "input_tokens": 3402519,
+        "cached_input_tokens": 3321728,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 34799,
+        "reasoning_output_tokens": 4752,
+        "total_tokens": 3437318,
+        "uncached_input_tokens": 80791
+      }
+    },
+    "十课故事配图": {
+      "start_utc": "2026-09-23T03:57:35.829Z",
+      "end_utc": "2026-09-23T05:57:11.935Z",
+      "start_total": {
+        "input_tokens": 50445259,
+        "cached_input_tokens": 48887296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 324520,
+        "reasoning_output_tokens": 90449,
+        "total_tokens": 50769779
+      },
+      "end_total": {
+        "input_tokens": 57675007,
+        "cached_input_tokens": 56042880,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 348161,
+        "reasoning_output_tokens": 99173,
+        "total_tokens": 58023168
+      },
+      "difference": {
+        "input_tokens": 7229748,
+        "cached_input_tokens": 7155584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23641,
+        "reasoning_output_tokens": 8724,
+        "total_tokens": 7253389,
+        "uncached_input_tokens": 74164
+      }
+    }
+  }
+}

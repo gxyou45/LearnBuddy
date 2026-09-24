@@ -1,6 +1,8 @@
 import {useEffect,useState} from 'react';
 import {manifestSchema,type ContentManifest,type ImportedAsset} from '@learnbuddy/contracts';
 import './admin.css';
+import {WordVisual} from '../visuals/WordVisual';
+import {wordVisual} from '../visuals/resolveWordVisual';
 type Draft={id:string;baseReleaseId:string;revision:number;manifest:ContentManifest;publishedReleaseId:string|null};
 type Overview={channel:{releaseId:string;revision:number};releases:{id:string;createdAt:string}[];drafts:Omit<Draft,'manifest'>[];audit:{id:string;action:string;targetId:string;createdAt:string}[]};
 async function request<T>(path:string,body?:unknown,method=body?'POST':'GET'):Promise<T> {
@@ -73,7 +75,7 @@ function Preview({manifest,lesson}:{manifest:ContentManifest;lesson:ContentManif
  {['intro','story'].includes(s.kind)&&<img className="admin-image" src={url(image)} alt={lesson.title}/>}
  {text&&<p className="admin-reading">{Array.from(text).map((char,i)=><span key={i} className={i===active?'active':''}>{char}</span>)}</p>}
  {s.kind==='story'&&<p>{lesson.story.note}<br/>陪读字：{lesson.story.supportCharacters.join('、')}</p>}
- {['sound','meaning'].includes(s.kind)&&<div className="admin-row">{lesson.characters.map(c=><span className="admin-card" key={c.id}>{s.kind==='sound'?c.text:`${c.icon} ${c.word}`}</span>)}</div>}
+ {['sound','meaning'].includes(s.kind)&&<div className="admin-row">{lesson.characters.map(c=><span className="admin-card" key={c.id}>{s.kind==='sound'?c.text:<>{wordVisual(c.word)||c.id.startsWith('han-')?<WordVisual word={c.word}/>:c.icon} {c.word}</>}</span>)}</div>}
  {s.kind==='hunt'&&scene&&<div className="admin-scene"><img src={url(manifest.assets.find(a=>a.id===scene.imageAssetId)!)} alt={scene.description}/>{scene.slots.slice(0,3).map((slot,i)=><span key={slot.id} style={{left:`${slot.x}%`,top:`${slot.y}%`}} title={slot.clue}>{lesson.characters[(i-manifest.lessons.indexOf(lesson)%3+3)%3].text}</span>)}</div>}
  {a&&<audio key={a.sha256+s.id} controls src={url(a)} onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onEnded={()=>setTime(-1)}/>}
  <p className="admin-muted">此预览用于检查文案、配图、音频和位置，不产生学习记录。</p></section>;

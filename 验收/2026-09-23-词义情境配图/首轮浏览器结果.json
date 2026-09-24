@@ -1,0 +1,321 @@
+{
+  "config": {
+    "argv": [
+      "/Users/sophia.gao/.config/nvm/versions/node/v24.13.1/bin/node",
+      "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "playwright.acceptance.config.ts",
+      "semantic-words.spec.ts"
+    ],
+    "configFile": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/playwright.acceptance.config.ts",
+    "rootDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/learnbuddy-visual-acceptance",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 150000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "semantic-words.spec.ts",
+      "file": "semantic-words.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "词义配图 我和你",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:06:48.796Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-e2814a5d4c41c235fac7",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        },
+        {
+          "title": "词义配图 他来",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10090,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:07:04.168Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-0db929617389d406ce0b",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        },
+        {
+          "title": "词义配图 吃饭",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3555,
+                  "error": {
+                    "message": "Error: published lesson containing 吃饭\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: published lesson containing 吃饭\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance/semantic-words.spec.ts:14:55",
+                    "location": {
+                      "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance/semantic-words.spec.ts",
+                      "column": 55,
+                      "line": 14
+                    },
+                    "snippet": "  12 |   }\n  13 |  }\n> 14 |  expect(lesson,`published lesson containing ${word}`).toBeTruthy();\n     |                                                       ^\n  15 |  await page.goto('/');await page.getByRole('button',{name:'家长',exact:false}).first().click();await page.getByRole('button',{name:'27',exact:true}).click();await page.getByRole('switch',{name:'家长开放全部课程'}).click();await page.getByRole('button',{name:'回汉字小屋',exact:true}).click();\n  16 |  await page.getByRole('button',{name:'开始'+lesson.title,exact:true}).click();await page.getByRole('button',{name:'准备好啦，出发'}).click();\n  17 |  const index=lesson.characters.findIndex((c:any)=>c.word===word);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance/semantic-words.spec.ts",
+                        "column": 55,
+                        "line": 14
+                      },
+                      "message": "Error: published lesson containing 吃饭\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mundefined\u001b[39m\n\n  12 |   }\n  13 |  }\n> 14 |  expect(lesson,`published lesson containing ${word}`).toBeTruthy();\n     |                                                       ^\n  15 |  await page.goto('/');await page.getByRole('button',{name:'家长',exact:false}).first().click();await page.getByRole('button',{name:'27',exact:true}).click();await page.getByRole('switch',{name:'家长开放全部课程'}).click();await page.getByRole('button',{name:'回汉字小屋',exact:true}).click();\n  16 |  await page.getByRole('button',{name:'开始'+lesson.title,exact:true}).click();await page.getByRole('button',{name:'准备好啦，出发'}).click();\n  17 |  const index=lesson.characters.findIndex((c:any)=>c.word===word);\n    at /Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance/semantic-words.spec.ts:14:55"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:07:14.356Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/tmp/learnbuddy-visual-acceptance/semantic-words-词义配图-吃饭/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/tmp/learnbuddy-visual-acceptance/semantic-words-词义配图-吃饭/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/sophia.gao/Workspace/CodexProj/LearnBuddy/tests/acceptance/semantic-words.spec.ts",
+                    "column": 55,
+                    "line": 14
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-2a059eabfe06b069bb7c",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        },
+        {
+          "title": "词义配图 力气",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15246,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:07:21.535Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-ad4a19e74bf4da847417",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        },
+        {
+          "title": "词义配图 跳一跳",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:07:38.259Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-cfd470f034cbb144a684",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        },
+        {
+          "title": "词义配图 虽然",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13157,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T07:07:54.662Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d584b046a0baf23eb281-bf5f861baa7b4ff69fbc",
+          "file": "semantic-words.spec.ts",
+          "line": 4,
+          "column": 53
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-23T07:06:47.115Z",
+    "duration": 84424.66600000001,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

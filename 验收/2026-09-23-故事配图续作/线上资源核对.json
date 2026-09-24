@@ -1,0 +1,236 @@
+{
+  "checkedAt": "2026-09-23T09:41:21.304Z",
+  "base": "http://localhost:8080",
+  "releaseId": "curriculum-1000-v1",
+  "bundle": {
+    "url": "/assets/index-DaLJ03mg.js",
+    "sha256": "e008355d3e41f0dc0b800624a7d792ad288b8495292bbb5e91d7729c7ab8175d",
+    "matchesLocalBuild": true
+  },
+  "stories": [
+    {
+      "id": "family",
+      "title": "认识家人",
+      "url": "/assets/family-CUfa-i4c.png",
+      "bytes": 2541161,
+      "sha256": "6d3ac2febd84fc35d236de7fbe022e7d50768e1b50bb2f9f1033ba3f607ccb15",
+      "storyMatched": true
+    },
+    {
+      "id": "home",
+      "title": "一起回家",
+      "url": "/assets/home-DCnIO6uA.png",
+      "bytes": 2758929,
+      "sha256": "54f1f4de8152ccf5035ded9ac7dabf68c28f681892e5a2557b8879a636fd8986",
+      "storyMatched": true
+    },
+    {
+      "id": "welcome",
+      "title": "客人来啦",
+      "url": "/assets/welcome-DFBGLNWb.png",
+      "bytes": 2523427,
+      "sha256": "856a2356977f3dcf310bda665570e9c5fbeec3be289b0b0bffcd0e8edb0975ab",
+      "storyMatched": true
+    },
+    {
+      "id": "pets",
+      "title": "你好，小猫",
+      "url": "/assets/pets-C39_1DA9.png",
+      "bytes": 2571920,
+      "sha256": "63587127fe86d1503541422e8884c384821a33cb175b2f9e8ba52a31018cf8c4",
+      "storyMatched": true
+    },
+    {
+      "id": "snack",
+      "title": "喝水时间",
+      "url": "/assets/snack-CXAC1y6-.png",
+      "bytes": 2570190,
+      "sha256": "828c1737b943a539c8380ce7cdb3022190ba3af2a99f17ac359c5486c6a38baf",
+      "storyMatched": true
+    },
+    {
+      "id": "pond",
+      "title": "看见朋友",
+      "url": "/assets/pond-DuxtMrJo.png",
+      "bytes": 2721937,
+      "sha256": "f166581e58dda0f0c83bd62d00b3f8c4e944b6356356b6dc7da8eab0274e80a4",
+      "storyMatched": true
+    },
+    {
+      "id": "basket",
+      "title": "藏在哪里",
+      "url": "/assets/basket-C1dG5P4C.png",
+      "bytes": 2868051,
+      "sha256": "6bae3d1ba9390bfc212fa7edbd8f9dbab926f2aca967a8eb812f2a047b3c7a86",
+      "storyMatched": true
+    },
+    {
+      "id": "sky",
+      "title": "抬头看一看",
+      "url": "/assets/sky-a4I-L9BW.png",
+      "bytes": 2496870,
+      "sha256": "16486b8608eddb45c0d8bf9f87b2383725883af84f00a458d27481bb373a4d34",
+      "storyMatched": true
+    },
+    {
+      "id": "plants",
+      "title": "花草朋友",
+      "url": "/assets/plants-BkipMjsr.png",
+      "bytes": 2447191,
+      "sha256": "aadba84f4a2e7cc697031c153ea706106ddba373b63040117690fc4cd2502258",
+      "storyMatched": true
+    },
+    {
+      "id": "positions",
+      "title": "大与小",
+      "url": "/assets/positions-BxnEnEpp.png",
+      "bytes": 2788442,
+      "sha256": "9d29abb771a35667c110dd6b4d71ec338aedb7e143ccdc3149d549b9461b85b8",
+      "storyMatched": true
+    },
+    {
+      "id": "c007",
+      "title": "数一数手指",
+      "url": "/assets/c007-C1TVl7AO.png",
+      "bytes": 2734960,
+      "sha256": "f8ab9133e40c0b5db44544134f6c331a108cb8d96962b4410e7ae41117b0c83f",
+      "storyMatched": true
+    },
+    {
+      "id": "c008",
+      "title": "再数五个数",
+      "url": "/assets/c008-BO5nUGwg.png",
+      "bytes": 2664303,
+      "sha256": "9ed05430096414aead40b4b6aa43e5d8f40e92dc8191c501ac907bb64ccf857a",
+      "storyMatched": true
+    },
+    {
+      "id": "c009",
+      "title": "身体会说话",
+      "url": "/assets/c009-CFu73glr.png",
+      "bytes": 2351569,
+      "sha256": "53fe32dcd8679e2cd8953d0af2fcddafbbc08820571b9d1cf9ace9d434d88129",
+      "storyMatched": true
+    },
+    {
+      "id": "c010",
+      "title": "我的小脸",
+      "url": "/assets/c010-TeltedMR.png",
+      "bytes": 2462488,
+      "sha256": "607e19a00f15fd4df86c525c851dc2ae022df98d769efa2e7b626510bc8acdc0",
+      "storyMatched": true
+    },
+    {
+      "id": "c011",
+      "title": "身体动起来",
+      "url": "/assets/c011-DgM_t2p1.png",
+      "bytes": 2631676,
+      "sha256": "9a505036f01562f8e0fa3d03099b3775b5f74868462dc1e12bc97ed794e08f54",
+      "storyMatched": true
+    },
+    {
+      "id": "c012",
+      "title": "太阳出来了",
+      "url": "/assets/c012-B4s-2VwU.png",
+      "bytes": 2892120,
+      "sha256": "7ed5a6ee032170bc18ba7e94a454fd9f46c0e23f7b9127f20db167d5a3a5c746",
+      "storyMatched": true
+    },
+    {
+      "id": "c013",
+      "title": "风吹树叶",
+      "url": "/assets/c013-BQ4naAd3.png",
+      "bytes": 2651178,
+      "sha256": "d9609fe8124bfe06c66d1ec1f24e339ac4da2f0d67be5b87b99a0a7455ca5e9b",
+      "storyMatched": true
+    },
+    {
+      "id": "c014",
+      "title": "颜色朋友",
+      "url": "/assets/c014-D2Km2Lak.png",
+      "bytes": 2747024,
+      "sha256": "0eeec089eb35c9f45d6d93ee674e01cf653837b3a6b32b937512f33159e3c603",
+      "storyMatched": true
+    },
+    {
+      "id": "c015",
+      "title": "穿好衣服",
+      "url": "/assets/c015-BS6rwNwz.png",
+      "bytes": 2519693,
+      "sha256": "c9e24b295cebfa25dc8d7fe0bfb2806cac93f909cfa9313c32338200ce2608e8",
+      "storyMatched": true
+    },
+    {
+      "id": "c041",
+      "title": "认识农场动物",
+      "url": "/assets/c041-CbRquZ8W.png",
+      "bytes": 2889367,
+      "sha256": "a7be30265249fad97d57fa1b817adb97fd24a3a63346d1e915bf2db7ab364a84",
+      "storyMatched": true
+    },
+    {
+      "id": "c050",
+      "title": "种下一粒种子",
+      "url": "/assets/c050-DiG7_6Sz.png",
+      "bytes": 2944848,
+      "sha256": "391b47fc20d693c0c2f4742174053134fc1dbe590aaddbab5e66ab212ad55830",
+      "storyMatched": true
+    },
+    {
+      "id": "c062",
+      "title": "过马路",
+      "url": "/assets/c062-Derlu_sm.png",
+      "bytes": 2559189,
+      "sha256": "f766929dd270b71c15ddfbb1bda9f6cabf455c4ee0699173a4ec3acf2db2670b",
+      "storyMatched": true
+    },
+    {
+      "id": "c066",
+      "title": "骑车戴头盔",
+      "url": "/assets/c066-Dq_VKCJ2.png",
+      "bytes": 2640557,
+      "sha256": "6ae6ac9344f00bc1d8755b9a4308d7e47755d982dd1e4af94c2855886c027499",
+      "storyMatched": true
+    },
+    {
+      "id": "c090",
+      "title": "再尝一种水果",
+      "url": "/assets/c090-Bg1wKnxc.png",
+      "bytes": 2490360,
+      "sha256": "0f27028db169ea8249fd3c9d9bc3f75b2189e4b6e546b274a08f06a256b852d4",
+      "storyMatched": true
+    },
+    {
+      "id": "c097",
+      "title": "周末做家务",
+      "url": "/assets/c097-DPnQ8AHB.png",
+      "bytes": 2306955,
+      "sha256": "4df2599cbdd27c3d43885d4e012a99b7b2417b67910b0d14fb10364dcdb2d6a0",
+      "storyMatched": true
+    },
+    {
+      "id": "c128",
+      "title": "把理由讲清楚",
+      "url": "/assets/c128-oPD4T7Hs.png",
+      "bytes": 2719677,
+      "sha256": "9957ad428100c2c144e60e019efed0a153b315a780a6b2c23bd1b301aefee013",
+      "storyMatched": true
+    },
+    {
+      "id": "c154",
+      "title": "我的身体有边界",
+      "url": "/assets/c154-neyFKStQ.png",
+      "bytes": 2343846,
+      "sha256": "331b5d439b1f920cbc190366d29ecf09c44f7b30fd98c08d17e4b9528ee1f87b",
+      "storyMatched": true
+    },
+    {
+      "id": "c194",
+      "title": "端午看龙舟",
+      "url": "/assets/c194-2hNZjMaS.png",
+      "bytes": 2729845,
+      "sha256": "f0845de9e4189f30397e7ee5ef9b006f863b764dc786cfb029a4973966e6d39d",
+      "storyMatched": true
+    }
+  ]
+}

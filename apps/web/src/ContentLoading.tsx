@@ -6,6 +6,7 @@ import {getCloudProgress,getChanges,cloudRequest} from './cloudClient';
 import {readLocal} from './offlineStore';
 import {offlineKey,type OfflineRecord} from './offlineLearning';
 import {learningProgressSchema,type LearningProgressState} from '@learnbuddy/contracts';
+import {isStaticDemo} from './staticDemo';
 export function ContentStatus({error,retry,back}:{error?:boolean;retry:()=>void;back?:()=>void}) {
  return <div className="app-shell"><section className="content-status" role="status"><h1>{error?'课程暂时没加载出来':'正在准备课程…'}</h1><p>{error?'请检查网络后重试。原有学习进度已保留。':'马上就能继续探索啦。'}</p>{error&&<button className="primary" onClick={retry}>重新加载课程</button>}{back&&<button className="text-button" onClick={back}>回到小屋</button>}</section></div>;
 }
@@ -15,6 +16,7 @@ export function ContentBootstrap({children}:{children:React.ReactNode}) {
  const [state,setState]=useState<'loading'|'ready'|'error'>('loading');
  const [attempt,setAttempt]=useState(0);
  useEffect(()=>{
+  if(isStaticDemo){void loadCatalog().then(()=>setState('ready')).catch(()=>setState('error'));return;}
   let active=true;setState('loading');
   let pinned:string|undefined;
   try {const raw=localStorage.getItem(STORAGE_KEY);const p=raw?JSON.parse(raw):null;if(typeof p?.releaseId==='string')pinned=p.releaseId;}catch{/* Original data is preserved and handled only after catalog loads. */}
