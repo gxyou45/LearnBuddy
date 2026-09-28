@@ -21,7 +21,7 @@ test('static recognition reads single characters while word exercises retain wor
       expect(createHash('sha256').update(bytes).digest('hex')).toBe(audio.sha256);
       if (lesson.id.startsWith('c')) {
         const sound = lesson.steps.find(step => step.kind === 'sound' && step.characterId === character.id)!;
-        expect(assets.get(`audio-${sound.audio}`)?.text).toBe(character.word);
+        expect(assets.get(`audio-${sound.audio}`)?.text).toBe(character.text);
       }
     }
   }

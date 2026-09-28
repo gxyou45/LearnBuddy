@@ -1,9 +1,26 @@
 import {beforeEach,it,expect,vi,afterEach} from 'vitest';
 import {catalogFixture,packageFixture} from './content-fixture';
-import {installCatalog,installLesson,loadCatalog,releaseId,loadLesson,isLessonLoaded,assetURL,lessonData} from '../apps/web/src/contentRepository';
+import {installCatalog,installLesson,loadCatalog,releaseId,loadLesson,isLessonLoaded,assetURL,lessonData,readingTimings} from '../apps/web/src/contentRepository';
 import {fresh,serializeProgress,parseProgress} from '../apps/web/src/progress';
 beforeEach(()=>installCatalog(catalogFixture));
 afterEach(()=>vi.unstubAllGlobals());
+it('old releases use single-character audio for recognition and listening, preserving words and source data',()=>{
+ const original=packageFixture('family');
+ const character=original.lesson.characters[0];
+ const recording=original.assets.find(a=>a.id===`audio-${character.audio}`)!;
+ recording.text=character.word;recording.cues={text:character.word,starts:Array.from(character.word,()=>0),status:'estimated'};
+ const before=JSON.stringify(original);
+ installLesson(original);
+ const steps=lessonData('family').lesson.steps;
+ const teach=steps.find(s=>s.kind==='teach'&&s.characterId===character.id)!;
+ expect(teach.audio).toBe(character.audio);
+ expect(assetURL(`audio-${teach.audio}`)).toContain('.wav');
+ expect(readingTimings[teach.audio]).toEqual({text:character.text,starts:[0]});
+ expect(steps.find(s=>s.kind==='sound'&&s.characterId===character.id)?.audio).toBe(teach.audio);
+ expect(steps.find(s=>s.kind==='word'&&s.characterId===character.id)?.audio).toBe(`word-${character.id}`);
+ expect(JSON.stringify(original)).toBe(before);
+ expect(releaseId).toBe(original.releaseId);
+});
 it('rejects mixed versions and incomplete packages before installing',()=>{
  const wrong=packageFixture('family');wrong.releaseId='future';expect(()=>installLesson(wrong)).toThrow('version');
  const missing=packageFixture('family');missing.assets=[];expect(()=>installLesson(missing)).toThrow('Incomplete');expect(isLessonLoaded('family')).toBe(false);

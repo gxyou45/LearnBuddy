@@ -9,9 +9,11 @@
 3. 在 macOS 工作台运行 `python3 scripts/curriculum/build.py`。依赖系统 `say` 的 Tingting 声音，使用本地文件缓存，可重跑；不调用付费语音服务。
 4. `node --import tsx scripts/curriculum/verify.ts` 验证全量内容与文件 SHA-256。
 
-`curriculum-release/` 是完整生成包，包含 WAV、原创 SVG 图文卡与找字场景。认字使用独立的单字录音，读词语和听词找字使用词语录音；词语／句子的逐字时间为估算。所有素材保留 pending 标记，未声称完成专业人工审校，多音字仍需结合例词人工审听。
+`curriculum-release/` 是完整生成包，包含 WAV、原创 SVG 图文卡与找字场景。认字和听音找字使用独立的单字录音，只有读词语使用词语录音；词语／句子的逐字时间为估算。所有素材保留 pending 标记，未声称完成专业人工审校，多音字仍需结合例词人工审听。
 
 已有的生成包可运行 `python3 scripts/curriculum/character-audio.py <包目录>` 补齐单字录音；此操作保留词语录音和原素材文件。静态试用包目录为 `apps/web/public/static-content`。从旧完整包重新裁剪静态包后也需运行此命令。
+
+本地已发布课程的音频由 Web 客户端兼容修正：`python3 scripts/curriculum/prepare-character-audio.py` 为完整 1000 字生成独立 WAV（优先复用静态包的单字录音），存入 `apps/web/src/character-audio/` 并随 Web 构建发布。加载旧版本时，认字、听音找字和单字复习均使用单字录音；读词语保持词语录音。不修改历史问题编号、数据库或孩子的学习档案。录音仍为待人工审听的 Tingting 合成素材。
 
 已发布的 releaseId 不可复用制作改版。本脚本初始编号为 `curriculum-1000-v1`；后续修订须更新编号并重新读取当前基线。当前生成器用于此次从十课扩充的发布，不支持把已扩充的目录再次追加一遍。
 

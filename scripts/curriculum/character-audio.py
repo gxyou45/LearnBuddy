@@ -20,6 +20,13 @@ def repair(directory):
     for lesson in manifest['lessons']:
         for character in lesson['characters']:
             asset = assets['audio-' + character['audio']]
+            # Normalize steps even when the single-character recording already exists.
+            for step in lesson['steps']:
+                if step.get('characterId') == character['id'] and step['kind'] in ('teach', 'sound'):
+                    step['audio'] = character['audio']
+                    step['subtitle'] = '听一听这个字，再跟着读一读。' if step['kind'] == 'teach' else '听一听，选出对应的汉字。'
+                    if step['kind'] == 'sound':
+                        step['title'] = '听声音，找汉字'
             if asset.get('text') == character['text']:
                 continue
             word = assets['audio-word-' + character['id']]
@@ -49,8 +56,7 @@ def repair(directory):
                     step['audio'] = character['audio']
                     step['subtitle'] = '听一听这个字，再跟着读一读。'
                 elif step['kind'] == 'sound':
-                    # This exercise still explicitly asks the child to hear a word.
-                    step['audio'] = 'word-' + character['id']
+                    step['audio'] = character['audio']
             changed += 1
             print(f'{changed}: {character["text"]}', flush=True)
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, separators=(',', ':')) + '\n')

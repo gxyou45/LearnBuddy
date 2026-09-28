@@ -10,11 +10,12 @@ function worker() {
   let source = '';
   plugin.generateBundle.call({ emitFile: asset => { source = asset.source; } }, {}, {});
   const handlers: Record<string, (event: unknown) => void> = {};
-  const cache = { match: vi.fn(), put: vi.fn() };
+  const cache = { match: vi.fn(), put: vi.fn(), addAll: vi.fn(async () => {}) };
+  const skipWaiting = vi.fn(async () => {});
   const open = vi.fn(async () => cache);
   const fetch = vi.fn(async () => new Response('recording'));
   runInNewContext(source, {
-    self: { addEventListener: (name: string, handler: (event: unknown) => void) => { handlers[name] = handler; } },
+    self: { skipWaiting, addEventListener: (name: string, handler: (event: unknown) => void) => { handlers[name] = handler; } },
     location: { origin: 'https://example.test' }, URL, caches: { open }, fetch,
   });
   const request = (range?: string) => {
@@ -25,8 +26,16 @@ function worker() {
     handlers.fetch({ request: req, respondWith });
     return respondWith;
   };
-  return { cache, open, fetch, request };
+  return { cache, open, fetch, request, handlers, skipWaiting };
 }
+
+test('an installed update activates without waiting for every old tab to close', async () => {
+  const w=worker();const waitUntil=vi.fn();
+  w.handlers.install({waitUntil});
+  await waitUntil.mock.calls[0][0];
+  expect(w.cache.addAll).toHaveBeenCalledOnce();
+  expect(w.skipWaiting).toHaveBeenCalledOnce();
+});
 
 test('media range requests bypass the worker, even when a whole file is cached', () => {
   const w = worker();

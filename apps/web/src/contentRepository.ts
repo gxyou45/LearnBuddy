@@ -2,6 +2,7 @@ import {readLocal,writeLocal} from './offlineStore';
 import { catalogSchema, lessonPackageSchema, type Catalog, type LessonPackage, type Lesson, type Character, type Step } from '@learnbuddy/contracts';
 import {isStaticDemo} from './staticDemo';
 import {loadStaticCatalog,staticAssetURL,staticLessonPackage} from './staticContent';
+import {characterAudioURL} from './characterAudio';
 export type { Lesson, Character, CharacterId, Step, Story } from '@learnbuddy/contracts';
 export let lessons: Lesson[] = [];
 export let characters: Character[] = [];
@@ -17,6 +18,7 @@ const packages = new Map<string, LessonPackage>();
 const pending = new Map<string, Promise<void>>();
 export const readingTimings: Record<string,{text:string;starts:number[]}> = {};
 const assets = new Map<string,string>();
+const characterOverrides = new Map<string,string>();
 export function installCatalog(input:unknown) {
  const data=catalogSchema.parse(input);
  if(new Set(data.lessons.map(l=>l.id)).size!==data.lessons.length || new Set(data.lessons.flatMap(l=>l.characters.map(c=>c.id))).size!==data.lessons.flatMap(l=>l.characters).length) throw new Error('Invalid catalog');
@@ -24,7 +26,7 @@ export function installCatalog(input:unknown) {
  contentGeneration++;
  releaseId=data.releaseId;contentVersion=data.contentVersion;themes=data.themes;
  for(const url of localMedia.values())URL.revokeObjectURL(url);localMedia.clear();
- images.clear();indexes.clear();packages.clear();pending.clear();assets.clear();
+ images.clear();indexes.clear();packages.clear();pending.clear();assets.clear();characterOverrides.clear();
  for(const key of Object.keys(readingTimings)) delete readingTimings[key];
  lessons=data.lessons.map(l=>{
   images.set(l.id,l.image.id);assets.set(l.image.id,l.image.url);
@@ -48,6 +50,20 @@ export function installLesson(input:unknown) {
  Object.assign(l,data.lesson);indexes.set(l.id,data.lesson.steps);packages.set(l.id,data);
  characters=lessons.flatMap(l=>l.characters);steps=getSteps(lessons[0]);
  for(const a of data.assets){assets.set(a.id,a.url);if(a.cues)readingTimings[a.id.replace(/^audio-/,'')]=a.cues;}
+ // Apply the same single-character semantics to old and new lesson packages.
+ // Keep word recordings separate; do not change stored sessions or question IDs.
+ for(const c of data.lesson.characters){
+  if(files.get(`audio-${c.audio}`)?.text!==c.text){
+   const url=characterAudioURL(c.text);if(!url)throw new Error(`Missing character recording: ${c.text}`);
+   characterOverrides.set(`audio-${c.audio}`,url);readingTimings[c.audio]={text:c.text,starts:[0]};
+  }
+  c.audioText=c.text;
+  for(const step of data.lesson.steps)if((step.kind==='teach'||step.kind==='sound')&&step.characterId===c.id){
+   step.audio=c.audio;
+   step.subtitle=step.kind==='teach'?'听一听这个字，再跟着读一读。':'听一听，选出对应的汉字。';
+   if(step.kind==='sound')step.title='听声音，找汉字';
+  }
+ }
 }
 async function fetchJSON(path:string) {
  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),12000);
@@ -70,6 +86,8 @@ export async function loadLesson(id:string) {
 }
 export function lessonData(id:string) {const data=packages.get(id);if(!data)throw new Error('Lesson has not loaded');return data;}
 export function assetURL(id:string) {
+ const characterURL=characterOverrides.get(id);
+ if(characterURL)return typeof navigator!=='undefined'&&navigator.onLine===false?(localMedia.get(characterURL)||characterURL):characterURL;
  if(isStaticDemo)return staticAssetURL(id);
  const url=assets.get(id);if(!url)throw new Error(`Missing asset: ${id}`);return typeof navigator!=='undefined'&&navigator.onLine===false?(localMedia.get(url)||url):url;
 }
@@ -80,7 +98,11 @@ export function shuffled<T>(items:readonly T[]):T[] {const result=[...items];for
 export function lessonImage(id:string){return images.get(id)!;}
 
 async function cacheLessonMedia(input:unknown,generation:number){
- const data=lessonPackageSchema.parse(input);const files=[...data.assets];
+ const data=lessonPackageSchema.parse(input);const files:{url:string}[]=[...data.assets];
+ for(const c of data.lesson.characters){
+  if(data.assets.find(a=>a.id===`audio-${c.audio}`)?.text===c.text)continue;
+  const url=characterAudioURL(c.text);if(url)files.push({url});
+ }
  const worker=async()=>{while(files.length){const a=files.shift()!;try{
   let blob=await readLocal<Blob>(`media:${a.url}`);
   if(!blob&&navigator.onLine){const response=await fetch(a.url);if(!response.ok)continue;blob=await response.blob();await writeLocal(`media:${a.url}`,blob);}

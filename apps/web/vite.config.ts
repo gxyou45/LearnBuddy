@@ -4,13 +4,13 @@ import { readFileSync } from 'node:fs';
 const base=process.env.VITE_BASE_PATH||'/';
 const baseURL=base.endsWith('/')?base:`${base}/`;
 const staticBuild=process.env.VITE_STATIC_DEMO==='true';
-export default defineConfig({base:baseURL,plugins:[{name:'offline-shell',enforce:'post',generateBundle(_,bundle){
+const contentVersion=staticBuild?createHash('sha256').update(readFileSync(new URL('./public/static-content/manifest.json',import.meta.url))).digest('hex'):'';
+export default defineConfig({base:baseURL,define:{'import.meta.env.VITE_CONTENT_VERSION':JSON.stringify(contentVersion)},plugins:[{name:'offline-shell',enforce:'post',generateBundle(_,bundle){
  if(staticBuild)for(const fileName of Object.keys(bundle))if(/^assets\/c\d{3}(?:-v2)?-/.test(fileName))delete bundle[fileName];
  const files=[baseURL,...Object.keys(bundle).filter(name=>/\.(js|css)$/.test(name)).map(name=>`${baseURL}${name}`)];
- const contentVersion=staticBuild?createHash('sha256').update(readFileSync(new URL('./public/static-content/manifest.json',import.meta.url))).digest('hex'):'';
  const version='learnbuddy-shell-'+contentVersion+'-'+Object.keys(bundle).join('-');
  this.emitFile({type:'asset',fileName:'sw.js',source:`const CACHE=${JSON.stringify(version)},FILES=${JSON.stringify(files)};
-self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch',event=>{const request=event.request,url=new URL(request.url);if(request.method!=='GET'||url.origin!==location.origin||url.pathname.startsWith('/api/')||url.pathname.startsWith('/media/')||url.pathname.endsWith('/admin'))return;
 // Let the server handle media byte ranges: Cache API cannot store 206 responses,

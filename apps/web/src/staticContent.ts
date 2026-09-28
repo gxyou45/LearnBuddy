@@ -9,7 +9,7 @@ function assetURLFor(asset: ContentManifest['assets'][number]) {
 }
 
 export async function loadStaticCatalog(): Promise<Catalog> {
-  const response = await fetch(`${import.meta.env.BASE_URL}static-content/manifest.json`);
+  const response = await fetch(`${import.meta.env.BASE_URL}static-content/manifest.json?v=${import.meta.env.VITE_CONTENT_VERSION || 'current'}`);
   if (!response.ok) throw new Error(`静态课程包暂时无法加载（${response.status}）`);
   manifest = manifestSchema.parse(await response.json());
   assetMap.clear();
