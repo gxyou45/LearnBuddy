@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 const base=process.env.VITE_BASE_PATH||'/';
 const baseURL=base.endsWith('/')?base:`${base}/`;
 const staticBuild=process.env.VITE_STATIC_DEMO==='true';
 export default defineConfig({base:baseURL,plugins:[{name:'offline-shell',enforce:'post',generateBundle(_,bundle){
  if(staticBuild)for(const fileName of Object.keys(bundle))if(/^assets\/c\d{3}(?:-v2)?-/.test(fileName))delete bundle[fileName];
  const files=[baseURL,...Object.keys(bundle).filter(name=>/\.(js|css)$/.test(name)).map(name=>`${baseURL}${name}`)];
- const version='learnbuddy-shell-'+Object.keys(bundle).join('-');
+ const contentVersion=staticBuild?createHash('sha256').update(readFileSync(new URL('./public/static-content/manifest.json',import.meta.url))).digest('hex'):'';
+ const version='learnbuddy-shell-'+contentVersion+'-'+Object.keys(bundle).join('-');
  this.emitFile({type:'asset',fileName:'sw.js',source:`const CACHE=${JSON.stringify(version)},FILES=${JSON.stringify(files)};
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));

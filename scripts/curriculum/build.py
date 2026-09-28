@@ -64,15 +64,15 @@ for unit in source['lessons'][6:]:
  lid=unit['id'].lower();chars=[]
  for w in unit['words']:
   c=w['character'];cid='han-'+format(ord(c),'x');word=w['word'];ico=char_icons.get(c,icons[unit['stage']-1])
-  chars.append(dict(id=cid,text=c,word=word,example=f'在“{word}”里认识“{c}”。和家长一起读，再说说这个词。',icon=ico,audio=cid,audioText=word))
-  # Say the whole word: keeps polyphonic characters in context and avoids false single-character transcripts.
-  a=audio(cid,word);alias=dict(a,id='audio-word-'+cid);m['assets'].append(alias)
+  chars.append(dict(id=cid,text=c,word=word,example=f'在“{word}”里认识“{c}”。和家长一起读，再说说这个词。',icon=ico,audio=cid,audioText=c))
+  audio(cid,c)
+  audio('word-'+cid,word)
  intro=f'一起学习：{unit["title"]}。五个新字，可以分两次认识。';introkey='intro-'+lid;storykey='story-'+lid
  audio(introkey,intro);audio(storykey,unit['readTogether'])
  img='image-lesson-'+lid;asset(img,'image',scene(unit['stage'],unit['title'],[(c['word'],c['icon']) for c in chars]))
  steps=[dict(id='intro',kind='intro',title=unit['title'],subtitle='先认三个，再认两个；累了可以下次继续。',audio=introkey)]
- for kind,title,subtitle in [('teach','一起认识这个字','在词语里听一听、认一认。'),('word','读词语','先听一听，再和家长一起读。'),('sound','听词语，找汉字','听完整词语，选出这个词里的目标字。'),('meaning','读字，找对应的词语','请家长读选项，结合词语说说意思。')]:
-  for c in chars:steps.append(dict(id=f'{kind}-{c["id"]}',kind=kind,characterId=c['id'],title=title,subtitle=subtitle,audio=('word-'+c['id'] if kind=='word' else 'meaning' if kind=='meaning' else c['audio'])))
+ for kind,title,subtitle in [('teach','一起认识这个字','听一听这个字，再跟着读一读。'),('word','读词语','先听一听，再和家长一起读。'),('sound','听词语，找汉字','听完整词语，选出这个词里的目标字。'),('meaning','读字，找对应的词语','请家长读选项，结合词语说说意思。')]:
+  for c in chars:steps.append(dict(id=f'{kind}-{c["id"]}',kind=kind,characterId=c['id'],title=title,subtitle=subtitle,audio=('word-'+c['id'] if kind in ('word','sound') else 'meaning' if kind=='meaning' else c['audio'])))
  steps.extend([dict(id='hunt',kind='hunt',title='汉字藏在哪里？',subtitle='找出今天认识的五个字。',audio='hunt'),dict(id='story',kind='story',title='读句子',subtitle='和家长一起读，再聊聊发生了什么。',audio=storykey)])
  review=reviews.get(unit['id']) or (reviews['C004'] if unit['id']=='C007' else None);tasks=review['tasks'][:3] if review else []
  # Replace design source IDs in visible tasks with real lesson titles.

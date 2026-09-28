@@ -11,6 +11,12 @@ const manifest = JSON.parse(await readFile(resolve(sourceDir, 'manifest.json'), 
 const storyArtBriefs = JSON.parse(await readFile(resolve(storyArtSourceDir, 'briefs.json'), 'utf8'));
 const lessons = manifest.lessons.slice(0, 50);
 if (lessons.length < 50) throw new Error(`Expected at least 50 lessons, found ${lessons.length}`);
+for (const character of lessons.flatMap(lesson => lesson.characters)) {
+  const audio = manifest.assets.find(asset => asset.id === `audio-${character.audio}`);
+  if (audio?.text !== character.text) {
+    throw new Error('Character recordings must read single characters. Run python3 scripts/curriculum/character-audio.py curriculum-release before preparing the static preview.');
+  }
+}
 
 const themeIds = new Set(lessons.map(lesson => manifest.themes.find(theme => theme.order === lesson.theme)?.id));
 const scenes = manifest.huntScenes.filter(scene => scene.themeIds.some(id => themeIds.has(id)));
