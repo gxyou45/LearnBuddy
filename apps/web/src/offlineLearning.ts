@@ -17,7 +17,10 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
  if(command.type==='hint'&&p)p.prompted=true;
  if(command.type==='answer'&&p){if(p.answer)throw new Error('本题已记录');p.answer={selectedId:command.selectedId,correct:!command.skipped&&command.selectedId===step.characterId,skipped:command.skipped,prompted:p.prompted,audioFailed:p.audioFailed,independent:false};}
  if(p)plan.presentations[step.id]=structuredClone(p);
- if(command.type==='hunt')s.huntFound=[...new Set([...s.huntFound,command.characterId])];
+ if(command.type==='hunt'){
+  if(step.kind!=='hunt'||!lessons.find(l=>l.id===s.lessonId)!.characters.some(c=>c.id===command.characterId))throw new Error('找字目标不属于本课');
+  s.huntFound=[...new Set([...s.huntFound,command.characterId])];
+ }
  if(command.type==='advance'){
   if((step.kind==='sound'||step.kind==='meaning')&&!p?.answer)throw new Error('请先作答或跳过');
   if(s.mode==='review'||s.stepIndex===steps.length-1)s.completed=true;

@@ -14,7 +14,7 @@ const Context=createContext<Cloud|null>(null);
 export const useCloud=()=>useContext(Context);
 export function projectCloud(state:LearningProgressState,preferences:Progress):Progress {
  const active=state.sessions.find(s=>s.id===state.activeSessionId),states:Progress['lessonProgress']={};
- for(const l of lessons){const s=state.sessions.find(s=>s.lessonId===l.id);states[l.id]={started:!!s&&!s.completed,completed:state.completedLessons.includes(l.id),step:s&&!s.completed?s.stepIndex:0,session:s?.id||'',huntFound:s?.huntFound||[]};}
+ for(const l of lessons){const s=state.sessions.find(s=>s.lessonId===l.id);states[l.id]={started:!!s&&!s.completed,completed:state.completedLessons.includes(l.id),step:s&&!s.completed?s.stepIndex:0,session:s?.id||'',huntFound:s?.huntFound||[],huntRound:s?.huntRound,huntRoundIndex:s?.huntRound?.ordinal};}
  const activeLesson=active?.lessonId||lessons[0].id;
  return {...fresh(),sound:preferences.sound,observations:preferences.observations,releaseId:state.releaseId||releaseId,activeLesson,lessonProgress:states,...states[activeLesson],seen:state.seen,unlocked:state.openAllCourses?lessons.map(l=>l.id):[]};
 }
@@ -78,7 +78,7 @@ export function CloudProvider({initial,storage,children}:{initial:LearningProgre
    if(ref.current.events.length)await flush();if(ref.current.events.length||ref.current.conflict)throw new Error('请先同步或处理本机记录，再开始其他课次');
    const existing=ref.current.view.sessions.find(s=>s.lessonId===lessonId&&!s.completed);
    if(!navigator.onLine){if(existing&&ref.current.plan?.session.id===existing.id&&!review){setTimeout(()=>{if(mounted.current)onSuccess(existing);},0);return;}throw new Error('新课次需要联网，离线只能继续已准备的课次');}
-   const body:StartLearning={requestId:cloudId(),releaseId:review?.releaseId||releaseId,lessonId,mode:review?'review':'lesson',...(review?{questionVersionId:review.questionVersionId}:{})};
+   const body:StartLearning={requestId:cloudId(),releaseId:review?.releaseId||releaseId,lessonId,mode:review?'review':'lesson',huntLayoutVersion:1,...(review?{questionVersionId:review.questionVersionId}:{})};
    await persist({...ref.current,start:body});await flush();const session=ref.current.plan!.session;
    setTimeout(()=>{if(mounted.current)onSuccess(session);},0);
   }),

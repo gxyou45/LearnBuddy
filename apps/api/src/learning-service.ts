@@ -1,4 +1,4 @@
-import {isCompatibleExpansion,validateManifest,learningOptions} from '@learnbuddy/contracts';
+import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,huntRoundSchema} from '@learnbuddy/contracts';
 import {randomInt} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,LearningProgressState} from '@learnbuddy/contracts';
@@ -23,7 +23,7 @@ export function sessionDTO(s:Session):LearningSessionState {
  const p=currentPresentation(s),a=p?.attempts[0],step=s.lesson.steps[s.currentStep];
  const stored=(p?.renderedOptions??[]) as {id:string;text:string;word:string;icon:string}[];
  const options=p&&!a?learningOptions(stored,(step.config as {characterId?:string}).characterId,step.kind):stored;
- return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options,prompted:p.prompted||(!a&&step.kind==='sound'&&(options.length<2||options.length!==stored.length)),audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
+ return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],...(s.huntRound?{huntRound:huntRoundSchema.parse(s.huntRound)}:{}),presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options,prompted:p.prompted||(!a&&step.kind==='sound'&&(options.length<2||options.length!==stored.length)),audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
 }
 export async function ensurePresentation(tx:Tx,s:Session) {
  const step=s.lesson.steps[s.currentStep];if(!['sound','meaning'].includes(step.kind)||!step.question||currentPresentation(s))return;
@@ -75,7 +75,19 @@ export async function startLearning(db:Db,accountId:string,learnerId:string,inpu
    if(earlier&&!learner.openAllCourses&&!await tx.learnerLesson.findUnique({where:{learnerId_lessonId:{learnerId,lessonId:earlier.lessonId}}}))throw invalid('请先完成上一课');
   }
   let session=input.mode==='lesson'?await tx.learningSession.findFirst({where:{learnerId,lesson:{lessonId:input.lessonId},mode:'lesson',completedAt:null,requestId:{not:null}},orderBy:{lastActiveAt:'desc'},include:includes}):null;
-  if(!session)session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,mode:input.mode,requestId:input.requestId,currentStep,reviewStepId:input.mode==='review'?(lesson.steps[currentStep].config as {id:string}).id:null},include:includes});
+  if(!session){
+   let huntRound;
+   if(input.mode==='lesson'&&input.huntLayoutVersion===1){
+    const previous=await tx.learningSession.findFirst({where:{learnerId,lesson:{lessonId:input.lessonId},mode:'lesson'},orderBy:[{startedAt:'desc'},{id:'desc'}]});
+    const ordinal=previous?(previous.huntRound?huntRoundSchema.parse(previous.huntRound).ordinal:0)+1:0;
+    const release=await tx.contentRelease.findUniqueOrThrow({where:{id:lesson.releaseId}});
+    const manifest=validateManifest(release.manifest),l=lesson.content as ContentManifest['lessons'][number];
+    const theme=manifest.themes.find(t=>t.order===l.theme)!;
+    const scene=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id))!;
+    huntRound=createHuntRound(scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,l.characters,lesson.position,ordinal,input.requestId,previous?.huntRound?huntRoundSchema.parse(previous.huntRound):undefined);
+   }
+   session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,mode:input.mode,requestId:input.requestId,currentStep,huntRound,reviewStepId:input.mode==='review'?(lesson.steps[currentStep].config as {id:string}).id:null},include:includes});
+  }
   await ensurePresentation(tx,session);
   await tx.learningSession.update({where:{id:session.id},data:{lastActiveAt:new Date()}});
   await tx.learner.update({where:{id:learnerId},data:{learningReleaseId:learner.learningReleaseId||input.releaseId,learningRevision:{increment:1}}});

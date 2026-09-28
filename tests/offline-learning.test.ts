@@ -2,7 +2,7 @@ import {it,expect,beforeEach} from 'vitest';
 import {installCatalog,installLesson} from '../apps/web/src/contentRepository';
 import {catalogFixture,packageFixture} from './content-fixture';
 import {localEvent,offlineKey,type OfflineRecord} from '../apps/web/src/offlineLearning';
-import {syncBatchSchema,legacyProgressSchema} from '@learnbuddy/contracts';
+import {syncBatchSchema,legacyProgressSchema,createHuntRound} from '@learnbuddy/contracts';
 beforeEach(()=>{installCatalog(catalogFixture);installLesson(packageFixture('family'));});
 function record():OfflineRecord{
  const session={id:'s',lessonId:'family',releaseId:'prototype-v4',mode:'lesson' as const,revision:0,stepIndex:7,stepId:'sound-wo',completed:false,huntFound:[],presentation:{id:'p',questionVersionId:'q',options:packageFixture('family').lesson.characters.map(({id,text,word,icon})=>({id,text,word,icon})),prompted:false,audioHeard:false,audioFailed:false,answer:null}};
@@ -13,6 +13,16 @@ it('offline feedback preserves confirmed state and never grants mastery',()=>{
  const original=record();const next=localEvent(original,{type:'answer',clientEventId:'e',sessionId:'s',expectedRevision:0,presentationId:'p',selectedId:'wo',skipped:false});
  expect(next.plan!.session.presentation!.answer!.correct).toBe(true);expect(next.plan!.session.presentation!.answer!.independent).toBe(false);
  expect(original.plan!.session.presentation!.answer).toBeNull();expect(next.confirmed.sessions[0].presentation!.answer).toBeNull();expect(next.view.revision).toBe(10);
+});
+it('offline hunt events retain their saved positions and do not change recognition evidence',()=>{
+ const original=record(),pkg=packageFixture('family');
+ original.view.seen=pkg.lesson.characters.map(c=>c.id);
+ const round=createHuntRound(pkg.scene,pkg.assets.find(a=>a.id===pkg.scene.imageAssetId)!.sha256,pkg.lesson.characters,0,1,'round');
+ Object.assign(original.plan!.session,{huntRound:round,stepIndex:13,stepId:'hunt',presentation:null});
+ const next=localEvent(original,{type:'hunt',characterId:'wo',clientEventId:'hunt',sessionId:'s',expectedRevision:0});
+ expect(next.plan!.session.huntRound).toEqual(round);expect(next.plan!.session.huntFound).toEqual(['wo']);
+ expect(next.view.skills).toEqual(original.view.skills);expect(next.view.seen).toEqual(original.view.seen);
+ expect(original.confirmed.sessions[0].huntFound).toEqual([]);
 });
 it('cannot advance without a recorded answer or into an unprepared question',()=>{
  expect(()=>localEvent(record(),{type:'advance',clientEventId:'e',sessionId:'s',expectedRevision:0})).toThrow('作答');

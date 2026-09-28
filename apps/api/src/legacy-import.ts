@@ -1,6 +1,7 @@
 import {createHash,randomUUID} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {LegacyProgress,ContentManifest} from '@learnbuddy/contracts';
+import {resolveHuntRound} from '@learnbuddy/contracts';
 import type {database} from './db.js';
 import {lockLearner,learningProgress,saveSnapshot,canonical,ensurePresentation,findSession} from './learning-service.js';
 export async function importLegacy(db:ReturnType<typeof database>,accountId:string,learnerId:string,raw:LegacyProgress) {
@@ -25,6 +26,12 @@ export async function importLegacy(db:ReturnType<typeof database>,accountId:stri
   for(const [lessonId,state] of Object.entries(states)){
    const lesson=manifest.lessons.find(l=>l.id===lessonId);if(!lesson)throw bad();
    if(new Set(state.huntFound).size!==state.huntFound.length||state.huntFound.some(id=>!lesson.characters.some(c=>c.id===id)))throw bad();
+   if(state.huntRound){
+    const theme=manifest.themes.find(t=>t.order===lesson.theme)!;
+    const scene=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id));
+    if(!scene)throw bad();
+    try{resolveHuntRound(state.huntRound,scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters);}catch{throw bad();}
+   }
    let step=state.step;
    if(raw.contentVersion<4){if(step>=(raw.contentVersion===1?11:12))throw bad();step=raw.contentVersion===1&&step===10?14:step>=4?step+3:step;}
    else if(state.stepId){step=lesson.steps.findIndex(s=>s.id===state.stepId);}
@@ -39,7 +46,7 @@ export async function importLegacy(db:ReturnType<typeof database>,accountId:stri
    if(!state.started&&!state.completed)continue;
    if(await tx.learningSession.findFirst({where:{learnerId,mode:'lesson',lesson:{lessonId}}}))continue;
    const lesson=await tx.lessonVersion.findUniqueOrThrow({where:{releaseId_lessonId:{releaseId,lessonId}}});
-   const session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,requestId:randomUUID(),lastActiveAt:hasCloud?new Date(0):new Date(),currentStep:step,completedAt:state.completed?new Date():null,huntFound:state.huntFound}});
+   const session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,requestId:randomUUID(),lastActiveAt:hasCloud?new Date(0):new Date(),currentStep:step,completedAt:state.completed?new Date():null,huntFound:state.huntFound,huntRound:state.huntRound}});
    await ensurePresentation(tx,(await findSession(tx,learnerId,session.id))!);
   }
   await tx.learner.update({where:{id:learnerId},data:{learningReleaseId:releaseId,learningRevision:{increment:1}}});

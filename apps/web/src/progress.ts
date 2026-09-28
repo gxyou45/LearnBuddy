@@ -1,8 +1,9 @@
 import { characters, contentVersion, releaseId, getSteps, steps, lessons, type CharacterId } from './contentRepository';
+import {huntRoundSchema,type HuntRound} from '@learnbuddy/contracts';
 export const STORAGE_KEY = 'learnbuddy:v1:progress';
 export type Attempt = { id: string; session: string; step: string; characterId: CharacterId; kind: 'sound' | 'meaning'; correct: boolean; hintUsed: boolean; skipped: boolean; date: string; timestamp: number };
-export type LessonProgress = { stepId?: string; started: boolean; completed: boolean; step: number; session: string; huntFound: CharacterId[] };
-export type Progress = { releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; observations: Partial<Record<CharacterId, string>> };
+export type LessonProgress = { stepId?: string; started: boolean; completed: boolean; step: number; session: string; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number };
+export type Progress = { releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
 export const fresh = (): Progress => ({ releaseId, activeLesson: lessons[0]?.id ?? 'family', lessonProgress: {}, unlocked: [], schemaVersion: 1, contentVersion, started: false, completed: false, step: 0, session: '', sound: true, attempts: [], seen: [], huntFound: [], observations: {} });
 export function localDate(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 
@@ -23,6 +24,13 @@ export function parseProgress(raw: string | null): Progress {
     if (!lessons.some(l => l.id === id) || !entry || typeof entry.started !== 'boolean' || typeof entry.completed !== 'boolean' || !Number.isInteger(entry.step) || entry.step < 0 || entry.step >= (getSteps(lessons.find(l=>l.id===id)!).length || steps.length) || typeof entry.session !== 'string' || !Array.isArray(entry.huntFound) || new Set(entry.huntFound).size !== entry.huntFound.length || !entry.huntFound.every(c => lessons.find(l => l.id === id)!.characters.some(x => x.id === c))) throw new Error('Invalid lesson state');
   }
   if (!p.huntFound.every(c => lessons.find(l => l.id === p.activeLesson)!.characters.some(x => x.id === c))) throw new Error('Invalid current hunt');
+  for(const [id,state] of Object.entries({...p.lessonProgress,[p.activeLesson]:p})){
+    if(state.huntRoundIndex!==undefined&&(!Number.isSafeInteger(state.huntRoundIndex)||state.huntRoundIndex<0))throw new Error('Invalid hunt round index');
+    if(state.huntRound){
+      const round=huntRoundSchema.parse(state.huntRound),targets=lessons.find(l=>l.id===id)!.characters;
+      if(round.ordinal!==state.huntRoundIndex||round.placements.length!==targets.length||new Set(round.placements.map(p=>p.characterId)).size!==targets.length||new Set(round.placements.map(p=>p.slotId)).size!==targets.length||round.placements.some(p=>!targets.some(c=>c.id===p.characterId)))throw new Error('Invalid saved hunt round');
+    }
+  }
   // Resolve each legacy position to the same activity after inserting word steps.
   // v1: intro, teach x3, sound x3, meaning x3, story.
   // v2/v3: the same with hunt before story. v4 inserts word x3 at index 4.
@@ -63,7 +71,7 @@ export function dueCharacters(p: Progress, today = localDate()) {
 }
 
 export function lessonState(p: Progress, id: string): LessonProgress {
-  if (id === p.activeLesson) return { started: p.started, completed: p.completed, step: p.step, session: p.session, huntFound: p.huntFound };
+  if (id === p.activeLesson) return { started: p.started, completed: p.completed, step: p.step, session: p.session, huntFound: p.huntFound, huntRound:p.huntRound,huntRoundIndex:p.huntRoundIndex };
   return p.lessonProgress[id] || { started: false, completed: false, step: 0, session: '', huntFound: [] };
 }
 export function isUnlocked(p: Progress, id: string) {
@@ -74,7 +82,7 @@ export function startLesson(p: Progress, id: string, session: string, allowAll =
   if (!allowAll && !isUnlocked(p,id)) return p;
   const saved = lessonState(p,id);
   return { ...p, lessonProgress: { ...p.lessonProgress, [p.activeLesson]: lessonState(p,p.activeLesson) }, activeLesson: id,
-    ...saved, started: true, step: saved.started ? saved.step : 0, session: saved.started ? saved.session : session, huntFound: saved.started ? saved.huntFound : [] };
+    ...saved, started: true, step: saved.started ? saved.step : 0, session: saved.started ? saved.session : session, huntFound: saved.started ? saved.huntFound : [],huntRound:saved.started?saved.huntRound:undefined,huntRoundIndex:saved.started?saved.huntRoundIndex:(saved.huntRoundIndex??(saved.session?0:-1))+1 };
 }
 export function completedCount(p: Progress) { return lessons.filter(l => lessonState(p,l.id).completed).length; }
 export function recommendedLesson(p: Progress) {

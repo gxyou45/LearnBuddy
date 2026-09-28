@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import {huntRoundSchema} from './hunt-round.js';
+export {huntRoundSchema,createHuntRound,resolveHuntRound,type HuntRound} from './hunt-round.js';
 import {readingCueSchema,validateReadingCues} from './reading-cues.js';
 export {readingCueSchema,validateReadingCues,readingPosition,type ReadingCues} from './reading-cues.js';
 export {applyReviewedCues} from './reviewed-cues.js';
@@ -105,7 +107,7 @@ export type FamilyAccount = z.infer<typeof familySchema>;
 
 // ACC-02: online commands. Offline batching/import is a separate, later protocol.
 const revisionSchema=z.number().int().nonnegative();
-export const startLearningSchema=z.object({requestId:z.uuid(),releaseId:id,lessonId:id,mode:z.enum(['lesson','review']),questionVersionId:z.string().min(1).max(200).optional()}).strict();
+export const startLearningSchema=z.object({requestId:z.uuid(),releaseId:id,lessonId:id,mode:z.enum(['lesson','review']),questionVersionId:z.string().min(1).max(200).optional(),huntLayoutVersion:z.literal(1).optional()}).strict();
 const eventBase={clientEventId:z.uuid(),sessionId:z.uuid(),expectedRevision:revisionSchema};
 export const learningEventSchema=z.discriminatedUnion('type',[
  z.object({...eventBase,type:z.literal('advance')}).strict(),
@@ -117,7 +119,7 @@ export const learningEventSchema=z.discriminatedUnion('type',[
 export type LearningCommand=z.infer<typeof learningEventSchema>;
 export type StartLearning=z.infer<typeof startLearningSchema>;
 export const learningPresentationSchema=z.object({id:z.uuid(),questionVersionId:z.string(),options:z.array(z.object({id,text:z.string(),word:z.string(),icon:z.string()})),prompted:z.boolean(),audioHeard:z.boolean(),audioFailed:z.boolean(),answer:z.object({selectedId:id.nullable(),correct:z.boolean(),skipped:z.boolean(),prompted:z.boolean(),audioFailed:z.boolean(),independent:z.boolean()}).nullable()});
-export const learningSessionSchema=z.object({id:z.uuid(),lessonId:id,releaseId:id,mode:z.enum(['lesson','review']),revision:revisionSchema,stepIndex:z.number().int().nonnegative(),stepId:id,completed:z.boolean(),huntFound:z.array(id),presentation:learningPresentationSchema.nullable()});
+export const learningSessionSchema=z.object({id:z.uuid(),lessonId:id,releaseId:id,mode:z.enum(['lesson','review']),revision:revisionSchema,stepIndex:z.number().int().nonnegative(),stepId:id,completed:z.boolean(),huntFound:z.array(id),huntRound:huntRoundSchema.optional(),presentation:learningPresentationSchema.nullable()});
 export type LearningSessionState=z.infer<typeof learningSessionSchema>;
 export const learningProgressSchema=z.object({learnerId:z.uuid(),revision:revisionSchema,releaseId:id.nullable(),timeZone:z.string(),activeSessionId:z.uuid().nullable(),openAllCourses:z.boolean(),sessions:z.array(learningSessionSchema),completedLessons:z.array(id),skills:z.array(z.object({targetId:id,kind:z.enum(['sound','meaning']),status:z.enum(['practice','consolidating','stable']),wrongCount:z.number().int(),dueDate:z.string(),ruleVersion:z.number().int()})),characters:z.array(z.object({id,status:z.enum(['未开始','已接触','练习中','较稳定'])})),seen:z.array(id)});
 export type LearningProgressState=z.infer<typeof learningProgressSchema>;
@@ -137,7 +139,7 @@ export type SyncPlan=z.infer<typeof syncPlanSchema>;
 export const syncReceiptSchema=z.object({seq:z.number().int(),clientEventId:z.uuid(),status:z.enum(['buffered','applied','conflict','rejected']),message:z.string().nullable()});
 export const syncResultSchema=z.object({nextSeq:z.number().int(),receipts:z.array(syncReceiptSchema),session:learningSessionSchema,progress:learningProgressSchema});
 export const learningChangesSchema=z.object({cursor:revisionSchema,reset:z.boolean(),progress:learningProgressSchema.optional(),patch:learningProgressSchema.partial().optional(),deleted:z.object({sessionIds:z.array(z.uuid())})});
-const legacyPosition=z.object({stepId:z.string().max(100).optional(),started:z.boolean(),completed:z.boolean(),step:z.number().int().min(0).max(100),session:z.string().max(200),huntFound:z.array(id).max(30).default([])}).strict();
+const legacyPosition=z.object({stepId:z.string().max(100).optional(),started:z.boolean(),completed:z.boolean(),step:z.number().int().min(0).max(100),session:z.string().max(200),huntFound:z.array(id).max(30).default([]),huntRound:huntRoundSchema.optional(),huntRoundIndex:z.number().int().nonnegative().optional()}).strict();
 export const legacyProgressSchema=legacyPosition.extend({schemaVersion:z.literal(1),contentVersion:z.number().int().min(1).max(4),releaseId:id.optional(),activeLesson:id.default('family'),lessonProgress:z.record(id,legacyPosition).default({}),unlocked:z.array(id).max(1000).default([]),sound:z.boolean(),seen:z.array(id).max(1000),observations:z.record(id,z.string().max(1000)),attempts:z.array(z.object({id:z.string().max(200),session:z.string().max(200),step:z.string().max(100),characterId:id,kind:z.enum(['sound','meaning']),correct:z.boolean(),hintUsed:z.boolean(),skipped:z.boolean(),date:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),timestamp:z.number().finite()})).max(30000)}).strict();
 export const legacyImportSchema=z.object({source:z.literal('legacy_import'),progress:legacyProgressSchema}).strict();
 export type LegacyProgress=z.infer<typeof legacyProgressSchema>;

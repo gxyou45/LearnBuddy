@@ -27,6 +27,7 @@ test('online learning authority, ownership, idempotence and evidence',async t=>{
   assert.equal((await req(root+'/sessions',{cookie:other,body})).status,404);
   assert.equal((await req(root+'/sessions',{cookie,body,from:'https://evil.test'})).status,403);
   state=await json(root+'/sessions',{cookie,body});const original=state.session.id;
+  assert.equal(state.session.huntRound,undefined); // Clients without layout support stay on legacy positions.
   assert.equal((await json(root+'/sessions',{cookie,body})).session.id,original);
   assert.equal((await req(root+'/sessions',{cookie,body:{...body,lessonId:'home'}})).status,409);
   assert.equal((await req(`/api/v1/learners/${sibling}/events`,{cookie,body:command('advance')})).status,404);
@@ -86,6 +87,38 @@ test('online learning authority, ownership, idempotence and evidence',async t=>{
   const before=await db.learningEvent.count({where:{learnerId:child}});
   assert.equal((await req(root+'/events',{cookie,body:{...command('answer',{presentationId:randomUUID(),selectedId:'not-an-option',skipped:false}),sessionId:randomUUID()}})).status,404);
   assert.equal(await db.learningEvent.count({where:{learnerId:child}}),before);
+ });
+ await t.test('hunt layout survives resume, replay rotates, and legacy sessions remain unchanged',async()=>{
+  const learner=await json('/api/v1/learners',{cookie,body:{nickname:'布局测试'}}),path=`/api/v1/learners/${learner.id}`;
+  const firstInput={requestId:randomUUID(),releaseId:'prototype-v4',lessonId:'family',mode:'lesson',huntLayoutVersion:1};
+  let current=await json(path+'/sessions',{cookie,body:firstInput});
+  const first=current.session.huntRound;
+  assert.equal(first.ordinal,0);assert.equal(first.placements.length,3);
+  assert.deepEqual((await json(path+'/sessions',{cookie,body:firstInput})).session.huntRound,first);
+  assert.deepEqual((await json(path+'/sessions',{cookie,body:{...firstInput,requestId:randomUUID()}})).session.huntRound,first);
+  const plan=await json(path+'/sync-streams',{cookie,body:{streamId:randomUUID(),sessionId:current.session.id}});
+  assert.deepEqual(plan.session.huntRound,first);
+  const event=async(type,fields={})=>{current=await json(path+'/events',{cookie,body:{clientEventId:randomUUID(),sessionId:current.session.id,expectedRevision:current.session.revision,type,...fields}});};
+  while(current.session.stepIndex<13){if(current.session.presentation&&!current.session.presentation.answer)await event('answer',{presentationId:current.session.presentation.id,selectedId:null,skipped:true});await event('advance');}
+  const attempts=await db.attempt.count({where:{presentation:{session:{learnerId:learner.id}}}}),seen=current.progress.seen,skills=current.progress.skills;
+  await event('hunt',{characterId:'wo'});await event('hunt',{characterId:'wo'});
+  assert.deepEqual(current.session.huntFound,['wo']);assert.deepEqual(current.session.huntRound,first);
+  assert.equal(await db.attempt.count({where:{presentation:{session:{learnerId:learner.id}}}}),attempts);assert.deepEqual(current.progress.seen,seen);assert.deepEqual(current.progress.skills,skills);
+  const secondDevice=await json(path+'/progress',{cookie});assert.deepEqual(secondDevice.sessions[0].huntRound,first);assert.deepEqual(secondDevice.sessions[0].huntFound,['wo']);
+  await event('advance');await event('advance');
+  current=await json(path+'/sessions',{cookie,body:{...firstInput,requestId:randomUUID()}});
+  assert.equal(current.session.huntRound.ordinal,1);assert.deepEqual(current.session.huntFound,[]);
+  assert.ok(current.session.huntRound.placements.every((p,i)=>p.slotId!==first.placements[i].slotId));
+  // Fixture representing a session that predates the nullable-column migration.
+  await db.$executeRaw`UPDATE "LearningSession" SET "huntRound"=NULL,"huntFound"='["wo"]'::jsonb,"currentStep"=13 WHERE id=${current.session.id}::uuid`;
+  const legacy=await json(path+'/sessions',{cookie,body:{...firstInput,requestId:randomUUID()}});
+  assert.equal(legacy.session.huntRound,undefined);assert.deepEqual(legacy.session.huntFound,['wo']);
+  const imported=await json('/api/v1/learners',{cookie,body:{nickname:'布局导入'}}),importPath=`/api/v1/learners/${imported.id}/imports`;
+  const raw={schemaVersion:1,contentVersion:4,releaseId:'prototype-v4',activeLesson:'family',started:true,completed:false,step:13,stepId:'hunt',session:'guest',sound:true,seen:['wo'],observations:{},attempts:[],huntFound:['wo'],huntRound:first,huntRoundIndex:0};
+  const invalid={...raw,huntRound:{...first,sceneVersion:'a'.repeat(64)}};
+  assert.equal((await req(importPath,{cookie,body:{source:'legacy_import',progress:invalid}})).status,400);
+  const result=await json(importPath,{cookie,body:{source:'legacy_import',progress:raw}});
+  assert.deepEqual(result.progress.sessions[0].huntRound,first);assert.deepEqual(result.progress.sessions[0].huntFound,['wo']);
  });
  }finally{await db.$disconnect();}
 });

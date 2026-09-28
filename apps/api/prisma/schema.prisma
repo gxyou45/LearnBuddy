@@ -195,6 +195,7 @@ model LearningSession {
   currentStep Int @default(0)
   reviewStepId String?
   huntFound Json @default("[]")
+  huntRound Json?
   lastActiveAt DateTime @default(now()) @db.Timestamptz
   @@unique([learnerId, requestId])
   presentations QuestionPresentation[]
