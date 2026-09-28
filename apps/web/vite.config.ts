@@ -10,9 +10,12 @@ export default defineConfig({base:baseURL,plugins:[{name:'offline-shell',enforce
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch',event=>{const request=event.request,url=new URL(request.url);if(request.method!=='GET'||url.origin!==location.origin||url.pathname.startsWith('/api/')||url.pathname.startsWith('/media/')||url.pathname.endsWith('/admin'))return;
+// Let the server handle media byte ranges: Cache API cannot store 206 responses,
+// and a cached whole file must not replace the requested partial response.
+if(request.headers.has('range'))return;
 if(request.mode==='navigate'){event.respondWith(fetch(request).catch(()=>caches.open(CACHE).then(cache=>cache.match(${JSON.stringify(baseURL)}))));return;}
 if(request.destination==='image'&&url.pathname.startsWith(${JSON.stringify(`${baseURL}assets/`)})){event.respondWith(caches.open(CACHE).then(async cache=>{const saved=await cache.match(request);if(saved)return saved;const response=await fetch(request);if(response.ok)await cache.put(request,response.clone());return response;}));return;}
-if(url.pathname.startsWith(${JSON.stringify(`${baseURL}static-content/`)})){event.respondWith(caches.open(CACHE).then(async cache=>{const saved=await cache.match(request);if(saved)return saved;const response=await fetch(request);if(response.ok)await cache.put(request,response.clone());return response;}));return;}
+if(url.pathname.startsWith(${JSON.stringify(`${baseURL}static-content/`)})){event.respondWith((async()=>{let cache;try{cache=await caches.open(CACHE);const saved=await cache.match(request);if(saved)return saved;}catch{}const response=await fetch(request);if(cache&&response.status===200)try{await cache.put(request,response.clone());}catch{}return response;})());return;}
 if(FILES.includes(url.pathname))event.respondWith(caches.open(CACHE).then(async cache=>(await cache.match(request))||fetch(request)));
 });`});
 }}],server:{proxy:{'/api':{target:'http://127.0.0.1:8080',changeOrigin:false},'/media':'http://127.0.0.1:8080'}},build:{copyPublicDir:staticBuild}});
