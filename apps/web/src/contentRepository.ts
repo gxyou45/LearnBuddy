@@ -3,6 +3,7 @@ import { catalogSchema, lessonPackageSchema, type Catalog, type LessonPackage, t
 import {isStaticDemo} from './staticDemo';
 import {loadStaticCatalog,staticAssetURL,staticLessonPackage} from './staticContent';
 import {characterAudioURL} from './characterAudio';
+import {validateReadingCues,type ReadingCues} from '@learnbuddy/contracts';
 export type { Lesson, Character, CharacterId, Step, Story } from '@learnbuddy/contracts';
 export let lessons: Lesson[] = [];
 export let characters: Character[] = [];
@@ -16,7 +17,7 @@ const images=new Map<string,string>();
 const indexes = new Map<string, Step[]>();
 const packages = new Map<string, LessonPackage>();
 const pending = new Map<string, Promise<void>>();
-export const readingTimings: Record<string,{text:string;starts:number[]}> = {};
+export const readingTimings: Record<string,Pick<ReadingCues,'text'|'starts'|'ends'>> = {};
 const assets = new Map<string,string>();
 const characterOverrides = new Map<string,string>();
 export function installCatalog(input:unknown) {
@@ -45,7 +46,7 @@ export function installLesson(input:unknown) {
  if(required.some(id=>!files.has(id))) throw new Error('Incomplete lesson package');
  for(const a of data.assets){
   if(a.url!==`/media/${a.objectKey}` || !a.objectKey.includes(a.sha256)) throw new Error('Invalid asset URL');
-  if(a.cues && (a.cues.text!==a.text || a.cues.starts.length!==Array.from(a.cues.text).length || a.cues.starts.some((t,i)=>t*1000>(a.durationMs??0)||(i>0&&t<a.cues!.starts[i-1])))) throw new Error('Invalid audio cues');
+  if(a.cues)validateReadingCues(a.cues,a.text,a.sha256,a.durationMs);
  }
  Object.assign(l,data.lesson);indexes.set(l.id,data.lesson.steps);packages.set(l.id,data);
  characters=lessons.flatMap(l=>l.characters);steps=getSteps(lessons[0]);

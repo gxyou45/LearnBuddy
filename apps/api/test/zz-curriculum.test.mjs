@@ -23,7 +23,7 @@ test('additive curriculum upgrade preserves pinned sessions, offline events and 
  const lesson=structuredClone(base.lessons[0]);lesson.id='test-extension';lesson.theme=3;
  lesson.characters=[...base.lessons[0].characters,...base.lessons[1].characters.slice(0,2)].map(c=>({...c,id:'extra-'+c.id}));
  for(const c of lesson.characters){const original=base.assets.find(a=>a.id==='audio-word-'+c.id.replace('extra-',''));next.assets.push({...original,id:'audio-word-'+c.id});}
- // Deliberate shared word to verify both question kinds exclude ambiguous distractors.
+ // Shared words are ambiguous for meaning, but distinct single-character sounds remain valid choices.
  lesson.characters[1].word=lesson.characters[0].word;
  lesson.steps=[{...base.lessons[0].steps[0]},...['teach','word','sound','meaning'].flatMap(kind=>lesson.characters.map(c=>({id:kind+'-'+c.id,kind,characterId:c.id,title:kind,subtitle:'',audio:kind==='word'?'word-'+c.id:kind==='meaning'?'meaning':c.audio}))),{...base.lessons[0].steps.find(s=>s.kind==='hunt')},{...base.lessons[0].steps.at(-1)}];
  next.lessons.push(lesson);next.themes.push({...base.themes[0],id:'expansion-theme',order:3});next.huntScenes.push({...base.huntScenes[0],id:'expansion-scene',themeIds:['expansion-theme'],slots:[{id:'a',x:20,y:20,clue:'a'},{id:'b',x:70,y:20,clue:'b'},{id:'c',x:45,y:50,clue:'c'},{id:'d',x:20,y:80,clue:'d'},{id:'e',x:70,y:80,clue:'e'}]});
@@ -38,11 +38,11 @@ test('additive curriculum upgrade preserves pinned sessions, offline events and 
  await t.test('an already prepared offline event remains applicable after upgrade',async()=>{
   const result=await syncBatch(db,a.id,id,stream.streamId,[{seq:1,occurredAt:new Date().toISOString(),timeZone:'Asia/Shanghai',command:{type:'advance',clientEventId:randomUUID(),sessionId:first.session.id,expectedRevision:1}}]);assert.equal(result.receipts[0].status,'applied');assert.equal(result.session.stepIndex,2);assert.equal(result.progress.releaseId,next.releaseId);
  });
- await t.test('new lesson stays locked; five-character questions have unambiguous word options',async()=>{
+ await t.test('new lesson stays locked; sound and meaning questions use their own option semantics',async()=>{
   await assert.rejects(()=>startLearning(db,a.id,id,{requestId:randomUUID(),releaseId:next.releaseId,lessonId:lesson.id,mode:'lesson'}));
   await db.learner.update({where:{id},data:{openAllCourses:true}});
   let s=await startLearning(db,a.id,id,{requestId:randomUUID(),releaseId:next.releaseId,lessonId:lesson.id,mode:'lesson'});
-  while(!s.session.completed){const p=s.session.presentation;if(p&&!p.answer){assert.equal(new Set(p.options.map(o=>o.word)).size,p.options.length);s=await applyLearningEvent(db,a.id,id,{type:'answer',clientEventId:randomUUID(),sessionId:s.session.id,expectedRevision:s.session.revision,presentationId:p.id,selectedId:null,skipped:true});}s=await applyLearningEvent(db,a.id,id,{type:'advance',clientEventId:randomUUID(),sessionId:s.session.id,expectedRevision:s.session.revision});}
+  while(!s.session.completed){const p=s.session.presentation;if(p&&!p.answer){if(lesson.steps[s.session.stepIndex].kind==='sound'){assert.equal(p.options.length,5);assert.equal(new Set(p.options.map(o=>o.text)).size,5);}else assert.equal(new Set(p.options.map(o=>o.word)).size,p.options.length);s=await applyLearningEvent(db,a.id,id,{type:'answer',clientEventId:randomUUID(),sessionId:s.session.id,expectedRevision:s.session.revision,presentationId:p.id,selectedId:null,skipped:true});}s=await applyLearningEvent(db,a.id,id,{type:'advance',clientEventId:randomUUID(),sessionId:s.session.id,expectedRevision:s.session.revision});}
   assert.ok(s.progress.completedLessons.includes(lesson.id));await db.learningSkill.create({data:{learnerId:id,targetId:'wo',kind:'sound',status:'practice',dueDate:'2099-01-01',wrongCount:1,questionVersionId:`${base.releaseId}:family:sound-wo:v1`,ruleVersion:1}});const review=await reviewQueue(db,id,lesson.id);assert.equal(review.items.length,3);assert.ok(review.items.some(q=>q.targetId==='wo'));
   const q=review.items.find(q=>q.targetId==='wo');const r=await startLearning(db,a.id,id,{requestId:randomUUID(),releaseId:q.releaseId,lessonId:q.lessonId,mode:'review',questionVersionId:q.questionVersionId});assert.equal(r.session.mode,'review');assert.equal(r.session.releaseId,base.releaseId);assert.equal(r.progress.releaseId,next.releaseId);
  });

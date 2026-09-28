@@ -1,4 +1,4 @@
-import {isCompatibleExpansion,validateManifest} from '@learnbuddy/contracts';
+import {isCompatibleExpansion,validateManifest,learningOptions} from '@learnbuddy/contracts';
 import {randomInt} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,LearningProgressState} from '@learnbuddy/contracts';
@@ -21,13 +21,15 @@ export function canonical(value:unknown):string {if(Array.isArray(value))return 
 function currentPresentation(s:Session){return s.presentations.find(p=>p.questionVersionId===s.lesson.steps[s.currentStep]?.question?.id);}
 export function sessionDTO(s:Session):LearningSessionState {
  const p=currentPresentation(s),a=p?.attempts[0],step=s.lesson.steps[s.currentStep];
- return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options:p.renderedOptions as {id:string;text:string;word:string;icon:string}[],prompted:p.prompted,audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
+ const stored=(p?.renderedOptions??[]) as {id:string;text:string;word:string;icon:string}[];
+ const options=p&&!a?learningOptions(stored,(step.config as {characterId?:string}).characterId,step.kind):stored;
+ return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options,prompted:p.prompted||(!a&&step.kind==='sound'&&(options.length<2||options.length!==stored.length)),audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
 }
 export async function ensurePresentation(tx:Tx,s:Session) {
  const step=s.lesson.steps[s.currentStep];if(!['sound','meaning'].includes(step.kind)||!step.question||currentPresentation(s))return;
- const options=structuredClone(step.question.options) as {id:string;text:string;word:string;icon:string}[];
+ const options=learningOptions(structuredClone(step.question.options) as {id:string;text:string;word:string;icon:string}[],(step.config as {characterId?:string}).characterId,step.kind);
  for(let i=options.length-1;i>0;i--){const j=randomInt(i+1);[options[i],options[j]]=[options[j],options[i]];}
- await tx.questionPresentation.create({data:{sessionId:s.id,questionVersionId:step.question.id,renderedOptions:options}});
+ await tx.questionPresentation.create({data:{sessionId:s.id,questionVersionId:step.question.id,renderedOptions:options,prompted:step.kind==='sound'&&options.length<2}});
 }
 export async function learningProgress(tx:Tx,learnerId:string):Promise<LearningProgressState> {
  const learner=await tx.learner.findUniqueOrThrow({where:{id:learnerId}});
@@ -104,11 +106,15 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
   if(input.type==='audio')await tx.questionPresentation.update({where:{id:p!.id},data:input.result==='played'?{audioHeard:true}:{audioFailed:true}});
   if(input.type==='answer') {
    if(input.skipped?input.selectedId!==null:input.selectedId===null)throw invalid('跳过和实际选择不一致');
-   const options=p!.renderedOptions as {id:string}[];
+   const options=p!.renderedOptions as {id:string;text:string;word:string;icon:string}[];
    if(input.selectedId!==null&&!options.some(o=>o.id===input.selectedId))throw invalid('答案不在本次选项中');
    const correct=!input.skipped&&(step.question!.answer as string[]).includes(input.selectedId!);
    const targetId=(step.config as {characterId:string}).characterId;
-   const attempt=await tx.attempt.create({data:{eventId:event.id,sessionId:session.id,presentationId:p!.id,answer:{selectedId:input.selectedId},correct,prompted:p!.prompted,skipped:input.skipped,audioHeard:p!.audioHeard,audioFailed:p!.audioFailed,targetId,skillType:step.kind,timeTrusted:!reportedAt||(Math.abs(now.getTime()-reportedAt.getTime())<120000),ruleVersion:RULE_VERSION}});
+   const safeOptions=learningOptions(options,targetId,step.kind);
+   // Preserve old queued choices, but ambiguous/trivial sound tasks cannot add
+   // mastery evidence or penalize the child as an independent mistake.
+   const assisted=step.kind==='sound'&&(safeOptions.length<2||safeOptions.length!==options.length);
+   const attempt=await tx.attempt.create({data:{eventId:event.id,sessionId:session.id,presentationId:p!.id,answer:{selectedId:input.selectedId},correct,prompted:p!.prompted||assisted,skipped:input.skipped,audioHeard:p!.audioHeard,audioFailed:p!.audioFailed,targetId,skillType:step.kind,timeTrusted:!reportedAt||(Math.abs(now.getTime()-reportedAt.getTime())<120000),ruleVersion:RULE_VERSION}});
    const valid=independent(attempt),wrong=valid&&!correct;
    const prior=await tx.learningSkill.findUnique({where:{learnerId_targetId_kind:{learnerId,targetId,kind:step.kind}}});
    const recent=await tx.attempt.findMany({where:{targetId,skillType:step.kind,timeTrusted:true,prompted:false,skipped:false,audioFailed:false,OR:[{skillType:'meaning'},{audioHeard:true}],presentation:{session:{learnerId}}},orderBy:[{createdAt:'desc'},{id:'desc'}],take:6});

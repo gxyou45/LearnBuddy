@@ -3,6 +3,8 @@ import {manifestSchema,type ContentManifest,type ImportedAsset} from '@learnbudd
 import './admin.css';
 import {WordVisual} from '../visuals/WordVisual';
 import {wordVisual} from '../visuals/resolveWordVisual';
+import {CueEditor} from './CueEditor';
+import {readingPosition} from '@learnbuddy/contracts';
 type Draft={id:string;baseReleaseId:string;revision:number;manifest:ContentManifest;publishedReleaseId:string|null};
 type Overview={channel:{releaseId:string;revision:number};releases:{id:string;createdAt:string}[];drafts:Omit<Draft,'manifest'>[];audit:{id:string;action:string;targetId:string;createdAt:string}[]};
 async function request<T>(path:string,body?:unknown,method=body?'POST':'GET'):Promise<T> {
@@ -39,6 +41,7 @@ export default function Admin() {
  <div className="admin-toolbar"><button disabled={busy||!editable||!dirty} onClick={()=>void run(async()=>{const next=await request<Draft>(`/drafts/${draft.id}`,{revision:draft.revision,manifest:m},'PUT');setDraft(next);setDirty(false);setValidated(undefined);await refresh();setNotice('草稿已保存');})}>保存草稿</button><button disabled={busy||dirty||!editable} onClick={()=>void run(async()=>{const result=await request<{revision:number}>(`/drafts/${draft.id}/validate`,{});setValidated(result.revision);setNotice('技术校验通过，请预览并审听修改内容。人工审校状态仍为待审。');setTab('preview');})}>校验并预览</button><button className="primary" disabled={busy||dirty||!editable||validated!==draft.revision} onClick={()=>{if(confirm('发布此草稿并设为当前内部体验版本？已在学档案继续使用原版本。'))void run(async()=>{const result=await request<{releaseId:string}>('/releases',{draftId:draft.id,revision:draft.revision,channelRevision:overview.channel.revision});setDraft({...draft,publishedReleaseId:result.releaseId});setValidated(undefined);await refresh();setNotice(`已发布：${result.releaseId}`);});}}>发布为当前版本</button></div>
  <nav className="admin-tabs" aria-label="内容编辑栏目">{(['lesson','assets','scenes','preview'] as const).map(t=><button key={t} aria-pressed={tab===t} onClick={()=>setTab(t)}>{{lesson:'课程与故事',assets:'素材与声音',scenes:'找字场景',preview:'预览'}[t]}</button>)}</nav>
  <label>选择课程<select value={lessonId} onChange={e=>setLessonId(e.target.value)}>{m.lessons.map(l=><option key={l.id} value={l.id}>{l.title}</option>)}</select></label>
+ <button disabled={!m.assets.some(a=>a.cues?.status==='reviewed')} onClick={()=>{const data=Object.fromEntries(m.assets.filter(a=>a.cues?.status==='reviewed').map(a=>[a.id,a.cues]));const href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'}));const link=document.createElement('a');link.href=href;link.download='reading-cue-overrides.json';link.click();setTimeout(()=>URL.revokeObjectURL(href),1000);}}>导出已审听时间点</button>
  <fieldset disabled={busy||!editable}>
  {tab==='lesson'&&<><Field label="课程名称" value={l.title} onChange={value=>change(m=>{m.lessons.find(x=>x.id===l.id)!.title=value;})}/><Field label="开场文字" value={l.intro} onChange={value=>change(m=>{const lesson=m.lessons.find(x=>x.id===l.id)!;lesson.intro=value;lesson.steps.filter(s=>s.kind==='intro').forEach(s=>s.title=value);})}/><Field label="亲子生活任务" value={l.lifeTask} onChange={value=>change(m=>{m.lessons.find(x=>x.id===l.id)!.lifeTask=value;})}/>
  <h3>词语与例句</h3>{l.characters.map(c=><div className="admin-card" key={c.id}><strong>{c.text}</strong><Field label={`${c.text}的词语`} value={c.word} onChange={value=>change(m=>{m.lessons.find(x=>x.id===l.id)!.characters.find(x=>x.id===c.id)!.word=value;})}/><Field label={`${c.text}的例句`} value={c.example} onChange={value=>change(m=>{const lesson=m.lessons.find(x=>x.id===l.id)!;lesson.characters.find(x=>x.id===c.id)!.example=value;lesson.steps.filter(s=>s.kind==='teach'&&s.characterId===c.id).forEach(s=>s.subtitle=value);})}/></div>)}
@@ -46,7 +49,7 @@ export default function Admin() {
  {tab==='assets'&&<><label>选择素材<select value={assetId} onChange={e=>setAssetId(e.target.value)}>{m.assets.map(a=><option key={a.id} value={a.id}>{a.id}</option>)}</select></label>{asset&&<AssetEditor key={asset.id+asset.sha256} asset={asset} update={next=>change(m=>{m.assets[m.assets.findIndex(a=>a.id===next.id)]=next;})} upload={file=>void run(async()=>{
  const response=await fetch('/api/v1/admin/uploads',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/octet-stream'},body:file});const result=await response.json();if(!response.ok)throw new Error(result.error?.message||'上传失败');
  const kind=result.mimeType==='audio/wav'?'audio':'image';if(kind!==asset.kind)throw new Error('上传文件类型与所选素材不一致');
- const {objectKey,sha256,bytes,mimeType,durationMs}=result;change(m=>{m.assets[m.assets.findIndex(a=>a.id===asset.id)]={...asset,objectKey,sha256,bytes,mimeType,...(durationMs?{durationMs}:{}),source:file.name};});setNotice('素材已上传，保存草稿后才能校验与发布。');
+ const {objectKey,sha256,bytes,mimeType,durationMs}=result;change(m=>{m.assets[m.assets.findIndex(a=>a.id===asset.id)]={...asset,objectKey,sha256,bytes,mimeType,...(durationMs?{durationMs}:{}),source:file.name,cues:sha256===asset.sha256?asset.cues:undefined};});setNotice('素材已上传，保存草稿后才能校验与发布。');
  })}/>}</>}
  {tab==='scenes'&&<><p>本轮编辑已有场景和位置；六幅新场景将在后续阶段制作。</p>{m.huntScenes.map((scene,i)=><div className="admin-card" key={scene.id}><h3>{scene.id}</h3><Field label="场景说明" value={scene.description} onChange={v=>change(m=>{m.huntScenes[i].description=v;})}/><label>场景图片<select value={scene.imageAssetId} onChange={e=>change(m=>{m.huntScenes[i].imageAssetId=e.target.value;})}>{m.assets.filter(a=>a.kind==='image').map(a=><option key={a.id}>{a.id}</option>)}</select></label>{scene.slots.map((slot,j)=><div className="admin-row" key={slot.id}><strong>{slot.id}</strong>{(['x','y'] as const).map(axis=><label key={axis}>{axis} (%)<input type="number" min="10" max="90" value={slot[axis]} onChange={e=>change(m=>{m.huntScenes[i].slots[j][axis]=Number(e.target.value);})}/></label>)}<Field label="位置提示" value={slot.clue} onChange={v=>change(m=>{m.huntScenes[i].slots[j].clue=v;})}/></div>)}</div>)}</>}
  </fieldset>
@@ -57,11 +60,10 @@ export default function Admin() {
 }
 function Field({label,value,onChange}:{label:string;value:string;onChange:(value:string)=>void}) {return <label>{label}<input value={value} onChange={e=>onChange(e.target.value)}/></label>;}
 function AssetEditor({asset,update,upload}:{asset:ImportedAsset;update:(asset:ImportedAsset)=>void;upload:(file:File)=>void}) {
- const [starts,setStarts]=useState(asset.cues?.starts.join(', ')||'');
- return <div className="admin-card"><p>{asset.kind==='audio'?'音频':'图片'} · {(asset.bytes/1024).toFixed(1)} KB · 待人工审校</p>{asset.kind==='audio'?<audio controls src={url(asset)}/>:<img className="admin-image" src={url(asset)} alt="素材预览"/>}
+ return <div className="admin-card"><p>{asset.kind==='audio'?'音频':'图片'} · {(asset.bytes/1024).toFixed(1)} KB · 待人工审校</p>{asset.kind==='image'&&<img className="admin-image" src={url(asset)} alt="素材预览"/>}
  <label>替换文件（{asset.kind==='audio'?'PCM WAV，最多 3 分钟':'PNG，最大 4096×4096'}，最多 20 MB）<input type="file" accept={asset.kind==='audio'?'.wav':'.png'} onChange={e=>{const file=e.target.files?.[0];if(file)upload(file);e.target.value='';}}/></label>
  <Field label="素材来源" value={asset.source} onChange={source=>update({...asset,source})}/>
- {asset.kind==='audio'&&<><Field label="录音文字" value={asset.text||''} onChange={text=>update({...asset,text,cues:asset.cues?{...asset.cues,text}:undefined})}/><label>逐字起点（秒，用逗号分隔）<textarea value={starts} onChange={e=>{const raw=e.target.value;setStarts(raw);const values=raw.trim()?raw.split(/[,，\s]+/).filter(Boolean).map(Number):[];update({...asset,cues:{text:asset.text||'',starts:values,status:'estimated'}});}}/></label><p className="admin-muted">每个字符（含标点）对应一个起点，按顺序填写，不能超过录音时长。这里仍标记为估算时间点。</p></>}
+ {asset.kind==='audio'&&<><Field label="录音文字" value={asset.text||''} onChange={text=>update({...asset,text,cues:undefined})}/><CueEditor asset={asset} update={update} src={url(asset)}/></>}
  </div>;
 }
 function Preview({manifest,lesson}:{manifest:ContentManifest;lesson:ContentManifest['lessons'][number]}) {
@@ -70,13 +72,13 @@ function Preview({manifest,lesson}:{manifest:ContentManifest;lesson:ContentManif
  const text=s.kind==='story'?lesson.story.text:s.kind==='word'?c?.word:s.kind==='teach'?c?.text:undefined;
  const image=manifest.assets.find(a=>a.id===lesson.imageAssetId)!;
  const theme=manifest.themes.find(t=>t.order===lesson.theme)!;const scene=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id));
- const active=a?.cues?.starts.reduce((found,start,i)=>start<=time?i:found,-1)??-1;
+ const active=a?.cues&&a.cues.text===text?readingPosition(a.cues,time).current:-1;
  return <section className="admin-preview"><h3>课程预览 · {lesson.title}</h3><label>选择步骤<select value={step} onChange={e=>{setStep(Number(e.target.value));setTime(-1);}}>{lesson.steps.map((s,i)=><option key={s.id} value={i}>{i+1}. {s.title} {s.characterId||''}</option>)}</select></label><h4>{s.title}</h4><p>{s.subtitle}</p>
  {['intro','story'].includes(s.kind)&&<img className="admin-image" src={url(image)} alt={lesson.title}/>}
  {text&&<p className="admin-reading">{Array.from(text).map((char,i)=><span key={i} className={i===active?'active':''}>{char}</span>)}</p>}
  {s.kind==='story'&&<p>{lesson.story.note}<br/>陪读字：{lesson.story.supportCharacters.join('、')}</p>}
  {['sound','meaning'].includes(s.kind)&&<div className="admin-row">{lesson.characters.map(c=><span className="admin-card" key={c.id}>{s.kind==='sound'?c.text:<>{wordVisual(c.word)||c.id.startsWith('han-')?<WordVisual word={c.word}/>:c.icon} {c.word}</>}</span>)}</div>}
  {s.kind==='hunt'&&scene&&<div className="admin-scene"><img src={url(manifest.assets.find(a=>a.id===scene.imageAssetId)!)} alt={scene.description}/>{scene.slots.slice(0,3).map((slot,i)=><span key={slot.id} style={{left:`${slot.x}%`,top:`${slot.y}%`}} title={slot.clue}>{lesson.characters[(i-manifest.lessons.indexOf(lesson)%3+3)%3].text}</span>)}</div>}
- {a&&<audio key={a.sha256+s.id} controls src={url(a)} onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onEnded={()=>setTime(-1)}/>}
+ {a&&<audio key={a.sha256+s.id} controls src={url(a)} onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onEnded={()=>setTime(-1)} onError={()=>setTime(-1)}/>}
  <p className="admin-muted">此预览用于检查文案、配图、音频和位置，不产生学习记录。</p></section>;
 }

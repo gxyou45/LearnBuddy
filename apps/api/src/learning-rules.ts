@@ -1,4 +1,5 @@
-export const RULE_VERSION=2;
+// v3 excludes ambiguous/trivial sound tasks from independent learning evidence.
+export const RULE_VERSION=3;
 export type Evidence={timeTrusted?:boolean;correct:boolean;prompted:boolean;skipped:boolean;audioHeard:boolean;audioFailed:boolean;skillType:string|null;createdAt:Date};
 export function dayInZone(date:Date,zone:string) {
  const parts=new Intl.DateTimeFormat('en-US',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);

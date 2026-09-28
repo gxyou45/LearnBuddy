@@ -48,13 +48,20 @@ test('content administration: drafts, publication, media and rollback',async t=>
   assert.equal((await request(`/media/${upload.objectKey}`)).status,404);
   assert.equal((await request(`/api/v1/admin/media/${upload.sha256}`,{cookie:admin})).status,200);
   assert.equal((await request(`/api/v1/admin/media/${upload.sha256}`,{cookie:parent})).status,403);
+  const preview=await app.request(origin+`/api/v1/admin/media/${upload.sha256}`,{headers:{Host:'localhost:8080',Origin:origin,Cookie:admin,Range:'bytes=2-15'}});
+  assert.equal(preview.status,206);assert.equal(preview.headers.get('cache-control'),'no-store');assert.equal(preview.headers.get('content-range'),`bytes 2-15/${bytes.length}`);assert.deepEqual(Buffer.from(await preview.arrayBuffer()),bytes.subarray(2,16));
+  assert.equal((await app.request(origin+`/api/v1/admin/media/${upload.sha256}`,{headers:{Host:'localhost:8080',Origin:origin,Cookie:parent,Range:'bytes=2-15'}})).status,403);
+  assert.equal((await app.request(origin+`/api/v1/admin/media/${upload.sha256}`,{headers:{Host:'localhost:8080',Origin:origin,Cookie:admin,Range:`bytes=${bytes.length}-`}})).status,416);
   Object.assign(asset,{objectKey:upload.objectKey,sha256:upload.sha256,bytes:upload.bytes,durationMs:upload.durationMs});
+  // Synthetic times exercise storage/version binding; this is not material review.
+  asset.cues={...asset.cues,status:'reviewed',audioSha256:asset.sha256,ends:asset.cues.starts.map((start,i)=>asset.cues.starts[i+1]??asset.durationMs/1000)};
   const story=draft.manifest.lessons[0].story,storyAsset=draft.manifest.assets.find(a=>a.id===`audio-${story.audio}`);
   const storyBytes=await readFile(join(process.env.MEDIA_DIR,storyAsset.objectKey));storyBytes[storyBytes.length-2]^=1;
   const storyUpload=await json('/api/v1/admin/uploads',{cookie:admin,method:'POST',raw:storyBytes});
   story.text=story.text.replace('。','！');
   Object.assign(storyAsset,{objectKey:storyUpload.objectKey,sha256:storyUpload.sha256,bytes:storyUpload.bytes,durationMs:storyUpload.durationMs,text:story.text,cues:{...storyAsset.cues,text:story.text}});
   draft=await json(`/api/v1/admin/drafts/${draft.id}`,{cookie:admin,method:'PUT',body:{revision:draft.revision,manifest:draft.manifest}});
+  assert.equal(draft.manifest.assets.find(a=>a.id===asset.id).cues.status,'reviewed');
   const invalid=structuredClone(draft.manifest);invalid.lessons[0].story.text+='呀';
   let d=await json('/api/v1/admin/drafts',{cookie:admin,body:{baseReleaseId:original}});
   d=await json(`/api/v1/admin/drafts/${d.id}`,{cookie:admin,method:'PUT',body:{revision:d.revision,manifest:invalid}});
@@ -77,6 +84,8 @@ test('content administration: drafts, publication, media and rollback',async t=>
   assert.equal((await json(`/api/v1/releases/${original}/lessons/family`)).releaseId,original);
   assert.equal((await json(`/api/v1/releases/${releaseId}/lessons/family`)).lesson.title,'发布测试：认识家人');
   assert.equal((await json(`/api/v1/releases/${releaseId}/lessons/family`)).lesson.story.text,'爸爸妈妈和我一起看书！');
+  const publishedWord=(await json(`/api/v1/releases/${releaseId}/lessons/family`)).assets.find(a=>a.id==='audio-word-wo');
+  assert.equal(publishedWord.cues.status,'reviewed');assert.equal(publishedWord.cues.audioSha256,publishedWord.sha256);assert.equal(publishedWord.cues.ends.length,Array.from(publishedWord.text).length);
   assert.equal((await json(`/api/v1/releases/${original}/lessons/family`)).lesson.story.text,'爸爸妈妈和我一起看书。');
   assert.equal(await db.lessonVersion.count({where:{releaseId}}),10);
   const media=await app.request(origin+`/media/${upload.objectKey}`,{headers:{Range:'bytes=0-15'}});assert.equal(media.status,206);assert.equal((await media.arrayBuffer()).byteLength,16);

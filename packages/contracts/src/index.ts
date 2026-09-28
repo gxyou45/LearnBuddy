@@ -1,4 +1,7 @@
 import { z } from 'zod';
+import {readingCueSchema,validateReadingCues} from './reading-cues.js';
+export {readingCueSchema,validateReadingCues,readingPosition,type ReadingCues} from './reading-cues.js';
+export {applyReviewedCues} from './reviewed-cues.js';
 
 export type CharacterId = string;
 export type Character = { id: CharacterId; text: string; word: string; example: string; icon: string; audio: string; audioText?: string };
@@ -20,7 +23,7 @@ export const manifestSchema = z.object({
     sha256: z.string().regex(/^[a-f0-9]{64}$/), bytes: z.number().int().positive(), mimeType: z.enum(['audio/wav', 'image/svg+xml', 'image/png']),
     source: z.string(), reviewStatus: z.literal('pending'),
     durationMs: z.number().positive().optional(), text: z.string().optional(),
-    cues: z.object({ text: z.string(), starts: z.array(z.number().nonnegative()), status: z.literal('estimated') }).optional(),
+    cues: readingCueSchema.optional(),
   })),
   huntScenes: z.array(z.object({ id, imageAssetId: assetId, themeIds: z.array(id), description: z.string(), slots: z.array(z.object({ id, x: z.number().min(0).max(100), y: z.number().min(0).max(100), clue: z.string() })) })),
 });
@@ -61,8 +64,7 @@ export function validateManifest(input: unknown): ContentManifest {
     if (a.kind === 'audio' && (!a.durationMs || a.mimeType !== 'audio/wav')) throw new Error(`Invalid audio metadata: ${a.id}`);
     if (a.kind === 'image' && !['image/svg+xml','image/png'].includes(a.mimeType)) throw new Error(`Invalid image metadata: ${a.id}`);
     if (a.cues) {
-      if (a.text !== a.cues.text || a.cues.starts.length !== Array.from(a.cues.text).length) throw new Error(`Cue text mismatch: ${a.id}`);
-      if (a.cues.starts.some((t, i) => (i > 0 && t < a.cues!.starts[i - 1]) || t * 1000 > (a.durationMs ?? 0))) throw new Error(`Invalid cue time: ${a.id}`);
+      validateReadingCues(a.cues,a.text,a.sha256,a.durationMs);
     }
   }
   for (const scene of data.huntScenes) {
@@ -155,3 +157,4 @@ export function isCompatibleExpansion(next:ContentManifest,previous:ContentManif
   && previous.assets.every(a=>canonical(a)===canonical(next.assets.find(n=>n.id===a.id)))
   && previous.huntScenes.every(s=>canonical(s)===canonical(next.huntScenes.find(n=>n.id===s.id)));
 }
+export { learningOptions, characterSoundKey } from './learning-options.js';

@@ -86,7 +86,7 @@ test('ACC-03 ordered sync, conflicts, deltas and honest legacy imports',async t=
   const reported='2000-01-01T00:00:00.000Z';
   const events=[{seq:1,occurredAt:reported,timeZone:'UTC',command:{clientEventId:randomUUID(),sessionId:current.id,expectedRevision:current.revision,type:'audio',presentationId:pid,result:'played'}},{seq:2,occurredAt:reported,timeZone:'UTC',command:{clientEventId:randomUUID(),sessionId:current.id,expectedRevision:current.revision+1,type:'answer',presentationId:pid,selectedId:'wo',skipped:false}}];
   const r=await json(root+'/events:batch',{cookie,body:{streamId:sid,events}});assert.equal(r.nextSeq,3);assert.equal(r.session.presentation.answer.correct,false);
-  const attempt=await db.attempt.findUnique({where:{presentationId:pid},include:{event:true}});assert.equal(attempt.timeTrusted,false);assert.equal(attempt.event.occurredAt.toISOString(),reported);assert.equal(attempt.ruleVersion,2);
+  const attempt=await db.attempt.findUnique({where:{presentationId:pid},include:{event:true}});assert.equal(attempt.timeTrusted,false);assert.equal(attempt.event.occurredAt.toISOString(),reported);assert.equal(attempt.ruleVersion,3);
   assert.equal((await json(root+'/mistakes',{cookie})).items[0].wrongCount,1);
  });
  await t.test('new replay sends a deletion marker for the replaced resume session, not its history',async()=>{

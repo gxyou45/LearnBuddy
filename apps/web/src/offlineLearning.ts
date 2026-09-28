@@ -1,4 +1,5 @@
 import type {LearningProgressState,LearningSessionState,LearningCommand,SyncEnvelope,SyncPlan,StartLearning} from '@learnbuddy/contracts';
+import {learningOptions} from '@learnbuddy/contracts';
 import {getSteps,lessons} from './contentRepository';
 export type OfflineRecord={generation:number;confirmed:LearningProgressState;view:LearningProgressState;plan?:SyncPlan;events:SyncEnvelope[];nextSeq:number;conflict?:string;start?:StartLearning};
 export const offlineKey=(accountId:string,learnerId:string)=>`learning:${accountId}:${learnerId}`;
@@ -7,6 +8,11 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
  const s=plan.session,steps=getSteps(lessons.find(l=>l.id===s.lessonId)!),step=steps[s.stepIndex];
  if(!step||s.completed||s.revision!==command.expectedRevision)throw new Error('本机课次位置已变化，请刷新');
  const p=s.presentation;
+ if(p&&!p.answer){
+  const options=learningOptions(p.options,step.characterId,step.kind);
+  if(step.kind==='sound'&&(options.length<2||options.length!==p.options.length))p.prompted=true;
+  p.options=options;
+ }
  if(command.type==='audio'&&p){if(command.result==='played')p.audioHeard=true;else p.audioFailed=true;}
  if(command.type==='hint'&&p)p.prompted=true;
  if(command.type==='answer'&&p){if(p.answer)throw new Error('本题已记录');p.answer={selectedId:command.selectedId,correct:!command.skipped&&command.selectedId===step.characterId,skipped:command.skipped,prompted:p.prompted,audioFailed:p.audioFailed,independent:false};}

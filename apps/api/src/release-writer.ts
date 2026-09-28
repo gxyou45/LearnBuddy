@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import type {ContentManifest} from '@learnbuddy/contracts';
+import {learningOptions} from '@learnbuddy/contracts';
 import type {Prisma} from './generated/prisma/client.js';
 export async function writeRelease(tx:Prisma.TransactionClient,m:ContentManifest) {
  const checksum=createHash('sha256').update(JSON.stringify(m)).digest('hex');
@@ -17,7 +18,7 @@ export async function writeRelease(tx:Prisma.TransactionClient,m:ContentManifest
     for(const [position,s] of l.steps.entries()) {
      const stepId=`${id}:${s.id}`;
      await tx.lessonStep.create({data:{id:stepId,lessonVersionId:id,position,kind:s.kind,config:s}});
-     if(['sound','meaning','hunt'].includes(s.kind)) await tx.questionVersion.create({data:{id:`${stepId}:v1`,stepId,answer:s.characterId?[s.characterId]:l.characters.map(c=>c.id),options:l.characters.filter((c,i,all)=>!s.characterId || c.id===s.characterId || (c.word!==all.find(x=>x.id===s.characterId)!.word && all.findIndex(x=>x.word===c.word)===i)).map(c=>({id:c.id,text:c.text,word:c.word,icon:c.icon}))}});
+     if(['sound','meaning','hunt'].includes(s.kind)) await tx.questionVersion.create({data:{id:`${stepId}:v1`,stepId,answer:s.characterId?[s.characterId]:l.characters.map(c=>c.id),options:learningOptions(l.characters,s.characterId,s.kind).map(c=>({id:c.id,text:c.text,word:c.word,icon:c.icon}))}});
     }
    }
    for(const s of m.huntScenes) await tx.huntSceneVersion.create({data:{id:`${m.releaseId}:${s.id}`,releaseId:m.releaseId,imageAssetId:`${m.releaseId}:${s.imageAssetId}`,config:s}});

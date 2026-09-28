@@ -1,4 +1,5 @@
 import {randomUUID} from 'node:crypto';
+import {mediaResponse} from './media-response.js';
 import {Hono} from 'hono';
 import {bodyLimit} from 'hono/body-limit';
 import {HTTPException} from 'hono/http-exception';
@@ -76,7 +77,7 @@ export function contentAdminRoutes(db:ReturnType<typeof database>,auth:Auth,orig
   if(!uploaded&&!published)throw new HTTPException(404);
   const asset=published?published.metadata as ContentManifest['assets'][number]:{...uploaded!,durationMs:uploaded!.durationMs??undefined};
   const bytes=await mediaBytes(db,asset);
-  return new Response(new Uint8Array(bytes),{headers:{'Content-Type':asset.mimeType,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"}});
+  return mediaResponse(bytes,{'Content-Type':asset.mimeType,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"},c.req.header('Range'));
  });
  app.post('/releases',async c=>{
   const input=parse(publishSchema,await c.req.json().catch(()=>null));

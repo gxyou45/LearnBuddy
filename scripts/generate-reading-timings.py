@@ -2,6 +2,9 @@
 
 Cues exclude silence, but are estimates, not forced alignment. Regenerate after
 changing recordings; production recordings should supply reviewed character cues.
+Reviewed cues live separately in scripts/reading-cue-overrides.json (or a release
+registry exported from the admin). Never write that registry here. The export
+step overlays it and rejects changed text/audio instead of discarding human work.
 """
 import array
 import json

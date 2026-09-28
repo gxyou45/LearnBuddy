@@ -25,6 +25,13 @@ it('rejects mixed versions and incomplete packages before installing',()=>{
  const wrong=packageFixture('family');wrong.releaseId='future';expect(()=>installLesson(wrong)).toThrow('version');
  const missing=packageFixture('family');missing.assets=[];expect(()=>installLesson(missing)).toThrow('Incomplete');expect(isLessonLoaded('family')).toBe(false);
 });
+it('preserves reviewed end times and rejects a stale cue recording version',()=>{
+ const pkg=packageFixture('family'),word=pkg.assets.find(a=>a.id==='audio-word-ba')!;
+ word.cues={...word.cues,status:'reviewed',audioSha256:word.sha256,ends:word.cues.starts.map((_:number,i:number)=>word.cues.starts[i+1]??word.durationMs/1000)};
+ installLesson(pkg);expect(readingTimings['word-ba'].ends).toEqual(word.cues.ends);
+ installCatalog(catalogFixture);word.cues.audioSha256='a'.repeat(64);
+ expect(()=>installLesson(pkg)).toThrow(/version/);expect(isLessonLoaded('family')).toBe(false);
+});
 it('loads one versioned lesson, deduplicates requests and resolves media URLs',async()=>{
  const fetcher=vi.fn(async()=>({ok:true,json:async()=>packageFixture('family')}));vi.stubGlobal('fetch',fetcher);
  await Promise.all([loadLesson('family'),loadLesson('family')]);expect(fetcher).toHaveBeenCalledTimes(1);

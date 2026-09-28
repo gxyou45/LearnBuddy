@@ -8,7 +8,7 @@ import { readingTimings } from '../../apps/web/src/readingTimings';
 import { LessonPicture } from '../../apps/web/src/LessonPicture';
 import { HiddenCharacters } from './PrototypeHunt';
 import { CharacterIllustration } from '../../apps/web/src/CharacterIllustration';
-import { validateManifest, type ImportedAsset } from '../../packages/contracts/src/index';
+import { applyReviewedCues, validateManifest, type ImportedAsset } from '../../packages/contracts/src/index';
 const out = resolve(process.env.CONTENT_EXPORT_DIR || 'content');
 const assets: ImportedAsset[] = [];
 async function asset(id: string, kind: 'audio'|'image', data: Buffer, metadata = {}) {
@@ -41,6 +41,7 @@ for(let i=0;i<themes.length;i++) {
  await asset(`image-${id}`,'image',svg(<HiddenCharacters lesson={l} found={[]} onFind={()=>{}} listen={()=>{}} next={()=>{}}/>));
  huntScenes.push({id,imageAssetId:`image-${id}`,themeIds:[`theme-${i}`],description:'原型花园场景；新场景和干扰项在后续阶段增加',slots:[{id:'kite',x:22,y:24,clue:'看看天上的小风筝。'},{id:'sign',x:72,y:51,clue:'看看小屋旁边的木牌。'},{id:'pot',x:32,y:80,clue:'看看花丛旁边的小花盆。'}]});
 }
-const manifest=validateManifest({schemaVersion:1,contentVersion,releaseId:`prototype-v${contentVersion}`,themes:themes.map((t,i)=>({...t,id:`theme-${i}`,order:i})),lessons:lessons.map(l=>({...l,steps:getSteps(l),imageAssetId:`image-lesson-${l.id}`})),assets,huntScenes});
+const reviewed=JSON.parse(await readFile('scripts/reading-cue-overrides.json','utf8'));
+const manifest=validateManifest({schemaVersion:1,contentVersion,releaseId:`prototype-v${contentVersion}`,themes:themes.map((t,i)=>({...t,id:`theme-${i}`,order:i})),lessons:lessons.map(l=>({...l,steps:getSteps(l),imageAssetId:`image-lesson-${l.id}`})),assets:applyReviewedCues(assets,reviewed),huntScenes});
 await writeFile(resolve(out,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 console.log(`Exported ${manifest.lessons.length} lessons, ${assets.length} assets to ${out}`);

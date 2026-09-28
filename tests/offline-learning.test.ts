@@ -5,7 +5,7 @@ import {localEvent,offlineKey,type OfflineRecord} from '../apps/web/src/offlineL
 import {syncBatchSchema,legacyProgressSchema} from '@learnbuddy/contracts';
 beforeEach(()=>{installCatalog(catalogFixture);installLesson(packageFixture('family'));});
 function record():OfflineRecord{
- const session={id:'s',lessonId:'family',releaseId:'prototype-v4',mode:'lesson' as const,revision:0,stepIndex:7,stepId:'sound-wo',completed:false,huntFound:[],presentation:{id:'p',questionVersionId:'q',options:[],prompted:false,audioHeard:false,audioFailed:false,answer:null}};
+ const session={id:'s',lessonId:'family',releaseId:'prototype-v4',mode:'lesson' as const,revision:0,stepIndex:7,stepId:'sound-wo',completed:false,huntFound:[],presentation:{id:'p',questionVersionId:'q',options:packageFixture('family').lesson.characters.map(({id,text,word,icon})=>({id,text,word,icon})),prompted:false,audioHeard:false,audioFailed:false,answer:null}};
  const progress={learnerId:'l',revision:10,releaseId:'prototype-v4',timeZone:'Asia/Shanghai',activeSessionId:'s',openAllCourses:false,sessions:[session],completedLessons:[],skills:[],characters:[],seen:[]};
  return {generation:1,confirmed:progress,view:progress,events:[],nextSeq:1,plan:{streamId:'stream',session,presentations:{},progress,nextSeq:1}};
 }
@@ -22,4 +22,13 @@ it('cannot advance without a recorded answer or into an unprepared question',()=
 it('storage identity includes account and child; protocol rejects unbounded or forged batches',()=>{
  expect(offlineKey('a','c')).not.toBe(offlineKey('b','c'));expect(offlineKey('a','c')).not.toBe(offlineKey('a','d'));
  expect(syncBatchSchema.safeParse({streamId:'x',events:[]}).success).toBe(false);expect(legacyProgressSchema.safeParse({schemaVersion:99}).success).toBe(false);
+});
+it('an old offline homophone presentation is filtered without changing the confirmed snapshot',()=>{
+ const original=record();
+ const p=original.plan!.session.presentation!;
+ p.options=[{id:'wo',text:'他',word:'他的',icon:''},{id:'ba',text:'她',word:'她的',icon:''},{id:'ma',text:'人',word:'人们',icon:''}];
+ const next=localEvent(original,{type:'audio',clientEventId:'e',sessionId:'s',expectedRevision:0,presentationId:'p',result:'played'});
+ expect(next.plan!.session.presentation!.options.map(o=>o.text)).toEqual(['他','人']);
+ expect(next.plan!.session.presentation!.prompted).toBe(true);
+ expect(original.plan!.session.presentation!.options).toHaveLength(3);
 });
