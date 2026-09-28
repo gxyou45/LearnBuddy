@@ -1,5 +1,5 @@
 import {LearningActions} from './LearningActions';
-import { ContentImage } from './ContentImage';
+import {HuntBackground,isPlainGarden} from './HuntBackground';
 import { lessonData } from './contentRepository';
 import { lessons, type Lesson, type CharacterId } from './contentRepository';
 import { useState,useRef,useEffect } from 'react';
@@ -10,6 +10,8 @@ export function HiddenCharacters({ lesson, round,pendingRound,found, onFind, lis
 }) {
   const characters = lesson.characters;
   const {scene,assets}=lessonData(lesson.id);
+  const sceneHash=assets.find(a=>a.id===scene.imageAssetId)!.sha256;
+  const describe=(text:string)=>isPlainGarden(sceneHash)?text.replaceAll('字牌','汉字'):text;
   const locations=scene.slots;
   const offset = lessons.indexOf(lesson) % locations.length;
   let invalid=false;
@@ -33,8 +35,8 @@ export function HiddenCharacters({ lesson, round,pendingRound,found, onFind, lis
     <div className="hunt-heading"><h1>汉字藏在哪里？</h1>
     <button className="audio-button" onClick={() => listen('hunt')}>♪ 听听怎么玩</button></div>
     <div className="hunt-targets" aria-label="要找的汉字">{characters.map(c => <span key={c.id} className={found.includes(c.id) ? 'is-found' : ''}><b>{c.text}</b><small>{found.includes(c.id) ? '✓ 找到啦' : '找一找'}</small></span>)}</div>
-    <div className="hunt-scene" role="group" aria-label={scene.description} data-round={round?.roundId||'legacy'} onClick={() => setMessage('再看看图里的汉字，和上面要找的字比一比，不着急。')}>
-      <ContentImage id={scene.imageAssetId} alt={scene.description} className="hunt-background"/>
+    <div className="hunt-scene" role="group" aria-label={describe(scene.description)} data-round={round?.roundId||'legacy'} onClick={() => setMessage('再看看图里的汉字，和上面要找的字比一比，不着急。')}>
+      <HuntBackground id={scene.imageAssetId} sha256={sceneHash} alt={scene.description}/>
       {hidingPlaces.map(place => {
         const c = characters.find(c => c.id === place.characterId)!;
         const selected = found.includes(c.id);
@@ -42,6 +44,6 @@ export function HiddenCharacters({ lesson, round,pendingRound,found, onFind, lis
       })}
     </div>
     <div className="hunt-feedback" role="status"><strong>{found.length} / {characters.length} 已找到</strong><p>{complete ? '本课汉字都找到啦！一起去读小故事吧。' : message}</p></div>
-    <LearningActions>{complete ? <button className="primary" disabled={disabled} onClick={next}>都找到啦，去读故事 →</button> : <><button className="audio-button" disabled={disabled} onClick={() => { const place = hidingPlaces.find(p => !found.includes(p.characterId))!; setHint(place.characterId); setMessage(place.clue); }}>✦ 给我一点提示</button><button disabled={disabled} className="text-button hunt-skip" onClick={next}>和家长一起，先去读故事</button></>}</LearningActions>
+    <LearningActions>{complete ? <button className="primary" disabled={disabled} onClick={next}>都找到啦，去读故事 →</button> : <><button className="audio-button" disabled={disabled} onClick={() => { const place = hidingPlaces.find(p => !found.includes(p.characterId))!; setHint(place.characterId); setMessage(describe(place.clue)); }}>✦ 给我一点提示</button><button disabled={disabled} className="text-button hunt-skip" onClick={next}>和家长一起，先去读故事</button></>}</LearningActions>
   </div>;
 }

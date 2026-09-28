@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 import {resolve} from 'node:path';
 test.use({channel:'chrome',serviceWorkers:'block'});
 
-for(const [lessonId,width,height] of [['family',320,568],['c019',393,851],['c019',320,568]] as const){
+for(const [lessonId,width,height] of [['family',320,568],['c019',393,851],['c019',320,568],['c032',320,568],['c032',393,851]] as const){
  test(`${lessonId} ${width}: saved hunt survives reload and replay moves every target`,async({page,request})=>{
   await page.setViewportSize({width,height});
   if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',async route=>{
@@ -24,11 +24,16 @@ for(const [lessonId,width,height] of [['family',320,568],['c019',393,851],['c019
    await page.reload();await expect(page.locator('.hidden-character')).toHaveCount(lesson.characters.length);
   };
   await seekHunt();
+  if(lessonId!=='family'){
+   await expect(page.locator('svg[data-plain-garden]')).toHaveCount(1);
+   await expect(page.locator('svg[data-plain-garden] rect')).toHaveCount(1);
+   await expect(page.locator('svg[data-plain-garden] rect')).toHaveAttribute('width','600');
+  }
   const snapshot=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('learnbuddy:v1:progress')!));
   const before=await snapshot(),round=before.huntRound;
   await page.getByRole('button',{name:'给我一点提示',exact:false}).click();
   const first=round.placements[0],clue=pkg.scene.slots.find((s:any)=>s.id===first.slotId).clue;
-  await expect(page.locator('.hunt-feedback')).toContainText(clue);
+  await expect(page.locator('.hunt-feedback')).toContainText(lessonId==='family'?clue:clue.replaceAll('字牌','汉字'));
   const boxes=await page.locator('.hidden-character').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
   for(const [i,a] of boxes.entries()){
    expect(a.width).toBeGreaterThanOrEqual(48);expect(a.height).toBeGreaterThanOrEqual(48);expect(a.x).toBeGreaterThanOrEqual(0);expect(a.x+a.width).toBeLessThanOrEqual(width);
