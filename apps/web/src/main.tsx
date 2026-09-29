@@ -104,7 +104,7 @@ function App() {
     return () => { document.removeEventListener('keydown', trap); previous?.focus(); };
   }, [parentGate, resetAsk]);
   const go = (next: string) => { stopAudio(); setAudioError(''); location.hash = next; };
-  const listen = async (id: string,waitForEnd=false) => { if (!p.sound) { setAudioError('声音已关闭，可以请家长陪读，也可以到家长中心打开声音。'); return false; } try { setAudioError(''); await playAudio(id,waitForEnd); return true; } catch (e) { if (e instanceof DOMException && e.name === 'AbortError') return false; setAudioError('这段声音暂时没播放出来。请再点一次，也可以和家长一起读。'); return false; } };
+  const listen = async (id: string,waitForEnd=true) => { if (!p.sound) { setAudioError('声音已关闭，可以请家长陪读，也可以到家长中心打开声音。'); return false; } try { setAudioError(''); await playAudio(id,waitForEnd); return true; } catch (e) { if (e instanceof DOMException && e.name === 'AbortError') return false; setAudioError('这段声音暂时没播放出来。请再点一次，也可以和家长一起读。'); return false; } };
   const start = (id = recommendation.id) => { if (!parentMode && !isUnlocked(p,id)) return;if(cloud){void cloud.start(id,()=>go('lesson'));return;} setP(old => startLesson(old,id,uid(),parentMode)); go('lesson'); };
   const lessonStep = steps[p.step] || steps[0];
   useEffect(() => {

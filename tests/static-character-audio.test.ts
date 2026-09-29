@@ -26,3 +26,23 @@ test('static recognition reads single characters while word exercises retain wor
     }
   }
 });
+
+test('every static audio asset, including words, sentences and shared prompts, has intact WAV bytes',()=>{
+ const root='apps/web/public/static-content';
+ const manifest=manifestSchema.parse(JSON.parse(readFileSync(`${root}/manifest.json`,'utf8')));
+ for(const asset of manifest.assets.filter(a=>a.kind==='audio')){
+  const bytes=readFileSync(`${root}/files/${asset.objectKey}`);
+  expect(bytes.length,asset.id).toBe(asset.bytes);
+  expect(createHash('sha256').update(bytes).digest('hex'),asset.id).toBe(asset.sha256);
+  expect(bytes.toString('ascii',0,4),asset.id).toBe('RIFF');
+  expect(bytes.toString('ascii',8,12),asset.id).toBe('WAVE');
+  let dataSize=0;
+  for(let offset=12;offset+8<=bytes.length;){
+   const size=bytes.readUInt32LE(offset+4),kind=bytes.toString('ascii',offset,offset+4);
+   expect(offset+8+size,asset.id).toBeLessThanOrEqual(bytes.length);
+   if(kind==='data')dataSize+=size;
+   offset+=8+size+(size%2);
+  }
+  expect(dataSize,asset.id).toBeGreaterThan(4096);
+ }
+});

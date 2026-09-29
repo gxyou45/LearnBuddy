@@ -10,10 +10,10 @@ test('头 plays a single-character WAV in recognition and listening, and 点头 
   const singleHash = sha(readFileSync('apps/web/src/character-audio/5934.wav'));
   expect(singleHash).not.toBe(wordHash);
   await page.addInitScript(() => {
-    const OriginalAudio = window.Audio;
+    const original = HTMLMediaElement.prototype.play;
     (window as any).__playedAudio = [];
-    window.Audio = class extends OriginalAudio {
-      constructor(src?: string) { super(src); (window as any).__playedAudio.push(src); }
+    HTMLMediaElement.prototype.play = function() {
+      (window as any).__playedAudio.push(this.src);return original.call(this);
     };
   });
   await page.goto('./');
