@@ -3,6 +3,13 @@ import {resolve} from 'node:path';
 test.use({channel:'chrome',serviceWorkers:process.env.TEST_AUDIO_SW==='true'?'allow':'block',viewport:{width:393,height:851},...(process.env.AUDIO_AUDIT_PROXY?{launchOptions:{proxy:{server:process.env.AUDIO_AUDIT_PROXY}}}:{})});
 test('喝水时间: all characters, words and sentence really play; repeated taps recover',async({page})=>{
  test.setTimeout(180000);
+ // Some hosts report OS-wide offline even though localhost is reachable.
+ // Opt in only for local transport tests; never use in the offline-cache test.
+ if(process.env.TEST_LOCAL_NETWORK==='true'){
+  expect(process.env.TEST_AUDIO_SW).not.toBe('true');
+  expect(new URL(process.env.PLAYWRIGHT_BASE_URL!).hostname).toMatch(/^(localhost|127\.0\.0\.1)$/);
+  await page.addInitScript(()=>Object.defineProperty(Navigator.prototype,'onLine',{get:()=>true,configurable:true}));
+ }
  if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',async route=>{
   const path=new URL(route.request().url()).pathname;
   if(path==='/')return route.fulfill({path:resolve('apps/web/dist/index.html'),contentType:'text/html'});
@@ -24,7 +31,9 @@ test('喝水时间: all characters, words and sentence really play; repeated tap
    return original.call(this);
   };
  });
- await page.goto('./');await page.getByRole('button',{name:'开始今天的冒险'}).click();
+ await page.goto('./');
+ await expect(page.getByRole('button',{name:'开始今天的冒险'})).toBeVisible({timeout:20000});
+ await page.getByRole('button',{name:'开始今天的冒险'}).click();
  await page.evaluate(()=>{const key='learnbuddy:v1:progress',p=JSON.parse(localStorage.getItem(key)!);p.unlocked.push('snack');localStorage.setItem(key,JSON.stringify(p));});
  await page.goto('./#home');await page.reload();await page.getByRole('button',{name:'开始喝水时间',exact:true}).click();
  await page.getByRole('button',{name:'准备好啦，出发'}).click();
