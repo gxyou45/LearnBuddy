@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-test.use({ channel: 'chrome' });
+test.use({ channel: 'chrome',...(process.env.AUDIO_AUDIT_PROXY?{launchOptions:{proxy:{server:process.env.AUDIO_AUDIT_PROXY}}}:{}) });
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 
-test('头 plays a single-character WAV in recognition and listening, and 点头 only in words', async ({ page, request }) => {
+test('头 plays a single-character WAV in recognition and listening, and 点头 only in words', async ({ page }) => {
   const manifest = JSON.parse(readFileSync('apps/web/public/static-content/manifest.json', 'utf8'));
   const wordHash = manifest.assets.find((a: { id: string }) => a.id === 'audio-word-han-5934').sha256;
   const singleHash = sha(readFileSync('apps/web/src/character-audio/5934.wav'));
@@ -49,9 +49,11 @@ test('头 plays a single-character WAV in recognition and listening, and 点头 
     await page.getByRole('button', { name: button, exact: false }).click();
     const src = await page.evaluate(() => (window as any).__playedAudio.at(-1));
     expect(src).toBeTruthy();
-    const response = await request.get(new URL(src, page.url()).href);
-    expect(response.ok()).toBe(true);
-    expect(sha(await response.body())).toBe(expectedHash);
+    const response = await page.evaluate(async url=>{
+      const response=await fetch(url);return {ok:response.ok,bytes:Array.from(new Uint8Array(await response.arrayBuffer()))};
+    },new URL(src,page.url()).href);
+    expect(response.ok).toBe(true);
+    expect(sha(Buffer.from(response.bytes))).toBe(expectedHash);
     await expect(page.getByText('这段声音暂时没播放出来。请再点一次，也可以和家长一起读。')).toHaveCount(0);
   }
   await expect(page.locator('.hanzi')).toHaveText('头');
