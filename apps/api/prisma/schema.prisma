@@ -172,6 +172,7 @@ model Learner {
   learningRelease ContentRelease? @relation(fields: [learningReleaseId], references: [id], onDelete: NoAction)
   learningRevision Int @default(0)
   openAllCourses Boolean @default(false)
+  huntDistractorCount Int?
   learningTimeZone String @default("Asia/Shanghai")
   lessons LearnerLesson[]
   skills LearningSkill[]

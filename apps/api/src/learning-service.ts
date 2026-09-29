@@ -1,4 +1,4 @@
-import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,createPlayHuntRound,huntTargetIds,huntRoundSchema,retryAnswerSchema} from '@learnbuddy/contracts';
+import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,createPlayHuntRound,huntTargetIds,huntRoundSchema,retryAnswerSchema,huntDifficultySchema,type LearningSettings} from '@learnbuddy/contracts';
 import {randomInt} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,LearningProgressState} from '@learnbuddy/contracts';
@@ -43,7 +43,7 @@ export async function learningProgress(tx:Tx,learnerId:string):Promise<LearningP
  const imported=await tx.legacyImport.findMany({where:{learnerId},select:{raw:true}});
  const seen=new Set<string>(imported.flatMap(i=>(i.raw as {seen?:string[]}).seen||[]));
  for(const s of rows){const l=s.lesson.content as ContentManifest['lessons'][number];for(let i=0;i<=s.currentStep;i++){const step=l.steps[i];if(step?.kind==='teach'&&step.characterId)seen.add(step.characterId);}}
- return {learnerId,revision:learner.learningRevision,releaseId:learner.learningReleaseId,timeZone:learner.learningTimeZone,activeSessionId:latest[0]?.id??null,openAllCourses:learner.openAllCourses,sessions:latest.map(sessionDTO),completedLessons:completion.map(l=>l.lessonId),seen:[...seen],skills:skills.map(s=>({targetId:s.targetId,wrongCount:s.wrongCount,dueDate:s.dueDate,ruleVersion:s.ruleVersion,kind:s.kind as 'sound'|'meaning',status:s.status as 'practice'|'consolidating'|'stable'})),characters:[...seen].map(id=>({id,status:progress.find(p=>p.characterId===id)?.mastery===1?'较稳定':skills.some(s=>s.targetId===id)?'练习中':'已接触'}))};
+ return {learnerId,revision:learner.learningRevision,releaseId:learner.learningReleaseId,timeZone:learner.learningTimeZone,activeSessionId:latest[0]?.id??null,openAllCourses:learner.openAllCourses,huntDistractorCount:huntDifficultySchema.parse(learner.huntDistractorCount),sessions:latest.map(sessionDTO),completedLessons:completion.map(l=>l.lessonId),seen:[...seen],skills:skills.map(s=>({targetId:s.targetId,wrongCount:s.wrongCount,dueDate:s.dueDate,ruleVersion:s.ruleVersion,kind:s.kind as 'sound'|'meaning',status:s.status as 'practice'|'consolidating'|'stable'})),characters:[...seen].map(id=>({id,status:progress.find(p=>p.characterId===id)?.mastery===1?'较稳定':skills.some(s=>s.targetId===id)?'练习中':'已接触'}))};
 }
 async function result(tx:Tx,learnerId:string,sessionId:string,accepted:'applied'|'duplicate') {
  const session=await findSession(tx,learnerId,sessionId);if(!session)throw missing();
@@ -92,7 +92,7 @@ export async function startLearning(db:Db,accountId:string,learnerId:string,inpu
      const recentRound=recent?.huntRound?huntRoundSchema.parse(recent.huntRound):undefined;
      const seenIds=new Set((await learningProgress(tx,learnerId)).seen);
      const pool=manifest.lessons.flatMap(x=>x.characters).filter(c=>scene.play!.distractorIds.includes(c.id)).sort((a,b)=>Number(seenIds.has(b.id))-Number(seenIds.has(a.id)));
-     huntRound=createPlayHuntRound(manifest.huntScenes.filter(s=>scene.play!.sceneIds.includes(s.id)).map(s=>({...s,sha256:manifest.assets.find(a=>a.id===s.imageAssetId)!.sha256})),l.characters,pool,lesson.position,ordinal,input.requestId,recentRound?.version===2?recentRound.sceneId:undefined,previousRound);
+     huntRound=createPlayHuntRound(manifest.huntScenes.filter(s=>scene.play!.sceneIds.includes(s.id)).map(s=>({...s,sha256:manifest.assets.find(a=>a.id===s.imageAssetId)!.sha256})),l.characters,pool,lesson.position,ordinal,input.requestId,recentRound?.version===2?recentRound.sceneId:undefined,previousRound,huntDifficultySchema.parse(learner.huntDistractorCount)??undefined);
     }else huntRound=createHuntRound(scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,l.characters,lesson.position,ordinal,input.requestId,previousRound);
    }
    session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,mode:input.mode,requestId:input.requestId,currentStep,huntRound,reviewStepId:input.mode==='review'?(lesson.steps[currentStep].config as {id:string}).id:null},include:includes});
@@ -198,8 +198,8 @@ export async function mistakes(tx:Tx,learnerId:string,cursor?:string,status='act
  const items=rows.slice(0,20).map(m=>{const p=m.latestWrongAttempt.presentation,q=p.question;return {id:m.id,questionVersionId:m.questionVersionId,targetId:m.targetId,kind:m.kind,status:m.status,wrongCount:m.wrongCount,lastWrongAt:m.lastWrongAt.toISOString(),releaseId:q.step.lesson.releaseId,lessonId:q.step.lesson.lessonId,selectedId:(m.latestWrongAttempt.answer as {selectedId:string|null}).selectedId,correctIds:q.answer,options:p.renderedOptions};});
  return {items,nextCursor:rows.length>20?items.at(-1)!.id:null};
 }
-export async function setLearningSettings(db:Db,accountId:string,learnerId:string,openAllCourses:boolean) {
- return db.$transaction(async tx=>{await lockLearner(tx,learnerId,accountId);await tx.learner.update({where:{id:learnerId},data:{openAllCourses,learningRevision:{increment:1}}});const state=await learningProgress(tx,learnerId);await saveSnapshot(tx,state);return state;});
+export async function setLearningSettings(db:Db,accountId:string,learnerId:string,settings:LearningSettings) {
+ return db.$transaction(async tx=>{await lockLearner(tx,learnerId,accountId);await tx.learner.update({where:{id:learnerId},data:{...settings,learningRevision:{increment:1}}});const state=await learningProgress(tx,learnerId);await saveSnapshot(tx,state);return state;});
 }
 
 export async function saveSnapshot(tx:Tx,state:LearningProgressState) {

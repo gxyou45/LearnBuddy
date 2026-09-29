@@ -50,7 +50,7 @@ export async function importLegacy(db:ReturnType<typeof database>,accountId:stri
    const session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,requestId:randomUUID(),lastActiveAt:hasCloud?new Date(0):new Date(),currentStep:step,completedAt:state.completed?new Date():null,huntFound:state.huntFound,huntRound:state.huntRound}});
    await ensurePresentation(tx,(await findSession(tx,learnerId,session.id))!);
   }
-  await tx.learner.update({where:{id:learnerId},data:{learningReleaseId:releaseId,learningRevision:{increment:1}}});
+  await tx.learner.update({where:{id:learnerId},data:{learningReleaseId:releaseId,...(!hasCloud&&learner.learningRevision===0?{huntDistractorCount:raw.huntDistractorCount??null}:{}),learningRevision:{increment:1}}});
   const progress=await learningProgress(tx,learnerId);await saveSnapshot(tx,progress);
   return {accepted:'applied',fingerprint,progress};
  },{timeout:20000});

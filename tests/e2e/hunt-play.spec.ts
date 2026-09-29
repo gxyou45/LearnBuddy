@@ -24,7 +24,15 @@ for(const [lessonId,width] of [['family',393],['c019',320]] as const)test(`v2 hu
  pkg.scene.play={sceneIds:pkg.scenePool.map((s:any)=>s.id),distractorIds:pkg.huntCandidates.map((c:any)=>c.id)};
  await page.route(`**${path}`,r=>r.fulfill({json:pkg}));
  for(const t of huntTemplates)await page.route(`**/media/assets/images/${createHash('sha256').update(t.svg).digest('hex')}.svg`,r=>r.fulfill({body:t.svg,contentType:'image/svg+xml'}));
- await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();
+ await page.goto('/');
+ const setDifficulty=async(value:string)=>{
+  await page.locator('.parent-link').click();await page.getByRole('button',{name:'27',exact:true}).click();
+  await page.getByLabel('新找字局的干扰字').selectOption(value);
+  await expect(page.getByLabel('新找字局的干扰字')).toHaveValue(value);
+  const box=await page.getByLabel('新找字局的干扰字').boundingBox();expect(box!.x).toBeGreaterThanOrEqual(0);expect(box!.x+box!.width).toBeLessThanOrEqual(width);
+ };
+ if(lessonId==='c019'){await setDifficulty('4');await page.goto('/#home');}
+ await page.getByRole('button',{name:'开始今天的冒险'}).click();
  if(lessonId!=='family'){
   await page.evaluate(id=>{const key='learnbuddy:v1:progress',p=JSON.parse(localStorage.getItem(key)!);p.unlocked.push(id);localStorage.setItem(key,JSON.stringify(p));},lessonId);
   await page.goto('/#home');await page.reload();await page.getByRole('button',{name:`开始${lesson.title}`,exact:true}).click();
@@ -32,8 +40,14 @@ for(const [lessonId,width] of [['family',393],['c019',320]] as const)test(`v2 hu
  const snapshot=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('learnbuddy:v1:progress')!));
  await expect.poll(async()=>(await snapshot()).huntRound?.version).toBe(2);
  const seek=async()=>{await page.evaluate(index=>{const key='learnbuddy:v1:progress',p=JSON.parse(localStorage.getItem(key)!);p.step=index;p.stepId='hunt';localStorage.setItem(key,JSON.stringify(p));},lesson.steps.findIndex((s:any)=>s.kind==='hunt'));await page.reload();await expect(page.locator('.hunt-targets > span')).toHaveCount(3);};
- await seek();await expect(page.locator('.hidden-character')).toHaveCount(5);
+ await seek();await expect(page.locator('.hidden-character')).toHaveCount(lessonId==='c019'?7:5);
  const before=await snapshot(),round=before.huntRound;
+ if(lessonId==='c019'){
+  await setDifficulty('2');expect((await snapshot()).huntRound).toEqual(round);
+  await page.reload();await page.locator('.parent-link').click();await page.getByRole('button',{name:'27',exact:true}).click();
+  await expect(page.getByLabel('新找字局的干扰字')).toHaveValue('2');
+  await page.goto('/#lesson');await expect(page.locator('.hidden-character')).toHaveCount(7);
+ }
  const decoy=round.placements.find((p:any)=>!p.isTarget),text=pkg.huntCandidates.find((c:any)=>c.id===decoy.characterId).text;
  const plays=await page.evaluate(()=>(window as any).__plays);
  await page.getByRole('button',{name:`图中的${text}`,exact:true}).click();await expect(page.locator('.hunt-feedback')).toContainText('不是这次要找的');
@@ -47,7 +61,7 @@ for(const [lessonId,width] of [['family',393],['c019',320]] as const)test(`v2 hu
  await page.getByRole('button',{name:'和家长一起，先去读故事'}).click();await page.getByRole('button',{name:'读完啦，去综合练习'}).click();
  await page.goto('/#home');await page.getByRole('button',{name:`重玩${lesson.title}`,exact:true}).click();
  await expect.poll(async()=>(await snapshot()).huntRound?.ordinal).toBe(1);await seek();
- const replay=await snapshot();expect(replay.huntRound.sceneId).not.toBe(round.sceneId);await expect(page.locator('.hidden-character')).toHaveCount(6);
+ const replay=await snapshot();expect(replay.huntRound.sceneId).not.toBe(round.sceneId);await expect(page.locator('.hidden-character')).toHaveCount(lessonId==='c019'?5:6);
  const boxes=await page.locator('.hidden-character').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
  for(const [i,a] of boxes.entries()){expect(a.w).toBeGreaterThanOrEqual(48);expect(a.x).toBeGreaterThanOrEqual(0);expect(a.x+a.w).toBeLessThanOrEqual(width);for(const b of boxes.slice(i+1))expect(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y).toBe(true);}
  await page.screenshot({path:`test-results/hunt-play-${lessonId}-${width}.png`});

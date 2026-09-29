@@ -4,7 +4,7 @@ import {importLegacy} from './legacy-import.js';
 import {Hono} from 'hono';
 import {HTTPException} from 'hono/http-exception';
 import {z} from 'zod';
-import {syncPrepareSchema,syncBatchSchema,legacyImportSchema,startLearningSchema,learningEventSchema} from '@learnbuddy/contracts';
+import {syncPrepareSchema,syncBatchSchema,legacyImportSchema,startLearningSchema,learningEventSchema,learningSettingsSchema} from '@learnbuddy/contracts';
 import type {database} from './db.js';
 import type {Auth} from './auth.js';
 import {principal,ownedLearner} from './accounts.js';
@@ -27,7 +27,7 @@ export function learningRoutes(db:ReturnType<typeof database>,auth:Auth,origins:
  app.get('/learners/:id/progress',async c=>c.json(await db.$transaction(tx=>learningProgress(tx,c.get('learnerId')),{isolationLevel:'RepeatableRead'})));
  app.post('/learners/:id/sessions',async c=>c.json(await startLearning(db,c.get('accountId'),c.get('learnerId'),parse(startLearningSchema,await c.req.json().catch(()=>null)))));
  app.post('/learners/:id/events',async c=>c.json(await applyLearningEvent(db,c.get('accountId'),c.get('learnerId'),parse(learningEventSchema,await c.req.json().catch(()=>null)))));
- app.patch('/learners/:id/learning-settings',async c=>{const input=parse(z.object({openAllCourses:z.boolean()}).strict(),await c.req.json().catch(()=>null));return c.json(await setLearningSettings(db,c.get('accountId'),c.get('learnerId'),input.openAllCourses));});
+ app.patch('/learners/:id/learning-settings',async c=>{const input=parse(learningSettingsSchema,await c.req.json().catch(()=>null));return c.json(await setLearningSettings(db,c.get('accountId'),c.get('learnerId'),input));});
  app.get('/learners/:id/mistakes',async c=>{
   const query=parse(z.object({cursor:z.uuid().optional(),status:z.enum(['active','all']).optional()}).strict(),c.req.query());
   return c.json(await db.$transaction(tx=>mistakes(tx,c.get('learnerId'),query.cursor,query.status),{isolationLevel:'RepeatableRead'}));

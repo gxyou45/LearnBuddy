@@ -1,5 +1,5 @@
 import {createContext,useContext,useEffect,useRef,useState,type ReactNode} from 'react';
-import {learningProgressSchema,type LearningCommand,type LearningProgressState,type LearningSessionState,type ReviewQueue,type StartLearning,type SyncEnvelope} from '@learnbuddy/contracts';
+import {learningProgressSchema,type HuntDifficulty,type LearningCommand,type LearningProgressState,type LearningSessionState,type ReviewQueue,type StartLearning,type SyncEnvelope} from '@learnbuddy/contracts';
 import {CloudError,cloudId,cloudRequest,getCloudProgress,getReviews,prepareSync,sendBatch,getChanges,sendStart} from './cloudClient';
 import {lessons,releaseId} from './contentRepository';
 import {fresh,type Progress} from './progress';
@@ -9,14 +9,14 @@ import {offlineKey,localEvent,sessionOf,type OfflineRecord} from './offlineLearn
 
 type EventAction=LearningCommand extends infer T?T extends LearningCommand?Omit<T,'clientEventId'|'sessionId'|'expectedRevision'>:never:never;
 type Success=(session:LearningSessionState)=>void;
-type Cloud={progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>};
+type Cloud={progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>;huntDifficulty:(count:HuntDifficulty)=>Promise<boolean>};
 const Context=createContext<Cloud|null>(null);
 export const useCloud=()=>useContext(Context);
 export function projectCloud(state:LearningProgressState,preferences:Progress):Progress {
  const active=state.sessions.find(s=>s.id===state.activeSessionId),states:Progress['lessonProgress']={};
  for(const l of lessons){const s=state.sessions.find(s=>s.lessonId===l.id);states[l.id]={started:!!s&&!s.completed,completed:state.completedLessons.includes(l.id),step:s&&!s.completed?s.stepIndex:0,session:s?.id||'',huntFound:s?.huntFound||[],huntRound:s?.huntRound,huntRoundIndex:s?.huntRound?.ordinal};}
  const activeLesson=active?.lessonId||lessons[0].id;
- return {...fresh(),sound:preferences.sound,observations:preferences.observations,releaseId:state.releaseId||releaseId,activeLesson,lessonProgress:states,...states[activeLesson],seen:state.seen,unlocked:state.openAllCourses?lessons.map(l=>l.id):[]};
+ return {...fresh(),sound:preferences.sound,observations:preferences.observations,huntDistractorCount:state.huntDistractorCount??null,releaseId:state.releaseId||releaseId,activeLesson,lessonProgress:states,...states[activeLesson],seen:state.seen,unlocked:state.openAllCourses?lessons.map(l=>l.id):[]};
 }
 export function CloudProvider({initial,storage,children}:{initial:LearningProgressState;storage:string;children:ReactNode}) {
  const family=useFamily()!,key=offlineKey(family.account.accountId,initial.learnerId);
@@ -95,6 +95,7 @@ export function CloudProvider({initial,storage,children}:{initial:LearningProgre
    try{await flush();}catch(e){if(mounted.current)setError(e instanceof Error?e.message:'待同步');}
    setTimeout(()=>{if(mounted.current)onSuccess?.(sessionOf(ref.current,review)!);},0);
   }),
+  huntDifficulty:count=>run(async()=>{await flush();if(ref.current.events.length||!navigator.onLine)throw new Error('请联网并完成同步后修改设置');const p=learningProgressSchema.parse(await cloudRequest(`/api/v1/learners/${initial.learnerId}/learning-settings`,{huntDistractorCount:count},'PATCH'));await persist({...ref.current,confirmed:p,view:p});}),
   settings:open=>run(async()=>{await flush();if(ref.current.events.length||!navigator.onLine)throw new Error('请联网并完成同步后修改设置');const p=learningProgressSchema.parse(await cloudRequest(`/api/v1/learners/${initial.learnerId}/learning-settings`,{openAllCourses:open},'PATCH'));await persist({...ref.current,confirmed:p,view:p});}),
  };
  const resumeServer=()=>void run(async()=>{
