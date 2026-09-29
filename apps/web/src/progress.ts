@@ -1,7 +1,7 @@
 import { characters, contentVersion, releaseId, getSteps, steps, lessons, type CharacterId } from './contentRepository';
-import {huntRoundSchema,type HuntRound} from '@learnbuddy/contracts';
+import {huntRoundSchema,guestRetrySchema,type HuntRound,type RetryAnswer} from '@learnbuddy/contracts';
 export const STORAGE_KEY = 'learnbuddy:v1:progress';
-export type Attempt = { id: string; session: string; step: string; characterId: CharacterId; kind: 'sound' | 'meaning'; correct: boolean; hintUsed: boolean; skipped: boolean; date: string; timestamp: number };
+export type Attempt = { id: string; session: string; step: string; characterId: CharacterId; kind: 'sound' | 'meaning'; correct: boolean; hintUsed: boolean; skipped: boolean; date: string; timestamp: number;selectedId?:string|null;retries?:(RetryAnswer&{id:string;timestamp:number})[] };
 export type LessonProgress = { stepId?: string; started: boolean; completed: boolean; step: number; session: string; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number };
 export type Progress = { releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
 export const fresh = (): Progress => ({ releaseId, activeLesson: lessons[0]?.id ?? 'family', lessonProgress: {}, unlocked: [], schemaVersion: 1, contentVersion, started: false, completed: false, step: 0, session: '', sound: true, attempts: [], seen: [], huntFound: [], observations: {} });
@@ -15,6 +15,7 @@ export function parseProgress(raw: string | null): Progress {
   if (p.schemaVersion !== 1 || typeof p.started !== 'boolean' || typeof p.completed !== 'boolean' || typeof p.sound !== 'boolean' || typeof p.session !== 'string' || !Number.isInteger(p.step) || p.step < 0 || !Array.isArray(p.attempts) || !Array.isArray(p.seen) || !p.observations || typeof p.observations !== 'object') throw new Error('Invalid progress');
   if (!p.seen.every(x => charIds.includes(x)) || !p.attempts.every(a => a && typeof a.id === 'string' && typeof a.session === 'string' && typeof a.step === 'string' && charIds.includes(a.characterId) && ['sound','meaning'].includes(a.kind) && typeof a.correct === 'boolean' && typeof a.hintUsed === 'boolean' && typeof a.skipped === 'boolean' && /^\d{4}-\d{2}-\d{2}$/.test(a.date) && Number.isFinite(a.timestamp))) throw new Error('Invalid attempts');
   if (p.huntFound === undefined) p.huntFound = [];
+  for(const a of p.attempts){if(a.selectedId!=null&&!charIds.includes(a.selectedId))throw new Error('Invalid selected answer');if(a.retries){const retries=guestRetrySchema.array().max(100).parse(a.retries);if(a.correct||a.skipped||retries.some((r,i)=>(i<retries.length-1&&(r.correct||r.skipped))||(r.skipped?r.selectedId!==null:!charIds.includes(r.selectedId!))||r.correct!==(!r.skipped&&r.selectedId===a.characterId))||new Set(retries.map(r=>r.id)).size!==retries.length)throw new Error('Invalid retries');}}
   if (!Array.isArray(p.huntFound) || !p.huntFound.every(id => charIds.includes(id)) || new Set(p.huntFound).size !== p.huntFound.length) throw new Error('Invalid hunt progress');
   if (p.activeLesson === undefined) p.activeLesson = 'family';
   if (p.lessonProgress === undefined) p.lessonProgress = {};
@@ -62,6 +63,14 @@ export function status(p: Progress, id: CharacterId) {
   const good = attempts.filter(a => a.correct && !a.hintUsed && !a.skipped);
   if (good.length >= 3 && new Set(good.map(a => a.date)).size >= 2 && new Set(good.map(a => a.kind)).size >= 2 && attempts.at(-1)?.correct && !attempts.at(-1)?.hintUsed && !attempts.at(-1)?.skipped) return '较稳定';
   return attempts.length ? '练习中' : p.seen.includes(id) ? '已接触' : '未开始';
+}
+export function recordRetry(p:Progress,a:Attempt):Progress{
+ const first=p.attempts.find(x=>x.session===a.session&&x.step===a.step);
+ if(!first||first.id===a.id||first.characterId!==a.characterId||first.kind!==a.kind)return p;
+ const latest=first.retries?.at(-1)||first;
+ if(latest.correct||latest.skipped||(first.retries?.length||0)>=100||first.retries?.some(r=>r.id===a.id))return p;
+ const retry={id:a.id,timestamp:a.timestamp,selectedId:a.selectedId??null,correct:a.correct,skipped:a.skipped};
+ return {...p,attempts:p.attempts.map(x=>x===first?{...x,retries:[...(x.retries||[]),retry]}:x)};
 }
 export function dueCharacters(p: Progress, today = localDate()) {
   return characters.filter(c => { const last = p.attempts.filter(a => a.characterId === c.id).at(-1); return last && last.date < today; }).sort((a,b) => {

@@ -63,6 +63,13 @@ test('ACC-03 ordered sync, conflicts, deltas and honest legacy imports',async t=
   const hint=envelope(1,rev,'hint',{presentationId:pid}),answer=envelope(2,rev+1,'answer',{presentationId:pid,selectedId:'ba',skipped:false});
   let r=await json(root+'/events:batch',{cookie,body:{streamId:sid,events:[answer]}});assert.equal(r.nextSeq,1);
   r=await json(root+'/events:batch',{cookie,body:{streamId:sid,events:[hint]}});assert.equal(r.session.presentation.answer.prompted,true);assert.equal(r.session.presentation.answer.independent,false);assert.equal((await json(root+'/mistakes',{cookie})).items.length,0);
+  const correction=envelope(3,rev+2,'retry-answer',{presentationId:pid,selectedId:'wo',skipped:false});
+  const next=envelope(4,rev+3);
+  let corrected=await json(root+'/events:batch',{cookie,body:{streamId:sid,events:[next]}});assert.equal(corrected.nextSeq,3);
+  corrected=await json(root+'/events:batch',{cookie,body:{streamId:sid,events:[correction]}});assert.equal(corrected.nextSeq,5);
+  const history=await db.questionPresentation.findUnique({where:{id:pid},include:{attempts:true}});
+  assert.equal(history.attempts.length,1);assert.equal(history.attempts[0].correct,false);assert.deepEqual(history.retries,[{selectedId:'wo',correct:true,skipped:false}]);
+  assert.equal((await json(root+'/events:batch',{cookie,body:{streamId:sid,events:[correction,next]}})).nextSeq,5);
  });
  await t.test('invalid command rolls back effects and is retained as rejected',async()=>{
   const sid=randomUUID();const p=await json(root+'/sync-streams',{cookie,body:{streamId:sid,sessionId:state.session.id}});
@@ -81,7 +88,7 @@ test('ACC-03 ordered sync, conflicts, deltas and honest legacy imports',async t=
  });
  await t.test('delayed wrong answers are retained without rewriting mastery from client dates',async()=>{
   let current=(await json(root+'/progress',{cookie})).sessions[0];
-  current=(await json(root+'/events',{cookie,body:{clientEventId:randomUUID(),sessionId:current.id,expectedRevision:current.revision,type:'advance'}})).session;
+  assert.equal(current.stepIndex,8); // Previous out-of-order batch already advanced after the correction.
   const sid=randomUUID(),p=await json(root+'/sync-streams',{cookie,body:{streamId:sid,sessionId:current.id}}),pid=p.session.presentation.id;
   const reported='2000-01-01T00:00:00.000Z';
   const events=[{seq:1,occurredAt:reported,timeZone:'UTC',command:{clientEventId:randomUUID(),sessionId:current.id,expectedRevision:current.revision,type:'audio',presentationId:pid,result:'played'}},{seq:2,occurredAt:reported,timeZone:'UTC',command:{clientEventId:randomUUID(),sessionId:current.id,expectedRevision:current.revision+1,type:'answer',presentationId:pid,selectedId:'wo',skipped:false}}];

@@ -8,6 +8,9 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
  const s=plan.session,steps=getSteps(lessons.find(l=>l.id===s.lessonId)!),step=steps[s.stepIndex];
  if(!step||s.completed||s.revision!==command.expectedRevision)throw new Error('本机课次位置已变化，请刷新');
  const p=s.presentation;
+ if(['answer','retry-answer','hint','audio'].includes(command.type)&&(!p||!('presentationId' in command)||command.presentationId!==p.id))throw new Error('请先显示当前题目');
+ const latest=p?.retries?.at(-1)||p?.answer;
+ if(['hint','audio'].includes(command.type)&&(latest?.correct||latest?.skipped))throw new Error('本题已完成');
  if(p&&!p.answer){
   const options=learningOptions(p.options,step.characterId,step.kind);
   if(step.kind==='sound'&&(options.length<2||options.length!==p.options.length))p.prompted=true;
@@ -16,6 +19,11 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
  if(command.type==='audio'&&p){if(command.result==='played')p.audioHeard=true;else p.audioFailed=true;}
  if(command.type==='hint'&&p)p.prompted=true;
  if(command.type==='answer'&&p){if(p.answer)throw new Error('本题已记录');p.answer={selectedId:command.selectedId,correct:!command.skipped&&command.selectedId===step.characterId,skipped:command.skipped,prompted:p.prompted,audioFailed:p.audioFailed,independent:false};}
+ if(command.type==='retry-answer'&&p){
+  if(!p.answer||latest?.correct||latest?.skipped||(p.retries?.length||0)>=100)throw new Error('当前题目不能再次作答');
+  if(command.skipped?command.selectedId!==null:!p.options.some(o=>o.id===command.selectedId))throw new Error('答案不在本次选项中');
+  p.retries=[...(p.retries||[]),{selectedId:command.selectedId,correct:!command.skipped&&command.selectedId===step.characterId,skipped:command.skipped}];
+ }
  if(p)plan.presentations[step.id]=structuredClone(p);
  if(command.type==='hunt'){
   if(step.kind!=='hunt'||!lessons.find(l=>l.id===s.lessonId)!.characters.some(c=>c.id===command.characterId))throw new Error('找字目标不属于本课');

@@ -211,6 +211,7 @@ model QuestionPresentation {
   question QuestionVersion @relation(fields: [questionVersionId], references: [id])
   renderedOptions Json
   sceneSnapshot Json?
+  retries Json @default("[]")
   prompted Boolean @default(false)
   audioHeard Boolean @default(false)
   audioFailed Boolean @default(false)

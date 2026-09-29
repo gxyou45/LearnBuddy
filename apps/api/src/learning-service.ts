@@ -1,4 +1,4 @@
-import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,huntRoundSchema} from '@learnbuddy/contracts';
+import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,huntRoundSchema,retryAnswerSchema} from '@learnbuddy/contracts';
 import {randomInt} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,LearningProgressState} from '@learnbuddy/contracts';
@@ -23,7 +23,8 @@ export function sessionDTO(s:Session):LearningSessionState {
  const p=currentPresentation(s),a=p?.attempts[0],step=s.lesson.steps[s.currentStep];
  const stored=(p?.renderedOptions??[]) as {id:string;text:string;word:string;icon:string}[];
  const options=p&&!a?learningOptions(stored,(step.config as {characterId?:string}).characterId,step.kind):stored;
- return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],...(s.huntRound?{huntRound:huntRoundSchema.parse(s.huntRound)}:{}),presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options,prompted:p.prompted||(!a&&step.kind==='sound'&&(options.length<2||options.length!==stored.length)),audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
+ const retries=p?retryAnswerSchema.array().parse(p.retries):[];
+ return {id:s.id,lessonId:s.lesson.lessonId,releaseId:s.lesson.releaseId,mode:s.mode as 'lesson'|'review',revision:s.revision,stepIndex:s.currentStep,stepId:(step.config as {id:string}).id,completed:!!s.completedAt,huntFound:s.huntFound as string[],...(s.huntRound?{huntRound:huntRoundSchema.parse(s.huntRound)}:{}),presentation:p?{id:p.id,questionVersionId:p.questionVersionId,options,retries,prompted:p.prompted||(!a&&step.kind==='sound'&&(options.length<2||options.length!==stored.length)),audioHeard:p.audioHeard,audioFailed:p.audioFailed,answer:a?{selectedId:(a.answer as {selectedId:string|null}).selectedId,correct:a.correct,skipped:a.skipped,prompted:a.prompted,audioFailed:a.audioFailed,independent:independent(a)}:null}:null};
 }
 export async function ensurePresentation(tx:Tx,s:Session) {
  const step=s.lesson.steps[s.currentStep];if(!['sound','meaning'].includes(step.kind)||!step.question||currentPresentation(s))return;
@@ -110,12 +111,24 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
    if(old){const answer=old.answer as {selectedId:string|null};if(answer.selectedId!==input.selectedId||old.skipped!==input.skipped)throw conflict('这道题已经提交，不能覆盖原答案');return result(tx,learnerId,session.id,'duplicate');}
   }
   if(session.completedAt||session.revision!==input.expectedRevision)throw conflict();
-  if(['answer','hint','audio'].includes(input.type)&&(!p||!('presentationId' in input)||p.id!==input.presentationId))throw invalid('请先显示当前题目');
-  if((input.type==='hint'||input.type==='audio')&&p!.attempts.length)throw conflict('答案已保存，请继续下一步');
+  if(['answer','retry-answer','hint','audio'].includes(input.type)&&(!p||!('presentationId' in input)||p.id!==input.presentationId))throw invalid('请先显示当前题目');
+  const retries=p?retryAnswerSchema.array().parse(p.retries):[];
+  const latest=retries.at(-1)||p?.attempts[0];
+  if((input.type==='hint'||input.type==='audio')&&(latest?.correct||latest?.skipped))throw conflict('答案已保存，请继续下一步');
   const now=new Date();
   const event=await tx.learningEvent.create({data:{learnerId,sessionId:session.id,clientEventId:input.clientEventId,type:input.type,payload:input,occurredAt:reportedAt||now}});
   if(input.type==='hint')await tx.questionPresentation.update({where:{id:p!.id},data:{prompted:true}});
   if(input.type==='audio')await tx.questionPresentation.update({where:{id:p!.id},data:input.result==='played'?{audioHeard:true}:{audioFailed:true}});
+  if(input.type==='retry-answer'){
+   if(!p!.attempts.length||latest?.correct||latest?.skipped)throw conflict('当前题目不能再次作答');
+   if(retries.length>=100)throw invalid('本题练习次数较多，请家长陪伴后继续');
+   if(input.skipped?input.selectedId!==null:input.selectedId===null)throw invalid('跳过和实际选择不一致');
+   if(input.selectedId!==null&&!(p!.renderedOptions as {id:string}[]).some(o=>o.id===input.selectedId))throw invalid('答案不在本次选项中');
+   const correct=!input.skipped&&(step.question!.answer as string[]).includes(input.selectedId!);
+   await tx.questionPresentation.update({where:{id:p!.id},data:{retries:[...retries,{selectedId:input.selectedId,correct,skipped:input.skipped}]}});
+   // Deliberately no Attempt, skill, mastery, or wrong-count update here.
+   // The original wrong answer remains the independent evidence.
+  }
   if(input.type==='answer') {
    if(input.skipped?input.selectedId!==null:input.selectedId===null)throw invalid('跳过和实际选择不一致');
    const options=p!.renderedOptions as {id:string;text:string;word:string;icon:string}[];

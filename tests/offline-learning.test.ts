@@ -14,6 +14,15 @@ it('offline feedback preserves confirmed state and never grants mastery',()=>{
  expect(next.plan!.session.presentation!.answer!.correct).toBe(true);expect(next.plan!.session.presentation!.answer!.independent).toBe(false);
  expect(original.plan!.session.presentation!.answer).toBeNull();expect(next.confirmed.sessions[0].presentation!.answer).toBeNull();expect(next.view.revision).toBe(10);
 });
+it('offline corrections preserve the first wrong answer and survive the sync plan',()=>{
+ let r=localEvent(record(),{type:'answer',clientEventId:'first',sessionId:'s',expectedRevision:0,presentationId:'p',selectedId:'ba',skipped:false});
+ r=localEvent(r,{type:'audio',clientEventId:'again',sessionId:'s',expectedRevision:1,presentationId:'p',result:'played'});
+ r=localEvent(r,{type:'retry-answer',clientEventId:'retry',sessionId:'s',expectedRevision:2,presentationId:'p',selectedId:'wo',skipped:false});
+ expect(r.plan!.session.presentation!.answer!.correct).toBe(false);
+ expect(r.plan!.presentations['sound-wo'].retries).toEqual([{selectedId:'wo',correct:true,skipped:false}]);
+ expect(r.view.skills).toEqual([]);expect(r.confirmed.sessions[0].presentation!.answer).toBeNull();
+ expect(()=>localEvent(r,{type:'retry-answer',clientEventId:'late',sessionId:'s',expectedRevision:3,presentationId:'p',selectedId:'ma',skipped:false})).toThrow();
+});
 it('offline hunt events retain their saved positions and do not change recognition evidence',()=>{
  const original=record(),pkg=packageFixture('family');
  original.view.seen=pkg.lesson.characters.map(c=>c.id);
