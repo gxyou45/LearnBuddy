@@ -1,7 +1,7 @@
 import {createHash,randomUUID} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {LegacyProgress,ContentManifest} from '@learnbuddy/contracts';
-import {resolveHuntRound} from '@learnbuddy/contracts';
+import {resolveHuntRound,huntTargetIds} from '@learnbuddy/contracts';
 import type {database} from './db.js';
 import {lockLearner,learningProgress,saveSnapshot,canonical,ensurePresentation,findSession} from './learning-service.js';
 export async function importLegacy(db:ReturnType<typeof database>,accountId:string,learnerId:string,raw:LegacyProgress) {
@@ -28,9 +28,10 @@ export async function importLegacy(db:ReturnType<typeof database>,accountId:stri
    if(new Set(state.huntFound).size!==state.huntFound.length||state.huntFound.some(id=>!lesson.characters.some(c=>c.id===id)))throw bad();
    if(state.huntRound){
     const theme=manifest.themes.find(t=>t.order===lesson.theme)!;
-    const scene=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id));
+    const primary=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id));
+    const scene=state.huntRound.version===2&&primary?.play?.sceneIds.includes(state.huntRound.sceneId)?manifest.huntScenes.find(s=>s.id===state.huntRound!.sceneId):primary;
     if(!scene)throw bad();
-    try{resolveHuntRound(state.huntRound,scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters);}catch{throw bad();}
+    try{resolveHuntRound(state.huntRound,scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters,manifest.lessons.flatMap(l=>l.characters).filter(c=>primary?.play?.distractorIds.includes(c.id)));if(state.huntFound.some(id=>!huntTargetIds(state.huntRound,lesson.characters).includes(id)))throw bad();}catch{throw bad();}
    }
    let step=state.step;
    if(raw.contentVersion<4){if(step>=(raw.contentVersion===1?11:12))throw bad();step=raw.contentVersion===1&&step===10?14:step>=4?step+3:step;}

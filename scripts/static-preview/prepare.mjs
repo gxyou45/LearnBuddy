@@ -20,6 +20,12 @@ for (const character of lessons.flatMap(lesson => lesson.characters)) {
 
 const themeIds = new Set(lessons.map(lesson => manifest.themes.find(theme => theme.order === lesson.theme)?.id));
 const scenes = manifest.huntScenes.filter(scene => scene.themeIds.some(id => themeIds.has(id)));
+for(const scene of [...scenes])if(scene.play){
+ for(const id of scene.play.sceneIds){const variant=manifest.huntScenes.find(s=>s.id===id);if(!variant)throw new Error(`Missing hunt scene: ${id}`);if(!scenes.some(s=>s.id===id))scenes.push(variant);}
+ // A static preview must not quietly lose distractors omitted by its lesson cut.
+ const included=new Set(lessons.flatMap(l=>l.characters.map(c=>c.id)));
+ if(scene.play.distractorIds.some(id=>!included.has(id)))throw new Error(`Hunt pool exceeds static preview: ${scene.id}`);
+}
 const assetIds = new Set(['audio-answer-correct', 'audio-answer-incorrect']);
 for (const lesson of lessons) {
   assetIds.add(lesson.imageAssetId);

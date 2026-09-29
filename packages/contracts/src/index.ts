@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import {huntRoundSchema} from './hunt-round.js';
-export {huntRoundSchema,createHuntRound,resolveHuntRound,type HuntRound} from './hunt-round.js';
+export {huntTemplates,huntTemplate,type HuntTemplate} from './hunt-templates.js';
+export {huntRoundSchema,createHuntRound,createPlayHuntRound,huntTargetIds,resolveHuntRound,type HuntRound} from './hunt-round.js';
 import {readingCueSchema,validateReadingCues} from './reading-cues.js';
 export {readingCueSchema,validateReadingCues,readingPosition,type ReadingCues} from './reading-cues.js';
 export {applyReviewedCues} from './reviewed-cues.js';
@@ -27,7 +28,7 @@ export const manifestSchema = z.object({
     durationMs: z.number().positive().optional(), text: z.string().optional(),
     cues: readingCueSchema.optional(),
   })),
-  huntScenes: z.array(z.object({ id, imageAssetId: assetId, themeIds: z.array(id), description: z.string(), slots: z.array(z.object({ id, x: z.number().min(0).max(100), y: z.number().min(0).max(100), clue: z.string() })) })),
+  huntScenes: z.array(z.object({ id, imageAssetId: assetId, themeIds: z.array(id), description: z.string(), slots: z.array(z.object({ id, x: z.number().min(0).max(100), y: z.number().min(0).max(100), clue: z.string() })),play:z.object({sceneIds:z.array(id).min(2).max(6),distractorIds:z.array(id).min(4).max(100)}).strict().optional() })),
 });
 export type ContentManifest = z.infer<typeof manifestSchema>;
 export type ImportedAsset = ContentManifest['assets'][number];
@@ -73,6 +74,15 @@ export function validateManifest(input: unknown): ContentManifest {
     requireAsset(scene.imageAssetId, 'image');
     unique(scene.slots.map(s => s.id), `slot in ${scene.id}`);
     if (scene.themeIds.some(id => !data.themes.some(t => t.id === id))) throw new Error(`Missing scene theme: ${scene.id}`);
+    if(scene.play){
+      unique(scene.play.sceneIds,'play scene');unique(scene.play.distractorIds,'distractor');
+      if(scene.play.sceneIds.some(id=>!data.huntScenes.some(s=>s.id===id&&s.slots.length>=7&&!s.play)))throw new Error(`Invalid play scenes: ${scene.id}`);
+      const pool=scene.play.distractorIds.map(id=>data.lessons.flatMap(l=>l.characters).find(c=>c.id===id));
+      if(pool.some(c=>!c))throw new Error(`Unknown distractor: ${scene.id}`);
+      for(const l of data.lessons.filter(l=>scene.themeIds.includes(data.themes.find(t=>t.order===l.theme)!.id))){
+        if(new Set(pool.filter(c=>!l.characters.some(t=>t.text===c!.text)).map(c=>c!.text)).size<4)throw new Error(`Insufficient distractors: ${l.id}`);
+      }
+    }
   }
   return data;
 }
@@ -95,6 +105,8 @@ export const lessonPackageSchema = z.object({
  lesson:manifestSchema.shape.lessons.element,
  assets:z.array(manifestSchema.shape.assets.element.extend({url:z.string().regex(/^\/media\/assets\/(audio|images)\/[a-f0-9]{64}\.(wav|svg|png)$/)})),
  scene:manifestSchema.shape.huntScenes.element,
+ scenePool:manifestSchema.shape.huntScenes.optional(),
+ huntCandidates:z.array(character).optional(),
  characterImages:z.record(z.string(),z.string()),
 });
 export type LessonPackage = z.infer<typeof lessonPackageSchema>;
@@ -107,7 +119,7 @@ export type FamilyAccount = z.infer<typeof familySchema>;
 
 // ACC-02: online commands. Offline batching/import is a separate, later protocol.
 const revisionSchema=z.number().int().nonnegative();
-export const startLearningSchema=z.object({requestId:z.uuid(),releaseId:id,lessonId:id,mode:z.enum(['lesson','review']),questionVersionId:z.string().min(1).max(200).optional(),huntLayoutVersion:z.literal(1).optional()}).strict();
+export const startLearningSchema=z.object({requestId:z.uuid(),releaseId:id,lessonId:id,mode:z.enum(['lesson','review']),questionVersionId:z.string().min(1).max(200).optional(),huntLayoutVersion:z.union([z.literal(1),z.literal(2)]).optional()}).strict();
 const eventBase={clientEventId:z.uuid(),sessionId:z.uuid(),expectedRevision:revisionSchema};
 export const learningEventSchema=z.discriminatedUnion('type',[
  z.object({...eventBase,type:z.literal('advance')}).strict(),
@@ -144,7 +156,7 @@ export const syncReceiptSchema=z.object({seq:z.number().int(),clientEventId:z.uu
 export const syncResultSchema=z.object({nextSeq:z.number().int(),receipts:z.array(syncReceiptSchema),session:learningSessionSchema,progress:learningProgressSchema});
 export const learningChangesSchema=z.object({cursor:revisionSchema,reset:z.boolean(),progress:learningProgressSchema.optional(),patch:learningProgressSchema.partial().optional(),deleted:z.object({sessionIds:z.array(z.uuid())})});
 const legacyPosition=z.object({stepId:z.string().max(100).optional(),started:z.boolean(),completed:z.boolean(),step:z.number().int().min(0).max(100),session:z.string().max(200),huntFound:z.array(id).max(30).default([]),huntRound:huntRoundSchema.optional(),huntRoundIndex:z.number().int().nonnegative().optional()}).strict();
-export const legacyProgressSchema=legacyPosition.extend({schemaVersion:z.literal(1),contentVersion:z.number().int().min(1).max(4),releaseId:id.optional(),activeLesson:id.default('family'),lessonProgress:z.record(id,legacyPosition).default({}),unlocked:z.array(id).max(1000).default([]),sound:z.boolean(),seen:z.array(id).max(1000),observations:z.record(id,z.string().max(1000)),attempts:z.array(z.object({id:z.string().max(200),session:z.string().max(200),step:z.string().max(100),characterId:id,kind:z.enum(['sound','meaning']),correct:z.boolean(),hintUsed:z.boolean(),skipped:z.boolean(),date:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),timestamp:z.number().finite(),selectedId:id.nullable().optional(),retries:z.array(guestRetrySchema).max(100).optional()})).max(30000)}).strict();
+export const legacyProgressSchema=legacyPosition.extend({huntRecentScenes:z.record(z.string(),id).optional(),schemaVersion:z.literal(1),contentVersion:z.number().int().min(1).max(4),releaseId:id.optional(),activeLesson:id.default('family'),lessonProgress:z.record(id,legacyPosition).default({}),unlocked:z.array(id).max(1000).default([]),sound:z.boolean(),seen:z.array(id).max(1000),observations:z.record(id,z.string().max(1000)),attempts:z.array(z.object({id:z.string().max(200),session:z.string().max(200),step:z.string().max(100),characterId:id,kind:z.enum(['sound','meaning']),correct:z.boolean(),hintUsed:z.boolean(),skipped:z.boolean(),date:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),timestamp:z.number().finite(),selectedId:id.nullable().optional(),retries:z.array(guestRetrySchema).max(100).optional()})).max(30000)}).strict();
 export const legacyImportSchema=z.object({source:z.literal('legacy_import'),progress:legacyProgressSchema}).strict();
 export type LegacyProgress=z.infer<typeof legacyProgressSchema>;
 

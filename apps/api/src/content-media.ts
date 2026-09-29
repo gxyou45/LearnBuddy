@@ -1,7 +1,7 @@
 import {createHash} from 'node:crypto';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
-import type {ImportedAsset} from '@learnbuddy/contracts';
+import {huntTemplate,type ImportedAsset} from '@learnbuddy/contracts';
 import type {database} from './db.js';
 export const digest=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
 const root=()=>resolve(process.env.MEDIA_DIR || '../../media');
@@ -50,6 +50,13 @@ export async function storeUpload(db:ReturnType<typeof database>,actorId:string,
  const info=inspectUpload(bytes),sha256=digest(bytes),objectKey=`assets/${info.kind==='audio'?'audio':'images'}/${sha256}.${info.extension}`;
  await immutableWrite(stage(objectKey),bytes);
  return db.contentUpload.upsert({where:{sha256},create:{sha256,objectKey,bytes:bytes.length,mimeType:info.mimeType,durationMs:info.durationMs,createdBy:actorId},update:{}});
+}
+/** Only server-owned template IDs, never arbitrary uploaded SVG. Stays private until publication. */
+export async function storeHuntTemplate(db:ReturnType<typeof database>,actorId:string,templateId:string) {
+ const template=huntTemplate(templateId),bytes=Buffer.from(template.svg),sha256=digest(bytes),objectKey=`assets/images/${sha256}.svg`;
+ await immutableWrite(stage(objectKey),bytes);
+ const upload=await db.contentUpload.upsert({where:{sha256},create:{sha256,objectKey,bytes:bytes.length,mimeType:'image/svg+xml',createdBy:actorId},update:{}});
+ return {id:`image-hunt-${template.id}`,kind:'image' as const,objectKey,sha256,bytes:upload.bytes,mimeType:'image/svg+xml' as const,source:`LearnBuddy 原创 SVG 场景模板 ${template.id}`,reviewStatus:'pending' as const};
 }
 export async function mediaBytes(db:ReturnType<typeof database>,a:{sha256:string;objectKey:string;bytes:number;mimeType:string;durationMs?:number}) {
  const published=await db.assetVersion.findFirst({where:{sha256:a.sha256,objectKey:a.objectKey,bytes:a.bytes,mimeType:a.mimeType}});

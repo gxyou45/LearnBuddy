@@ -4,13 +4,13 @@ import {Hono} from 'hono';
 import {bodyLimit} from 'hono/body-limit';
 import {HTTPException} from 'hono/http-exception';
 import {z} from 'zod';
-import {manifestSchema,type ContentManifest} from '@learnbuddy/contracts';
+import {manifestSchema,huntTemplates,type ContentManifest} from '@learnbuddy/contracts';
 import {principal} from './accounts.js';
 import type {Auth} from './auth.js';
 import type {database} from './db.js';
 import {writeRelease} from './release-writer.js';
 import {validatePublication} from './content-validation.js';
-import {mediaBytes,publishMedia,storeUpload} from './content-media.js';
+import {mediaBytes,publishMedia,storeUpload,storeHuntTemplate} from './content-media.js';
 const revision=z.number().int().positive();
 const saveSchema=z.object({revision,manifest:manifestSchema}).strict();
 const publishSchema=z.object({draftId:z.uuid(),revision,channelRevision:revision}).strict();
@@ -27,6 +27,12 @@ export function contentAdminRoutes(db:ReturnType<typeof database>,auth:Auth,orig
   c.set('actorId',user.accountId);await next();
  });
  app.use('/uploads',bodyLimit({maxSize:20*1024*1024}));
+ app.use('/hunt-templates/*',bodyLimit({maxSize:4096}));
+ app.post('/hunt-templates/:id',async c=>{
+  const id=c.req.param('id');
+  if(!huntTemplates.some(t=>t.id===id))throw new HTTPException(404,{message:'找字场景模板不存在'});
+  return c.json(await storeHuntTemplate(db,c.get('actorId'),id),201);
+ });
  app.use('/drafts/*',bodyLimit({maxSize:16*1024*1024}));
  app.use('/drafts',bodyLimit({maxSize:4096}));
  app.use('/releases*',bodyLimit({maxSize:4096}));

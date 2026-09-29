@@ -3,25 +3,29 @@ import {HuntBackground,isPlainGarden} from './HuntBackground';
 import { lessonData } from './contentRepository';
 import { lessons, type Lesson, type CharacterId } from './contentRepository';
 import { useState,useRef,useEffect } from 'react';
-import {resolveHuntRound,type HuntRound} from '@learnbuddy/contracts';
+import {resolveHuntRound,huntTargetIds,type HuntRound} from '@learnbuddy/contracts';
 
 export function HiddenCharacters({ lesson, round,pendingRound,found, onFind, listen, next, disabled }: {
   round?:HuntRound;pendingRound?:boolean;disabled?:boolean;lesson: Lesson; found: CharacterId[]; onFind: (id: CharacterId) => void; listen: (id: string) => void; next: () => void;
 }) {
-  const characters = lesson.characters;
-  const {scene,assets}=lessonData(lesson.id);
+  const data=lessonData(lesson.id),assets=data.assets;
+  const scene=round?.version===2?data.scenePool?.find(s=>s.id===round.sceneId)||data.scene:data.scene;
+  const targets=huntTargetIds(round,lesson.characters);
+  const characters=lesson.characters.filter(c=>targets.includes(c.id));
+  const allCharacters=[...lesson.characters,...(data.huntCandidates||[])];
   const sceneHash=assets.find(a=>a.id===scene.imageAssetId)!.sha256;
   const describe=(text:string)=>isPlainGarden(sceneHash)?text.replaceAll('字牌','汉字'):text;
   const locations=scene.slots;
   const offset = lessons.indexOf(lesson) % locations.length;
-  let invalid=false;
-  let hidingPlaces=characters.map((c,i)=>({...locations[(i+offset)%locations.length],characterId:c.id}));
-  if(round)try{hidingPlaces=resolveHuntRound(round,scene,assets.find(a=>a.id===scene.imageAssetId)!.sha256,characters);}catch{invalid=true;}
+  let invalid=round?.version===2&&!data.scene.play?.sceneIds.includes(round.sceneId);
+  let hidingPlaces=characters.map((c,i)=>({...locations[(i+offset)%locations.length],characterId:c.id,isTarget:true}));
+  if(round)try{hidingPlaces=resolveHuntRound(round,scene,assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters,data.huntCandidates);}catch{invalid=true;}
   const [hint, setHint] = useState<CharacterId | null>(null);
   const [message, setMessage] = useState('汉字藏在风景里，轻轻点一下试试。');
   const complete = characters.every(c => found.includes(c.id));
   const clicked=useRef(new Set<string>());useEffect(()=>{clicked.current.clear();},[found,disabled]);
   const find = (id: CharacterId) => {
+    if(!targets.includes(id)){if(!disabled)setMessage('这个字不是这次要找的，再和上面的三个字比一比。');return;}
     if (found.includes(id)||clicked.current.has(id)||disabled) return;
     clicked.current.add(id);
     onFind(id); setHint(null);
@@ -38,12 +42,12 @@ export function HiddenCharacters({ lesson, round,pendingRound,found, onFind, lis
     <div className="hunt-scene" role="group" aria-label={describe(scene.description)} data-round={round?.roundId||'legacy'} onClick={() => setMessage('再看看图里的汉字，和上面要找的字比一比，不着急。')}>
       <HuntBackground id={scene.imageAssetId} sha256={sceneHash} alt={scene.description}/>
       {hidingPlaces.map(place => {
-        const c = characters.find(c => c.id === place.characterId)!;
+        const c = allCharacters.find(c => c.id === place.characterId)!;
         const selected = found.includes(c.id);
         return <button key={c.id} disabled={disabled} className={`hidden-character ${selected ? 'found' : ''} ${hint === c.id ? 'hinted' : ''}`} style={{ left: `${place.x}%`, top: `${place.y}%` }} aria-label={`图中的${c.text}`} aria-pressed={selected} onClick={e => { e.stopPropagation(); find(c.id); }}>{c.text}{selected && <span aria-hidden="true">✓</span>}</button>;
       })}
     </div>
-    <div className="hunt-feedback" role="status"><strong>{found.length} / {characters.length} 已找到</strong><p>{complete ? '本课汉字都找到啦！一起去读小故事吧。' : message}</p></div>
-    <LearningActions>{complete ? <button className="primary" disabled={disabled} onClick={next}>都找到啦，去读故事 →</button> : <><button className="audio-button" disabled={disabled} onClick={() => { const place = hidingPlaces.find(p => !found.includes(p.characterId))!; setHint(place.characterId); setMessage(describe(place.clue)); }}>✦ 给我一点提示</button><button disabled={disabled} className="text-button hunt-skip" onClick={next}>和家长一起，先去读故事</button></>}</LearningActions>
+    <div className="hunt-feedback" role="status"><strong>{characters.filter(c=>found.includes(c.id)).length} / {characters.length} 已找到</strong><p>{complete ? '这次的目标都找到啦！一起去读小故事吧。' : message}</p></div>
+    <LearningActions>{complete ? <button className="primary" disabled={disabled} onClick={next}>都找到啦，去读故事 →</button> : <><button className="audio-button" disabled={disabled} onClick={() => { const place = hidingPlaces.find(p => p.isTarget&&!found.includes(p.characterId))!; setHint(place.characterId); setMessage(describe(place.clue)); }}>✦ 给我一点提示</button><button disabled={disabled} className="text-button hunt-skip" onClick={next}>和家长一起，先去读故事</button></>}</LearningActions>
   </div>;
 }

@@ -43,11 +43,14 @@ export async function lessonPackage(db:ReturnType<typeof database>, releaseId:st
  const sceneRow=sceneConfig?await db.huntSceneVersion.findUnique({where:{id:`${release.id}:${sceneConfig.id}`}}):null;
  if(!sceneRow) throw new Error('Scene unavailable');
  const scene=sceneRow.config as typeof manifest.huntScenes[number];
+ const scenePool=scene.play?manifest.huntScenes.filter(s=>scene.play!.sceneIds.includes(s.id)):undefined;
+ const huntCandidates=scene.play?manifest.lessons.flatMap(l=>l.characters).filter(c=>scene.play!.distractorIds.includes(c.id)):undefined;
  const needed=new Set([base.imageAssetId,scene.imageAssetId,...base.steps.map(s=>`audio-${s.audio}`),...base.characters.flatMap(c=>[`audio-${c.audio}`,`audio-word-${c.id}`]),...['meaning','hunt','answer-correct','answer-incorrect'].map(id=>`audio-${id}`)]);
  const characterImages:Record<string,string>={};
+ for(const s of scenePool||[])needed.add(s.imageAssetId);
  for(const c of base.characters) if(manifest.assets.some(a=>a.id===`image-character-${c.id}`)){characterImages[c.id]=`image-character-${c.id}`;needed.add(characterImages[c.id]);}
  const assets=await db.assetVersion.findMany({where:{releaseId:release.id,sourceId:{in:[...needed]}}});
- return lessonPackageSchema.parse({apiVersion:1,releaseId:release.id,contentVersion:release.contentVersion,lesson,scene,characterImages,assets:assets.map(a=>({...a.metadata as object,url:`/media/${a.objectKey}`}))});
+ return lessonPackageSchema.parse({apiVersion:1,releaseId:release.id,contentVersion:release.contentVersion,lesson,scene,scenePool,huntCandidates,characterImages,assets:assets.map(a=>({...a.metadata as object,url:`/media/${a.objectKey}`}))});
 }
 
 /** Public catalogs contain no learner data; only advertise strictly additive upgrades. */

@@ -1,4 +1,4 @@
-import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,huntRoundSchema,retryAnswerSchema} from '@learnbuddy/contracts';
+import {isCompatibleExpansion,validateManifest,learningOptions,createHuntRound,createPlayHuntRound,huntTargetIds,huntRoundSchema,retryAnswerSchema} from '@learnbuddy/contracts';
 import {randomInt} from 'node:crypto';
 import {HTTPException} from 'hono/http-exception';
 import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,LearningProgressState} from '@learnbuddy/contracts';
@@ -78,14 +78,22 @@ export async function startLearning(db:Db,accountId:string,learnerId:string,inpu
   let session=input.mode==='lesson'?await tx.learningSession.findFirst({where:{learnerId,lesson:{lessonId:input.lessonId},mode:'lesson',completedAt:null,requestId:{not:null}},orderBy:{lastActiveAt:'desc'},include:includes}):null;
   if(!session){
    let huntRound;
-   if(input.mode==='lesson'&&input.huntLayoutVersion===1){
+   if(input.mode==='lesson'&&input.huntLayoutVersion){
     const previous=await tx.learningSession.findFirst({where:{learnerId,lesson:{lessonId:input.lessonId},mode:'lesson'},orderBy:[{startedAt:'desc'},{id:'desc'}]});
     const ordinal=previous?(previous.huntRound?huntRoundSchema.parse(previous.huntRound).ordinal:0)+1:0;
     const release=await tx.contentRelease.findUniqueOrThrow({where:{id:lesson.releaseId}});
     const manifest=validateManifest(release.manifest),l=lesson.content as ContentManifest['lessons'][number];
     const theme=manifest.themes.find(t=>t.order===l.theme)!;
     const scene=manifest.huntScenes.find(s=>s.themeIds.includes(theme.id))!;
-    huntRound=createHuntRound(scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,l.characters,lesson.position,ordinal,input.requestId,previous?.huntRound?huntRoundSchema.parse(previous.huntRound):undefined);
+    const previousRound=previous?.huntRound?huntRoundSchema.parse(previous.huntRound):undefined;
+    if(input.huntLayoutVersion===2&&scene.play){
+     const siblings=manifest.lessons.filter(x=>x.theme===l.theme).map(x=>x.id);
+     const recent=await tx.learningSession.findFirst({where:{learnerId,mode:'lesson',lesson:{releaseId:lesson.releaseId,lessonId:{in:siblings}},huntRound:{path:['version'],equals:2}},orderBy:[{startedAt:'desc'},{id:'desc'}]});
+     const recentRound=recent?.huntRound?huntRoundSchema.parse(recent.huntRound):undefined;
+     const seenIds=new Set((await learningProgress(tx,learnerId)).seen);
+     const pool=manifest.lessons.flatMap(x=>x.characters).filter(c=>scene.play!.distractorIds.includes(c.id)).sort((a,b)=>Number(seenIds.has(b.id))-Number(seenIds.has(a.id)));
+     huntRound=createPlayHuntRound(manifest.huntScenes.filter(s=>scene.play!.sceneIds.includes(s.id)).map(s=>({...s,sha256:manifest.assets.find(a=>a.id===s.imageAssetId)!.sha256})),l.characters,pool,lesson.position,ordinal,input.requestId,recentRound?.version===2?recentRound.sceneId:undefined,previousRound);
+    }else huntRound=createHuntRound(scene,manifest.assets.find(a=>a.id===scene.imageAssetId)!.sha256,l.characters,lesson.position,ordinal,input.requestId,previousRound);
    }
    session=await tx.learningSession.create({data:{learnerId,lessonVersionId:lesson.id,mode:input.mode,requestId:input.requestId,currentStep,huntRound,reviewStepId:input.mode==='review'?(lesson.steps[currentStep].config as {id:string}).id:null},include:includes});
   }
@@ -155,7 +163,7 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
   }
   if(input.type==='hunt') {
    const lesson=session.lesson.content as ContentManifest['lessons'][number];
-   if(step.kind!=='hunt'||!lesson.characters.some(c=>c.id===input.characterId))throw invalid('找字目标不属于本课');
+   if(step.kind!=='hunt'||!huntTargetIds(session.huntRound?huntRoundSchema.parse(session.huntRound):undefined,lesson.characters).includes(input.characterId))throw invalid('不是本局找字目标');
    await tx.learningSession.update({where:{id:session.id},data:{huntFound:[...new Set([...(session.huntFound as string[]),input.characterId])]}});
   }
   if(input.type==='advance') {

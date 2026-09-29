@@ -1,5 +1,5 @@
 import type {LearningProgressState,LearningSessionState,LearningCommand,SyncEnvelope,SyncPlan,StartLearning} from '@learnbuddy/contracts';
-import {learningOptions} from '@learnbuddy/contracts';
+import {learningOptions,huntTargetIds} from '@learnbuddy/contracts';
 import {getSteps,lessons} from './contentRepository';
 export type OfflineRecord={generation:number;confirmed:LearningProgressState;view:LearningProgressState;plan?:SyncPlan;events:SyncEnvelope[];nextSeq:number;conflict?:string;start?:StartLearning};
 export const offlineKey=(accountId:string,learnerId:string)=>`learning:${accountId}:${learnerId}`;
@@ -26,7 +26,7 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
  }
  if(p)plan.presentations[step.id]=structuredClone(p);
  if(command.type==='hunt'){
-  if(step.kind!=='hunt'||!lessons.find(l=>l.id===s.lessonId)!.characters.some(c=>c.id===command.characterId))throw new Error('找字目标不属于本课');
+  if(step.kind!=='hunt'||!huntTargetIds(s.huntRound,lessons.find(l=>l.id===s.lessonId)!.characters).includes(command.characterId))throw new Error('不是本局找字目标');
   s.huntFound=[...new Set([...s.huntFound,command.characterId])];
  }
  if(command.type==='advance'){

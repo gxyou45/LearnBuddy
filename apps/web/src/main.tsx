@@ -19,7 +19,7 @@ import { CharacterIllustration } from './ContentImage';
 import { LessonPicture } from './ContentImage';
 import { HiddenCharacters } from './HiddenCharacters';
 import {isStaticDemo} from './staticDemo';
-import {createHuntRound} from '@learnbuddy/contracts';
+import {createHuntRound,createPlayHuntRound} from '@learnbuddy/contracts';
 import {lessonData} from './contentRepository';
 
 function House({ small = false }: { small?: boolean }) {
@@ -67,8 +67,10 @@ function App() {
     if(cloud||route!=='lesson'||!content.ready||p.huntRoundIndex===undefined||p.huntRound)return;
     try{
       const data=lessonData(lesson.id),scene=data.scene;
-      const round=createHuntRound(scene,data.assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters,lessons.indexOf(lesson),p.huntRoundIndex,p.session,p.lessonProgress[lesson.id]?.huntRound);
-      setP(old=>old.session===round.roundId&&!old.huntRound?{...old,huntRound:round}:old);
+      const previous=p.lessonProgress[lesson.id]?.huntRound;
+      const pool=[...(data.huntCandidates||[])].sort((a,b)=>Number(p.seen.includes(b.id))-Number(p.seen.includes(a.id)));
+      const round=scene.play?createPlayHuntRound((data.scenePool||[]).map(s=>({...s,sha256:data.assets.find(a=>a.id===s.imageAssetId)!.sha256})),lesson.characters,pool,lessons.indexOf(lesson),p.huntRoundIndex,p.session,p.huntRecentScenes?.[lesson.theme],previous):createHuntRound(scene,data.assets.find(a=>a.id===scene.imageAssetId)!.sha256,lesson.characters,lessons.indexOf(lesson),p.huntRoundIndex,p.session,previous);
+      setP(old=>old.session===round.roundId&&!old.huntRound?{...old,huntRound:round,...(round.version===2?{huntRecentScenes:{...old.huntRecentScenes,[lesson.theme]:round.sceneId}}:{})}:old);
     }catch{setStorageError('找字场景暂时无法准备，原有进度已保留，可以先去读故事。');}
   },[cloud,route,content.ready,p.session,p.huntRoundIndex,p.huntRound,lesson.id]);
   const storageBlocked = useRef(false);

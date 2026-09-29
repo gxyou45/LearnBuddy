@@ -1,9 +1,9 @@
 import { characters, contentVersion, releaseId, getSteps, steps, lessons, type CharacterId } from './contentRepository';
-import {huntRoundSchema,guestRetrySchema,type HuntRound,type RetryAnswer} from '@learnbuddy/contracts';
+import {huntRoundSchema,huntTargetIds,guestRetrySchema,type HuntRound,type RetryAnswer} from '@learnbuddy/contracts';
 export const STORAGE_KEY = 'learnbuddy:v1:progress';
 export type Attempt = { id: string; session: string; step: string; characterId: CharacterId; kind: 'sound' | 'meaning'; correct: boolean; hintUsed: boolean; skipped: boolean; date: string; timestamp: number;selectedId?:string|null;retries?:(RetryAnswer&{id:string;timestamp:number})[] };
 export type LessonProgress = { stepId?: string; started: boolean; completed: boolean; step: number; session: string; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number };
-export type Progress = { releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
+export type Progress = { huntRecentScenes?:Record<string,string>; releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
 export const fresh = (): Progress => ({ releaseId, activeLesson: lessons[0]?.id ?? 'family', lessonProgress: {}, unlocked: [], schemaVersion: 1, contentVersion, started: false, completed: false, step: 0, session: '', sound: true, attempts: [], seen: [], huntFound: [], observations: {} });
 export function localDate(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 
@@ -11,6 +11,7 @@ export function parseProgress(raw: string | null): Progress {
   if (!raw) return fresh();
   const p = JSON.parse(raw) as Progress;
   const charIds=characters.map(c=>c.id);
+  if(p.huntRecentScenes&&(!p.huntRecentScenes||Array.isArray(p.huntRecentScenes)||typeof p.huntRecentScenes!=='object'||Object.entries(p.huntRecentScenes).some(([k,v])=>!/^\d+$/.test(k)||typeof v!=='string'||!/^[a-z0-9-]+$/.test(v))))throw new Error('Invalid recent hunt scenes');
   if(p.releaseId && p.releaseId!==releaseId) throw new Error('Content release mismatch');
   if (p.schemaVersion !== 1 || typeof p.started !== 'boolean' || typeof p.completed !== 'boolean' || typeof p.sound !== 'boolean' || typeof p.session !== 'string' || !Number.isInteger(p.step) || p.step < 0 || !Array.isArray(p.attempts) || !Array.isArray(p.seen) || !p.observations || typeof p.observations !== 'object') throw new Error('Invalid progress');
   if (!p.seen.every(x => charIds.includes(x)) || !p.attempts.every(a => a && typeof a.id === 'string' && typeof a.session === 'string' && typeof a.step === 'string' && charIds.includes(a.characterId) && ['sound','meaning'].includes(a.kind) && typeof a.correct === 'boolean' && typeof a.hintUsed === 'boolean' && typeof a.skipped === 'boolean' && /^\d{4}-\d{2}-\d{2}$/.test(a.date) && Number.isFinite(a.timestamp))) throw new Error('Invalid attempts');
@@ -29,7 +30,9 @@ export function parseProgress(raw: string | null): Progress {
     if(state.huntRoundIndex!==undefined&&(!Number.isSafeInteger(state.huntRoundIndex)||state.huntRoundIndex<0))throw new Error('Invalid hunt round index');
     if(state.huntRound){
       const round=huntRoundSchema.parse(state.huntRound),targets=lessons.find(l=>l.id===id)!.characters;
-      if(round.ordinal!==state.huntRoundIndex||round.placements.length!==targets.length||new Set(round.placements.map(p=>p.characterId)).size!==targets.length||new Set(round.placements.map(p=>p.slotId)).size!==targets.length||round.placements.some(p=>!targets.some(c=>c.id===p.characterId)))throw new Error('Invalid saved hunt round');
+      if(round.ordinal!==state.huntRoundIndex)throw new Error('Invalid saved hunt round');
+      if(round.version===1&&(round.placements.length!==targets.length||new Set(round.placements.map(p=>p.characterId)).size!==targets.length||new Set(round.placements.map(p=>p.slotId)).size!==targets.length||round.placements.some(p=>!targets.some(c=>c.id===p.characterId))))throw new Error('Invalid saved hunt round');
+      if(round.version===2&&(round.placements.some(p=>p.isTarget?!targets.some(c=>c.id===p.characterId):targets.some(c=>c.id===p.characterId)||!characters.some(c=>c.id===p.characterId))||new Set(round.placements.map(p=>characters.find(c=>c.id===p.characterId)?.text)).size!==round.placements.length||state.huntFound.some(id=>!huntTargetIds(round,targets).includes(id))))throw new Error('Invalid saved play hunt');
     }
   }
   // Resolve each legacy position to the same activity after inserting word steps.

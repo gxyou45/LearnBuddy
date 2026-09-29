@@ -44,6 +44,7 @@ export function installLesson(input:unknown) {
  const files=new Map(data.assets.map(a=>[a.id,a]));
  const required=[data.lesson.imageAssetId,data.scene.imageAssetId,...Object.values(data.characterImages),...data.lesson.steps.map(s=>`audio-${s.audio}`),...data.lesson.characters.flatMap(c=>[`audio-${c.audio}`,`audio-word-${c.id}`])];
  if(required.some(id=>!files.has(id))) throw new Error('Incomplete lesson package');
+ if(data.scene.play&&(data.scene.play.sceneIds.some(id=>!data.scenePool?.some(s=>s.id===id&&files.has(s.imageAssetId)))||data.scene.play.distractorIds.some(id=>!data.huntCandidates?.some(c=>c.id===id))))throw new Error('Incomplete hunt play package');
  for(const a of data.assets){
   if(a.url!==`/media/${a.objectKey}` || !a.objectKey.includes(a.sha256)) throw new Error('Invalid asset URL');
   if(a.cues)validateReadingCues(a.cues,a.text,a.sha256,a.durationMs);

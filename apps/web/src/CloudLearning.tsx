@@ -78,7 +78,7 @@ export function CloudProvider({initial,storage,children}:{initial:LearningProgre
    if(ref.current.events.length)await flush();if(ref.current.events.length||ref.current.conflict)throw new Error('请先同步或处理本机记录，再开始其他课次');
    const existing=ref.current.view.sessions.find(s=>s.lessonId===lessonId&&!s.completed);
    if(!navigator.onLine){if(existing&&ref.current.plan?.session.id===existing.id&&!review){setTimeout(()=>{if(mounted.current)onSuccess(existing);},0);return;}throw new Error('新课次需要联网，离线只能继续已准备的课次');}
-   const body:StartLearning={requestId:cloudId(),releaseId:review?.releaseId||releaseId,lessonId,mode:review?'review':'lesson',huntLayoutVersion:1,...(review?{questionVersionId:review.questionVersionId}:{})};
+   const body:StartLearning={requestId:cloudId(),releaseId:review?.releaseId||releaseId,lessonId,mode:review?'review':'lesson',huntLayoutVersion:2,...(review?{questionVersionId:review.questionVersionId}:{})};
    await persist({...ref.current,start:body});await flush();const session=ref.current.plan!.session;
    setTimeout(()=>{if(mounted.current)onSuccess(session);},0);
   }),

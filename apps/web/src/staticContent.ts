@@ -42,6 +42,8 @@ export function staticLessonPackage(id: string): LessonPackage {
   const theme = manifest.themes.find(item => item.order === lesson.theme);
   const scene = theme && manifest.huntScenes.find(item => item.themeIds.includes(theme.id));
   if (!scene) throw new Error(`静态课程缺少找字场景：${id}`);
+  const scenePool=scene.play?manifest.huntScenes.filter(s=>scene.play!.sceneIds.includes(s.id)):undefined;
+  const huntCandidates=scene.play?manifest.lessons.flatMap(l=>l.characters).filter(c=>scene.play!.distractorIds.includes(c.id)):undefined;
   const required = new Set<string>([
     lesson.imageAssetId,
     scene.imageAssetId,
@@ -50,6 +52,7 @@ export function staticLessonPackage(id: string): LessonPackage {
     ...lesson.steps.map(step => `audio-${step.audio}`),
     ...lesson.characters.flatMap(character => [`audio-${character.audio}`, `audio-word-${character.id}`]),
   ]);
+  for(const s of scenePool||[])required.add(s.imageAssetId);
   const assets = [...required].map(assetId => {
     const asset = assetMap.get(assetId);
     if (!asset) throw new Error(`静态课程缺少素材：${assetId}`);
@@ -62,6 +65,7 @@ export function staticLessonPackage(id: string): LessonPackage {
     lesson,
     assets,
     scene,
+    scenePool,huntCandidates,
     characterImages: {},
   };
 }

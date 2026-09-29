@@ -6,6 +6,7 @@ import {join} from 'node:path';
 import {database} from '../dist/db.js';
 import {createAuth} from '../dist/auth.js';
 import {createApp} from '../dist/app.js';
+import {huntTemplates} from '@learnbuddy/contracts';
 const db=database(),origin='http://localhost:8080';
 const auth=createAuth(db,{local:true,origins:[origin],secret:randomBytes(48).toString('base64url')},async()=>{});
 const app=createApp(db,auth,[origin]);
@@ -24,12 +25,16 @@ test('content administration: drafts, publication, media and rollback',async t=>
  const child=await json('/api/v1/learners',{cookie:parent,body:{nickname:'旧版续学'}});
  const session=await json(`/api/v1/learners/${child.id}/sessions`,{cookie:parent,body:{requestId:randomUUID(),releaseId:original,lessonId:'family',mode:'lesson'}});
  let draft,releaseId,upload;
+ let templateAsset;
  await t.test('all editorial endpoints require administrator and trusted Origin',async()=>{
   for(const cookie of ['',parent]){
    const expected=cookie?403:401;
    for(const [path,method,body] of [['/content','GET'],['/drafts','POST',{baseReleaseId:original}],['/uploads','POST',{}],['/releases','POST',{}],['/media/'+'a'.repeat(64),'GET'],['/drafts/00000000-0000-4000-8000-000000000000','GET']])assert.equal((await request('/api/v1/admin'+path,{cookie,method,body})).status,expected);
   }
   assert.equal((await request('/api/v1/admin/drafts',{cookie:admin,from:'https://evil.test',body:{baseReleaseId:original}})).status,403);
+  for(const cookie of ['',parent])assert.equal((await request('/api/v1/admin/hunt-templates/living-room-v1',{cookie,body:{}})).status,cookie?403:401);
+  assert.equal((await request('/api/v1/admin/hunt-templates/living-room-v1',{cookie:admin,from:'https://evil.test',body:{}})).status,403);
+  assert.equal((await request('/api/v1/admin/hunt-templates/unknown',{cookie:admin,body:{}})).status,404);
  });
  await t.test('draft content stays private; concurrent saves detect a lost update',async()=>{
   draft=await json('/api/v1/admin/drafts',{cookie:admin,body:{baseReleaseId:original}});
@@ -69,6 +74,26 @@ test('content administration: drafts, publication, media and rollback',async t=>
   const channel=(await json('/api/v1/admin/content',{cookie:admin})).channel;
   assert.equal((await request('/api/v1/admin/releases',{cookie:admin,body:{draftId:d.id,revision:d.revision,channelRevision:channel.revision}})).status,422);
  });
+ await t.test('trusted scene templates stage privately, deduplicate and save with fixed positions',async()=>{
+  for(const template of huntTemplates){
+   const path=`/api/v1/admin/hunt-templates/${template.id}`;
+   templateAsset=await json(path,{cookie:admin,body:{}});
+   assert.deepEqual(await json(path,{cookie:admin,body:{}}),templateAsset);
+   assert.equal((await request(`/media/${templateAsset.objectKey}`)).status,404);
+   const preview=await request(`/api/v1/admin/media/${templateAsset.sha256}`,{cookie:admin});
+   assert.equal(await preview.text(),template.svg);assert.equal(preview.headers.get('content-type'),'image/svg+xml');
+   assert.equal((await request(`/api/v1/admin/media/${templateAsset.sha256}`,{cookie:parent})).status,403);
+   assert.equal(await db.contentUpload.count({where:{sha256:templateAsset.sha256}}),1);
+   draft.manifest.assets.push(templateAsset);
+   Object.assign(draft.manifest.huntScenes[0],{imageAssetId:templateAsset.id,description:template.description,slots:template.slots});
+   draft=await json(`/api/v1/admin/drafts/${draft.id}`,{cookie:admin,method:'PUT',body:{revision:draft.revision,manifest:draft.manifest}});
+   assert.equal((await json(`/api/v1/admin/drafts/${draft.id}/validate`,{cookie:admin,body:{}})).valid,true);
+  }
+  const sceneIds=huntTemplates.map(t=>`play-${t.id}`);
+  for(const [i,t] of huntTemplates.entries())draft.manifest.huntScenes.push({id:sceneIds[i],imageAssetId:`image-hunt-${t.id}`,themeIds:[],description:t.description,slots:t.slots});
+  draft.manifest.huntScenes[0].play={sceneIds,distractorIds:draft.manifest.lessons.flatMap(l=>l.characters).slice(0,15).map(c=>c.id)};
+  draft=await json(`/api/v1/admin/drafts/${draft.id}`,{cookie:admin,method:'PUT',body:{revision:draft.revision,manifest:draft.manifest}});
+ });
  await t.test('publication is atomic, retry safe, preserves old versions, supports media Range',async()=>{
   const channel=(await json('/api/v1/admin/content',{cookie:admin})).channel;
   assert.equal((await json(`/api/v1/admin/drafts/${draft.id}/validate`,{cookie:admin,body:{}})).valid,true);
@@ -87,10 +112,43 @@ test('content administration: drafts, publication, media and rollback',async t=>
   const publishedWord=(await json(`/api/v1/releases/${releaseId}/lessons/family`)).assets.find(a=>a.id==='audio-word-wo');
   assert.equal(publishedWord.cues.status,'reviewed');assert.equal(publishedWord.cues.audioSha256,publishedWord.sha256);assert.equal(publishedWord.cues.ends.length,Array.from(publishedWord.text).length);
   assert.equal((await json(`/api/v1/releases/${original}/lessons/family`)).lesson.story.text,'爸爸妈妈和我一起看书。');
+  const newScene=(await json(`/api/v1/releases/${releaseId}/lessons/family`)).scene;
+  assert.equal(newScene.imageAssetId,templateAsset.id);assert.equal(newScene.slots.length,7);
+  assert.notEqual((await json(`/api/v1/releases/${original}/lessons/family`)).scene.imageAssetId,templateAsset.id);
+  assert.equal((await request(`/media/${templateAsset.objectKey}`)).status,200);
   assert.equal(await db.lessonVersion.count({where:{releaseId}}),10);
   const media=await app.request(origin+`/media/${upload.objectKey}`,{headers:{Range:'bytes=0-15'}});assert.equal(media.status,206);assert.equal((await media.arrayBuffer()).byteLength,16);
   assert.equal((await request('/media/.drafts/'+upload.objectKey)).status,404);
   assert.equal((await request(`/api/v1/admin/drafts/${draft.id}`,{cookie:admin,method:'PUT',body:{revision:draft.revision+1,manifest:draft.manifest}})).status,409);
+ });
+ await t.test('v2 hunts persist roles, rotate across theme lessons and reject distractor evidence',async()=>{
+  const pkg=await json(`/api/v1/releases/${releaseId}/lessons/family`);
+  assert.equal(pkg.scenePool.length,2);assert.equal(pkg.huntCandidates.length,15);
+  assert.ok(pkg.scenePool.every(s=>pkg.assets.some(a=>a.id===s.imageAssetId)));
+  const learner=await json('/api/v1/learners',{cookie:parent,body:{nickname:'新找字'}}),path=`/api/v1/learners/${learner.id}`;
+  await json(path+'/learning-settings',{cookie:parent,method:'PATCH',body:{openAllCourses:true}});
+  const input={requestId:randomUUID(),releaseId,lessonId:'family',mode:'lesson',huntLayoutVersion:2};
+  let state=await json(path+'/sessions',{cookie:parent,body:input});const first=state.session.huntRound;
+  assert.equal(first.version,2);assert.equal(first.placements.length,5);assert.equal(first.placements.filter(p=>p.isTarget).length,3);
+  assert.deepEqual((await json(path+'/sessions',{cookie:parent,body:input})).session.huntRound,first);
+  const event=async(type,fields={})=>{state=await json(path+'/events',{cookie:parent,body:{clientEventId:randomUUID(),sessionId:state.session.id,expectedRevision:state.session.revision,type,...fields}});};
+  while(state.session.stepIndex<13){if(state.session.presentation&&!state.session.presentation.answer)await event('answer',{presentationId:state.session.presentation.id,selectedId:null,skipped:true});await event('advance');}
+  const attemptCount=await db.attempt.count(),skills=state.progress.skills,seen=state.progress.seen;
+  const decoy=first.placements.find(p=>!p.isTarget).characterId,target=first.placements.find(p=>p.isTarget).characterId;
+  assert.equal((await request(path+'/events',{cookie:parent,body:{clientEventId:randomUUID(),sessionId:state.session.id,expectedRevision:state.session.revision,type:'hunt',characterId:decoy}})).status,400);
+  const streamId=randomUUID();await json(path+'/sync-streams',{cookie:parent,body:{streamId,sessionId:state.session.id}});
+  const wrong={seq:1,occurredAt:new Date().toISOString(),timeZone:'Asia/Shanghai',command:{clientEventId:randomUUID(),sessionId:state.session.id,expectedRevision:state.session.revision,type:'hunt',characterId:decoy}};
+  const rejected=await json(path+'/events:batch',{cookie:parent,body:{streamId,events:[wrong]}});assert.equal(rejected.receipts[0].status,'rejected');
+  await event('hunt',{characterId:target});assert.deepEqual(state.session.huntFound,[target]);assert.deepEqual(state.session.huntRound,first);
+  assert.equal(await db.attempt.count(),attemptCount);assert.deepEqual(state.progress.skills,skills);assert.deepEqual(state.progress.seen,seen);
+  const otherLesson=await json(path+'/sessions',{cookie:parent,body:{...input,requestId:randomUUID(),lessonId:'home'}});assert.notEqual(otherLesson.session.huntRound.sceneId,first.sceneId);
+  await event('advance');await event('advance');
+  const replay=await json(path+'/sessions',{cookie:parent,body:{...input,requestId:randomUUID()}});assert.equal(replay.session.huntRound.ordinal,1);assert.equal(replay.session.huntRound.placements.length,6);assert.notEqual(replay.session.huntRound.sceneId,otherLesson.session.huntRound.sceneId);
+  const imported=await json('/api/v1/learners',{cookie:parent,body:{nickname:'导入找字'}});
+  const raw={schemaVersion:1,contentVersion:4,releaseId,activeLesson:'family',lessonProgress:{},unlocked:[],started:true,completed:false,step:13,stepId:'hunt',session:'guest',sound:true,seen:[],observations:{},attempts:[],huntFound:[target],huntRound:first,huntRoundIndex:0};
+  const importedProgress=await json(`/api/v1/learners/${imported.id}/imports`,{cookie:parent,body:{source:'legacy_import',progress:raw}});assert.deepEqual(importedProgress.progress.sessions[0].huntRound,first);
+  const oldClient=await json('/api/v1/learners',{cookie:parent,body:{nickname:'旧版客户端'}});
+  const oldRound=await json(`/api/v1/learners/${oldClient.id}/sessions`,{cookie:parent,body:{...input,requestId:randomUUID(),huntLayoutVersion:1}});assert.equal(oldRound.session.huntRound.version,1);
  });
  await t.test('existing learner continues its original question version after a new publication',async()=>{
   const root=`/api/v1/learners/${child.id}`;
