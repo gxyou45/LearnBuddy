@@ -34,6 +34,7 @@ test('auto sound, wrong corrections and half-second advance preserve first evide
  await option(page,'爸').click();await expect(page.locator('.feedback')).toContainText('换一个答案');
  await expect(option(page,'我')).toBeEnabled();
  const wrong=await state(page);expect(wrong.stepId).toBe('sound-wo');expect(wrong.attempts.at(-1).correct).toBe(false);
+ expect(wrong.attempts.at(-1).scheduleUsable).toBe(false);
  // An unrelated interaction must not advance a wrong answer after the success delay.
  await page.getByRole('button',{name:'听听要找哪个字'}).click();await expect(option(page,'我')).toBeEnabled();
  expect((await state(page)).stepId).toBe('sound-wo');
@@ -61,6 +62,7 @@ test('blocked autoplay leaves choices available; manual replay and parent help r
  await expect(option(page,'我')).toBeEnabled();expect((await state(page)).attempts).toHaveLength(0);
  await option(page,'爸').click();await expect(page.locator('.feedback')).toContainText('换一个答案');
  await page.evaluate(()=>(window as any).__denyAudio=false);
+ expect((await state(page)).attempts.at(-1).scheduleUsable).toBe(false);
  await page.getByRole('button',{name:'听听要找哪个字'}).click();await expect(option(page,'我')).toBeEnabled({timeout:20000});
  await option(page,'我').click();await expect.poll(async()=>(await state(page)).stepId).toBe('sound-ba');
  await page.getByRole('button',{name:'请家长帮一帮'}).click();await option(page,'爸').click();

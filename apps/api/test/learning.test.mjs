@@ -92,6 +92,9 @@ test('online learning authority, ownership, idempotence and evidence',async t=>{
  });
  await t.test('review evidence changes separately from the formal course cursor and retained completion',async()=>{
   const formal=state.session;
+  // The earlier wrong answer rests today; move this isolated fixture to yesterday.
+  assert.ok(!(await json(root+'/reviews',{cookie})).items.some(q=>q.targetId==='wo'));
+  await db.attempt.updateMany({where:{targetId:'wo',presentation:{session:{learnerId:child}}},data:{createdAt:new Date(Date.now()-86400000)}});
   await db.learningSkill.updateMany({where:{learnerId:child,targetId:'wo',kind:'sound'},data:{dueDate:'2000-01-01'}});
   const queue=await json(root+'/reviews',{cookie});const item=queue.items.find(q=>q.targetId==='wo'&&q.kind==='sound');assert.ok(item);assert.equal(queue.timeZone,'Asia/Shanghai');
   await start({mode:'review',questionVersionId:item.questionVersionId});await send('audio',{presentationId:state.session.presentation.id,result:'played'});await answer('wo');await send('advance');

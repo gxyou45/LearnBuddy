@@ -40,6 +40,11 @@ test('garden and lesson-end keep the selected kind and bounded distinct targets'
   await page.getByRole('button',{name:'这次先跳过',exact:true}).click();
  }
  expect(new Set(targets).size).toBe(5);
+ expect(targets).not.toContain('我'); // Answered in the garden earlier today, including its other skill.
  expect(targets.filter(x=>['我','爸','妈'].includes(x))).toHaveLength(2);
- await expect(page.getByRole('button',{name:'开始回顾 →',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'开始回顾 →',exact:true})).toHaveCount(0);
+ await page.reload();
+ await expect(page.getByRole('heading',{name:'今天的花园很轻松',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'开始回顾 →',exact:true})).toHaveCount(0);
+ await page.screenshot({path:'test-results/review-cooldown-finished-320.png'});
 });

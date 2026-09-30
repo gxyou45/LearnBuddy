@@ -38,3 +38,22 @@ it('retry success cannot erase the original wrong candidate or add another quest
  const p=fresh();p.attempts=[{id:'a',session:'s',step:'sound-wo',characterId:'wo',kind:'sound',correct:false,hintUsed:false,skipped:false,date:'2026-09-29',timestamp:1,retries:[{id:'r',timestamp:2,selectedId:'wo',correct:true,skipped:false}]}];
  expect(guestReviewItems(p,today)).toMatchObject([{targetId:'wo',wrongCount:1,status:'practice'}]);
 });
+it('guest cooldown crosses entries and kinds, survives serialization, and expires next day',()=>{
+ const p=fresh();p.attempts=['sound','meaning'].map(kind=>({id:kind,session:'s',step:`${kind}-wo`,characterId:'wo',kind:kind as Attempt['kind'],correct:false,hintUsed:false,skipped:false,date:'2026-09-29',timestamp:1}));
+ p.attempts.push({...p.attempts[0],id:'review',step:'review-sound-wo',date:today,skipped:true});
+ const restored=JSON.parse(JSON.stringify(p));
+ expect(guestReviewItems(restored,today)).toEqual([]);
+ expect(guestReviewItems(restored,today,['wo'])).toEqual([]);
+ expect(guestReviewItems(restored,'2026-10-01')).toHaveLength(1);
+});
+it('guest schedule requires new audio evidence and lesson errors rest before comprehensive practice',()=>{
+ const p=fresh();
+ const base:Attempt={id:'first',session:'s',step:'sound-wo',characterId:'wo',kind:'sound',correct:true,hintUsed:false,skipped:false,date:'2026-09-28',timestamp:1,scheduleUsable:true};
+ p.attempts=[base,{...base,id:'second',date:'2026-09-29',scheduleUsable:false}];
+ expect(guestReviewItems(p,today)[0].dueDate).toBe('2026-09-29');
+ p.attempts[1].scheduleUsable=true;expect(guestReviewItems(p,today)).toEqual([]);
+ expect(guestReviewItems(p,'2026-10-02')[0].dueDate).toBe('2026-10-02');
+ p.attempts.push({...base,id:'wrong',date:today,correct:false});
+ expect(guestReviewItems(p,today,['wo'])).toEqual([]);
+ expect(guestReviewItems(p,'2026-10-01')[0].dueDate).toBe('2026-10-01');
+});

@@ -40,8 +40,10 @@ test('fixed rounds resume across clients, reject stale changes, preserve answers
   await db.learnerLesson.create({data:{learnerId:child.id,lessonId:m.lessons[0].id}});
   const warmup=await openReviewRound(db,account.id,child.id,{requestId:randomUUID(),entry:'warmup',lessonId:m.lessons[1].id});
   assert.equal(warmup.round.items.length,2);assert.equal(warmup.round.entry,'warmup');assert.equal(warmup.round.lessonId,m.lessons[1].id);
+  assert.ok(warmup.round.items.every(x=>x.targetId!==first.round.items[0].targetId));
   await closeReviewRound(db,account.id,child.id,(await readReviewRound(db,child.id)).round.id);
-  await assert.rejects(()=>openReviewRound(db,account.id,child.id,input));
+  // Either concurrent request may win; only the stored round ID is a used request.
+  await assert.rejects(()=>openReviewRound(db,account.id,child.id,{...input,requestId:first.round.id}));
   await db.$transaction(tx=>purgeLearner(tx,account.id,child.id));assert.equal(await db.learner.count({where:{id:child.id}}),0);
  }finally{await db.$disconnect();}
 });

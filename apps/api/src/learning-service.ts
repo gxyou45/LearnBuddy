@@ -5,7 +5,7 @@ import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,
 import type {Prisma} from './generated/prisma/client.js';
 import type {database} from './db.js';
 import {RULE_VERSION,dayInZone,nextDay,independent,skillStatus,characterStable} from './learning-rules.js';
-import {selectReviewItems,reviewRoundSchema,type ReviewCandidate} from '@learnbuddy/contracts';
+import {selectReviewItems,reviewSchedule,reviewCooling,reviewRoundSchema,type ReviewCandidate} from '@learnbuddy/contracts';
 type Tx=Prisma.TransactionClient;
 type Db=ReturnType<typeof database>;
 const conflict=(message='这节课已在其他页面更新，请读取最新进度后继续')=>new HTTPException(409,{message});
@@ -165,7 +165,9 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
    const prior=await tx.learningSkill.findUnique({where:{learnerId_targetId_kind:{learnerId,targetId,kind:step.kind}}});
    const recent=await tx.attempt.findMany({where:{targetId,skillType:step.kind,timeTrusted:true,prompted:false,skipped:false,audioFailed:false,OR:[{skillType:'meaning'},{audioHeard:true}],presentation:{session:{learnerId}}},orderBy:[{createdAt:'desc'},{id:'desc'}],take:6});
    const status=valid&&attempt.timeTrusted?skillStatus(recent,learner.learningTimeZone):prior?.status??'practice';
-   const dueDate=valid&&attempt.timeTrusted||!prior?nextDay(dayInZone(now,learner.learningTimeZone)):prior.dueDate;
+   const history=await tx.attempt.findMany({where:{targetId,skillType:step.kind,presentation:{session:{learnerId}}},orderBy:[{createdAt:'asc'},{id:'asc'}]});
+   const scheduled=reviewSchedule(history.map(a=>({day:dayInZone(a.createdAt,learner.learningTimeZone),correct:a.correct,prompted:a.prompted,skipped:a.skipped,usable:!a.audioFailed&&(a.skillType!=='sound'||a.audioHeard),trusted:a.timeTrusted})),dayInZone(history[0].createdAt,learner.learningTimeZone));
+   const dueDate=attempt.timeTrusted&&!attempt.skipped&&!attempt.audioFailed&&(step.kind!=='sound'||attempt.audioHeard)?scheduled.dueDate:prior?.dueDate??nextDay(dayInZone(now,learner.learningTimeZone));
    await tx.learningSkill.upsert({where:{learnerId_targetId_kind:{learnerId,targetId,kind:step.kind}},create:{learnerId,targetId,kind:step.kind,status,dueDate,wrongCount:wrong?1:0,questionVersionId:p!.questionVersionId,ruleVersion:RULE_VERSION},update:{status,dueDate,wrongCount:{increment:wrong?1:0},questionVersionId:p!.questionVersionId,ruleVersion:RULE_VERSION}});
    if(wrong)await tx.mistakeItem.upsert({where:{learnerId_questionVersionId:{learnerId,questionVersionId:p!.questionVersionId}},create:{learnerId,questionVersionId:p!.questionVersionId,targetId,kind:step.kind,latestWrongAttemptId:attempt.id},update:{wrongCount:{increment:1},status,lastWrongAt:now,latestWrongAttemptId:attempt.id}});
    if(valid&&attempt.timeTrusted)await tx.mistakeItem.updateMany({where:{learnerId,targetId,kind:step.kind},data:{status}});
@@ -199,7 +201,11 @@ export async function reviewQueue(tx:Tx,learnerId:string,lessonId?:string) {
   const lesson=await tx.lessonVersion.findUnique({where:{releaseId_lessonId:{releaseId:learner.learningReleaseId!,lessonId}}});
   if(!lesson)throw missing();targets=(lesson.content as ContentManifest['lessons'][number]).characters.map(c=>c.id);
  }
- const rows=selectReviewItems(candidates.map(row=>({...row,kind:row.kind as ReviewCandidate['kind'],status:row.status as ReviewCandidate['status']})),today,targets);
+ // The 48-hour bound covers every local calendar day, including DST changes.
+ // Server receipt dates are used; offline client timestamps cannot bypass cooldown.
+ const recent=await tx.attempt.findMany({where:{createdAt:{gte:new Date(Date.now()-48*60*60*1000)},presentation:{session:{learnerId}}},include:{presentation:{select:{session:{select:{mode:true}}}}}});
+ const cooling=new Set(recent.filter(a=>reviewCooling({day:dayInZone(a.createdAt,learner.learningTimeZone),review:a.presentation.session.mode==='review',correct:a.correct,prompted:a.prompted,skipped:a.skipped},today)).map(a=>a.targetId));
+ const rows=selectReviewItems(candidates.filter(row=>!cooling.has(row.targetId)).map(row=>({...row,kind:row.kind as ReviewCandidate['kind'],status:row.status as ReviewCandidate['status']})),today,targets);
  const items=[];
  for(const s of rows){const question=await tx.questionVersion.findUniqueOrThrow({where:{id:s.questionVersionId},include:{step:{include:{lesson:true}}}});items.push({targetId:s.targetId,kind:s.kind,dueDate:s.dueDate,questionVersionId:s.questionVersionId,lessonId:question.step.lesson.lessonId,releaseId:question.step.lesson.releaseId,ruleVersion:s.ruleVersion});}
  return {today,timeZone:learner.learningTimeZone,items};

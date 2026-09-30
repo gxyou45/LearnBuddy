@@ -13,7 +13,7 @@ import {learningOptions,type LearningSessionState,type RetryAnswer} from '@learn
 export type RemoteActivity={presentation:LearningSessionState['presentation'];busy:boolean;answer:(selectedId:string|null,skipped:boolean,retry:boolean)=>Promise<boolean>;hint:()=>Promise<boolean>;audio:(result:'played'|'failed')=>Promise<boolean>};
 export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,journey,optionOrder,initialPrompted,onHint}:{
  lesson:Lesson;step:Step;listen:(id:string,waitForEnd?:boolean)=>void|Promise<boolean|void>;next:()=>void|Promise<boolean|void>;
- answer:(correct:boolean,hint:boolean,skipped:boolean,selectedId:string|null,retry:boolean)=>void;attempt?:Attempt;remote?:RemoteActivity;
+ answer:(correct:boolean,hint:boolean,skipped:boolean,selectedId:string|null,retry:boolean,scheduleUsable:boolean)=>void;attempt?:Attempt;remote?:RemoteActivity;
  trace?:{text:string;storageKey:string};
  journey?:{steps:readonly Step[];solvedSteps:readonly string[]};
  optionOrder?:readonly string[];initialPrompted?:boolean;onHint?:()=>void;
@@ -55,7 +55,7 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
   let played=false;
   try{played=await latest.current.listen(step.audio,true)===true;}catch{/* Manual playback remains available. */}
   if(!live.current||run!==audioRun.current)return;
-  if(latest.current.remote?.presentation)audioEvidence.current.add(played?'played':'failed');
+  audioEvidence.current.add(played?'played':'failed');
   setPlaying(false);if(step.kind==='sound')setHeard(played);
  };
  const playRef=useRef(play);playRef.current=play;
@@ -81,7 +81,7 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
     }
     if(!live.current||!await remote.answer(id,skipped,retry))return;
    }
-   else{const result={selectedId:id,correct,skipped};latest.current.saved=result;latest.current.done=correct||skipped;setAnswer(result);setRetried(retry);answer(correct,!!hint||assisted,skipped,id,retry);}
+   else{const result={selectedId:id,correct,skipped};latest.current.saved=result;latest.current.done=correct||skipped;setAnswer(result);setRetried(retry);answer(correct,!!hint||assisted,skipped,id,retry,!audioEvidence.current.has('failed')&&(step.kind!=='sound'||audioEvidence.current.has('played')));}
    if(live.current&&skipped)advance();
   }finally{locked.current=false;}
  };
