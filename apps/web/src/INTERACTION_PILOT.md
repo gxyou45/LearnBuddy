@@ -1,6 +1,6 @@
 # 前十课互动实现边界
 
-状态：开发试点，未发布；笔顺、年龄适宜性和安卓实机手感待人工审校。
+状态：2026-09-30 已发布到 GitHub Pages 和本地 API／Web，源码 6658012，限前十课内部试用；笔顺、年龄适宜性和安卓实机手感待人工审校。发布验证见根目录《验收记录》。
 
 范围固定为 curriculum-1000-v1 目录的 family、home、welcome、pets、snack、pond、basket、sky、plants、positions。interactionPilot.ts 同时核对版本、十课顺序及目标字，不随新增课程滚动扩大；复习、重读及第十一课以后不启用。
 

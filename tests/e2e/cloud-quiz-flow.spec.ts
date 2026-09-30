@@ -21,7 +21,7 @@ test('cloud correction keeps first wrong answer and advances after success',asyn
   const option=(text:string)=>page.locator('.answer-grid').getByRole('button',{name:text,exact:true});
   await expect(option('爸')).toBeEnabled({timeout:20000});await option('爸').click();await expect(page.locator('.feedback')).toContainText('换一个答案');
   await expect(page.locator('.cloud-status')).toHaveText('已保存到云端');
-  if(process.env.TEST_BUILT_WEB==='true')await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','0');
+  await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','0');
   const me=await(await page.request.get('/api/v1/me')).json(),root=`/api/v1/learners/${me.learners[0].id}`;
   const progress=async()=>await(await page.request.get(root+'/progress')).json();
   const first=(await progress()).sessions[0];expect(first.presentation.answer.correct).toBe(false);expect(first.presentation.answer.selectedId).toBe('ba');
@@ -30,10 +30,9 @@ test('cloud correction keeps first wrong answer and advances after success',asyn
   await option('我').click();await expect(page.locator('.feedback')).toContainText('重试后答对');
   await expect(page.locator('.activity-top')).toContainText('9/15');await expect(page.locator('.cloud-status')).toHaveText('已保存到云端');
   const after=(await progress()).sessions[0];expect(after.stepIndex).toBe(8);
-  if(process.env.TEST_BUILT_WEB==='true'){
-   await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
-   await page.reload();await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
-  }
+  expect(after.solvedSteps).toEqual(['sound-wo']);
+  await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
+  await page.reload();await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
   const mistakes=await(await page.request.get(root+'/mistakes')).json();expect(mistakes.items.find((x:any)=>x.targetId==='wo')?.wrongCount).toBe(1);
  }finally{
   const removed=await page.request.delete('/api/v1/account',{headers:{Origin:process.env.PLAYWRIGHT_BASE_URL||'http://127.0.0.1:8080'},data:{requestId:randomUUID(),confirmation:email,password:'Cloud-learning-test-password'}});

@@ -19,4 +19,5 @@ FROM nginx:stable-alpine AS web
 COPY infra/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/apps/web/dist /usr/share/nginx/html
 COPY apps/web/public/setup /usr/share/nginx/html/setup
+COPY apps/web/public/strokes /usr/share/nginx/html/strokes
 EXPOSE 80

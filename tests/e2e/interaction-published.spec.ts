@@ -2,8 +2,14 @@ import {test,expect} from '@playwright/test';
 import {strokeData} from '../../apps/web/src/strokeData';
 import {sampleStroke} from '../../apps/web/src/traceGeometry';
 test.use({channel:'chrome',serviceWorkers:'block',viewport:{width:320,height:700}});
-test('published first lesson: tracing persists, river advances, header stays quiet',async({page})=>{
+test('published first lesson: tracing persists, river advances, header stays quiet',async({page,request})=>{
  test.setTimeout(90000);
+ for(const file of ['NOTICE.txt','ARPHICPL.TXT','妈.json']){
+  const response=await request.get('./strokes/'+file);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()['content-type']).not.toContain('text/html');
+  expect((await response.body()).length).toBeGreaterThan(100);
+ }
  if(process.env.TEST_LOCAL_NETWORK==='true')await page.addInitScript(()=>Object.defineProperty(Navigator.prototype,'onLine',{get:()=>true,configurable:true}));
  await page.goto('./');await page.getByRole('button',{name:'开始今天的冒险'}).click();
  await page.getByRole('button',{name:'准备好啦，出发'}).click();
