@@ -6,6 +6,7 @@ import {huntTemplates} from '@learnbuddy/contracts';
 test.use({channel:'chrome',serviceWorkers:'block'});
 const manifest=JSON.parse(readFileSync('content/manifest.json','utf8'));
 for(const width of [320,393])test(`scene templates preview, cancel, save and recover at ${width}px`,async({page})=>{
+ test.setTimeout(90000);
  await page.setViewportSize({width,height:851});
  if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',route=>{
   const path=new URL(route.request().url()).pathname;
@@ -33,7 +34,8 @@ for(const width of [320,393])test(`scene templates preview, cancel, save and rec
  });
  await page.goto('/admin');await page.locator('.admin-draft').click();await page.getByRole('button',{name:'找字场景',exact:true}).click();
  const card=page.locator('.admin-editor > fieldset > .admin-card').first();
- await card.getByText('选用客厅／厨房模板',{exact:true}).click();
+ await card.getByText('选用找字场景模板（6 幅）',{exact:true}).click();
+ await expect(card.locator('.hunt-template-preview')).toHaveCount(6);
  for(const preview of await card.locator('.hunt-template-preview').all()){
   await expect(preview.locator('span')).toHaveCount(7);
   const boxes=await preview.locator('span').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height};}));
@@ -54,6 +56,19 @@ for(const width of [320,393])test(`scene templates preview, cancel, save and rec
  await page.getByLabel('选择步骤').selectOption(String(manifest.lessons[0].steps.findIndex((s:any)=>s.kind==='hunt')));
  await expect(page.locator('.admin-preview .admin-scene span')).toHaveCount(3);
  await expect(page.locator('.admin-preview .admin-scene img')).toHaveAttribute('alt',huntTemplates[0].description);
+ for(const t of huntTemplates.slice(2)){
+  await page.getByRole('button',{name:'找字场景',exact:true}).click();
+  await card.getByText('选用找字场景模板（6 幅）',{exact:true}).click();
+  page.once('dialog',d=>d.accept());await card.getByRole('button',{name:`选用${t.title}`,exact:true}).click();
+  await expect(page.getByRole('status')).toContainText('尚未发布');
+  await page.getByRole('button',{name:'保存草稿',exact:true}).click();await expect(page.getByRole('status')).toContainText('草稿已保存');
+  expect(draft.manifest.huntScenes[0].imageAssetId).toBe(`image-hunt-${t.id}`);
+  expect(draft.manifest.huntScenes[0].play).toBeUndefined();
+  expect(draft.manifest.lessons).toEqual(manifest.lessons);
+  await page.reload();await page.locator('.admin-draft').click();await page.getByRole('button',{name:'校验并预览'}).click();
+  await page.getByLabel('选择步骤').selectOption(String(manifest.lessons[0].steps.findIndex((s:any)=>s.kind==='hunt')));
+  await expect(page.locator('.admin-preview .admin-scene img')).toHaveAttribute('alt',t.description);
+ }
  await page.getByRole('button',{name:'找字场景',exact:true}).click();
  page.once('dialog',d=>d.accept());await card.getByRole('button',{name:'启用客厅／厨房轮换玩法'}).click();
  await expect(page.getByRole('status')).toContainText('轮换玩法已加入草稿');

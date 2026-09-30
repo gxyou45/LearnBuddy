@@ -123,7 +123,7 @@ test('content administration: drafts, publication, media and rollback',async t=>
  });
  await t.test('v2 hunts persist roles, rotate across theme lessons and reject distractor evidence',async()=>{
   const pkg=await json(`/api/v1/releases/${releaseId}/lessons/family`);
-  assert.equal(pkg.scenePool.length,2);assert.equal(pkg.huntCandidates.length,15);
+  assert.equal(pkg.scenePool.length,huntTemplates.length);assert.equal(pkg.huntCandidates.length,15);
   assert.ok(pkg.scenePool.every(s=>pkg.assets.some(a=>a.id===s.imageAssetId)));
   const learner=await json('/api/v1/learners',{cookie:parent,body:{nickname:'新找字'}}),path=`/api/v1/learners/${learner.id}`;
   await json(path+'/learning-settings',{cookie:parent,method:'PATCH',body:{openAllCourses:true}});

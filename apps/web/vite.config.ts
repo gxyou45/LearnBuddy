@@ -6,7 +6,7 @@ const baseURL=base.endsWith('/')?base:`${base}/`;
 const staticBuild=process.env.VITE_STATIC_DEMO==='true';
 const contentVersion=staticBuild?createHash('sha256').update(readFileSync(new URL('./public/static-content/manifest.json',import.meta.url))).digest('hex'):'';
 export default defineConfig({base:baseURL,define:{'import.meta.env.VITE_CONTENT_VERSION':JSON.stringify(contentVersion)},plugins:[{name:'offline-shell',enforce:'post',generateBundle(_,bundle){
- if(staticBuild)for(const fileName of Object.keys(bundle))if(/^assets\/c\d{3}(?:-v2)?-/.test(fileName))delete bundle[fileName];
+ if(staticBuild)for(const fileName of Object.keys(bundle))if(/^assets\/c\d{3}(?:-v\d+)?-/.test(fileName))delete bundle[fileName];
  const files=[baseURL,...Object.keys(bundle).filter(name=>/\.(js|css)$/.test(name)).map(name=>`${baseURL}${name}`)];
  const version='learnbuddy-shell-'+contentVersion+'-'+Object.keys(bundle).join('-');
  this.emitFile({type:'asset',fileName:'sw.js',source:`const CACHE=${JSON.stringify(version)},FILES=${JSON.stringify(files)};

@@ -5,12 +5,20 @@ import {applyHuntTemplate} from '../apps/web/src/admin/HuntTemplatePicker';
 import {validatePublication} from '../apps/api/src/content-validation';
 import {inspectUpload} from '../apps/api/src/content-media';
 import {manifest} from './content-fixture';
+import {contentOpenAPI} from '../apps/api/src/openapi';
 const assetFor=(t:typeof huntTemplates[number]):ImportedAsset=>{
  const sha256=createHash('sha256').update(t.svg).digest('hex');
  return {id:`image-hunt-${t.id}`,kind:'image',sha256,bytes:Buffer.byteLength(t.svg),objectKey:`assets/images/${sha256}.svg`,mimeType:'image/svg+xml',source:'test',reviewStatus:'pending'};
 };
+it('keeps published template bytes stable and documents all allowed IDs',()=>{
+ expect(huntTemplates.slice(0,2).map(t=>assetFor(t).sha256)).toEqual([
+  '4b8510879332ac88f4f5cda7f8d4677887c2ecd1ddd477b612ec2e083f483249',
+  '4629f6a2732c324e2709b191e63efc3b9d7b161c01022cc3b7da06d55adc946d',
+ ]);
+ expect(contentOpenAPI.paths['/api/v1/admin/hunt-templates/{id}'].post.parameters[0].schema.enum).toEqual(huntTemplates.map(t=>t.id));
+});
 it('ships distinct, static text-free scenes with seven mobile-safe slots',()=>{
- expect(huntTemplates).toHaveLength(2);expect(new Set(huntTemplates.map(t=>t.svg)).size).toBe(2);
+ expect(huntTemplates).toHaveLength(6);expect(new Set(huntTemplates.map(t=>t.svg)).size).toBe(6);
  expect(()=>huntTemplate('unknown')).toThrow();
  for(const t of huntTemplates){
   expect(t.svg).not.toMatch(/<text|<script|foreignObject|\son\w+=|href=|<image/i);

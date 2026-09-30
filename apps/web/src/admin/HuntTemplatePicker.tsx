@@ -14,8 +14,10 @@ export function applyHuntTemplate(manifest:ContentManifest,sceneId:string,templa
 
 export function enableHuntPlay(manifest:ContentManifest,sceneId:string,assets:ImportedAsset[]) {
  const scene=manifest.huntScenes.find(s=>s.id===sceneId);if(!scene?.themeIds.length)throw new Error('请选择主题主场景');
- const sceneIds=huntTemplates.map(t=>`${sceneId}-${t.id}`);
- for(const [i,t] of huntTemplates.entries()){
+ // Adding draft templates must not silently expand the existing two-scene action.
+ const rotationTemplates=huntTemplates.filter(t=>['living-room-v1','kitchen-v1'].includes(t.id));
+ const sceneIds=rotationTemplates.map(t=>`${sceneId}-${t.id}`);
+ for(const [i,t] of rotationTemplates.entries()){
   let variant=manifest.huntScenes.find(s=>s.id===sceneIds[i]);
   if(!variant){variant={id:sceneIds[i],imageAssetId:'image-pending',themeIds:[],description:'',slots:[]};manifest.huntScenes.push(variant);}
   if(variant.themeIds.length||variant.play)throw new Error('轮换场景标识冲突');
@@ -26,7 +28,7 @@ export function enableHuntPlay(manifest:ContentManifest,sceneId:string,assets:Im
 }
 
 export function HuntTemplatePicker({apply}:{apply:(id:string)=>void}) {
- return <details className="hunt-template-picker"><summary>选用客厅／厨房模板</summary>
+ return <details className="hunt-template-picker"><summary>选用找字场景模板（6 幅）</summary>
   <p className="admin-muted">原创 SVG，无文字或字框；每幅有 7 个安全位置。数字仅用于编辑预览，不会画进底图。会替换本场景的图片和位置，影响使用此场景的整个主题；保存、校验并发布前不影响学习端。素材仍待人工审校。</p>
   <div className="hunt-template-grid">{huntTemplates.map(t=><section key={t.id}><h4>{t.title}</h4>
    <div className="admin-scene hunt-template-preview"><img src={`data:image/svg+xml,${encodeURIComponent(t.svg)}`} alt={t.description}/>{t.slots.map((s,i)=><span key={s.id} title={s.clue} style={{left:`${s.x}%`,top:`${s.y}%`}}>{i+1}</span>)}</div>

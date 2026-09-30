@@ -1,12 +1,20 @@
 import {test,expect} from '@playwright/test';
 import {createHash} from 'node:crypto';
 import {huntTemplates} from '@learnbuddy/contracts';
+import {resolve} from 'node:path';
 test.use({channel:'chrome',serviceWorkers:'block'});
 // Read real lesson packages, substitute only scene content in the isolated browser.
 // No content release, user account, or deployed learning data is changed.
 for(const template of huntTemplates)for(const [lessonId,width] of [['family',393],['c019',320]] as const){
  test(`${template.id} ${lessonId}: targets, hints and saved rounds at ${width}px`,async({page,request})=>{
+  test.setTimeout(90000);
   await page.setViewportSize({width,height:568});
+  if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',route=>{
+   const path=new URL(route.request().url()).pathname;
+   if(path==='/')return route.fulfill({path:resolve('apps/web/dist/index.html'),contentType:'text/html'});
+   if(path.startsWith('/assets/'))return route.fulfill({path:resolve('apps/web/dist',path.slice(1))});
+   return route.continue();
+  });
   if(process.env.TEST_LOCAL_NETWORK==='true')await page.addInitScript(()=>Object.defineProperty(Navigator.prototype,'onLine',{get:()=>true,configurable:true}));
   const catalog=await(await request.get('/api/v1/catalog')).json();
   const path=`/api/v1/releases/${catalog.releaseId}/lessons/${lessonId}`;
@@ -24,7 +32,7 @@ for(const template of huntTemplates)for(const [lessonId,width] of [['family',393
   const snapshot=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('learnbuddy:v1:progress')!));
   await expect.poll(async()=>(await snapshot()).huntRound?.sceneVersion).toBe(sha256);
   await page.evaluate(index=>{const key='learnbuddy:v1:progress',p=JSON.parse(localStorage.getItem(key)!);p.step=index;p.stepId='hunt';localStorage.setItem(key,JSON.stringify(p));},lesson.steps.findIndex((s:any)=>s.kind==='hunt'));
-  await page.reload();await expect(page.locator('.hidden-character')).toHaveCount(lesson.characters.length);
+  await page.reload();await expect(page.locator('.hidden-character')).toHaveCount(lesson.characters.length,{timeout:15000});
   await expect(page.locator('.hunt-background')).toHaveAttribute('src',url);
   const before=await snapshot(),round=before.huntRound;
   await page.getByRole('button',{name:'给我一点提示',exact:false}).click();

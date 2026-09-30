@@ -73,8 +73,8 @@
     "id": "c128",
     "title": "把理由讲清楚",
     "story": "因为下雨，所以我们在屋里看书，而且一起画了一张雨天的图。",
-    "image": "../../apps/web/src/story-art/images/c128.png",
-    "sha256": "9957ad428100c2c144e60e019efed0a153b315a780a6b2c23bd1b301aefee013",
+    "image": "../../apps/web/src/story-art/images/c128-v3.png",
+    "sha256": "e9bbc7d0f8951cd11bd8ca7aa3a9f3ccf6294dd6e41010c71884dbbe53cebc54",
     "check": "两格都能看到窗外下雨；室内先共读，再一起画雨天。",
     "phone": "截图/c128-phone.png",
     "large": "截图/c128-large.png"

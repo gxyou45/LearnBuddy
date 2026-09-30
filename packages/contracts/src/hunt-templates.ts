@@ -1,3 +1,4 @@
+import {outdoorHuntTemplates} from './hunt-outdoor-templates.js';
 // First-party, code-authored SVGs only. Never accept SVG source from a request.
 // The learning canvas has a responsive aspect ratio. Fill its viewport so the
 // normalized clue/target positions stay aligned, without SVG letterboxing.
@@ -53,7 +54,7 @@ export const huntTemplates=[{
   {id:'stool',x:18,y:82,clue:'看看小凳子旁边。'},
   {id:'table',x:50,y:82,clue:'看看餐桌中间。'},
  ],
-}];
+},...outdoorHuntTemplates];
 export type HuntTemplate=typeof huntTemplates[number];
 export function huntTemplate(id:string):HuntTemplate {
  const template=huntTemplates.find(t=>t.id===id);
