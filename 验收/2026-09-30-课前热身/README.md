@@ -8,4 +8,8 @@
 
 边界：仅邀请页刷新能保留原选课程；开始答题后的整轮恢复及跨设备同步仍待实现，已有作答按原机制保存。没有加入跨入口冷却或 1／3／7 天排程，没有改掌握判定或启用新教学素材。云端队列尚未加载或查询失败时，不为可选热身阻挡正常开课。
 
-发布结果待真实部署后补充。
+源码 `4c7a9ed4eec80bfa246f7198d854b45677dc108c` 已推送；Pages 任务 `36680927410` 成功。本地从上一轮精确镜像叠加已提交文件构建 Web，镜像 `learnbuddy-web:warmup-4c7a9ed`（`e3e5d6627d84`）已切换且健康。API 未变，保留 `review-2c4f067`；课程仍 `curriculum-1000-v1`，未执行迁移、seed 或内容启用。
+
+真实部署回归：Pages 6/6；本地游客 6/6＋云端 2/2，均不替换页面资源。截图：[Pages 邀请](截图/pages-invitation-320.png)、[Pages 改选](截图/pages-correction-320.png)、[本地邀请](截图/local-invitation-320.png)、[本地改选](截图/local-correction-320.png)、[本地云端改选](截图/local-cloud-correction-320.png)。
+
+备份 `.backups/20260930-warmup-release`，旧网页镜像保留 `before-warmup-20260930` 标签。正式 Attempt 发布前后均 307 条，测试账号已清理。日志 `/private/tmp/learnbuddy-warmup-{unit,build,preview,release-build,published-pages,published-local-guest,published-local-cloud}.log`。
