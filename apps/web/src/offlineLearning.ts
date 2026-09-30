@@ -25,6 +25,7 @@ export function localEvent(record:OfflineRecord,command:LearningCommand):Offline
   p.retries=[...(p.retries||[]),{selectedId:command.selectedId,correct:!command.skipped&&command.selectedId===step.characterId,skipped:command.skipped}];
  }
  if(p)plan.presentations[step.id]=structuredClone(p);
+ s.solvedSteps=Object.entries(plan.presentations).filter(([,p])=>{const last=p.retries?.at(-1)||p.answer;return last?.correct&&!last.skipped;}).map(([id])=>id);
  if(command.type==='hunt'){
   if(step.kind!=='hunt'||!huntTargetIds(s.huntRound,lessons.find(l=>l.id===s.lessonId)!.characters).includes(command.characterId))throw new Error('不是本局找字目标');
   s.huntFound=[...new Set([...s.huntFound,command.characterId])];

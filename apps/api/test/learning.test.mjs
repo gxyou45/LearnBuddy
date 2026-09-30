@@ -52,6 +52,7 @@ test('online learning authority, ownership, idempotence and evidence',async t=>{
   assert.equal((await req(root+'/events',{cookie,body:forged})).status,400);
   const body=command('answer',{presentationId:presentation.id,selectedId:'ba',skipped:false});
   state=await json(root+'/events',{cookie,body});assert.equal(state.session.presentation.answer.correct,false);assert.equal(state.session.presentation.answer.independent,true);
+  assert.deepEqual(state.session.solvedSteps,[]);
   const semantic=await json(root+'/events',{cookie,body:{...body,clientEventId:randomUUID()}});assert.equal(semantic.accepted,'duplicate');
   assert.equal((await req(root+'/events',{cookie,body:{...body,clientEventId:randomUUID(),selectedId:'wo'}})).status,409);
   assert.equal(await db.attempt.count({where:{presentationId:presentation.id}}),1);
@@ -62,13 +63,17 @@ test('online learning authority, ownership, idempotence and evidence',async t=>{
   state=await json(root+'/events',{cookie,body:retry});
   assert.equal(state.session.presentation.answer.correct,false);
   assert.deepEqual(state.session.presentation.retries,[{selectedId:'wo',correct:true,skipped:false}]);
+  const solvedStep=state.session.stepId;
+  assert.deepEqual(state.session.solvedSteps,[solvedStep]);
   assert.equal((await json(root+'/events',{cookie,body:retry})).accepted,'duplicate');
+  assert.deepEqual((await json(root+'/progress',{cookie})).sessions[0].solvedSteps,[solvedStep]);
   assert.equal((await req(root+'/events',{cookie,body:command('retry-answer',{presentationId:presentation.id,selectedId:'ma',skipped:false})})).status,409);
   assert.equal(await db.attempt.count({where:{presentationId:presentation.id}}),1);
   assert.equal((await json(root+'/mistakes',{cookie})).items[0].wrongCount,1);
   assert.equal(state.progress.skills.find(s=>s.targetId==='wo'&&s.kind==='sound').status,'practice');
   assert.deepEqual((await json(root+'/progress',{cookie})).sessions[0].presentation.retries,state.session.presentation.retries);
   await send('advance');
+  assert.deepEqual(state.session.solvedSteps,[solvedStep]);
  });
  await t.test('hinted answers, missing/failed audio and skips do not count as knowledge errors or mastery',async()=>{
   await send('hint',{presentationId:state.session.presentation.id});await answer('ba');assert.equal(state.session.presentation.answer.independent,false);

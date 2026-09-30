@@ -1,10 +1,17 @@
 import {test,expect} from '@playwright/test';
 import {randomUUID} from 'node:crypto';
+import {resolve} from 'node:path';
 import {verifiedAccount,login,choose} from './cloud-helpers';
 test.use({channel:'chrome',serviceWorkers:'block',viewport:{width:393,height:851}});
 test('cloud correction keeps first wrong answer and advances after success',async({page,request})=>{
  test.setTimeout(180000);
  if(process.env.TEST_LOCAL_NETWORK==='true')await page.addInitScript(()=>Object.defineProperty(Navigator.prototype,'onLine',{get:()=>true,configurable:true}));
+ if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',r=>{
+  const path=new URL(r.request().url()).pathname;
+  if(path==='/')return r.fulfill({path:resolve('apps/web/dist/index.html'),contentType:'text/html'});
+  if(path.startsWith('/assets/'))return r.fulfill({path:resolve('apps/web/dist',path.slice(1))});
+  return r.continue();
+ });
  const email=await verifiedAccount(request);await login(page,email);
  try{
   await page.getByLabel('添加孩子昵称').fill('小云');await page.getByRole('button',{name:'创建孩子档案'}).click();await choose(page);
@@ -14,6 +21,7 @@ test('cloud correction keeps first wrong answer and advances after success',asyn
   const option=(text:string)=>page.locator('.answer-grid').getByRole('button',{name:text,exact:true});
   await expect(option('爸')).toBeEnabled({timeout:20000});await option('爸').click();await expect(page.locator('.feedback')).toContainText('换一个答案');
   await expect(page.locator('.cloud-status')).toHaveText('已保存到云端');
+  if(process.env.TEST_BUILT_WEB==='true')await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','0');
   const me=await(await page.request.get('/api/v1/me')).json(),root=`/api/v1/learners/${me.learners[0].id}`;
   const progress=async()=>await(await page.request.get(root+'/progress')).json();
   const first=(await progress()).sessions[0];expect(first.presentation.answer.correct).toBe(false);expect(first.presentation.answer.selectedId).toBe('ba');
@@ -22,6 +30,10 @@ test('cloud correction keeps first wrong answer and advances after success',asyn
   await option('我').click();await expect(page.locator('.feedback')).toContainText('重试后答对');
   await expect(page.locator('.activity-top')).toContainText('9/15');await expect(page.locator('.cloud-status')).toHaveText('已保存到云端');
   const after=(await progress()).sessions[0];expect(after.stepIndex).toBe(8);
+  if(process.env.TEST_BUILT_WEB==='true'){
+   await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
+   await page.reload();await expect(page.locator('.river-journey')).toHaveAttribute('data-solved','1');
+  }
   const mistakes=await(await page.request.get(root+'/mistakes')).json();expect(mistakes.items.find((x:any)=>x.targetId==='wo')?.wrongCount).toBe(1);
  }finally{
   const removed=await page.request.delete('/api/v1/account',{headers:{Origin:process.env.PLAYWRIGHT_BASE_URL||'http://127.0.0.1:8080'},data:{requestId:randomUUID(),confirmation:email,password:'Cloud-learning-test-password'}});

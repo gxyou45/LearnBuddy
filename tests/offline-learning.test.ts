@@ -20,6 +20,9 @@ it('offline corrections preserve the first wrong answer and survive the sync pla
  r=localEvent(r,{type:'retry-answer',clientEventId:'retry',sessionId:'s',expectedRevision:2,presentationId:'p',selectedId:'wo',skipped:false});
  expect(r.plan!.session.presentation!.answer!.correct).toBe(false);
  expect(r.plan!.presentations['sound-wo'].retries).toEqual([{selectedId:'wo',correct:true,skipped:false}]);
+ expect(r.plan!.session.solvedSteps).toEqual(['sound-wo']);
+ expect(r.view.sessions[0].solvedSteps).toEqual(['sound-wo']);
+ expect(r.confirmed.sessions[0].solvedSteps).toBeUndefined();
  expect(r.view.skills).toEqual([]);expect(r.confirmed.sessions[0].presentation!.answer).toBeNull();
  expect(()=>localEvent(r,{type:'retry-answer',clientEventId:'late',sessionId:'s',expectedRevision:3,presentationId:'p',selectedId:'ma',skipped:false})).toThrow();
 });

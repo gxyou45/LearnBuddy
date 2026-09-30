@@ -1,0 +1,12 @@
+LearnBuddy 描笔画素材说明（2026-09-29）
+
+数据来源：Hanzi Writer Data / Make Me a Hanzi
+固定版本：https://github.com/chanind/hanzi-writer-data/tree/68d10a4b21150cae5e1ebbd223eed289cf32d90c/data
+Copyright (C) 1999 Arphic Technology Co., Ltd.
+Copyright (C) 2016 Shaunak Kishore (Make Me a Hanzi).
+
+本目录保存妈、人、来、小、水、鸟、有、山、木、大的原始 JSON 记录，轮廓及笔画轨迹未修改。
+2026-09-29：LearnBuddy 将这些记录集合为 strokeData.ts，用于不依赖外网的描写。
+数据及其集合仍按 Arphic Public License 分发；不附带担保，可按该许可复制、修改及再分发。
+完整原始许可证见本目录 ARPHICPL.TXT；原始 JSON 可在本目录按汉字名下载，例如 妈.json。
+源数据选择与展示效果尚待人工教学审校，不宣称已经完成字形、笔顺及年龄适宜性验收。

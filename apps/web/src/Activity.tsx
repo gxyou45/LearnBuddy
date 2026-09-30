@@ -1,4 +1,6 @@
 import {Comprehension} from './Comprehension';
+import {TraceCharacter} from './TraceCharacter';
+import {RiverJourney} from './RiverJourney';
 import {useEffect,useRef,useState} from 'react';
 import {LearningActions} from './LearningActions';
 import {characters,shuffled,type Lesson,type Step} from './contentRepository';
@@ -9,9 +11,11 @@ import {stopAudio} from './audio';
 import type {Attempt} from './progress';
 import {learningOptions,type LearningSessionState,type RetryAnswer} from '@learnbuddy/contracts';
 export type RemoteActivity={presentation:LearningSessionState['presentation'];busy:boolean;answer:(selectedId:string|null,skipped:boolean,retry:boolean)=>Promise<boolean>;hint:()=>Promise<boolean>;audio:(result:'played'|'failed')=>Promise<boolean>};
-export function Activity({lesson,step,listen,next,answer,attempt,remote}:{
+export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,journey}:{
  lesson:Lesson;step:Step;listen:(id:string,waitForEnd?:boolean)=>void|Promise<boolean|void>;next:()=>void|Promise<boolean|void>;
  answer:(correct:boolean,hint:boolean,skipped:boolean,selectedId:string|null,retry:boolean)=>void;attempt?:Attempt;remote?:RemoteActivity;
+ trace?:{text:string;storageKey:string};
+ journey?:{steps:readonly Step[];solvedSteps:readonly string[]};
 }){
  const [localOptions]=useState(()=>shuffled(learningOptions(lesson.characters,step.characterId,step.kind)));
  const remoteOptions=remote?.presentation?.options.map(o=>({...lesson.characters.find(c=>c.id===o.id)!,...o}));
@@ -79,10 +83,11 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote}:{
  return <div className={'activity-body activity-'+step.kind}>
   <span className="eyebrow">{step.kind==='teach'?'发现汉字':step.kind==='word'?'把汉字读成词语':quiz?'一起玩一玩':'温暖的小小世界'}</span><h1>{step.title}</h1><p>{step.subtitle}</p>
   {step.kind==='intro'&&<><LessonPicture lessonId={lesson.id}/><div className="mini-characters">{lesson.characters.map(c=>c.text).join(' · ')}</div><p className="parent-note">先请家长陪在身边，点一下声音再出发。</p></>}
-  {step.kind==='teach'&&c&&<div className="teaching-card"><div className="character-illustration"><CharacterIllustration character={c}/></div><div className="hanzi"><ReadingText text={c.text} audio={step.audio}/></div><strong><ReadingText text={c.word} audio={'word-'+c.id}/></strong></div>}
+  {step.kind==='teach'&&c&&(trace?<TraceCharacter key={trace.storageKey} {...trace}/>:<div className="teaching-card"><div className="character-illustration"><CharacterIllustration character={c}/></div><div className="hanzi"><ReadingText text={c.text} audio={step.audio}/></div><strong><ReadingText text={c.word} audio={'word-'+c.id}/></strong></div>)}
   {step.kind==='word'&&c&&<WordCard character={c}/>}
   {step.kind==='meaning'&&c&&<div className="hanzi quiz-hanzi">{c.text}</div>}
-  {step.kind==='sound'&&<div className="listening-art" aria-hidden="true">♫</div>}
+  {quiz&&journey&&<RiverJourney steps={journey.steps} solvedSteps={solved?[...journey.solvedSteps,step.id]:journey.solvedSteps}/>}
+  {step.kind==='sound'&&!journey&&<div className="listening-art" aria-hidden="true">♫</div>}
   {step.kind==='story'&&<><LessonPicture lessonId={lesson.id}/><h2 className="story-text"><ReadingText text={lesson.story.text} audio={lesson.story.audio}/></h2><p className="parent-note">{lesson.story.note}<br/>陪读字：{lesson.story.supportCharacters.join('、')}</p></>}
   <button className="audio-button" disabled={remote?.busy||done} onClick={()=>void play()}>♪ {step.kind==='sound'?'听听要找哪个字':step.kind==='story'?'听完整故事':step.kind==='word'?'听词语':'听一听'}</button>
   {step.kind==='word'&&<p className="parent-note">可以指着文字，和家长读一读。不用录音，也不打分。</p>}

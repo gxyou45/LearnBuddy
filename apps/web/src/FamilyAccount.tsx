@@ -85,7 +85,7 @@ export function FamilyShell({children}:{children:ReactNode}) {
  const learner=family?.learners.find(c=>c.id===child);
  const storage=family&&learner?`${STORAGE_KEY}:${family.account.accountId}:${learner.id}`:STORAGE_KEY;
  if(accountPage||(family&&!learner))return <>{connectionNotice&&<div role="status">{connectionNotice}</div>}<AccountPage key={family?.account.accountId||'visitor'} family={family} active={child} refresh={changed} choose={choose} back={()=>{location.hash='home';setAccountPage(false);}}/></>;
- return <FamilyContext.Provider value={family??null}><LearnerContext.Provider value={learner?.id}><ProgressStorage.Provider value={storage}><div className="family-frame">{connectionNotice&&<div className="notice" role="status">{connectionNotice}</div>}<div className="learner-banner">{learner?`${learner.nickname}的小屋 · 云端学习`:'游客体验 · 进度保存在本机'}</div><div className="family-content" key={storage}>{children}</div></div></ProgressStorage.Provider></LearnerContext.Provider></FamilyContext.Provider>;
+ return <FamilyContext.Provider value={family??null}><LearnerContext.Provider value={learner?.id}><ProgressStorage.Provider value={storage}><div className="family-frame">{connectionNotice&&<div className="notice" role="status">{connectionNotice}</div>}<div className="family-content" key={storage}>{children}</div></div></ProgressStorage.Provider></LearnerContext.Provider></FamilyContext.Provider>;
 }
 function AccountPage({family,active,refresh,choose,back}:{family:Family|null;active:string;refresh:()=>Promise<void>;choose:(id:string)=>void;back:()=>void}) {
  const params=new URLSearchParams(location.search);

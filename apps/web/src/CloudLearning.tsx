@@ -9,7 +9,7 @@ import {offlineKey,localEvent,sessionOf,type OfflineRecord} from './offlineLearn
 
 type EventAction=LearningCommand extends infer T?T extends LearningCommand?Omit<T,'clientEventId'|'sessionId'|'expectedRevision'>:never:never;
 type Success=(session:LearningSessionState)=>void;
-type Cloud={progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>;huntDifficulty:(count:HuntDifficulty)=>Promise<boolean>};
+type Cloud={solvedSteps:string[];progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>;huntDifficulty:(count:HuntDifficulty)=>Promise<boolean>};
 const Context=createContext<Cloud|null>(null);
 export const useCloud=()=>useContext(Context);
 export function projectCloud(state:LearningProgressState,preferences:Progress):Progress {
@@ -18,14 +18,14 @@ export function projectCloud(state:LearningProgressState,preferences:Progress):P
  const activeLesson=active?.lessonId||lessons[0].id;
  return {...fresh(),sound:preferences.sound,observations:preferences.observations,huntDistractorCount:state.huntDistractorCount??null,releaseId:state.releaseId||releaseId,activeLesson,lessonProgress:states,...states[activeLesson],seen:state.seen,unlocked:state.openAllCourses?lessons.map(l=>l.id):[]};
 }
-export function CloudProvider({initial,storage,children}:{initial:LearningProgressState;storage:string;children:ReactNode}) {
+export function CloudProvider({initial,children}:{initial:LearningProgressState;children:ReactNode}) {
  const family=useFamily()!,key=offlineKey(family.account.accountId,initial.learnerId);
  const [record,setRecord]=useState<OfflineRecord>({generation:0,confirmed:initial,view:initial,events:[],nextSeq:1});
  const ref=useRef(record),mounted=useRef(true),running=useRef(false);
  const [ready,setReady]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[online,setOnline]=useState(navigator.onLine);
  const [reviews,setReviews]=useState<ReviewQueue['items']>([]),[reviewError,setReviewError]=useState(false);
  const [message,setMessage]=useState('云端记录已读取');
- const [hasLegacy]=useState(()=>{try{return !!(localStorage.getItem(storage)||localStorage.getItem('learnbuddy:v1:progress'));}catch{return false;}});
+
  const persist=async(next:OfflineRecord)=>{const previous=ref.current.generation;const value={...next,generation:previous+1};await compareWrite(key,value,previous);ref.current=value;if(mounted.current)setRecord(value);};
  const prepare=async(session:LearningSessionState)=>{
   const plan=await prepareSync(initial.learnerId,cloudId(),session.id);
@@ -73,7 +73,9 @@ export function CloudProvider({initial,storage,children}:{initial:LearningProgre
   return()=>{mounted.current=false;removeEventListener('focus',focus);removeEventListener('online',net);removeEventListener('offline',net);};
  },[]);
  useEffect(()=>{if(!ready||!online)return;let active=true;void getReviews(initial.learnerId).then(q=>{if(active){setReviews(q.items);setReviewError(false);}}).catch(()=>{if(active)setReviewError(true);});return()=>{active=false;};},[ready,record.confirmed.revision,online]);
- const value:Cloud={progress:record.view,reviewSession:record.plan?.session.mode==='review'?record.plan.session:null,reviews,pending:record.events.length>0||!!record.start,blocked:!ready||busy||!!record.conflict||!!record.start,
+ const activeSession=record.view.sessions.find(s=>s.id===record.view.activeSessionId);
+ const solvedSteps=record.plan?.session.id===activeSession?.id&&record.plan?Object.entries(record.plan.presentations).filter(([,p])=>{const last=p.retries?.at(-1)||p.answer;return last?.correct&&!last.skipped;}).map(([id])=>id):activeSession?.solvedSteps||[];
+ const value:Cloud={solvedSteps,progress:record.view,reviewSession:record.plan?.session.mode==='review'?record.plan.session:null,reviews,pending:record.events.length>0||!!record.start,blocked:!ready||busy||!!record.conflict||!!record.start,
   start:(lessonId,onSuccess,review)=>run(async()=>{
    if(ref.current.events.length)await flush();if(ref.current.events.length||ref.current.conflict)throw new Error('请先同步或处理本机记录，再开始其他课次');
    const existing=ref.current.view.sessions.find(s=>s.lessonId===lessonId&&!s.completed);
@@ -105,5 +107,5 @@ export function CloudProvider({initial,storage,children}:{initial:LearningProgre
   const p=await getCloudProgress(initial.learnerId);await persist({...ref.current,confirmed:p,view:p,events:[],plan:undefined,start:undefined,conflict:undefined,nextSeq:1});
   location.hash='home';await refresh();
  });
- return <Context.Provider value={value}><div className="cloud-learning"><div className="cloud-status" role="status">{record.events.length?`待同步 ${record.events.length} 条 · 已保存在本机`:!online?'离线模式 · 可继续已缓存课次':message}{error&&<span> · {error}</span>}{record.conflict&&<p>{record.conflict}。本机记录不会自动覆盖云端。</p>}{!busy&&(error||record.events.length>0||record.start)&&<button onClick={()=>void run(refresh)}>重试保存</button>}{record.conflict&&!busy&&<button onClick={resumeServer}>保留本机副本，继续云端位置</button>}</div>{reviewError&&<p className="notice">复习队列暂时不可用，联网刷新后重试。</p>}{hasLegacy&&<details className="legacy-notice"><summary>本机旧记录已保留</summary><p>家长中心可选择来源和孩子，查看摘要后导入旧记录。原存档不会删除。</p></details>}{children}</div></Context.Provider>;
+ return <Context.Provider value={value}><div className="cloud-learning"><div className="cloud-status" role="status" hidden={!record.events.length&&!record.start&&online&&!error&&!record.conflict}>{record.events.length?`待同步 ${record.events.length} 条 · 已保存在本机`:!online?'离线模式 · 可继续已缓存课次':message}{error&&<span> · {error}</span>}{record.conflict&&<p>{record.conflict}。本机记录不会自动覆盖云端。</p>}{!busy&&(error||record.events.length>0||record.start)&&<button onClick={()=>void run(refresh)}>重试保存</button>}{record.conflict&&!busy&&<button onClick={resumeServer}>保留本机副本，继续云端位置</button>}</div>{reviewError&&<p className="notice">复习队列暂时不可用，联网刷新后重试。</p>}{children}</div></Context.Provider>;
 }

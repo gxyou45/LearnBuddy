@@ -51,7 +51,7 @@ test('lost advance response retries the same event without advancing twice; offl
  test.setTimeout(180000);await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();const legacy=await page.evaluate(()=>localStorage.getItem('learnbuddy:v1:progress'));const email=await verifiedAccount(request);await login(page,email);
  await page.getByLabel('添加孩子昵称').fill('小云');await page.getByRole('button',{name:'创建孩子档案'}).click();await choose(page);
  const family=await(await page.request.get('/api/v1/me')).json();const legacyKey=`learnbuddy:v1:progress:${family.account.accountId}:${family.learners[0].id}`;
- await page.evaluate(({key,raw})=>localStorage.setItem(key,raw!),{key:legacyKey,raw:legacy});await page.reload();await expect(page.getByText('本机旧记录已保留',{exact:true})).toBeVisible();
+ await page.evaluate(({key,raw})=>localStorage.setItem(key,raw!),{key:legacyKey,raw:legacy});await page.reload();await expect(page.locator('.cloud-status')).toContainText('云端记录已读取');await expect(page.getByText('本机旧记录已保留',{exact:true})).toHaveCount(0);
  await page.getByRole('button',{name:'开始今天的冒险'}).click();
  let intercepted=false;
  await page.route('**/api/v1/learners/*/events:batch',async route=>{if(!intercepted&&route.request().postDataJSON().events[0]?.command.type==='advance'){intercepted=true;await route.fetch();await route.abort();}else await route.continue();});
