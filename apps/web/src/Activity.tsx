@@ -35,6 +35,9 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
  const c=characters.find(c=>c.id===step.characterId);
  const live=useRef(true),locked=useRef(false),advanced=useRef(false),autoStarted=useRef(false),audioRun=useRef(0);
  const autoAdvanced=useRef(false);
+ // Collect completed playback locally; synchronizing audio must not lock choices.
+ // Only actual completion is "played". Cancelling on answer is not a failure.
+ const audioEvidence=useRef(new Set<'played'|'failed'>());
  const latest=useRef({listen,next,remote,saved,done});latest.current={listen,next,remote,saved,done};
  useEffect(()=>{live.current=true;return()=>{live.current=false;audioRun.current++;stopAudio();};},[]);
  const advance=async()=>{if(!live.current||advanced.current||latest.current.remote?.busy)return;advanced.current=true;audioRun.current++;stopAudio();try{await latest.current.next();}finally{if(live.current)advanced.current=false;}};
@@ -46,14 +49,12 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
   return()=>{clearTimeout(timer);document.removeEventListener('visibilitychange',schedule);};
  },[solved,saved?.skipped,remote?.busy]);
  const play=async()=>{
-  if(latest.current.remote?.busy||latest.current.done)return;
+  if(locked.current||latest.current.remote?.busy||latest.current.done)return;
   const run=++audioRun.current;setPlaying(true);if(step.kind==='sound')setHeard(false);
   let played=false;
   try{played=await latest.current.listen(step.audio,true)===true;}catch{/* Manual playback remains available. */}
   if(!live.current||run!==audioRun.current)return;
-  const r=latest.current.remote;
-  if(r?.presentation)played=(await r.audio(played?'played':'failed'))&&played;
-  if(!live.current||run!==audioRun.current)return;
+  if(latest.current.remote?.presentation)audioEvidence.current.add(played?'played':'failed');
   setPlaying(false);if(step.kind==='sound')setHeard(played);
  };
  const playRef=useRef(play);playRef.current=play;
@@ -65,12 +66,20 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
   if(locked.current||latest.current.done||remote?.busy)return;
   if(retryLimit){if(skipped)void advance();return;}
   if(!skipped&&latest.current.saved?.selectedId===id)return;
-  if(!skipped&&step.kind==='sound'&&(playing||(!heard&&!hint)))return;
   locked.current=true;
+  audioRun.current++;stopAudio();setPlaying(false);
   const retry=!!latest.current.saved;
   const correct=!skipped&&id===step.characterId;
   try{
-   if(remote){if(!await remote.answer(id,skipped,retry))return;}
+   if(remote){
+    // Preserve audio evidence before the answer, without a late completion
+    // racing the answer/next step or fabricating a fully-heard recording.
+    for(const result of audioEvidence.current){
+     if(!await remote.audio(result))return;
+     audioEvidence.current.delete(result);
+    }
+    if(!live.current||!await remote.answer(id,skipped,retry))return;
+   }
    else{const result={selectedId:id,correct,skipped};latest.current.saved=result;latest.current.done=correct||skipped;setAnswer(result);setRetried(retry);answer(correct,!!hint||assisted,skipped,id,retry);}
    if(live.current&&skipped)advance();
   }finally{locked.current=false;}
@@ -93,9 +102,9 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
   {step.kind==='word'&&<p className="parent-note">可以指着文字，和家长读一读。不用录音，也不打分。</p>}
   {assisted&&<p className="parent-note">这些字的读音相同，这题请和家长一起认一认，也可以跳过。</p>}
   {quiz&&<>
-   <div className={'answer-grid '+(step.kind==='meaning'?'meaning':'')}>{options.map(o=><button key={o.id} disabled={remote?.busy||done||retryLimit||(step.kind==='sound'&&(playing||(!heard&&!hint)))} className={(saved?.selectedId===o.id?'chosen ':'')+(solved&&o.id===c?.id?'correct':'')} aria-label={step.kind==='sound'?o.text:o.word} onClick={()=>void submit(o.id)}>{step.kind==='sound'?o.text:<><CharacterIllustration character={o}/><small>{o.word}</small></>}</button>)}</div>
+   <div className={'answer-grid '+(step.kind==='meaning'?'meaning':'')}>{options.map(o=><button key={o.id} disabled={remote?.busy||done||retryLimit} className={(saved?.selectedId===o.id?'chosen ':'')+(solved&&o.id===c?.id?'correct':'')} aria-label={step.kind==='sound'?o.text:o.word} onClick={()=>void submit(o.id)}>{step.kind==='sound'?o.text:<><CharacterIllustration character={o}/><small>{o.word}</small></>}</button>)}</div>
    {retryLimit&&!done&&<p className="hint">这题已经练习很多次，可以先跳过，和家长一起休息一下。</p>}
-   {saved?.skipped?<p className="hint">这次已跳过，可以继续。</p>:saved?<div className="feedback" role="status">{solved?(retried?'重试后答对啦！马上进入下一题。':'找到啦！马上进入下一题。'):'没关系，可以换一个答案再试试，也可以重新听一听。'}</div>:<p className="muted" role="status">{step.kind==='sound'?(playing?'先听一听，声音播完就可以选啦。':heard?'听完啦，慢慢选，不着急。':hint?'可以和家长一起选择。':'点“听听要找哪个字”播放，也可以请家长帮忙。'):'慢慢选，不着急。'}</p>}
+   {saved?.skipped?<p className="hint">这次已跳过，可以继续。</p>:saved?<div className="feedback" role="status">{solved?(retried?'重试后答对啦！马上进入下一题。':'找到啦！马上进入下一题。'):'没关系，可以换一个答案再试试，也可以重新听一听。'}</div>:<p className="muted" role="status">{step.kind==='sound'?(playing?'听出来就可以选，不用等声音播完。':heard?'听完啦，慢慢选，不着急。':hint?'可以和家长一起选择。':'可以直接选择；没听清就再听一次，也可以请家长帮忙。'):'慢慢选，不着急。'}</p>}
    {hint&&!done&&<p className="hint">一起读「{c?.text}」，它说的是{c?.word}。</p>}
   </>}
   {step.kind==='story'&&<Comprehension lesson={lesson}/>}
