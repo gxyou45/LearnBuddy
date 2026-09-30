@@ -5,6 +5,7 @@ import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,
 import type {Prisma} from './generated/prisma/client.js';
 import type {database} from './db.js';
 import {RULE_VERSION,dayInZone,nextDay,independent,skillStatus,characterStable} from './learning-rules.js';
+import {selectReviewItems,type ReviewCandidate} from '@learnbuddy/contracts';
 type Tx=Prisma.TransactionClient;
 type Db=ReturnType<typeof database>;
 const conflict=(message='这节课已在其他页面更新，请读取最新进度后继续')=>new HTTPException(409,{message});
@@ -180,16 +181,14 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
 }
 export async function reviewQueue(tx:Tx,learnerId:string,lessonId?:string) {
  const learner=await tx.learner.findUniqueOrThrow({where:{id:learnerId}}),today=dayInZone(new Date(),learner.learningTimeZone);
- let rows=await tx.learningSkill.findMany({where:{learnerId,...(lessonId?{}:{dueDate:{lte:today}})},orderBy:[{wrongCount:'desc'},{dueDate:'asc'},{targetId:'asc'},{kind:'asc'}],take:lessonId?2000:30});
+ const candidates=await tx.learningSkill.findMany({where:{learnerId,...(lessonId?{}:{dueDate:{lte:today}})}});
+ let targets:string[]|undefined;
  if(lessonId){
   if(!await tx.learnerLesson.findUnique({where:{learnerId_lessonId:{learnerId,lessonId}}}))throw invalid('请先完成本课再综合练习');
   const lesson=await tx.lessonVersion.findUnique({where:{releaseId_lessonId:{releaseId:learner.learningReleaseId!,lessonId}}});
-  if(!lesson)throw missing();const targets=new Set((lesson.content as ContentManifest['lessons'][number]).characters.map(c=>c.id));
-  const unique=(list:typeof rows)=>list.filter((s,i,all)=>all.findIndex(x=>x.targetId===s.targetId)===i);
-  const current=unique(rows.filter(s=>targets.has(s.targetId))).slice(0,2);
-  const history=unique(rows.filter(s=>!targets.has(s.targetId)&&(s.status!=='stable'&&s.wrongCount>0||s.dueDate<=today))).slice(0,3);
-  rows=[...current,...history];
+  if(!lesson)throw missing();targets=(lesson.content as ContentManifest['lessons'][number]).characters.map(c=>c.id);
  }
+ const rows=selectReviewItems(candidates.map(row=>({...row,kind:row.kind as ReviewCandidate['kind'],status:row.status as ReviewCandidate['status']})),today,targets);
  const items=[];
  for(const s of rows){const question=await tx.questionVersion.findUniqueOrThrow({where:{id:s.questionVersionId},include:{step:{include:{lesson:true}}}});items.push({targetId:s.targetId,kind:s.kind,dueDate:s.dueDate,questionVersionId:s.questionVersionId,lessonId:question.step.lesson.lessonId,releaseId:question.step.lesson.releaseId,ruleVersion:s.ruleVersion});}
  return {today,timeZone:learner.learningTimeZone,items};

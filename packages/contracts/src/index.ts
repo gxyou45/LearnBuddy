@@ -180,3 +180,4 @@ export function isCompatibleExpansion(next:ContentManifest,previous:ContentManif
   && previous.huntScenes.every(s=>canonical(s)===canonical(next.huntScenes.find(n=>n.id===s.id)));
 }
 export { learningOptions, characterSoundKey } from './learning-options.js';
+export {selectReviewItems,type ReviewCandidate} from './review-selection.js';
