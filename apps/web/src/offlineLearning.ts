@@ -1,7 +1,7 @@
 import type {LearningProgressState,LearningSessionState,LearningCommand,SyncEnvelope,SyncPlan,StartLearning} from '@learnbuddy/contracts';
 import {learningOptions,huntTargetIds} from '@learnbuddy/contracts';
 import {getSteps,lessons} from './contentRepository';
-export type OfflineRecord={generation:number;confirmed:LearningProgressState;view:LearningProgressState;plan?:SyncPlan;events:SyncEnvelope[];nextSeq:number;conflict?:string;start?:StartLearning};
+export type OfflineRecord={generation:number;reviewRound?:import('@learnbuddy/contracts').ReviewRound|null;roundStart?:import('@learnbuddy/contracts').ReviewRoundStart;confirmed:LearningProgressState;view:LearningProgressState;plan?:SyncPlan;events:SyncEnvelope[];nextSeq:number;conflict?:string;start?:StartLearning};
 export const offlineKey=(accountId:string,learnerId:string)=>`learning:${accountId}:${learnerId}`;
 export function localEvent(record:OfflineRecord,command:LearningCommand):OfflineRecord {
  const r:OfflineRecord={...record,confirmed:record.confirmed,view:structuredClone(record.view),plan:structuredClone(record.plan),events:[...record.events]},plan=r.plan;if(!plan||plan.session.id!==command.sessionId)throw new Error('请先联网准备此课次');

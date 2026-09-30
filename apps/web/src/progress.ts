@@ -1,15 +1,17 @@
 import { characters, contentVersion, releaseId, getSteps, steps, lessons, type CharacterId } from './contentRepository';
+import {validateGuestReviewRound,type GuestReviewRound} from './guestReviewRound';
 import {huntRoundSchema,huntTargetIds,huntDifficultySchema,type HuntDifficulty,guestRetrySchema,type HuntRound,type RetryAnswer} from '@learnbuddy/contracts';
 export const STORAGE_KEY = 'learnbuddy:v1:progress';
 export type Attempt = { id: string; session: string; step: string; characterId: CharacterId; kind: 'sound' | 'meaning'; correct: boolean; hintUsed: boolean; skipped: boolean; date: string; timestamp: number;selectedId?:string|null;retries?:(RetryAnswer&{id:string;timestamp:number})[] };
 export type LessonProgress = { stepId?: string; started: boolean; completed: boolean; step: number; session: string; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number };
-export type Progress = { huntDistractorCount?:HuntDifficulty; huntRecentScenes?:Record<string,string>; releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
+export type Progress = { reviewRound?:GuestReviewRound; huntDistractorCount?:HuntDifficulty; huntRecentScenes?:Record<string,string>; releaseId?: string; stepId?: string; activeLesson: string; lessonProgress: Record<string, LessonProgress>; unlocked: string[]; schemaVersion: 1; contentVersion: number; started: boolean; completed: boolean; step: number; session: string; sound: boolean; attempts: Attempt[]; seen: CharacterId[]; huntFound: CharacterId[]; huntRound?:HuntRound; huntRoundIndex?:number; observations: Partial<Record<CharacterId, string>> };
 export const fresh = (): Progress => ({ releaseId, activeLesson: lessons[0]?.id ?? 'family', lessonProgress: {}, unlocked: [], schemaVersion: 1, contentVersion, started: false, completed: false, step: 0, session: '', sound: true, attempts: [], seen: [], huntFound: [], observations: {} });
 export function localDate(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 
 export function parseProgress(raw: string | null): Progress {
   if (!raw) return fresh();
   const p = JSON.parse(raw) as Progress;
+  if(p.reviewRound!==undefined)validateGuestReviewRound(p.reviewRound);
   const charIds=characters.map(c=>c.id);
   if(p.huntDistractorCount!==undefined)huntDifficultySchema.parse(p.huntDistractorCount);
   if(p.huntRecentScenes&&(!p.huntRecentScenes||Array.isArray(p.huntRecentScenes)||typeof p.huntRecentScenes!=='object'||Object.entries(p.huntRecentScenes).some(([k,v])=>!/^\d+$/.test(k)||typeof v!=='string'||!/^[a-z0-9-]+$/.test(v))))throw new Error('Invalid recent hunt scenes');

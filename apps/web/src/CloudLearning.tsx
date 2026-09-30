@@ -6,10 +6,12 @@ import {fresh,type Progress} from './progress';
 import {useFamily} from './FamilyAccount';
 import {readLocal,writeLocal,compareWrite} from './offlineStore';
 import {offlineKey,localEvent,sessionOf,type OfflineRecord} from './offlineLearning';
+import {getReviewRound,openReviewRound,closeReviewRound} from './cloudClient';
+import type {ReviewRound,ReviewRoundStart} from '@learnbuddy/contracts';
 
 type EventAction=LearningCommand extends infer T?T extends LearningCommand?Omit<T,'clientEventId'|'sessionId'|'expectedRevision'>:never:never;
 type Success=(session:LearningSessionState)=>void;
-type Cloud={solvedSteps:string[];progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>;huntDifficulty:(count:HuntDifficulty)=>Promise<boolean>};
+type Cloud={reviewRound:ReviewRound|null;openRound:(entry:ReviewRoundStart['entry'],lessonId:string|undefined,onSuccess:(round:ReviewRound|null)=>void)=>Promise<boolean>;resumeRound:(onSuccess:(round:ReviewRound|null)=>void)=>Promise<boolean>;closeRound:(onSuccess:()=>void)=>Promise<boolean>;solvedSteps:string[];progress:LearningProgressState;reviewSession:LearningSessionState|null;reviews:ReviewQueue['items'];pending:boolean;blocked:boolean;start:(lessonId:string,onSuccess:Success,review?:ReviewQueue['items'][number])=>Promise<boolean>;event:(action:EventAction,onSuccess?:Success,review?:boolean)=>Promise<boolean>;settings:(open:boolean)=>Promise<boolean>;huntDifficulty:(count:HuntDifficulty)=>Promise<boolean>};
 const Context=createContext<Cloud|null>(null);
 export const useCloud=()=>useContext(Context);
 export function projectCloud(state:LearningProgressState,preferences:Progress):Progress {
@@ -34,6 +36,7 @@ export function CloudProvider({initial,children}:{initial:LearningProgressState;
  const flush=async()=>{
   let r=ref.current;
   if(!navigator.onLine||r.conflict)return;
+  if(r.roundStart){const result=await openReviewRound(initial.learnerId,r.roundStart);await persist({...ref.current,roundStart:undefined,reviewRound:result.round});if(result.session)await prepare(result.session);r=ref.current;}
   if(r.start){const result=await sendStart(initial.learnerId,r.start);await prepare(result.session);r=ref.current;}
   if(r.events.length&&r.plan){
    const result=await sendBatch(initial.learnerId,r.plan.streamId,r.events.slice(0,100));
@@ -58,6 +61,9 @@ export function CloudProvider({initial,children}:{initial:LearningProgressState;
   const p=await getChanges(initial.learnerId,ref.current.confirmed);
   if(p.releaseId&&p.releaseId!==releaseId){location.reload();return;}
   await persist({...ref.current,confirmed:p,view:p});
+  const round=await getReviewRound(initial.learnerId);
+  await persist({...ref.current,reviewRound:round.round});
+  if(location.hash==='#review'&&round.session){await prepare(round.session);setReady(true);setMessage('云端记录已读取');return;}
   const active=p.sessions.find(s=>s.id===p.activeSessionId);
   if(active&&!active.completed&&ref.current.plan?.session.mode!=='review')await prepare(active);
   setReady(true);setMessage('云端记录已读取');
@@ -75,7 +81,23 @@ export function CloudProvider({initial,children}:{initial:LearningProgressState;
  useEffect(()=>{if(!ready||!online)return;let active=true;void getReviews(initial.learnerId).then(q=>{if(active){setReviews(q.items);setReviewError(false);}}).catch(()=>{if(active)setReviewError(true);});return()=>{active=false;};},[ready,record.confirmed.revision,online]);
  const activeSession=record.view.sessions.find(s=>s.id===record.view.activeSessionId);
  const solvedSteps=record.plan?.session.id===activeSession?.id&&record.plan?Object.entries(record.plan.presentations).filter(([,p])=>{const last=p.retries?.at(-1)||p.answer;return last?.correct&&!last.skipped;}).map(([id])=>id):activeSession?.solvedSteps||[];
- const value:Cloud={solvedSteps,progress:record.view,reviewSession:record.plan?.session.mode==='review'?record.plan.session:null,reviews,pending:record.events.length>0||!!record.start,blocked:!ready||busy||!!record.conflict||!!record.start,
+ const value:Cloud={solvedSteps,progress:record.view,reviewRound:record.reviewRound||null,reviewSession:record.plan?.session.mode==='review'?record.plan.session:null,reviews,pending:record.events.length>0||!!record.start||!!record.roundStart,blocked:!ready||busy||!!record.conflict||!!record.start||!!record.roundStart,
+  openRound:(entry,lessonId,onSuccess)=>run(async()=>{
+   await flush();if(ref.current.events.length||ref.current.conflict||!navigator.onLine)throw new Error('请联网并同步后开始复习');
+   await persist({...ref.current,roundStart:{requestId:cloudId(),entry,...(lessonId?{lessonId}:{})}});await flush();
+   setTimeout(()=>{if(mounted.current)onSuccess(ref.current.reviewRound||null);},0);
+  }),
+  resumeRound:onSuccess=>run(async()=>{
+   await flush();if(ref.current.events.length||ref.current.conflict)throw new Error('请先同步本机作答后继续复习');
+   if(navigator.onLine){const result=await getReviewRound(initial.learnerId);await persist({...ref.current,reviewRound:result.round});if(result.session)await prepare(result.session);}
+   else if(!ref.current.plan||ref.current.plan.session.completed)throw new Error('本题已保存，请联网后继续下一题');
+   setTimeout(()=>{if(mounted.current)onSuccess(ref.current.reviewRound||null);},0);
+  }),
+  closeRound:onSuccess=>run(async()=>{
+   await flush();if(ref.current.events.length||ref.current.conflict||!navigator.onLine)throw new Error('本轮已保留，请联网同步后结束；也可以先回小屋');
+   const id=ref.current.reviewRound?.id;if(id){const result=await closeReviewRound(initial.learnerId,id);await persist({...ref.current,reviewRound:result.round});}
+   setTimeout(()=>{if(mounted.current)onSuccess();},0);
+  }),
   start:(lessonId,onSuccess,review)=>run(async()=>{
    if(ref.current.events.length)await flush();if(ref.current.events.length||ref.current.conflict)throw new Error('请先同步或处理本机记录，再开始其他课次');
    const existing=ref.current.view.sessions.find(s=>s.lessonId===lessonId&&!s.completed);

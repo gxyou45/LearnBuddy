@@ -1,0 +1,42 @@
+import {test,expect} from '@playwright/test';
+import {resolve} from 'node:path';
+test.use({channel:'chrome',serviceWorkers:'block',viewport:{width:320,height:700}});
+test('guest round refresh keeps order, wrong choice, prompt and cursor; leaving home permits resume',async({page})=>{
+ test.setTimeout(90000);
+ if(process.env.TEST_LOCAL_NETWORK==='true')await page.addInitScript(()=>Object.defineProperty(Navigator.prototype,'onLine',{get:()=>true,configurable:true}));
+ if(process.env.TEST_BUILT_WEB==='true')await page.route('**/*',route=>{
+  const path=new URL(route.request().url()).pathname;
+  if(path==='/')return route.fulfill({path:resolve('apps/web/dist/index.html'),contentType:'text/html'});
+  if(path.startsWith('/assets/')||path.startsWith('/static-content/'))return route.fulfill({path:resolve('apps/web/dist',path.slice(1))});
+  return route.continue();
+ });
+ await page.goto('./');await page.getByRole('button',{name:'开始今天的冒险'}).click();
+ await expect(page.locator('.activity-intro')).toBeVisible();
+ await page.evaluate(()=>{
+  const key='learnbuddy:v1:progress',p=JSON.parse(localStorage.getItem(key)!);p.sound=false;
+  p.attempts=['wo','ba','ma'].map((id,i)=>({id:`old-${id}`,session:'old',step:`meaning-${id}`,characterId:id,kind:'meaning',correct:id!=='wo',hintUsed:false,skipped:false,date:'2020-01-01',timestamp:i+1,selectedId:id==='wo'?'ba':id}));
+  localStorage.setItem(key,JSON.stringify(p));location.hash='garden';
+ });
+ await page.reload();await page.getByRole('button',{name:'开始回顾 →',exact:true}).click();
+ await expect(page.locator('.quiz-hanzi')).toHaveText('我');
+ const options=await page.locator('.answer-grid button').allTextContents();
+ const read=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('learnbuddy:v1:progress')!));
+ const before=await read();
+ await page.getByRole('button',{name:'请家长帮一帮',exact:true}).click();
+ await page.reload();await expect(page.getByText('一起读「我」，它说的是我自己。',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'爸爸',exact:true}).click();await expect(page.locator('.feedback')).toContainText('换一个答案');
+ await page.reload();await expect(page.locator('.answer-grid .chosen')).toHaveAttribute('aria-label','爸爸');
+ expect(await page.locator('.answer-grid button').allTextContents()).toEqual(options);
+ expect((await read()).reviewRound.items).toEqual(before.reviewRound.items.map((x:any,i:number)=>({...x,prompted:i===0})));
+ expect((await read()).attempts).toHaveLength(4);
+ await page.screenshot({path:'test-results/review-resume-wrong-320.png'});
+ await page.getByRole('button',{name:'回汉字小屋',exact:true}).click();
+ await page.reload();await page.getByRole('button',{name:'继续上次复习 · 第 1 / 3 题 →',exact:true}).click();
+ await expect(page.locator('.answer-grid .chosen')).toHaveAttribute('aria-label','爸爸');
+ await page.getByRole('button',{name:'我自己',exact:true}).click();await expect(page.getByText('老朋友 2 / 3',{exact:true})).toBeVisible();
+ await page.reload();await expect(page.getByText('老朋友 2 / 3',{exact:true})).toBeVisible();
+ expect((await read()).attempts).toHaveLength(4);expect((await read()).session).toBe(before.session);
+ await page.screenshot({path:'test-results/review-resume-second-320.png'});
+ await page.getByRole('button',{name:'结束回顾',exact:false}).click();
+ await expect(page.getByRole('button',{name:/继续上次复习/})).toHaveCount(0);
+});

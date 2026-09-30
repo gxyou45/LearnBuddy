@@ -1,4 +1,6 @@
 import {upgradeCurriculum} from './curriculum-upgrade.js';
+import {readReviewRound,openReviewRound,closeReviewRound} from './review-round.js';
+import {reviewRoundStartSchema} from '@learnbuddy/contracts';
 import {prepareSync,syncBatch,learningChanges} from './sync-service.js';
 import {importLegacy} from './legacy-import.js';
 import {Hono} from 'hono';
@@ -18,6 +20,9 @@ export function learningRoutes(db:ReturnType<typeof database>,auth:Auth,origins:
   await ownedLearner(db,user.accountId,id);c.set('accountId',user.accountId);c.set('learnerId',id);await next();
  });
  const parse=<T>(schema:z.ZodType<T>,value:unknown)=>{const r=schema.safeParse(value);if(!r.success)throw new HTTPException(400,{message:'学习请求格式不正确'});return r.data;};
+ app.get('/learners/:id/review-round',async c=>c.json(await db.$transaction(tx=>readReviewRound(tx,c.get('learnerId')),{isolationLevel:'RepeatableRead'})));
+ app.post('/learners/:id/review-round',async c=>c.json(await openReviewRound(db,c.get('accountId'),c.get('learnerId'),parse(reviewRoundStartSchema,await c.req.json().catch(()=>null)))));
+ app.post('/learners/:id/review-round/close',async c=>{const input=parse(z.object({id:z.uuid()}).strict(),await c.req.json().catch(()=>null));return c.json(await closeReviewRound(db,c.get('accountId'),c.get('learnerId'),input.id));});
  app.post('/learners/:id/curriculum-upgrade',async c=>{const input=parse(z.object({expectedReleaseId:z.string().regex(/^[a-z0-9][a-z0-9-]*$/)}).strict(),await c.req.json().catch(()=>null));return c.json(await upgradeCurriculum(db,c.get('accountId'),c.get('learnerId'),input.expectedReleaseId));});
  app.post('/learners/:id/sync-streams',async c=>{const input=parse(syncPrepareSchema,await c.req.json().catch(()=>null));return c.json(await prepareSync(db,c.get('accountId'),c.get('learnerId'),input.streamId,input.sessionId));});
  app.post('/learners/:id/events:batch',async c=>{const input=parse(syncBatchSchema,await c.req.json().catch(()=>null));return c.json(await syncBatch(db,c.get('accountId'),c.get('learnerId'),input.streamId,input.events));});

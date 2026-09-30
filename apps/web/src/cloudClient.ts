@@ -1,4 +1,8 @@
 import {syncPlanSchema,syncResultSchema,learningChangesSchema,type SyncEnvelope,learningProgressSchema,learningResultSchema,reviewQueueSchema,mistakeListSchema,type LearningProgressState,type LearningCommand,type StartLearning} from '@learnbuddy/contracts';
+import {reviewRoundResultSchema,type ReviewRoundStart} from '@learnbuddy/contracts';
+export const getReviewRound=async(id:string)=>reviewRoundResultSchema.parse(await cloudRequest(`/api/v1/learners/${id}/review-round`));
+export const openReviewRound=async(id:string,input:ReviewRoundStart)=>reviewRoundResultSchema.parse(await cloudRequest(`/api/v1/learners/${id}/review-round`,input));
+export const closeReviewRound=async(id:string,roundId:string)=>reviewRoundResultSchema.parse(await cloudRequest(`/api/v1/learners/${id}/review-round/close`,{id:roundId}));
 export class CloudError extends Error {constructor(message:string,public status=0){super(message);}}
 export async function cloudRequest(path:string,body?:unknown,method=body?'POST':'GET') {
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);

@@ -5,7 +5,7 @@ import type {ContentManifest,LearningCommand,StartLearning,LearningSessionState,
 import type {Prisma} from './generated/prisma/client.js';
 import type {database} from './db.js';
 import {RULE_VERSION,dayInZone,nextDay,independent,skillStatus,characterStable} from './learning-rules.js';
-import {selectReviewItems,type ReviewCandidate} from '@learnbuddy/contracts';
+import {selectReviewItems,reviewRoundSchema,type ReviewCandidate} from '@learnbuddy/contracts';
 type Tx=Prisma.TransactionClient;
 type Db=ReturnType<typeof database>;
 const conflict=(message='这节课已在其他页面更新，请读取最新进度后继续')=>new HTTPException(409,{message});
@@ -53,7 +53,9 @@ async function result(tx:Tx,learnerId:string,sessionId:string,accepted:'applied'
  return {accepted,session:sessionDTO(session),progress};
 }
 export async function startLearning(db:Db,accountId:string,learnerId:string,input:StartLearning) {
- return db.$transaction(async tx=>{
+ return db.$transaction(tx=>startLearningTx(tx,accountId,learnerId,input),{timeout:20000});
+}
+export async function startLearningTx(tx:Tx,accountId:string,learnerId:string,input:StartLearning) {
   const learner=await lockLearner(tx,learnerId,accountId);
   const replay=await tx.learningEvent.findUnique({where:{learnerId_clientEventId:{learnerId,clientEventId:input.requestId}}});
   if(replay){if(replay.type!=='session-start'||canonical(replay.payload)!==canonical(input))throw conflict('相同请求编号携带了不同内容');return result(tx,learnerId,replay.sessionId,'duplicate');}
@@ -104,7 +106,6 @@ export async function startLearning(db:Db,accountId:string,learnerId:string,inpu
   await tx.learner.update({where:{id:learnerId},data:{learningReleaseId:learner.learningReleaseId||input.releaseId,learningRevision:{increment:1}}});
   await tx.learningEvent.create({data:{learnerId,sessionId:session.id,clientEventId:input.requestId,type:'session-start',payload:input,occurredAt:new Date()}});
   return result(tx,learnerId,session.id,'applied');
- },{timeout:20000});
 }
 export async function applyLearningEvent(db:Db,accountId:string,learnerId:string,input:LearningCommand) {
  return db.$transaction(tx=>applyLearningEventTx(tx,accountId,learnerId,input),{timeout:20000});
@@ -114,6 +115,16 @@ export async function applyLearningEventTx(tx:Tx,accountId:string,learnerId:stri
   const replay=await tx.learningEvent.findUnique({where:{learnerId_clientEventId:{learnerId,clientEventId:input.clientEventId}}});
   if(replay){if(canonical(replay.payload)!==canonical(input))throw conflict('相同事件编号携带了不同内容');return result(tx,learnerId,replay.sessionId,'duplicate');}
   const session=await findSession(tx,learnerId,input.sessionId);if(!session)throw missing();
+  if(session.mode==='review'){
+   const member=await tx.learningEvent.findFirst({where:{learnerId,sessionId:session.id,type:'review-round-member'}});
+   if(member){
+    const round=reviewRoundSchema.parse(learner.reviewRound);
+    if(round.closed||round.id!==(member.payload as {roundId:string}).roundId)throw conflict('这轮复习已结束，请读取最新题单');
+    const sessions=await tx.learningSession.findMany({where:{learnerId,id:{in:round.items.map(i=>i.sessionId)}},select:{id:true,completedAt:true}});
+    const current=round.items.find(i=>sessions.some(s=>s.id===i.sessionId&&!s.completedAt));
+    if(current?.sessionId!==session.id)throw conflict('复习位置已更新，请读取最新题单');
+   }
+  }
   const step=session.lesson.steps[session.currentStep],p=currentPresentation(session);
   if(input.type==='answer') {
    const presented=session.presentations.find(p=>p.id===input.presentationId);if(!presented)throw missing();

@@ -4,7 +4,8 @@ import {warmupItems,shouldOfferWarmup} from './warmup';
 import {WarmupInvitation} from './WarmupInvitation';
 import {pilotFor,guestSolvedSteps} from './interactionPilot';
 import {RiverJourney} from './RiverJourney';
-import {getReviews} from './cloudClient';
+import {createGuestReviewRound} from './guestReviewRound';
+import type {ReviewRound} from '@learnbuddy/contracts';
 import {Activity,type RemoteActivity} from './Activity';
 import {useCloud,projectCloud} from './CloudLearning';
 import {LegacyImportPanel} from './LegacyImportPanel';
@@ -41,7 +42,6 @@ function App() {
   const [localP, setP] = useState<Progress>(() => { try { if(cloud){const prefs=JSON.parse(localStorage.getItem(`${STORAGE_KEY}:cloud-preferences`)||'{}');return {...fresh(),sound:typeof prefs.sound==='boolean'?prefs.sound:true,observations:prefs.observations||{}};}return parseProgress(localStorage.getItem(STORAGE_KEY)); } catch { return fresh(); } });
   const p=cloud?projectCloud(cloud.progress,localP):localP;
   const characterStatus=(id:string)=>cloud?cloud.progress.characters.find(c=>c.id===id)?.status||'未开始':status(p,id);
-  const [cloudReviewPlan,setCloudReviewPlan]=useState<NonNullable<typeof cloud>['reviews']>([]);
   const [route, setRoute] = useState(location.hash.slice(1) || 'home');
   const [audioError, setAudioError] = useState('');
   const [online, setOnline] = useState(navigator.onLine);
@@ -65,11 +65,13 @@ function App() {
   const practiceAllowed = practiceLesson && validPracticeKind && (parentMode || canReadLesson(p, practiceLesson.id, practiceKind));
   const returnToLesson = practiceOrigin !== 'reader' && practiceId === p.activeLesson && p.started;
   const practiceBack = () => go(practiceOrigin === 'reader' ? `reader/${practiceId}` : returnToLesson ? 'lesson' : 'home');
-  const [review, setReview] = useState<CharacterId[]>([]);
-  const [guestReviewPlan,setGuestReviewPlan]=useState<ReturnType<typeof guestReviewItems>>([]);
-  const [reviewIndex, setReviewIndex] = useState(0);
-  const [reviewSession, setReviewSession] = useState('');
-  const [reviewDestination,setReviewDestination]=useState<string|null>(null);
+  const activeReview=cloud?cloud.reviewRound:p.reviewRound;
+  const review=activeReview?.items.map(i=>i.targetId)||[];
+  const reviewIndex=activeReview?.index||0;
+  const guestReviewPlan=p.reviewRound?.items||[];
+  const reviewSession=activeReview?.id||'';
+  const reviewDestination=activeReview?.entry==='warmup'?activeReview.lessonId:null;
+  const hasReview=!!activeReview&&!activeReview.closed&&reviewIndex<review.length;
   const warmupLesson=route.startsWith('warmup/')?lessons.find(l=>l.id===route.slice(7)&&(parentMode||isUnlocked(p,l.id))):undefined;
   const neededLesson = route==='lesson'||route==='done' ? lesson.id : isReader ? bookLesson.id : isPractice&&practiceAllowed ? practiceLesson.id : route==='review'&&review[reviewIndex] ? cloud?.reviewSession?.lessonId||lessonForCharacter(review[reviewIndex]).id : undefined;
   const content = useLessonContent(neededLesson);
@@ -142,26 +144,41 @@ function App() {
     hint:()=>presentation?cloud.event({type:'hint',presentationId:presentation.id},undefined,review):Promise.resolve(false),
     audio:result=>presentation?cloud.event({type:'audio',presentationId:presentation.id,result},undefined,review):Promise.resolve(false)};
   };
-  const startReview=(beforeLessonId?:string)=>{
-   if(!cloud){const plan=beforeLessonId?warmupItems(guestDue):guestDue;if(!plan.length)return;setReviewDestination(beforeLessonId||null);setGuestReviewPlan(plan);setReview(plan.map(c=>c.targetId));setReviewIndex(0);setReviewSession(uid());go('review');return;}
-   const plan=beforeLessonId?warmupItems(cloud.reviews):cloud.reviews.filter((q,i,all)=>all.findIndex(x=>x.targetId===q.targetId)===i).slice(0,5);if(!plan.length)return;
-   void cloud.start(plan[0].lessonId,()=>{setReviewDestination(beforeLessonId||null);setCloudReviewPlan(plan);setReview(plan.map(q=>q.targetId));setReviewIndex(0);go('review');},plan[0]);
-  };
-  const startComprehensive=async()=>{
-   if(!cloud){
-    const plan=guestReviewItems(p,localDate(),lesson.characters.map(c=>c.id));
-    if(!plan.length){setAudioError('这次没有需要复习的题，可以先休息。');return;}
-    setReviewDestination(null);setGuestReviewPlan(plan);setReview(plan.map(c=>c.targetId));setReviewIndex(0);setReviewSession(uid());go('review');return;
-   }
-   try{const {items}=await getReviews(cloud.progress.learnerId,lesson.id);if(!items.length){setAudioError('这次没有需要复习的题，可以先休息。');return;}await cloud.start(items[0].lessonId,()=>{setReviewDestination(null);setCloudReviewPlan(items);setReview(items.map(q=>q.targetId));setReviewIndex(0);go('review');},items[0]);}catch(e){setAudioError(e instanceof Error?e.message:'练习暂时未加载，请联网重试');}
-  };
-  const endReview=()=>{
-   if(reviewDestination){const id=reviewDestination;go(`warmup/${id}`);start(id,true);return;}
+  const finishReview=(round:typeof activeReview=activeReview)=>{
+   const destination=round?.entry==='warmup'?round.lessonId:null;
+   if(destination){go(`warmup/${destination}`);start(destination,true);return;}
    go('garden');
   };
+  const openedRound=(round:ReviewRound|null)=>{
+   if(!round){setAudioError('这次没有需要复习的题，可以先休息。');return;}
+   if(round.closed){finishReview(round);return;}go('review');
+  };
+  const resumeReview=()=>{
+   if(cloud){void cloud.resumeRound(openedRound);return;}go('review');
+  };
+  const startReview=(beforeLessonId?:string)=>{
+   if(cloud){void cloud.openRound(beforeLessonId?'warmup':'garden',beforeLessonId,openedRound);return;}
+   if(hasReview){go('review');return;}
+   const plan=beforeLessonId?warmupItems(guestDue):guestDue;if(!plan.length)return;
+   const round=createGuestReviewRound(uid(),beforeLessonId?'warmup':'garden',beforeLessonId||null,plan);
+   setP(old=>({...old,reviewRound:round}));go('review');
+  };
+  const startComprehensive=()=>{
+   if(cloud){void cloud.openRound('comprehensive',lesson.id,openedRound);return;}
+   if(hasReview){go('review');return;}
+   const plan=guestReviewItems(p,localDate(),lesson.characters.map(c=>c.id));
+   if(!plan.length){setAudioError('这次没有需要复习的题，可以先休息。');return;}
+   setP(old=>({...old,reviewRound:createGuestReviewRound(uid(),'comprehensive',lesson.id,plan)}));go('review');
+  };
+  const endReview=()=>{
+   if(cloud){void cloud.closeRound(()=>finishReview());return;}
+   setP(old=>({...old,reviewRound:old.reviewRound?{...old.reviewRound,closed:true}:undefined}));finishReview();
+  };
   const nextReview=()=>{
-   if(!cloud){stopAudio();if(reviewIndex+1===review.length)endReview();else setReviewIndex(i=>i+1);return;}
-   return cloud.event({type:'advance'},()=>{const item=cloudReviewPlan[reviewIndex+1];if(!item){endReview();return;}void cloud.start(item.lessonId,()=>setReviewIndex(i=>i+1),item);},true);
+   if(cloud)return cloud.event({type:'advance'},()=>{void cloud.resumeRound(openedRound);},true);
+   stopAudio();const last=reviewIndex+1===review.length;
+   setP(old=>old.reviewRound?.id===reviewSession?{...old,reviewRound:{...old.reviewRound,index:reviewIndex+1,closed:last}}:old);
+   if(last)finishReview();
   };
   if(!content.ready) return <ContentStatus error={content.error} retry={content.retry} back={()=>go('home')}/>;
   return <LearningActionsContext.Provider value={actionsHost}><div className={`app-shell${activeLesson ? ' learning-shell' : ''}`}>
@@ -169,7 +186,8 @@ function App() {
     {!online && <div className="notice" role="status">{cloud?'网络断开了，请联网后继续保存学习记录。':'网络断开了，已加载的内容可以继续。声音可能需要联网后重试。'}</div>}
     {storageError && <div className="notice" role="status">{storageError}</div>}
     <main>
-      {warmupLesson&&<WarmupInvitation title={warmupLesson.title} count={Math.min(2,due.length)} busy={!!cloud?.blocked} review={()=>startReview(warmupLesson.id)} start={()=>start(warmupLesson.id,true)} back={()=>go('home')}/>}
+      {hasReview&&['home','garden','done'].includes(route)&&<button className="primary" disabled={cloud?.blocked} onClick={resumeReview}>继续上次复习 · 第 {reviewIndex+1} / {review.length} 题 →</button>}
+      {warmupLesson&&<WarmupInvitation title={warmupLesson.title} resuming={hasReview} count={hasReview?review.length-reviewIndex:Math.min(2,due.length)} busy={!!cloud?.blocked} review={hasReview?resumeReview:()=>startReview(warmupLesson.id)} start={()=>start(warmupLesson.id,true)} back={()=>go('home')}/>}
       {route === 'home' && <>
         <section className="hero"><div className="eyebrow"><span/> 5–6 岁 · 亲子识字时光</div><h1>一起认汉字，<br/>慢慢读世界。</h1><p>每天一小步，发现文字里的大世界。</p><House/><span className="hero-sticker">今天，也有新发现 ✦</span></section>
         <section className="today"><div className="today-top"><span className="pill">今日的小冒险</span><span className="muted">约 3–6 分钟</span></div><h2>{recommendation.intro} <span>👋</span></h2><p>认识「{recommendation.characters.map(c => c.text).join('、')}」，读一句温暖的话。</p><button className="primary" disabled={cloud?.blocked} onClick={() => start()}>{p.started ? '继续我的冒险' : completedCount(p) === lessons.length ? '再玩一次' : '开始今天的冒险'} <span>→</span></button></section>
@@ -180,7 +198,7 @@ function App() {
       {isPractice && (practiceAllowed ? <ReadingPractice key={route} lesson={practiceLesson} kind={practiceKind} listen={listen} back={practiceBack} backLabel={practiceOrigin === 'reader' ? '回到故事' : returnToLesson ? '返回课程' : '回到小屋'}/> : <section className="center-page"><h1>先认识这些字吧</h1><p>学到这里后，就能随时回来读一读。</p><button className="primary" onClick={() => go('home')}>回到小屋</button></section>)}
       {route === 'done' && <section className="center-page"><div className="celebrate">🌼</div><span className="pill">小屋多了一朵花</span><h1>今天，又长大一小步！</h1><p>你和「{lesson.characters.map(c => c.text).join('、')}」见面啦。<br/>一起把这句话读给家人听吧。</p><div className="mini-characters">{lesson.characters.map(c => c.text).join(' · ')}</div><div className="soft-card"><strong>离开屏幕，也有小发现</strong><p>{lesson.lifeTask}</p></div><LearningActions><button className="primary" disabled={cloud?.blocked||cloud?.pending} onClick={()=>void startComprehensive()}>综合练习 · 新字和老朋友 →</button><button className="text-button" onClick={() => openBook(lesson.id)}>打开我的小故事 →</button><button className="text-button" onClick={() => go('home')}>回到汉字小屋</button></LearningActions></section>}
       {route === 'garden' && <section className="inner-page"><span className="eyebrow">让认识的字，再见一面</span><h1>回顾花园</h1><p>不用着急，熟悉也是一点点长出来的。</p><div className="garden-art">🌱 <span>🌼</span> 🌿</div><div className="soft-card"><h2>{due.length ? `${due.length} 个老朋友想见你` : '今天的花园很轻松'}</h2><p>{due.length ? '听一听，认一认，一起给记忆浇点水。' : p.started ? '今天认识的字，明天再来打个招呼吧。' : '先去小屋认识几个汉字，再来这里相遇。'}</p></div>{due.length > 0 && <button className="primary" disabled={cloud?.blocked} onClick={()=>startReview()}>开始回顾 →</button>}<button className="text-button" onClick={() => go('home')}>回小屋看看</button></section>}
-      {route === 'review' && (review[reviewIndex] ? <section className="activity"><button className="text-button" disabled={cloud?.blocked} onClick={endReview}>{reviewDestination?'跳过回顾，开始新课 →':'‹ 结束回顾'}</button><p className="muted">{reviewDestination?'课前热身':'老朋友'} {reviewIndex+1} / {review.length}</p>{(() => { const id = review[reviewIndex],kind=guestReviewPlan[reviewIndex]?.kind||'sound'; const fallback: Step = { id: `review-${kind}-${id}`, kind: kind==='meaning' ? 'meaning' : 'sound', characterId: id, title: kind==='meaning' ? '这个字是什么意思？' : '听听，是哪位老朋友？', subtitle: '慢慢来，也可以一起完成。', audio: kind==='meaning' ? 'meaning' : id }; const reviewLesson=cloud?.reviewSession?lessons.find(l=>l.id===cloud.reviewSession!.lessonId)!:lessonForCharacter(id);const step=cloud?.reviewSession?getSteps(reviewLesson)[cloud.reviewSession.stepIndex]:fallback;return <Activity remote={remoteFor(true)} lesson={reviewLesson} key={cloud?.reviewSession?.id||step.id} step={step} listen={listen} next={nextReview} answer={(a,b,c,d,e) => saveAnswer(step,a,b,c,reviewSession,d,e)} attempt={p.attempts.find(a=>a.session===reviewSession&&a.step===step.id)}/>; })()}</section> : <section className="center-page"><h1>从花园开始吧</h1><button className="primary" onClick={() => go('garden')}>回到回顾花园</button></section>)}
+      {route === 'review' && (hasReview&&(!cloud||cloud.reviewSession?.id===cloud.reviewRound?.items[reviewIndex]?.sessionId) ? <section className="activity"><button className="text-button" disabled={cloud?.blocked} onClick={endReview}>{reviewDestination?'跳过回顾，开始新课 →':'‹ 结束回顾'}</button><p className="muted">{reviewDestination?'课前热身':'老朋友'} {reviewIndex+1} / {review.length}</p>{cloud?.reviewSession?.completed&&<button className="primary" disabled={cloud.blocked} onClick={resumeReview}>继续复习 →</button>}{(() => { const id = review[reviewIndex],kind=guestReviewPlan[reviewIndex]?.kind||'sound'; const fallback: Step = { id: `review-${kind}-${id}`, kind: kind==='meaning' ? 'meaning' : 'sound', characterId: id, title: kind==='meaning' ? '这个字是什么意思？' : '听听，是哪位老朋友？', subtitle: '慢慢来，也可以一起完成。', audio: kind==='meaning' ? 'meaning' : id }; const reviewLesson=cloud?.reviewSession?lessons.find(l=>l.id===cloud.reviewSession!.lessonId)!:lessonForCharacter(id);const step=cloud?.reviewSession?getSteps(reviewLesson)[cloud.reviewSession.stepIndex]:fallback;return <Activity optionOrder={cloud?undefined:guestReviewPlan[reviewIndex]?.optionIds} initialPrompted={guestReviewPlan[reviewIndex]?.prompted} onHint={()=>setP(old=>old.reviewRound?.id===reviewSession?{...old,reviewRound:{...old.reviewRound,items:old.reviewRound.items.map((item,i)=>i===reviewIndex?{...item,prompted:true}:item)}}:old)} remote={remoteFor(true)} lesson={reviewLesson} key={cloud?.reviewSession?.id||step.id} step={step} listen={listen} next={nextReview} answer={(a,b,c,d,e) => saveAnswer(step,a,b,c,reviewSession,d,e)} attempt={p.attempts.find(a=>a.session===reviewSession&&a.step===step.id)}/>; })()}</section> : <section className="center-page"><h1>{cloud?.blocked?'正在读取复习位置…':hasReview?'上次的复习还在这里':'这轮回顾已结束'}</h1>{hasReview?<button className="primary" disabled={cloud?.blocked} onClick={resumeReview}>继续上次复习 →</button>:<button className="primary" disabled={cloud?.blocked} onClick={()=>finishReview()}>继续下一步 →</button>}<button className="text-button" onClick={()=>go('home')}>回小屋看看</button></section>)}
       {route === 'books' && <section className="inner-page"><span className="eyebrow">把认识的字，读成故事</span><h1>我的小书架</h1><p>{parentMode ? '家长模式：每一章节都可以直接打开。' : '每完成一课，点亮一个图画故事。'}</p>{themes.map((theme,index) => <section key={theme.title} className="book-group"><h2>{theme.icon} {theme.title}</h2>{lessons.filter(l=>l.theme===index).map(item => { const ready = parentMode || lessonState(p,item.id).completed; return <button key={item.id} className="book" disabled={!ready} onClick={()=>openBook(item.id)} aria-label={`${ready?'阅读':'未解锁'}${item.title}`}><div className="book-cover"><small>第 {lessons.indexOf(item)+1} 个共读单元</small><LessonPicture lessonId={item.id} interactive={false}/><strong>{item.title}</strong><span>{item.characters.map(c=>c.text).join(' · ')}</span></div><div className="book-caption"><span>{ready ? '一起读一读' : `完成「${item.title}」后打开`}</span><span>{ready?'→':'♡'}</span></div></button>; })}</section>)}</section>}
       {isReader && ((parentMode || lessonState(p,bookLesson.id).completed) ? <section className="reader inner-page"><button className="text-button" onClick={() => go('books')}>‹ 回书架</button><span className="eyebrow">亲子共读 · {bookLesson.title}</span><LessonPicture lessonId={bookLesson.id}/><h1><ReadingText text={bookLesson.story.text} audio={bookLesson.story.audio}/></h1><button className="audio-button" onClick={() => listen(bookLesson.story.audio)}>♪ 听完整故事</button><button className="audio-button word-audio" onClick={() => go(`practice/${bookLesson.id}/words/reader`)}>读词语</button><p className="parent-note">陪读小提示：{bookLesson.story.note}<br/>陪读字：{bookLesson.story.supportCharacters.join('、') || '这句话都学过啦'}</p><Comprehension lesson={bookLesson}/><LearningActions><button className="primary" onClick={()=>go('books')}>读完啦 ✓</button></LearningActions></section> : <section className="center-page"><h1>故事还在等你</h1><p>完成「{bookLesson.title}」就可以来读啦。</p><button className="primary" onClick={()=>go('home')}>回到小屋</button></section>)}
       {route === 'parent' && parentVerified && <section className="inner-page parent-page"><span className="eyebrow">陪伴，让每一步更有意义</span><h1>家长中心</h1>{!isStaticDemo&&<button className="primary" onClick={()=>go('account')}>家长账户与孩子档案</button>}<div className="stats"><div><b>{p.seen.length}</b><span>已接触</span></div><div><b>{characters.filter(c => characterStatus(c.id) === '练习中').length}</b><span>练习中</span></div><div><b>{characters.filter(c => characterStatus(c.id) === '较稳定').length}</b><span>较稳定</span></div></div>{cloud&&<LegacyImportPanel storage={STORAGE_KEY} disabled={cloud.blocked||cloud.pending||!online}/>} {cloud&&<MistakesPanel learnerId={cloud.progress.learnerId} revision={cloud.progress.revision}/>}<h2>最近认识的字</h2>{characters.map(c => <div className="character-row" key={c.id}><b>{c.text}</b><div><strong>{characterStatus(c.id)}</strong><small>{p.observations[c.id] ? `亲子认读：${p.observations[c.id]}` : '尚无亲子认读记录'}</small></div><button onClick={() => setP(old => ({ ...old, observations: { ...old.observations, [c.id]: `${localDate()} ${old.observations[c.id]?.endsWith('能认出') ? '需要陪伴' : '能认出'}` } }))}>记录认读</button></div>)}<p className="muted">点击“记录认读”切换能认出／需要陪伴。亲子观察单独保存在本机，不等同于题目表现。</p><div className="setting"><span>学习声音</span><button role="switch" aria-label="学习声音" aria-checked={p.sound} onClick={() => { stopAudio(); setP(old => ({ ...old, sound: !old.sound })); }}>{p.sound ? '已开启 ♪' : '已关闭'}</button></div><div className="setting hunt-difficulty-setting"><label htmlFor="hunt-difficulty">新找字局的干扰字</label><select id="hunt-difficulty" value={p.huntDistractorCount??"auto"} disabled={!!cloud&&(cloud.blocked||cloud.pending||!online)} onChange={e=>{const count=e.target.value==="auto"?null:e.target.value==="2"?2:4;if(cloud){void cloud.huntDifficulty(count);return;}setP(old=>({...old,huntDistractorCount:count}));}}><option value="auto">自动（首次 2 个，之后 3 个）</option><option value="2">轻松一点（2 个）</option><option value="4">多找一找（4 个）</option></select></div><p className="muted">只用于已启用轮换玩法的新局，不改变正在玩的局面，也不会自动开启新内容。{cloud?"按当前孩子保存；联网并同步后可修改。":"保存在当前浏览器。"}目标始终为 3 个字，不计入掌握评价。</p><div className="setting"><span>家长开放全部课程</span><button role="switch" aria-label="家长开放全部课程" aria-checked={p.unlocked.length === lessons.length} disabled={cloud?.blocked} onClick={()=>{if(cloud){void cloud.settings(!cloud.progress.openAllCourses);return;}setP(old=>({...old,unlocked:old.unlocked.length === lessons.length ? [] : lessons.map(l=>l.id)}));}}>{p.unlocked.length === lessons.length ? '已开放' : '按阶梯学习'}</button></div><div className="soft-card"><strong>关于本次体验</strong><p>前 10 课互动试用：描笔画只保存在当前浏览器，不计掌握；笔顺和触屏体验仍待人工审校。<a href={`${import.meta.env.BASE_URL}strokes/NOTICE.txt`} target="_blank" rel="noreferrer">笔画素材来源与许可</a>（数据无担保，可按许可再分发）。</p><p>当前目录有 {lessons.length} 课、{characters.length} 个汉字。声音为机器生成的试听素材，尚待人工审听，不是正式课程录音。</p><p>{cloud?'新学习记录由云端保存，联网换设备可继续。已缓存课次可离线记录并在联网后补传；旧记录可由家长确认导入。':'进度只保存在当前浏览器。更换设备、浏览器、网址或清除数据后，进度不会自动同步。'}</p><p>“较稳定”基于跨日、不同任务的辨认表现，不能代表已经会独立朗读。</p></div>{!cloud&&<button className="danger" onClick={() => setResetAsk(true)}>{blockedStorage ? '重置本机数据并恢复保存' : '清除本机学习进度'}</button>}</section>}

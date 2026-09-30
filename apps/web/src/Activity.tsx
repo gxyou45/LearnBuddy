@@ -11,13 +11,14 @@ import {stopAudio} from './audio';
 import type {Attempt} from './progress';
 import {learningOptions,type LearningSessionState,type RetryAnswer} from '@learnbuddy/contracts';
 export type RemoteActivity={presentation:LearningSessionState['presentation'];busy:boolean;answer:(selectedId:string|null,skipped:boolean,retry:boolean)=>Promise<boolean>;hint:()=>Promise<boolean>;audio:(result:'played'|'failed')=>Promise<boolean>};
-export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,journey}:{
+export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,journey,optionOrder,initialPrompted,onHint}:{
  lesson:Lesson;step:Step;listen:(id:string,waitForEnd?:boolean)=>void|Promise<boolean|void>;next:()=>void|Promise<boolean|void>;
  answer:(correct:boolean,hint:boolean,skipped:boolean,selectedId:string|null,retry:boolean)=>void;attempt?:Attempt;remote?:RemoteActivity;
  trace?:{text:string;storageKey:string};
  journey?:{steps:readonly Step[];solvedSteps:readonly string[]};
+ optionOrder?:readonly string[];initialPrompted?:boolean;onHint?:()=>void;
 }){
- const [localOptions]=useState(()=>shuffled(learningOptions(lesson.characters,step.characterId,step.kind)));
+ const [localOptions]=useState(()=>{const options=learningOptions(lesson.characters,step.characterId,step.kind);return optionOrder?optionOrder.map(id=>options.find(c=>c.id===id)!).filter(Boolean):shuffled(options);});
  const remoteOptions=remote?.presentation?.options.map(o=>({...lesson.characters.find(c=>c.id===o.id)!,...o}));
  const options=remoteOptions?(remote?.presentation?.answer?remoteOptions:learningOptions(remoteOptions,step.characterId,step.kind)):localOptions;
  const quiz=step.kind==='sound'||step.kind==='meaning';
@@ -25,7 +26,7 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
  const initial=attempt?.retries?.at(-1)||attempt;
  const [localAnswer,setAnswer]=useState<RetryAnswer|null>(initial?{selectedId:initial.selectedId??null,correct:initial.correct,skipped:initial.skipped}:null);
  const [localRetried,setRetried]=useState(!!attempt?.retries?.length);
- const [localHint,setHint]=useState(!!attempt?.hintUsed);
+ const [localHint,setHint]=useState(!!attempt?.hintUsed||!!initialPrompted);
  const [heard,setHeard]=useState(false),[playing,setPlaying]=useState(false);
  const saved=remote?(remote.presentation?.retries?.at(-1)||remote.presentation?.answer):localAnswer;
  const retried=remote?!!remote.presentation?.retries?.length:localRetried;
@@ -87,7 +88,7 @@ export function Activity({lesson,step,listen,next,answer,attempt,remote,trace,jo
  const help=async()=>{
   if(done||remote?.busy)return;
   audioRun.current++;stopAudio();setPlaying(false);
-  if(remote)await remote.hint();else setHint(true);
+  if(remote)await remote.hint();else {setHint(true);onHint?.();}
  };
  return <div className={'activity-body activity-'+step.kind}>
   <span className="eyebrow">{step.kind==='teach'?'发现汉字':step.kind==='word'?'把汉字读成词语':quiz?'一起玩一玩':'温暖的小小世界'}</span><h1>{step.title}</h1><p>{step.subtitle}</p>

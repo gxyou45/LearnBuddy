@@ -146,6 +146,11 @@ export type LearningProgressState=z.infer<typeof learningProgressSchema>;
 export const learningResultSchema=z.object({accepted:z.enum(['applied','duplicate']),session:learningSessionSchema,progress:learningProgressSchema});
 export const reviewQueueSchema=z.object({today:z.string(),timeZone:z.string(),items:z.array(z.object({targetId:id,kind:z.enum(['sound','meaning']),dueDate:z.string(),lessonId:id,releaseId:id,questionVersionId:z.string(),ruleVersion:z.number().int()}))});
 export type ReviewQueue=z.infer<typeof reviewQueueSchema>;
+export const reviewRoundStartSchema=z.object({requestId:z.uuid(),entry:z.enum(['garden','comprehensive','warmup']),lessonId:id.optional()}).strict().refine(x=>x.entry==='garden'?!x.lessonId:!!x.lessonId);
+export type ReviewRoundStart=z.infer<typeof reviewRoundStartSchema>;
+export const reviewRoundSchema=z.object({id:z.uuid(),entry:z.enum(['garden','comprehensive','warmup']),lessonId:id.nullable(),items:z.array(reviewQueueSchema.shape.items.element.extend({sessionId:z.uuid()})).min(1).max(5),index:z.number().int().min(0).max(5),closed:z.boolean()});
+export type ReviewRound=z.infer<typeof reviewRoundSchema>;
+export const reviewRoundResultSchema=z.object({round:reviewRoundSchema.nullable(),session:learningSessionSchema.nullable()});
 export const mistakeListSchema=z.object({nextCursor:z.uuid().nullable(),items:z.array(z.object({id:z.uuid(),questionVersionId:z.string(),targetId:id,kind:z.string(),status:z.string(),wrongCount:z.number().int(),lastWrongAt:z.string(),releaseId:id,lessonId:id,selectedId:id.nullable(),correctIds:z.array(id),options:learningPresentationSchema.shape.options}))});
 export type MistakeList=z.infer<typeof mistakeListSchema>;
 
