@@ -1,7 +1,9 @@
 import type {Lesson,Step} from '@learnbuddy/contracts';
 import type {Attempt} from './progress';
+import configurations from './lessonInteractions.json' with {type:'json'};
+export const lessonInteractions = configurations;
 
-// Fixed against the curriculum-1000-v1 directory, not an ID sort or a rolling slice.
+// Original ten targets remain in the expanded configuration for v1 save compatibility.
 export const interactionPilot = [
  {lessonId:'family',characterId:'ma',text:'妈'},
  {lessonId:'home',characterId:'ren',text:'人'},
@@ -14,9 +16,12 @@ export const interactionPilot = [
  {lessonId:'plants',characterId:'mu',text:'木'},
  {lessonId:'positions',characterId:'da',text:'大'},
 ] as const;
-export function pilotFor(releaseId:string,lesson:Lesson,catalog:readonly Lesson[]){
- if(releaseId!=='curriculum-1000-v1'||interactionPilot.some((p,i)=>catalog[i]?.id!==p.lessonId))return undefined;
- return interactionPilot.find(p=>p.lessonId===lesson.id&&lesson.characters.some(c=>c.id===p.characterId&&c.text===p.text));
+/** Match stable lesson/character identities; catalog order does not restrict availability. */
+export function interactionFor(releaseId:string,lesson:Lesson,catalog:readonly Lesson[]){
+ if(releaseId!=='curriculum-1000-v1'||!catalog.some(l=>l.id===lesson.id))return undefined;
+ const config=lessonInteractions.find(p=>p.lessonId===lesson.id);
+ if(!config||!config.characters.every(target=>lesson.characters.some(c=>c.id===target.characterId&&c.text===target.text)))return undefined;
+ return config;
 }
 export function guestSolvedSteps(attempts:readonly Attempt[],session:string){
  return [...new Set(attempts.filter(a=>{const last=a.retries?.at(-1)||a;return a.session===session&&last.correct&&!last.skipped;}).map(a=>a.step))];

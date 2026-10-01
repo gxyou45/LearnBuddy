@@ -65,12 +65,10 @@ for(const pilot of interactionPilot)test(`first-ten ${pilot.lessonId}: trace ${p
  await expect(river).toHaveAttribute('data-solved','1');
  await page.screenshot({path:`test-results/river-${pilot.lessonId}-320.png`});
 });
-test('lesson eleven retains the existing teaching and quiz experience',async({page})=>{
+test('lesson eleven now includes tracing and the ten-question river',async({page})=>{
  await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();
- await seek(page,'c007','teach-han-4e00');await expect(page.locator('.hanzi')).toHaveText('一');
- await expect(page.locator('.trace-character')).toHaveCount(0);
- await seek(page,'c007','sound-han-4e00');await expect(page.locator('.listening-art')).toBeVisible();
- await expect(page.locator('.river-journey')).toHaveCount(0);
+ await seek(page,'c007','teach-han-4e00');await expect(page.locator('.trace-character')).toContainText('描一描 · 一');
+ await seek(page,'c007','sound-han-4e00');await expect(page.locator('.river-journey')).toHaveAttribute('data-total','10');
 });
 test('touch tracing survives a lift and refresh; demonstration is not completion',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});
@@ -95,7 +93,7 @@ test('touch tracing survives a lift and refresh; demonstration is not completion
  await touch('touchMove',points.length-1);await touch('touchEnd',points.length-1);
  await expect(trace).toHaveAttribute('data-stroke','1');
  await page.getByRole('button',{name:'继续探索',exact:false}).click();
- await expect(trace).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'读好了，继续'})).toBeVisible();
 });
 test('finishing the final answer reaches the bank; replay starts a fresh journey',async({page,request})=>{
  const catalog=await(await request.get('/api/v1/catalog')).json();

@@ -1,26 +1,39 @@
 import {it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
-import {interactionPilot,pilotFor,journeyProgress,guestSolvedSteps} from '../apps/web/src/interactionPilot';
+import {interactionPilot,lessonInteractions,interactionFor,journeyProgress,guestSolvedSteps} from '../apps/web/src/interactionPilot';
 import {strokeData} from '../apps/web/src/strokeData';
 import {sampleStroke,traceForward,canResumeStroke} from '../apps/web/src/traceGeometry';
 import type {Attempt} from '../apps/web/src/progress';
 const manifest=JSON.parse(readFileSync('apps/web/public/static-content/manifest.json','utf8'));
-it('pins both interactions to the actual first ten lessons of this release',()=>{
- expect(interactionPilot.map(p=>p.lessonId)).toEqual(manifest.lessons.slice(0,10).map((l:any)=>l.id));
- for(const [i,lesson]of manifest.lessons.entries()){
-  const pilot=pilotFor(manifest.releaseId,lesson,manifest.lessons);
-  expect(!!pilot).toBe(i<10);
-  if(pilot){expect(lesson.characters.some((c:any)=>c.id===pilot.characterId&&c.text===pilot.text)).toBe(true);expect(strokeData[pilot.text]).toBeDefined();}
+const design=JSON.parse(readFileSync('课程设计/1000字课程.json','utf8'));
+const fullCatalog=[...manifest.lessons.slice(0,10),...design.lessons.slice(6).map((l:any)=>({id:l.id.toLowerCase(),characters:l.targets.map((text:string)=>({id:`han-${text.codePointAt(0)!.toString(16)}`,text}))}))];
+it('covers all 204 lessons with two own characters, retaining the ten original targets',()=>{
+ expect(fullCatalog).toHaveLength(204);
+ expect(lessonInteractions.map(l=>l.lessonId)).toEqual(fullCatalog.map(l=>l.id));
+ for(const lesson of fullCatalog){
+  const interaction=interactionFor(manifest.releaseId,lesson,fullCatalog)!;
+  expect(interaction.characters).toHaveLength(2);
+  expect(new Set(interaction.characters.map(c=>c.characterId)).size).toBe(2);
+  for(const c of interaction.characters)expect(strokeData[c.text]).toBeDefined();
  }
- expect(pilotFor('other-release',manifest.lessons[0],manifest.lessons)).toBeUndefined();
- expect(pilotFor(manifest.releaseId,manifest.lessons[0],[...manifest.lessons].reverse())).toBeUndefined();
+ for(const old of interactionPilot)expect(lessonInteractions.find(l=>l.lessonId===old.lessonId)!.characters).toContainEqual({characterId:old.characterId,text:old.text});
+ for(const lesson of manifest.lessons)expect(interactionFor(manifest.releaseId,lesson,manifest.lessons)).toBeDefined();
+ expect(interactionFor('other-release',manifest.lessons[0],manifest.lessons)).toBeUndefined();
+ expect(interactionFor(manifest.releaseId,{...manifest.lessons[0],characters:[]},manifest.lessons)).toBeUndefined();
+ expect(interactionFor(manifest.releaseId,manifest.lessons[0],[...manifest.lessons].reverse())).toBeDefined();
 });
-it('bundles all ten original data records, with matching ordered medians and license',()=>{
- for(const p of interactionPilot){
-  const data=strokeData[p.text];
-  expect(data).toEqual(JSON.parse(readFileSync(`apps/web/public/strokes/${p.text}.json`,'utf8')));
+it('ships 408 unmodified original records; every stroke can be traced and has a valid outline',()=>{
+ expect(Object.keys(strokeData)).toHaveLength(408);
+ for(const [text,data] of Object.entries(strokeData)){
+  expect(data).toEqual(JSON.parse(readFileSync(`apps/web/public/strokes/${text}.json`,'utf8')));
   expect(data.strokes.length).toBe(data.medians.length);
-  for(const median of data.medians){const path=sampleStroke(median);expect(path.length).toBeGreaterThan(2);expect(path.every(p=>p.every(Number.isFinite))).toBe(true);}
+  for(const [i,median] of data.medians.entries()){
+   expect(data.strokes[i]).toMatch(/^M /);
+   const path=sampleStroke(median);expect(path.length).toBeGreaterThan(2);
+   expect(path.every(p=>p.every(Number.isFinite))).toBe(true);
+   let cursor=0;for(const point of path)cursor=traceForward(path,cursor,point);
+   expect(cursor).toBe(path.length-1);
+  }
  }
  expect(readFileSync('apps/web/public/strokes/ARPHICPL.TXT','utf8')).toContain('ARPHIC PUBLIC LICENSE');
 });

@@ -4,7 +4,7 @@ for(const viewport of [{width:393,height:650},{width:320,height:568}]) {
  test(`lesson actions stay onscreen with browser toolbars (${viewport.width}x${viewport.height})`,async({page})=>{
   test.setTimeout(60000);
   await page.setViewportSize(viewport);
-  await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();
+  await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();await expect(page.locator('.activity-intro')).toBeVisible();
   for(let step=0;step<15;step++) {
    if(step>0){await page.evaluate(step=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.step=step;delete p.stepId;localStorage.setItem(key,JSON.stringify(p));},step);await page.reload();}
    await expect(page.locator('.learning-actions button').first()).toBeVisible();
@@ -33,10 +33,10 @@ for(const viewport of [{width:393,height:650},{width:320,height:568}]) {
 test('legacy stories fit and expanded stage stories remain readable on compact screens',async({page,request})=>{
  test.setTimeout(90000);
  await page.setViewportSize({width:393,height:650});
- const catalog=await (await request.get('/api/v1/catalog')).json();
- await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();
+ const catalog=await (await request.get(process.env.TEST_STATIC==='true'?'./static-content/manifest.json':'/api/v1/catalog')).json();
+ await page.goto('/');await page.getByRole('button',{name:'开始今天的冒险'}).click();await expect(page.locator('.activity-intro')).toBeVisible();
  for(const lesson of catalog.lessons.filter((l:any,i:number)=>i<10||/^c(020|040|060|080|100|120|140|160|164|180|200)$/.test(l.id))){
-  await page.evaluate(id=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.activeLesson=id;p.step=14;p.stepId='story';p.huntFound=[];localStorage.setItem(key,JSON.stringify(p));},lesson.id);
+  await page.evaluate(id=>{const key='learnbuddy:v1:progress';const p=JSON.parse(localStorage.getItem(key)!);p.activeLesson=id;p.step=14;p.stepId='story';p.huntFound=[];delete p.huntRound;delete p.huntRoundIndex;localStorage.setItem(key,JSON.stringify(p));},lesson.id);
   await page.reload();await expect(page.locator('.story-text'),`lesson ${lesson.id} is ready`).toBeVisible({timeout:15000});
   const overflow=await page.locator('.learning-shell>main').evaluate(el=>el.scrollHeight-el.clientHeight);
   if(lesson.characters.length===3)expect(overflow,lesson.id).toBeLessThanOrEqual(2);

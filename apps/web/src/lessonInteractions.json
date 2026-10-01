@@ -1,0 +1,2654 @@
+[
+  {
+    "lessonId": "family",
+    "characters": [
+      {
+        "characterId": "ma",
+        "text": "妈"
+      },
+      {
+        "characterId": "wo",
+        "text": "我"
+      }
+    ]
+  },
+  {
+    "lessonId": "home",
+    "characters": [
+      {
+        "characterId": "ren",
+        "text": "人"
+      },
+      {
+        "characterId": "men",
+        "text": "门"
+      }
+    ]
+  },
+  {
+    "lessonId": "welcome",
+    "characters": [
+      {
+        "characterId": "lai",
+        "text": "来"
+      },
+      {
+        "characterId": "hao",
+        "text": "好"
+      }
+    ]
+  },
+  {
+    "lessonId": "pets",
+    "characters": [
+      {
+        "characterId": "xiao",
+        "text": "小"
+      },
+      {
+        "characterId": "gou",
+        "text": "狗"
+      }
+    ]
+  },
+  {
+    "lessonId": "snack",
+    "characters": [
+      {
+        "characterId": "shui",
+        "text": "水"
+      },
+      {
+        "characterId": "chi",
+        "text": "吃"
+      }
+    ]
+  },
+  {
+    "lessonId": "pond",
+    "characters": [
+      {
+        "characterId": "niao",
+        "text": "鸟"
+      },
+      {
+        "characterId": "yu",
+        "text": "鱼"
+      }
+    ]
+  },
+  {
+    "lessonId": "basket",
+    "characters": [
+      {
+        "characterId": "you",
+        "text": "有"
+      },
+      {
+        "characterId": "zai",
+        "text": "在"
+      }
+    ]
+  },
+  {
+    "lessonId": "sky",
+    "characters": [
+      {
+        "characterId": "shan",
+        "text": "山"
+      },
+      {
+        "characterId": "ri",
+        "text": "日"
+      }
+    ]
+  },
+  {
+    "lessonId": "plants",
+    "characters": [
+      {
+        "characterId": "mu",
+        "text": "木"
+      },
+      {
+        "characterId": "hua",
+        "text": "花"
+      }
+    ]
+  },
+  {
+    "lessonId": "positions",
+    "characters": [
+      {
+        "characterId": "da",
+        "text": "大"
+      },
+      {
+        "characterId": "shang",
+        "text": "上"
+      }
+    ]
+  },
+  {
+    "lessonId": "c007",
+    "characters": [
+      {
+        "characterId": "han-4e00",
+        "text": "一"
+      },
+      {
+        "characterId": "han-4e8c",
+        "text": "二"
+      }
+    ]
+  },
+  {
+    "lessonId": "c008",
+    "characters": [
+      {
+        "characterId": "han-4e03",
+        "text": "七"
+      },
+      {
+        "characterId": "han-516b",
+        "text": "八"
+      }
+    ]
+  },
+  {
+    "lessonId": "c009",
+    "characters": [
+      {
+        "characterId": "han-53e3",
+        "text": "口"
+      },
+      {
+        "characterId": "han-624b",
+        "text": "手"
+      }
+    ]
+  },
+  {
+    "lessonId": "c010",
+    "characters": [
+      {
+        "characterId": "han-7259",
+        "text": "牙"
+      },
+      {
+        "characterId": "han-820c",
+        "text": "舌"
+      }
+    ]
+  },
+  {
+    "lessonId": "c011",
+    "characters": [
+      {
+        "characterId": "han-529b",
+        "text": "力"
+      },
+      {
+        "characterId": "han-5fc3",
+        "text": "心"
+      }
+    ]
+  },
+  {
+    "lessonId": "c012",
+    "characters": [
+      {
+        "characterId": "han-5929",
+        "text": "天"
+      },
+      {
+        "characterId": "han-592a",
+        "text": "太"
+      }
+    ]
+  },
+  {
+    "lessonId": "c013",
+    "characters": [
+      {
+        "characterId": "han-571f",
+        "text": "土"
+      },
+      {
+        "characterId": "han-98ce",
+        "text": "风"
+      }
+    ]
+  },
+  {
+    "lessonId": "c014",
+    "characters": [
+      {
+        "characterId": "han-767d",
+        "text": "白"
+      },
+      {
+        "characterId": "han-7ea2",
+        "text": "红"
+      }
+    ]
+  },
+  {
+    "lessonId": "c015",
+    "characters": [
+      {
+        "characterId": "han-8863",
+        "text": "衣"
+      },
+      {
+        "characterId": "han-889c",
+        "text": "袜"
+      }
+    ]
+  },
+  {
+    "lessonId": "c016",
+    "characters": [
+      {
+        "characterId": "han-7c73",
+        "text": "米"
+      },
+      {
+        "characterId": "han-996d",
+        "text": "饭"
+      }
+    ]
+  },
+  {
+    "lessonId": "c017",
+    "characters": [
+      {
+        "characterId": "han-53bb",
+        "text": "去"
+      },
+      {
+        "characterId": "han-8d70",
+        "text": "走"
+      }
+    ]
+  },
+  {
+    "lessonId": "c018",
+    "characters": [
+      {
+        "characterId": "han-4e86",
+        "text": "了"
+      },
+      {
+        "characterId": "han-4e5f",
+        "text": "也"
+      }
+    ]
+  },
+  {
+    "lessonId": "c019",
+    "characters": [
+      {
+        "characterId": "han-4e2a",
+        "text": "个"
+      },
+      {
+        "characterId": "han-4ed6",
+        "text": "他"
+      }
+    ]
+  },
+  {
+    "lessonId": "c020",
+    "characters": [
+      {
+        "characterId": "han-4ec0",
+        "text": "什"
+      },
+      {
+        "characterId": "han-90a3",
+        "text": "那"
+      }
+    ]
+  },
+  {
+    "lessonId": "c021",
+    "characters": [
+      {
+        "characterId": "han-8001",
+        "text": "老"
+      },
+      {
+        "characterId": "han-5e08",
+        "text": "师"
+      }
+    ]
+  },
+  {
+    "lessonId": "c022",
+    "characters": [
+      {
+        "characterId": "han-5ba4",
+        "text": "室"
+      },
+      {
+        "characterId": "han-6821",
+        "text": "校"
+      }
+    ]
+  },
+  {
+    "lessonId": "c023",
+    "characters": [
+      {
+        "characterId": "han-4e66",
+        "text": "书"
+      },
+      {
+        "characterId": "han-5305",
+        "text": "包"
+      }
+    ]
+  },
+  {
+    "lessonId": "c024",
+    "characters": [
+      {
+        "characterId": "han-5199",
+        "text": "写"
+      },
+      {
+        "characterId": "han-542c",
+        "text": "听"
+      }
+    ]
+  },
+  {
+    "lessonId": "c025",
+    "characters": [
+      {
+        "characterId": "han-53eb",
+        "text": "叫"
+      },
+      {
+        "characterId": "han-95ee",
+        "text": "问"
+      }
+    ]
+  },
+  {
+    "lessonId": "c026",
+    "characters": [
+      {
+        "characterId": "han-73a9",
+        "text": "玩"
+      },
+      {
+        "characterId": "han-62cd",
+        "text": "拍"
+      }
+    ]
+  },
+  {
+    "lessonId": "c027",
+    "characters": [
+      {
+        "characterId": "han-53cb",
+        "text": "友"
+      },
+      {
+        "characterId": "han-8ba9",
+        "text": "让"
+      }
+    ]
+  },
+  {
+    "lessonId": "c028",
+    "characters": [
+      {
+        "characterId": "han-4e48",
+        "text": "么"
+      },
+      {
+        "characterId": "han-5bf9",
+        "text": "对"
+      }
+    ]
+  },
+  {
+    "lessonId": "c029",
+    "characters": [
+      {
+        "characterId": "han-5348",
+        "text": "午"
+      },
+      {
+        "characterId": "han-65e9",
+        "text": "早"
+      }
+    ]
+  },
+  {
+    "lessonId": "c030",
+    "characters": [
+      {
+        "characterId": "han-5dfe",
+        "text": "巾"
+      },
+      {
+        "characterId": "han-6bdb",
+        "text": "毛"
+      }
+    ]
+  },
+  {
+    "lessonId": "c031",
+    "characters": [
+      {
+        "characterId": "han-5e72",
+        "text": "干"
+      },
+      {
+        "characterId": "han-51c0",
+        "text": "净"
+      }
+    ]
+  },
+  {
+    "lessonId": "c032",
+    "characters": [
+      {
+        "characterId": "han-76c6",
+        "text": "盆"
+      },
+      {
+        "characterId": "han-6d74",
+        "text": "浴"
+      }
+    ]
+  },
+  {
+    "lessonId": "c033",
+    "characters": [
+      {
+        "characterId": "han-5973",
+        "text": "女"
+      },
+      {
+        "characterId": "han-7537",
+        "text": "男"
+      }
+    ]
+  },
+  {
+    "lessonId": "c034",
+    "characters": [
+      {
+        "characterId": "han-52fa",
+        "text": "勺"
+      },
+      {
+        "characterId": "han-676f",
+        "text": "杯"
+      }
+    ]
+  },
+  {
+    "lessonId": "c035",
+    "characters": [
+      {
+        "characterId": "han-706f",
+        "text": "灯"
+      },
+      {
+        "characterId": "han-5e8a",
+        "text": "床"
+      }
+    ]
+  },
+  {
+    "lessonId": "c036",
+    "characters": [
+      {
+        "characterId": "han-6536",
+        "text": "收"
+      },
+      {
+        "characterId": "han-627e",
+        "text": "找"
+      }
+    ]
+  },
+  {
+    "lessonId": "c037",
+    "characters": [
+      {
+        "characterId": "han-4e2d",
+        "text": "中"
+      },
+      {
+        "characterId": "han-5de6",
+        "text": "左"
+      }
+    ]
+  },
+  {
+    "lessonId": "c038",
+    "characters": [
+      {
+        "characterId": "han-961f",
+        "text": "队"
+      },
+      {
+        "characterId": "han-5148",
+        "text": "先"
+      }
+    ]
+  },
+  {
+    "lessonId": "c039",
+    "characters": [
+      {
+        "characterId": "han-5b89",
+        "text": "安"
+      },
+      {
+        "characterId": "han-5371",
+        "text": "危"
+      }
+    ]
+  },
+  {
+    "lessonId": "c040",
+    "characters": [
+      {
+        "characterId": "han-5fd9",
+        "text": "忙"
+      },
+      {
+        "characterId": "han-544a",
+        "text": "告"
+      }
+    ]
+  },
+  {
+    "lessonId": "c041",
+    "characters": [
+      {
+        "characterId": "han-9a6c",
+        "text": "马"
+      },
+      {
+        "characterId": "han-725b",
+        "text": "牛"
+      }
+    ]
+  },
+  {
+    "lessonId": "c042",
+    "characters": [
+      {
+        "characterId": "han-866b",
+        "text": "虫"
+      },
+      {
+        "characterId": "han-5154",
+        "text": "兔"
+      }
+    ]
+  },
+  {
+    "lessonId": "c043",
+    "characters": [
+      {
+        "characterId": "han-8682",
+        "text": "蚂"
+      },
+      {
+        "characterId": "han-8681",
+        "text": "蚁"
+      }
+    ]
+  },
+  {
+    "lessonId": "c044",
+    "characters": [
+      {
+        "characterId": "han-868a",
+        "text": "蚊"
+      },
+      {
+        "characterId": "han-8713",
+        "text": "蜓"
+      }
+    ]
+  },
+  {
+    "lessonId": "c045",
+    "characters": [
+      {
+        "characterId": "han-864e",
+        "text": "虎"
+      },
+      {
+        "characterId": "han-72ee",
+        "text": "狮"
+      }
+    ]
+  },
+  {
+    "lessonId": "c046",
+    "characters": [
+      {
+        "characterId": "han-72d0",
+        "text": "狐"
+      },
+      {
+        "characterId": "han-677e",
+        "text": "松"
+      }
+    ]
+  },
+  {
+    "lessonId": "c047",
+    "characters": [
+      {
+        "characterId": "han-9f9f",
+        "text": "龟"
+      },
+      {
+        "characterId": "han-867e",
+        "text": "虾"
+      }
+    ]
+  },
+  {
+    "lessonId": "c048",
+    "characters": [
+      {
+        "characterId": "han-8d1d",
+        "text": "贝"
+      },
+      {
+        "characterId": "han-6d77",
+        "text": "海"
+      }
+    ]
+  },
+  {
+    "lessonId": "c049",
+    "characters": [
+      {
+        "characterId": "han-722a",
+        "text": "爪"
+      },
+      {
+        "characterId": "han-7fbd",
+        "text": "羽"
+      }
+    ]
+  },
+  {
+    "lessonId": "c050",
+    "characters": [
+      {
+        "characterId": "han-82bd",
+        "text": "芽"
+      },
+      {
+        "characterId": "han-679d",
+        "text": "枝"
+      }
+    ]
+  },
+  {
+    "lessonId": "c051",
+    "characters": [
+      {
+        "characterId": "han-5170",
+        "text": "兰"
+      },
+      {
+        "characterId": "han-674f",
+        "text": "杏"
+      }
+    ]
+  },
+  {
+    "lessonId": "c052",
+    "characters": [
+      {
+        "characterId": "han-7af9",
+        "text": "竹"
+      },
+      {
+        "characterId": "han-6768",
+        "text": "杨"
+      }
+    ]
+  },
+  {
+    "lessonId": "c053",
+    "characters": [
+      {
+        "characterId": "han-6c5f",
+        "text": "江"
+      },
+      {
+        "characterId": "han-6c60",
+        "text": "池"
+      }
+    ]
+  },
+  {
+    "lessonId": "c054",
+    "characters": [
+      {
+        "characterId": "han-5149",
+        "text": "光"
+      },
+      {
+        "characterId": "han-7a7a",
+        "text": "空"
+      }
+    ]
+  },
+  {
+    "lessonId": "c055",
+    "characters": [
+      {
+        "characterId": "han-51b0",
+        "text": "冰"
+      },
+      {
+        "characterId": "han-51b7",
+        "text": "冷"
+      }
+    ]
+  },
+  {
+    "lessonId": "c056",
+    "characters": [
+      {
+        "characterId": "han-9634",
+        "text": "阴"
+      },
+      {
+        "characterId": "han-70ed",
+        "text": "热"
+      }
+    ]
+  },
+  {
+    "lessonId": "c057",
+    "characters": [
+      {
+        "characterId": "han-51ac",
+        "text": "冬"
+      },
+      {
+        "characterId": "han-5b63",
+        "text": "季"
+      }
+    ]
+  },
+  {
+    "lessonId": "c058",
+    "characters": [
+      {
+        "characterId": "han-8679",
+        "text": "虹"
+      },
+      {
+        "characterId": "han-96fe",
+        "text": "雾"
+      }
+    ]
+  },
+  {
+    "lessonId": "c059",
+    "characters": [
+      {
+        "characterId": "han-6c99",
+        "text": "沙"
+      },
+      {
+        "characterId": "han-6ce5",
+        "text": "泥"
+      }
+    ]
+  },
+  {
+    "lessonId": "c060",
+    "characters": [
+      {
+        "characterId": "han-957f",
+        "text": "长"
+      },
+      {
+        "characterId": "han-5f00",
+        "text": "开"
+      }
+    ]
+  },
+  {
+    "lessonId": "c061",
+    "characters": [
+      {
+        "characterId": "han-8fb9",
+        "text": "边"
+      },
+      {
+        "characterId": "han-6865",
+        "text": "桥"
+      }
+    ]
+  },
+  {
+    "lessonId": "c062",
+    "characters": [
+      {
+        "characterId": "han-8f66",
+        "text": "车"
+      },
+      {
+        "characterId": "han-4ea4",
+        "text": "交"
+      }
+    ]
+  },
+  {
+    "lessonId": "c063",
+    "characters": [
+      {
+        "characterId": "han-8fc7",
+        "text": "过"
+      },
+      {
+        "characterId": "han-6b65",
+        "text": "步"
+      }
+    ]
+  },
+  {
+    "lessonId": "c064",
+    "characters": [
+      {
+        "characterId": "han-98de",
+        "text": "飞"
+      },
+      {
+        "characterId": "han-673a",
+        "text": "机"
+      }
+    ]
+  },
+  {
+    "lessonId": "c065",
+    "characters": [
+      {
+        "characterId": "han-706b",
+        "text": "火"
+      },
+      {
+        "characterId": "han-94c1",
+        "text": "铁"
+      }
+    ]
+  },
+  {
+    "lessonId": "c066",
+    "characters": [
+      {
+        "characterId": "han-81ea",
+        "text": "自"
+      },
+      {
+        "characterId": "han-5239",
+        "text": "刹"
+      }
+    ]
+  },
+  {
+    "lessonId": "c067",
+    "characters": [
+      {
+        "characterId": "han-5165",
+        "text": "入"
+      },
+      {
+        "characterId": "han-51fa",
+        "text": "出"
+      }
+    ]
+  },
+  {
+    "lessonId": "c068",
+    "characters": [
+      {
+        "characterId": "han-4e1c",
+        "text": "东"
+      },
+      {
+        "characterId": "han-5317",
+        "text": "北"
+      }
+    ]
+  },
+  {
+    "lessonId": "c069",
+    "characters": [
+      {
+        "characterId": "han-8fd1",
+        "text": "近"
+      },
+      {
+        "characterId": "han-76f4",
+        "text": "直"
+      }
+    ]
+  },
+  {
+    "lessonId": "c070",
+    "characters": [
+      {
+        "characterId": "han-5e02",
+        "text": "市"
+      },
+      {
+        "characterId": "han-573a",
+        "text": "场"
+      }
+    ]
+  },
+  {
+    "lessonId": "c071",
+    "characters": [
+      {
+        "characterId": "han-5143",
+        "text": "元"
+      },
+      {
+        "characterId": "han-4ed8",
+        "text": "付"
+      }
+    ]
+  },
+  {
+    "lessonId": "c072",
+    "characters": [
+      {
+        "characterId": "han-5ba2",
+        "text": "客"
+      },
+      {
+        "characterId": "han-5546",
+        "text": "商"
+      }
+    ]
+  },
+  {
+    "lessonId": "c073",
+    "characters": [
+      {
+        "characterId": "han-533a",
+        "text": "区"
+      },
+      {
+        "characterId": "han-5c42",
+        "text": "层"
+      }
+    ]
+  },
+  {
+    "lessonId": "c074",
+    "characters": [
+      {
+        "characterId": "han-533b",
+        "text": "医"
+      },
+      {
+        "characterId": "han-9488",
+        "text": "针"
+      }
+    ]
+  },
+  {
+    "lessonId": "c075",
+    "characters": [
+      {
+        "characterId": "han-9632",
+        "text": "防"
+      },
+      {
+        "characterId": "han-5458",
+        "text": "员"
+      }
+    ]
+  },
+  {
+    "lessonId": "c076",
+    "characters": [
+      {
+        "characterId": "han-90ae",
+        "text": "邮"
+      },
+      {
+        "characterId": "han-5c40",
+        "text": "局"
+      }
+    ]
+  },
+  {
+    "lessonId": "c077",
+    "characters": [
+      {
+        "characterId": "han-4f1e",
+        "text": "伞"
+      },
+      {
+        "characterId": "han-65c5",
+        "text": "旅"
+      }
+    ]
+  },
+  {
+    "lessonId": "c078",
+    "characters": [
+      {
+        "characterId": "han-4e61",
+        "text": "乡"
+      },
+      {
+        "characterId": "han-6751",
+        "text": "村"
+      }
+    ]
+  },
+  {
+    "lessonId": "c079",
+    "characters": [
+      {
+        "characterId": "han-6b62",
+        "text": "止"
+      },
+      {
+        "characterId": "han-793a",
+        "text": "示"
+      }
+    ]
+  },
+  {
+    "lessonId": "c080",
+    "characters": [
+      {
+        "characterId": "han-5168",
+        "text": "全"
+      },
+      {
+        "characterId": "han-5b88",
+        "text": "守"
+      }
+    ]
+  },
+  {
+    "lessonId": "c081",
+    "characters": [
+      {
+        "characterId": "han-5976",
+        "text": "奶"
+      },
+      {
+        "characterId": "han-7237",
+        "text": "爷"
+      }
+    ]
+  },
+  {
+    "lessonId": "c082",
+    "characters": [
+      {
+        "characterId": "han-4f2f",
+        "text": "伯"
+      },
+      {
+        "characterId": "han-59b9",
+        "text": "妹"
+      }
+    ]
+  },
+  {
+    "lessonId": "c083",
+    "characters": [
+      {
+        "characterId": "han-513f",
+        "text": "儿"
+      },
+      {
+        "characterId": "han-5b50",
+        "text": "子"
+      }
+    ]
+  },
+  {
+    "lessonId": "c084",
+    "characters": [
+      {
+        "characterId": "han-5385",
+        "text": "厅"
+      },
+      {
+        "characterId": "han-623f",
+        "text": "房"
+      }
+    ]
+  },
+  {
+    "lessonId": "c085",
+    "characters": [
+      {
+        "characterId": "han-7535",
+        "text": "电"
+      },
+      {
+        "characterId": "han-89c6",
+        "text": "视"
+      }
+    ]
+  },
+  {
+    "lessonId": "c086",
+    "characters": [
+      {
+        "characterId": "han-5200",
+        "text": "刀"
+      },
+      {
+        "characterId": "han-53c9",
+        "text": "叉"
+      }
+    ]
+  },
+  {
+    "lessonId": "c087",
+    "characters": [
+      {
+        "characterId": "han-5207",
+        "text": "切"
+      },
+      {
+        "characterId": "han-7092",
+        "text": "炒"
+      }
+    ]
+  },
+  {
+    "lessonId": "c088",
+    "characters": [
+      {
+        "characterId": "han-82e6",
+        "text": "苦"
+      },
+      {
+        "characterId": "han-54b8",
+        "text": "咸"
+      }
+    ]
+  },
+  {
+    "lessonId": "c089",
+    "characters": [
+      {
+        "characterId": "han-74dc",
+        "text": "瓜"
+      },
+      {
+        "characterId": "han-82f9",
+        "text": "苹"
+      }
+    ]
+  },
+  {
+    "lessonId": "c090",
+    "characters": [
+      {
+        "characterId": "han-9999",
+        "text": "香"
+      },
+      {
+        "characterId": "han-8404",
+        "text": "萄"
+      }
+    ]
+  },
+  {
+    "lessonId": "c091",
+    "characters": [
+      {
+        "characterId": "han-535c",
+        "text": "卜"
+      },
+      {
+        "characterId": "han-8c46",
+        "text": "豆"
+      }
+    ]
+  },
+  {
+    "lessonId": "c092",
+    "characters": [
+      {
+        "characterId": "han-8304",
+        "text": "茄"
+      },
+      {
+        "characterId": "han-6912",
+        "text": "椒"
+      }
+    ]
+  },
+  {
+    "lessonId": "c093",
+    "characters": [
+      {
+        "characterId": "han-8089",
+        "text": "肉"
+      },
+      {
+        "characterId": "han-6c64",
+        "text": "汤"
+      }
+    ]
+  },
+  {
+    "lessonId": "c094",
+    "characters": [
+      {
+        "characterId": "han-997c",
+        "text": "饼"
+      },
+      {
+        "characterId": "han-997a",
+        "text": "饺"
+      }
+    ]
+  },
+  {
+    "lessonId": "c095",
+    "characters": [
+      {
+        "characterId": "han-7530",
+        "text": "田"
+      },
+      {
+        "characterId": "han-519c",
+        "text": "农"
+      }
+    ]
+  },
+  {
+    "lessonId": "c096",
+    "characters": [
+      {
+        "characterId": "han-9971",
+        "text": "饱"
+      },
+      {
+        "characterId": "han-997f",
+        "text": "饿"
+      }
+    ]
+  },
+  {
+    "lessonId": "c097",
+    "characters": [
+      {
+        "characterId": "han-626b",
+        "text": "扫"
+      },
+      {
+        "characterId": "han-62d6",
+        "text": "拖"
+      }
+    ]
+  },
+  {
+    "lessonId": "c098",
+    "characters": [
+      {
+        "characterId": "han-67dc",
+        "text": "柜"
+      },
+      {
+        "characterId": "han-67b6",
+        "text": "架"
+      }
+    ]
+  },
+  {
+    "lessonId": "c099",
+    "characters": [
+      {
+        "characterId": "han-8f6f",
+        "text": "软"
+      },
+      {
+        "characterId": "han-539a",
+        "text": "厚"
+      }
+    ]
+  },
+  {
+    "lessonId": "c100",
+    "characters": [
+      {
+        "characterId": "han-65e7",
+        "text": "旧"
+      },
+      {
+        "characterId": "han-8865",
+        "text": "补"
+      }
+    ]
+  },
+  {
+    "lessonId": "c101",
+    "characters": [
+      {
+        "characterId": "han-4eca",
+        "text": "今"
+      },
+      {
+        "characterId": "han-5e74",
+        "text": "年"
+      }
+    ]
+  },
+  {
+    "lessonId": "c102",
+    "characters": [
+      {
+        "characterId": "han-5386",
+        "text": "历"
+      },
+      {
+        "characterId": "han-53f7",
+        "text": "号"
+      }
+    ]
+  },
+  {
+    "lessonId": "c103",
+    "characters": [
+      {
+        "characterId": "han-5206",
+        "text": "分"
+      },
+      {
+        "characterId": "han-8868",
+        "text": "表"
+      }
+    ]
+  },
+  {
+    "lessonId": "c104",
+    "characters": [
+      {
+        "characterId": "han-4e45",
+        "text": "久"
+      },
+      {
+        "characterId": "han-534a",
+        "text": "半"
+      }
+    ]
+  },
+  {
+    "lessonId": "c105",
+    "characters": [
+      {
+        "characterId": "han-5343",
+        "text": "千"
+      },
+      {
+        "characterId": "han-4e07",
+        "text": "万"
+      }
+    ]
+  },
+  {
+    "lessonId": "c106",
+    "characters": [
+      {
+        "characterId": "han-5c11",
+        "text": "少"
+      },
+      {
+        "characterId": "han-52a0",
+        "text": "加"
+      }
+    ]
+  },
+  {
+    "lessonId": "c107",
+    "characters": [
+      {
+        "characterId": "han-51e0",
+        "text": "几"
+      },
+      {
+        "characterId": "han-53cc",
+        "text": "双"
+      }
+    ]
+  },
+  {
+    "lessonId": "c108",
+    "characters": [
+      {
+        "characterId": "han-7247",
+        "text": "片"
+      },
+      {
+        "characterId": "han-53ea",
+        "text": "只"
+      }
+    ]
+  },
+  {
+    "lessonId": "c109",
+    "characters": [
+      {
+        "characterId": "han-80d6",
+        "text": "胖"
+      },
+      {
+        "characterId": "han-9ad8",
+        "text": "高"
+      }
+    ]
+  },
+  {
+    "lessonId": "c110",
+    "characters": [
+      {
+        "characterId": "han-4f4e",
+        "text": "低"
+      },
+      {
+        "characterId": "han-6d45",
+        "text": "浅"
+      }
+    ]
+  },
+  {
+    "lessonId": "c111",
+    "characters": [
+      {
+        "characterId": "han-65b9",
+        "text": "方"
+      },
+      {
+        "characterId": "han-6b63",
+        "text": "正"
+      }
+    ]
+  },
+  {
+    "lessonId": "c112",
+    "characters": [
+      {
+        "characterId": "han-5f62",
+        "text": "形"
+      },
+      {
+        "characterId": "han-72b6",
+        "text": "状"
+      }
+    ]
+  },
+  {
+    "lessonId": "c113",
+    "characters": [
+      {
+        "characterId": "han-5f02",
+        "text": "异"
+      },
+      {
+        "characterId": "han-522b",
+        "text": "别"
+      }
+    ]
+  },
+  {
+    "lessonId": "c114",
+    "characters": [
+      {
+        "characterId": "han-672b",
+        "text": "末"
+      },
+      {
+        "characterId": "han-5e8f",
+        "text": "序"
+      }
+    ]
+  },
+  {
+    "lessonId": "c115",
+    "characters": [
+      {
+        "characterId": "han-5bf8",
+        "text": "寸"
+      },
+      {
+        "characterId": "han-6bd4",
+        "text": "比"
+      }
+    ]
+  },
+  {
+    "lessonId": "c116",
+    "characters": [
+      {
+        "characterId": "han-5185",
+        "text": "内"
+      },
+      {
+        "characterId": "han-5916",
+        "text": "外"
+      }
+    ]
+  },
+  {
+    "lessonId": "c117",
+    "characters": [
+      {
+        "characterId": "han-89c2",
+        "text": "观"
+      },
+      {
+        "characterId": "han-8bd5",
+        "text": "试"
+      }
+    ]
+  },
+  {
+    "lessonId": "c118",
+    "characters": [
+      {
+        "characterId": "han-5f15",
+        "text": "引"
+      },
+      {
+        "characterId": "han-5438",
+        "text": "吸"
+      }
+    ]
+  },
+  {
+    "lessonId": "c119",
+    "characters": [
+      {
+        "characterId": "han-5347",
+        "text": "升"
+      },
+      {
+        "characterId": "han-5316",
+        "text": "化"
+      }
+    ]
+  },
+  {
+    "lessonId": "c120",
+    "characters": [
+      {
+        "characterId": "han-8282",
+        "text": "节"
+      },
+      {
+        "characterId": "han-7528",
+        "text": "用"
+      }
+    ]
+  },
+  {
+    "lessonId": "c121",
+    "characters": [
+      {
+        "characterId": "han-4ece",
+        "text": "从"
+      },
+      {
+        "characterId": "han-53e4",
+        "text": "古"
+      }
+    ]
+  },
+  {
+    "lessonId": "c122",
+    "characters": [
+      {
+        "characterId": "han-4f4f",
+        "text": "住"
+      },
+      {
+        "characterId": "han-56f4",
+        "text": "围"
+      }
+    ]
+  },
+  {
+    "lessonId": "c123",
+    "characters": [
+      {
+        "characterId": "han-4e50",
+        "text": "乐"
+      },
+      {
+        "characterId": "han-6b22",
+        "text": "欢"
+      }
+    ]
+  },
+  {
+    "lessonId": "c124",
+    "characters": [
+      {
+        "characterId": "han-4f24",
+        "text": "伤"
+      },
+      {
+        "characterId": "han-6cea",
+        "text": "泪"
+      }
+    ]
+  },
+  {
+    "lessonId": "c125",
+    "characters": [
+      {
+        "characterId": "han-6015",
+        "text": "怕"
+      },
+      {
+        "characterId": "han-52c7",
+        "text": "勇"
+      }
+    ]
+  },
+  {
+    "lessonId": "c126",
+    "characters": [
+      {
+        "characterId": "han-7d27",
+        "text": "紧"
+      },
+      {
+        "characterId": "han-7740",
+        "text": "着"
+      }
+    ]
+  },
+  {
+    "lessonId": "c127",
+    "characters": [
+      {
+        "characterId": "han-5931",
+        "text": "失"
+      },
+      {
+        "characterId": "han-5bfb",
+        "text": "寻"
+      }
+    ]
+  },
+  {
+    "lessonId": "c128",
+    "characters": [
+      {
+        "characterId": "han-4e3a",
+        "text": "为"
+      },
+      {
+        "characterId": "han-4ee5",
+        "text": "以"
+      }
+    ]
+  },
+  {
+    "lessonId": "c129",
+    "characters": [
+      {
+        "characterId": "han-529e",
+        "text": "办"
+      },
+      {
+        "characterId": "han-4e3b",
+        "text": "主"
+      }
+    ]
+  },
+  {
+    "lessonId": "c130",
+    "characters": [
+      {
+        "characterId": "han-5408",
+        "text": "合"
+      },
+      {
+        "characterId": "han-56e2",
+        "text": "团"
+      }
+    ]
+  },
+  {
+    "lessonId": "c131",
+    "characters": [
+      {
+        "characterId": "han-793c",
+        "text": "礼"
+      },
+      {
+        "characterId": "han-7269",
+        "text": "物"
+      }
+    ]
+  },
+  {
+    "lessonId": "c132",
+    "characters": [
+      {
+        "characterId": "han-8bda",
+        "text": "诚"
+      },
+      {
+        "characterId": "han-5b9e",
+        "text": "实"
+      }
+    ]
+  },
+  {
+    "lessonId": "c133",
+    "characters": [
+      {
+        "characterId": "han-8ba4",
+        "text": "认"
+      },
+      {
+        "characterId": "han-6539",
+        "text": "改"
+      }
+    ]
+  },
+  {
+    "lessonId": "c134",
+    "characters": [
+      {
+        "characterId": "han-56f0",
+        "text": "困"
+      },
+      {
+        "characterId": "han-575a",
+        "text": "坚"
+      }
+    ]
+  },
+  {
+    "lessonId": "c135",
+    "characters": [
+      {
+        "characterId": "han-624d",
+        "text": "才"
+      },
+      {
+        "characterId": "han-4f1a",
+        "text": "会"
+      }
+    ]
+  },
+  {
+    "lessonId": "c136",
+    "characters": [
+      {
+        "characterId": "han-53d1",
+        "text": "发"
+      },
+      {
+        "characterId": "han-5ffd",
+        "text": "忽"
+      }
+    ]
+  },
+  {
+    "lessonId": "c137",
+    "characters": [
+      {
+        "characterId": "han-58f0",
+        "text": "声"
+      },
+      {
+        "characterId": "han-9e23",
+        "text": "鸣"
+      }
+    ]
+  },
+  {
+    "lessonId": "c138",
+    "characters": [
+      {
+        "characterId": "han-722c",
+        "text": "爬"
+      },
+      {
+        "characterId": "han-94bb",
+        "text": "钻"
+      }
+    ]
+  },
+  {
+    "lessonId": "c139",
+    "characters": [
+      {
+        "characterId": "han-4e11",
+        "text": "丑"
+      },
+      {
+        "characterId": "han-5947",
+        "text": "奇"
+      }
+    ]
+  },
+  {
+    "lessonId": "c140",
+    "characters": [
+      {
+        "characterId": "han-89c1",
+        "text": "见"
+      },
+      {
+        "characterId": "han-8fce",
+        "text": "迎"
+      }
+    ]
+  },
+  {
+    "lessonId": "c141",
+    "characters": [
+      {
+        "characterId": "han-8981",
+        "text": "要"
+      },
+      {
+        "characterId": "han-76fc",
+        "text": "盼"
+      }
+    ]
+  },
+  {
+    "lessonId": "c142",
+    "characters": [
+      {
+        "characterId": "han-8fd8",
+        "text": "还"
+      },
+      {
+        "characterId": "han-5f88",
+        "text": "很"
+      }
+    ]
+  },
+  {
+    "lessonId": "c143",
+    "characters": [
+      {
+        "characterId": "han-5df2",
+        "text": "已"
+      },
+      {
+        "characterId": "han-5730",
+        "text": "地"
+      }
+    ]
+  },
+  {
+    "lessonId": "c144",
+    "characters": [
+      {
+        "characterId": "han-5417",
+        "text": "吗"
+      },
+      {
+        "characterId": "han-5427",
+        "text": "吧"
+      }
+    ]
+  },
+  {
+    "lessonId": "c145",
+    "characters": [
+      {
+        "characterId": "han-53c8",
+        "text": "又"
+      },
+      {
+        "characterId": "han-800c",
+        "text": "而"
+      }
+    ]
+  },
+  {
+    "lessonId": "c146",
+    "characters": [
+      {
+        "characterId": "han-5982",
+        "text": "如"
+      },
+      {
+        "characterId": "han-5373",
+        "text": "即"
+      }
+    ]
+  },
+  {
+    "lessonId": "c147",
+    "characters": [
+      {
+        "characterId": "han-51b3",
+        "text": "决"
+      },
+      {
+        "characterId": "han-5b9a",
+        "text": "定"
+      }
+    ]
+  },
+  {
+    "lessonId": "c148",
+    "characters": [
+      {
+        "characterId": "han-5224",
+        "text": "判"
+      },
+      {
+        "characterId": "han-5e94",
+        "text": "应"
+      }
+    ]
+  },
+  {
+    "lessonId": "c149",
+    "characters": [
+      {
+        "characterId": "han-4e13",
+        "text": "专"
+      },
+      {
+        "characterId": "han-4ed4",
+        "text": "仔"
+      }
+    ]
+  },
+  {
+    "lessonId": "c150",
+    "characters": [
+      {
+        "characterId": "han-5f81",
+        "text": "征"
+      },
+      {
+        "characterId": "han-6027",
+        "text": "性"
+      }
+    ]
+  },
+  {
+    "lessonId": "c151",
+    "characters": [
+      {
+        "characterId": "han-5174",
+        "text": "兴"
+      },
+      {
+        "characterId": "han-594b",
+        "text": "奋"
+      }
+    ]
+  },
+  {
+    "lessonId": "c152",
+    "characters": [
+      {
+        "characterId": "han-529d",
+        "text": "劝"
+      },
+      {
+        "characterId": "han-4e89",
+        "text": "争"
+      }
+    ]
+  },
+  {
+    "lessonId": "c153",
+    "characters": [
+      {
+        "characterId": "han-52a9",
+        "text": "助"
+      },
+      {
+        "characterId": "han-6c42",
+        "text": "求"
+      }
+    ]
+  },
+  {
+    "lessonId": "c154",
+    "characters": [
+      {
+        "characterId": "han-4f53",
+        "text": "体"
+      },
+      {
+        "characterId": "han-80a9",
+        "text": "肩"
+      }
+    ]
+  },
+  {
+    "lessonId": "c155",
+    "characters": [
+      {
+        "characterId": "han-79c1",
+        "text": "私"
+      },
+      {
+        "characterId": "han-79d8",
+        "text": "秘"
+      }
+    ]
+  },
+  {
+    "lessonId": "c156",
+    "characters": [
+      {
+        "characterId": "han-5141",
+        "text": "允"
+      },
+      {
+        "characterId": "han-62d2",
+        "text": "拒"
+      }
+    ]
+  },
+  {
+    "lessonId": "c157",
+    "characters": [
+      {
+        "characterId": "han-7ea6",
+        "text": "约"
+      },
+      {
+        "characterId": "han-8d23",
+        "text": "责"
+      }
+    ]
+  },
+  {
+    "lessonId": "c158",
+    "characters": [
+      {
+        "characterId": "han-516c",
+        "text": "公"
+      },
+      {
+        "characterId": "han-52ff",
+        "text": "勿"
+      }
+    ]
+  },
+  {
+    "lessonId": "c159",
+    "characters": [
+      {
+        "characterId": "han-529f",
+        "text": "功"
+      },
+      {
+        "characterId": "han-6210",
+        "text": "成"
+      }
+    ]
+  },
+  {
+    "lessonId": "c160",
+    "characters": [
+      {
+        "characterId": "han-4e60",
+        "text": "习"
+      },
+      {
+        "characterId": "han-53cd",
+        "text": "反"
+      }
+    ]
+  },
+  {
+    "lessonId": "c161",
+    "characters": [
+      {
+        "characterId": "han-8ba2",
+        "text": "订"
+      },
+      {
+        "characterId": "han-518c",
+        "text": "册"
+      }
+    ]
+  },
+  {
+    "lessonId": "c162",
+    "characters": [
+      {
+        "characterId": "han-5370",
+        "text": "印"
+      },
+      {
+        "characterId": "han-7248",
+        "text": "版"
+      }
+    ]
+  },
+  {
+    "lessonId": "c163",
+    "characters": [
+      {
+        "characterId": "han-6587",
+        "text": "文"
+      },
+      {
+        "characterId": "han-53e5",
+        "text": "句"
+      }
+    ]
+  },
+  {
+    "lessonId": "c164",
+    "characters": [
+      {
+        "characterId": "han-53f9",
+        "text": "叹"
+      },
+      {
+        "characterId": "han-5192",
+        "text": "冒"
+      }
+    ]
+  },
+  {
+    "lessonId": "c165",
+    "characters": [
+      {
+        "characterId": "han-7ecf",
+        "text": "经"
+      },
+      {
+        "characterId": "han-5f80",
+        "text": "往"
+      }
+    ]
+  },
+  {
+    "lessonId": "c166",
+    "characters": [
+      {
+        "characterId": "han-5904",
+        "text": "处"
+      },
+      {
+        "characterId": "han-8272",
+        "text": "色"
+      }
+    ]
+  },
+  {
+    "lessonId": "c167",
+    "characters": [
+      {
+        "characterId": "han-5954",
+        "text": "奔"
+      },
+      {
+        "characterId": "han-6cbf",
+        "text": "沿"
+      }
+    ]
+  },
+  {
+    "lessonId": "c168",
+    "characters": [
+      {
+        "characterId": "han-8ff9",
+        "text": "迹"
+      },
+      {
+        "characterId": "han-67e5",
+        "text": "查"
+      }
+    ]
+  },
+  {
+    "lessonId": "c169",
+    "characters": [
+      {
+        "characterId": "han-5f04",
+        "text": "弄"
+      },
+      {
+        "characterId": "han-8bef",
+        "text": "误"
+      }
+    ]
+  },
+  {
+    "lessonId": "c170",
+    "characters": [
+      {
+        "characterId": "han-53ef",
+        "text": "可"
+      },
+      {
+        "characterId": "han-672a",
+        "text": "未"
+      }
+    ]
+  },
+  {
+    "lessonId": "c171",
+    "characters": [
+      {
+        "characterId": "han-8bc6",
+        "text": "识"
+      },
+      {
+        "characterId": "han-77e5",
+        "text": "知"
+      }
+    ]
+  },
+  {
+    "lessonId": "c172",
+    "characters": [
+      {
+        "characterId": "han-8baf",
+        "text": "讯"
+      },
+      {
+        "characterId": "han-4f20",
+        "text": "传"
+      }
+    ]
+  },
+  {
+    "lessonId": "c173",
+    "characters": [
+      {
+        "characterId": "han-8ba1",
+        "text": "计"
+      },
+      {
+        "characterId": "han-52a8",
+        "text": "动"
+      }
+    ]
+  },
+  {
+    "lessonId": "c174",
+    "characters": [
+      {
+        "characterId": "han-8303",
+        "text": "范"
+      },
+      {
+        "characterId": "han-6309",
+        "text": "按"
+      }
+    ]
+  },
+  {
+    "lessonId": "c175",
+    "characters": [
+      {
+        "characterId": "han-5217",
+        "text": "列"
+      },
+      {
+        "characterId": "han-4efd",
+        "text": "份"
+      }
+    ]
+  },
+  {
+    "lessonId": "c176",
+    "characters": [
+      {
+        "characterId": "han-6784",
+        "text": "构"
+      },
+      {
+        "characterId": "han-7ec4",
+        "text": "组"
+      }
+    ]
+  },
+  {
+    "lessonId": "c177",
+    "characters": [
+      {
+        "characterId": "han-8bcd",
+        "text": "词"
+      },
+      {
+        "characterId": "han-8fde",
+        "text": "连"
+      }
+    ]
+  },
+  {
+    "lessonId": "c178",
+    "characters": [
+      {
+        "characterId": "han-53e6",
+        "text": "另"
+      },
+      {
+        "characterId": "han-4ee3",
+        "text": "代"
+      }
+    ]
+  },
+  {
+    "lessonId": "c179",
+    "characters": [
+      {
+        "characterId": "han-4e3d",
+        "text": "丽"
+      },
+      {
+        "characterId": "han-79c0",
+        "text": "秀"
+      }
+    ]
+  },
+  {
+    "lessonId": "c180",
+    "characters": [
+      {
+        "characterId": "han-5938",
+        "text": "夸"
+      },
+      {
+        "characterId": "han-8bc4",
+        "text": "评"
+      }
+    ]
+  },
+  {
+    "lessonId": "c181",
+    "characters": [
+      {
+        "characterId": "han-7ea7",
+        "text": "级"
+      },
+      {
+        "characterId": "han-5907",
+        "text": "备"
+      }
+    ]
+  },
+  {
+    "lessonId": "c182",
+    "characters": [
+      {
+        "characterId": "han-76ae",
+        "text": "皮"
+      },
+      {
+        "characterId": "han-5177",
+        "text": "具"
+      }
+    ]
+  },
+  {
+    "lessonId": "c183",
+    "characters": [
+      {
+        "characterId": "han-53f0",
+        "text": "台"
+      },
+      {
+        "characterId": "han-677f",
+        "text": "板"
+      }
+    ]
+  },
+  {
+    "lessonId": "c184",
+    "characters": [
+      {
+        "characterId": "han-73cd",
+        "text": "珍"
+      },
+      {
+        "characterId": "han-635f",
+        "text": "损"
+      }
+    ]
+  },
+  {
+    "lessonId": "c185",
+    "characters": [
+      {
+        "characterId": "han-8a00",
+        "text": "言"
+      },
+      {
+        "characterId": "han-4e3e",
+        "text": "举"
+      }
+    ]
+  },
+  {
+    "lessonId": "c186",
+    "characters": [
+      {
+        "characterId": "han-52a1",
+        "text": "务"
+      },
+      {
+        "characterId": "han-6c57",
+        "text": "汗"
+      }
+    ]
+  },
+  {
+    "lessonId": "c187",
+    "characters": [
+      {
+        "characterId": "han-4efb",
+        "text": "任"
+      },
+      {
+        "characterId": "han-8d1f",
+        "text": "负"
+      }
+    ]
+  },
+  {
+    "lessonId": "c188",
+    "characters": [
+      {
+        "characterId": "han-547c",
+        "text": "呼"
+      },
+      {
+        "characterId": "han-70bc",
+        "text": "炼"
+      }
+    ]
+  },
+  {
+    "lessonId": "c189",
+    "characters": [
+      {
+        "characterId": "han-4f11",
+        "text": "休"
+      },
+      {
+        "characterId": "han-8fd0",
+        "text": "运"
+      }
+    ]
+  },
+  {
+    "lessonId": "c190",
+    "characters": [
+      {
+        "characterId": "han-5fc6",
+        "text": "忆"
+      },
+      {
+        "characterId": "han-8bb0",
+        "text": "记"
+      }
+    ]
+  },
+  {
+    "lessonId": "c191",
+    "characters": [
+      {
+        "characterId": "han-4ecb",
+        "text": "介"
+      },
+      {
+        "characterId": "han-674e",
+        "text": "李"
+      }
+    ]
+  },
+  {
+    "lessonId": "c192",
+    "characters": [
+      {
+        "characterId": "han-5e86",
+        "text": "庆"
+      },
+      {
+        "characterId": "han-5e78",
+        "text": "幸"
+      }
+    ]
+  },
+  {
+    "lessonId": "c193",
+    "characters": [
+      {
+        "characterId": "han-6c11",
+        "text": "民"
+      },
+      {
+        "characterId": "han-534e",
+        "text": "华"
+      }
+    ]
+  },
+  {
+    "lessonId": "c194",
+    "characters": [
+      {
+        "characterId": "han-9f99",
+        "text": "龙"
+      },
+      {
+        "characterId": "han-821f",
+        "text": "舟"
+      }
+    ]
+  },
+  {
+    "lessonId": "c195",
+    "characters": [
+      {
+        "characterId": "han-5de5",
+        "text": "工"
+      },
+      {
+        "characterId": "han-5320",
+        "text": "匠"
+      }
+    ]
+  },
+  {
+    "lessonId": "c196",
+    "characters": [
+      {
+        "characterId": "han-672f",
+        "text": "术"
+      },
+      {
+        "characterId": "han-7f51",
+        "text": "网"
+      }
+    ]
+  },
+  {
+    "lessonId": "c197",
+    "characters": [
+      {
+        "characterId": "han-573e",
+        "text": "圾"
+      },
+      {
+        "characterId": "han-6c61",
+        "text": "污"
+      }
+    ]
+  },
+  {
+    "lessonId": "c198",
+    "characters": [
+      {
+        "characterId": "han-4e16",
+        "text": "世"
+      },
+      {
+        "characterId": "han-754c",
+        "text": "界"
+      }
+    ]
+  },
+  {
+    "lessonId": "c199",
+    "characters": [
+      {
+        "characterId": "han-7acb",
+        "text": "立"
+      },
+      {
+        "characterId": "han-6c49",
+        "text": "汉"
+      }
+    ]
+  },
+  {
+    "lessonId": "c200",
+    "characters": [
+      {
+        "characterId": "han-5ff5",
+        "text": "念"
+      },
+      {
+        "characterId": "han-5956",
+        "text": "奖"
+      }
+    ]
+  }
+]
