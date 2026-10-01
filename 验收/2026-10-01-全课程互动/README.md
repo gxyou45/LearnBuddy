@@ -29,11 +29,15 @@
 
 ## 发布状态
 
-**未发布：GitHub HTTPS 凭据失效，推送检查返回 Invalid username or token。已请求用户在本机重新登录有仓库写权限的账户。** 当前分支基于 a89794a。没有把本轮构建预览当成已发布验收。
+**GitHub Pages 已发布，真实线上验收 56/56 通过。** 用户恢复 GitHub CLI 登录后，源码 `da1ff04fe42152de75aa8dc2d43fffd9f379beac` 已推送到 main，[Pages 工作流 36866124763](https://github.com/gxyou45/LearnBuddy/actions/runs/36866124763) 构建与部署成功。实际入口：https://gxyou45.github.io/LearnBuddy/ 。此前“凭据失效／未发布”是发布准备阶段的状态，由本节更新。
 
-此工作环境没有原 Docker／Colima 实例、运行数据库及 curriculum-release 完整课程包，因此不能备份或切换原本地云端试用服务，也未新建数据库替代原学习数据。全部浏览器测试使用独立临时上下文和模拟学习记录；原用户数据、内容和线上版本均未改动。
+发布前保存旧站点首页、课程清单、最近发布任务及隔离测试浏览器的旧版学习／描写记录到 `.backups/20261001-all-interactions-pages`。课程清单前后 SHA-256 均为 `e1465cdfbeae4726a668dec12263a2ebec92a147c89d8e9a004952c7eb5c0a2d`，没有课程数据改写。隔离记录用于升级对照，不是用户真实学习库的备份。
 
-重新登录后可推送代码、等待 Pages 工作流成功，再使用真实 Pages 地址运行 tests/e2e/interactions-all.spec.ts 并保存发布后截图。本地完整版的备份核对与部署需在原服务所在环境继续。
+发布后的实际页面验收 **56/56**，包括 50 课两字描写／刷新／过河逐课检查、十步到岸与重玩、触摸抬手续写、许可文件、首课互动、复习恢复，以及从旧版实际页面捕获的隔离存档升级。旧“妈”字描写仍在第 2 笔开始处，整个学习进度 JSON 升级前后及刷新后相等。未使用路由拦截或替换构建资源；浏览器阻止 Service Worker，仅隔离缓存。日志 `/tmp/learnbuddy-interactions-pages-tests.log`。
+
+[156 张真实 Pages 截图](pages.html)与开发预览分别保存；已抽查新增课程描写／十步过河截图。代码范围仍覆盖完整 204 课，当前线上范围为静态版现有 50 课。
+
+此工作环境没有原 Docker／Colima 实例、运行数据库及 curriculum-release 完整课程包，因此未备份或切换原本地云端试用服务，也未新建数据库替代原学习数据。浏览器验收使用独立测试上下文，未读取或重置用户日常浏览器记录。本地完整版的备份核对与部署仍需在原服务所在环境继续。
 
 
 复现（先 npm ci，并用 npx playwright install chromium 安装测试浏览器）：
@@ -52,3 +56,10 @@ npx playwright test tests/e2e/interactions-components.spec.ts
 ```
 
 playwright.chromium.config.ts 只将测试浏览器指定为 Playwright 自带 Chromium，便于未安装 Google Chrome 的电脑复现。静态构建校验及截图通过不等于 Pages 已部署。
+
+线上验收复现：
+
+```sh
+PLAYWRIGHT_BASE_URL=https://gxyou45.github.io/LearnBuddy/ npx playwright test --config=playwright.chromium.config.ts tests/e2e/interactions-all.spec.ts tests/e2e/interaction-published.spec.ts tests/e2e/review-resume.spec.ts --workers=2 --fully-parallel
+INTERACTION_OLD_STORAGE=.backups/20261001-all-interactions-pages/isolated-old-progress.json PLAYWRIGHT_BASE_URL=https://gxyou45.github.io/LearnBuddy/ npx playwright test --config=playwright.chromium.config.ts tests/e2e/interactions-upgrade-published.spec.ts
+```
